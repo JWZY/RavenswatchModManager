@@ -13,7 +13,7 @@ import {
   Trash2,
   X,
 } from 'lucide-react';
-import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
+import { useCallback, useContext, useEffect, useMemo, useRef, useState } from 'react';
 import type { ReactNode } from 'react';
 import {
   Button,
@@ -28,6 +28,7 @@ import {
 } from '../components/chrome';
 import { ConfigButton } from '../components/config-button';
 import { useConfirmDisableHook } from '../components/disable-hook-consent';
+import { GrimoireContext } from '../components/grimoire/grimoire-context';
 import { ModConfigPanel } from '../components/mod-config-panel';
 import { OverlayButton } from '../components/overlay-button';
 import { SetupBanner } from '../components/setup-banner';
@@ -35,9 +36,9 @@ import { SupportNudge } from '../components/support-nudge';
 import { useDialog, useToast } from '../components/toast';
 import { UpdatesPanel } from '../components/updates-panel';
 import { useModToggle } from '../components/use-mod-toggle';
+import { hasRunBefore } from '../lib/first-run';
 import { msg } from '../lib/i18n';
 import { useT } from '../lib/i18n-react';
-import { hasRunBefore } from '../lib/first-run';
 import {
   type LibrarySort,
   type LibraryStatusFilter,
@@ -144,6 +145,7 @@ function FacetRow({
 
 function LibraryPage() {
   const t = useT();
+  const bookShell = useContext(GrimoireContext);
   const navigate = useNavigate();
   const firstOpen = useRef<boolean | null>(null);
   if (firstOpen.current === null) firstOpen.current = !hasRunBefore();
@@ -210,6 +212,8 @@ function LibraryPage() {
   }, [localMods, syncLocalMods]);
 
   useEffect(() => {
+    // Each book tab must remain a reachable chapter, even before a mod is installed.
+    if (bookShell) return;
     if (firstOpen.current) {
       firstOpen.current = false;
       void navigate({ to: '/browse', replace: true });
@@ -219,10 +223,11 @@ function LibraryPage() {
     // first successful disk scan before treating that as an empty library.
     if (localModsLoading || localModsError || !Array.isArray(localMods)) return;
     if (localMods.length === 0) void navigate({ to: '/browse', replace: true });
-  }, [localMods, localModsError, localModsLoading, navigate]);
+  }, [bookShell, localMods, localModsError, localModsLoading, navigate]);
   const waitingToOpenBrowse =
-    firstOpen.current ||
-    (!localModsLoading && !localModsError && Array.isArray(localMods) && localMods.length === 0);
+    !bookShell &&
+    (firstOpen.current ||
+      (!localModsLoading && !localModsError && Array.isArray(localMods) && localMods.length === 0));
 
   const filtered = useMemo(
     () =>

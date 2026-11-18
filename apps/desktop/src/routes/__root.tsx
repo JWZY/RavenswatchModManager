@@ -7,6 +7,8 @@ import { FirstRunDialogs } from '../components/changelog-dialog';
 import { ChannelStatusBanner } from '../components/channel-status-banner';
 import { CopyButton } from '../components/chrome';
 import { CommandPalette } from '../components/command-palette';
+import { GrimoireContext } from '../components/grimoire/grimoire-context';
+import { GrimoireShell, readBookPreference } from '../components/grimoire/grimoire-shell';
 import { BrowseIcon } from '../components/icons/BrowseIcon';
 import { ConflictsIcon } from '../components/icons/ConflictsIcon';
 import { LaunchIcon } from '../components/icons/LaunchIcon';
@@ -427,6 +429,46 @@ function WindowControls() {
 }
 
 function RootLayout() {
+  const [book, setBook] = useState(readBookPreference);
+  const switchShell = () => {
+    const next = !book;
+    try {
+      localStorage.setItem('rsmm.grimoire.shell.v1', next ? 'book' : 'classic');
+    } catch {
+      /* Optional preference. */
+    }
+    setBook(next);
+  };
+
+  return (
+    <ToastProvider>
+      <DialogProvider>
+        <LaunchProvider>
+          <GrimoireContext.Provider value={book}>
+            {book ? (
+              <GrimoireShell
+                onUseClassic={switchShell}
+                launch={<SidebarLaunch collapsed={false} />}
+                windowControls={<WindowControls />}
+              />
+            ) : (
+              <>
+                <ClassicLayout />
+                <button type="button" className="grimoire-return" onClick={switchShell}>
+                  Open the grimoire
+                </button>
+              </>
+            )}
+            <CommandPalette />
+            <FirstRunDialogs />
+          </GrimoireContext.Provider>
+        </LaunchProvider>
+      </DialogProvider>
+    </ToastProvider>
+  );
+}
+
+function ClassicLayout() {
   const t = useT();
   const location = useLocation();
   const nav = useNav();
@@ -452,123 +494,111 @@ function RootLayout() {
   useEffect(() => trackMainWindow(), []);
 
   return (
-    <ToastProvider>
-      <DialogProvider>
-        <LaunchProvider>
-          <div className="flex h-screen w-screen overflow-hidden">
-            <aside
-              ref={sidebarRef}
-              data-collapsed={collapsed}
-              onClick={(event) => {
-                // The empty rail expands; its links, menus and actions keep their own behavior.
-                if (
-                  collapsed &&
-                  event.target instanceof Element &&
-                  event.currentTarget.contains(event.target) &&
-                  !event.target.closest('button, a, [role="menu"]')
-                ) {
-                  update({ sidebarCollapsed: false });
-                }
-              }}
-              className={`app-sidebar relative z-40 flex shrink-0 flex-col border-r border-border transition-[width] duration-150 ease-grimoire ${
-                collapsed ? 'w-20' : 'w-72'
-              }`}
-            >
-              <div
-                className={`shrink-0 px-4 pt-4 pb-3 ${collapsed ? 'overflow-hidden' : ''}`}
-                data-tauri-drag-region={collapsed ? undefined : true}
-              >
-                <div
-                  className="flex w-64 items-center gap-2"
-                  data-tauri-drag-region={collapsed ? undefined : true}
+    <div className="flex h-screen w-screen overflow-hidden">
+      <aside
+        ref={sidebarRef}
+        data-collapsed={collapsed}
+        onClick={(event) => {
+          // The empty rail expands; its links, menus and actions keep their own behavior.
+          if (
+            collapsed &&
+            event.target instanceof Element &&
+            event.currentTarget.contains(event.target) &&
+            !event.target.closest('button, a, [role="menu"]')
+          ) {
+            update({ sidebarCollapsed: false });
+          }
+        }}
+        className={`app-sidebar relative z-40 flex shrink-0 flex-col border-r border-border transition-[width] duration-150 ease-grimoire ${
+          collapsed ? 'w-20' : 'w-72'
+        }`}
+      >
+        <div
+          className={`shrink-0 px-4 pt-4 pb-3 ${collapsed ? 'overflow-hidden' : ''}`}
+          data-tauri-drag-region={collapsed ? undefined : true}
+        >
+          <div
+            className="flex w-64 items-center gap-2"
+            data-tauri-drag-region={collapsed ? undefined : true}
+          >
+            <div className="sidebar-brand relative h-11 w-11 shrink-0">
+              <img
+                src="/logo.png"
+                alt="Ravenswatch Mod Manager"
+                className="sidebar-logo h-full w-full rounded-md object-cover"
+              />
+              {collapsed ? (
+                <button
+                  type="button"
+                  onClick={() => update({ sidebarCollapsed: false })}
+                  aria-label={t('Expand the sidebar')}
+                  data-sidebar-tooltip={t('Expand the sidebar')}
+                  className="sidebar-expand absolute inset-0 flex items-center justify-center rounded text-ash hover:bg-char/40 hover:text-parchment"
                 >
-                  <div className="sidebar-brand relative h-11 w-11 shrink-0">
-                    <img
-                      src="/logo.png"
-                      alt="Ravenswatch Mod Manager"
-                      className="sidebar-logo h-full w-full rounded-md object-cover"
-                    />
-                    {collapsed ? (
-                      <button
-                        type="button"
-                        onClick={() => update({ sidebarCollapsed: false })}
-                        aria-label={t('Expand the sidebar')}
-                        data-sidebar-tooltip={t('Expand the sidebar')}
-                        className="sidebar-expand absolute inset-0 flex items-center justify-center rounded text-ash hover:bg-char/40 hover:text-parchment"
-                      >
-                        <PanelLeftOpen className="h-4 w-4" aria-hidden />
-                      </button>
-                    ) : null}
-                  </div>
-                  {collapsed ? null : <ProfilePopover />}
-                  {collapsed ? null : <SidebarSearch collapsed={false} />}
-                  {collapsed ? null : (
-                    <button
-                      type="button"
-                      onClick={() => update({ sidebarCollapsed: true })}
-                      aria-label={t('Collapse the sidebar to icons')}
-                      title={t('Collapse the sidebar to icons')}
-                      className="shrink-0 rounded border border-transparent p-2 text-ash transition hover:border-border hover:bg-char/40 hover:text-parchment"
-                    >
-                      <PanelLeftClose className="h-4 w-4" aria-hidden />
-                    </button>
-                  )}
-                </div>
-              </div>
-
-              <nav
-                className="flex min-h-0 flex-1 flex-col gap-1 overflow-y-auto px-3 py-1"
-                data-tauri-drag-region={collapsed ? undefined : true}
-              >
-                {nav.map((n) => (
-                  <Fragment key={n.to}>
-                    <NavLink {...n} collapsed={collapsed} />
-                    {collapsed && n.to === '/' ? <SidebarSearch collapsed /> : null}
-                  </Fragment>
-                ))}
-              </nav>
-
-              <SidebarLaunch collapsed={collapsed} />
-              <div className="shrink-0 px-3 pb-3">
-                <NavLink {...SETTINGS_NAV} collapsed={collapsed} />
-              </div>
-              <AccountStrip collapsed={collapsed} />
-              <SidebarTooltip sidebarRef={sidebarRef} />
-            </aside>
-
-            <div className="relative flex min-h-0 min-w-0 flex-1 flex-col overflow-hidden">
-              {/* Reserve native dragging space independently of the sidebar.
-                  Keeping it in flow also leaves update banners clickable. */}
-              {inTauri() ? (
-                <div
-                  aria-hidden="true"
-                  data-tauri-drag-region
-                  className="relative z-30 h-12 shrink-0"
-                />
+                  <PanelLeftOpen className="h-4 w-4" aria-hidden />
+                </button>
               ) : null}
-              <WindowControls />
-              <UpdaterBanner />
-              <ChannelStatusBanner />
-              <main
-                ref={mainRef}
-                className={`rsmm-main min-h-0 flex-1 overflow-y-auto px-6 pb-6 md:px-8 ${inTauri() ? 'pt-2' : 'pt-6'}`}
-              >
-                <div
-                  className={`mx-auto w-full animate-page-in ${
-                    location.pathname === '/browse' ? 'max-w-none' : 'max-w-7xl'
-                  }`}
-                >
-                  <Outlet />
-                </div>
-              </main>
             </div>
-
-            <CommandPalette />
-            <FirstRunDialogs />
-            <VersionFooter />
+            {collapsed ? null : <ProfilePopover />}
+            {collapsed ? null : <SidebarSearch collapsed={false} />}
+            {collapsed ? null : (
+              <button
+                type="button"
+                onClick={() => update({ sidebarCollapsed: true })}
+                aria-label={t('Collapse the sidebar to icons')}
+                title={t('Collapse the sidebar to icons')}
+                className="shrink-0 rounded border border-transparent p-2 text-ash transition hover:border-border hover:bg-char/40 hover:text-parchment"
+              >
+                <PanelLeftClose className="h-4 w-4" aria-hidden />
+              </button>
+            )}
           </div>
-        </LaunchProvider>
-      </DialogProvider>
-    </ToastProvider>
+        </div>
+
+        <nav
+          className="flex min-h-0 flex-1 flex-col gap-1 overflow-y-auto px-3 py-1"
+          data-tauri-drag-region={collapsed ? undefined : true}
+        >
+          {nav.map((n) => (
+            <Fragment key={n.to}>
+              <NavLink {...n} collapsed={collapsed} />
+              {collapsed && n.to === '/' ? <SidebarSearch collapsed /> : null}
+            </Fragment>
+          ))}
+        </nav>
+
+        <SidebarLaunch collapsed={collapsed} />
+        <div className="shrink-0 px-3 pb-3">
+          <NavLink {...SETTINGS_NAV} collapsed={collapsed} />
+        </div>
+        <AccountStrip collapsed={collapsed} />
+        <SidebarTooltip sidebarRef={sidebarRef} />
+      </aside>
+
+      <div className="relative flex min-h-0 min-w-0 flex-1 flex-col overflow-hidden">
+        {/* Reserve native dragging space independently of the sidebar.
+                  Keeping it in flow also leaves update banners clickable. */}
+        {inTauri() ? (
+          <div aria-hidden="true" data-tauri-drag-region className="relative z-30 h-12 shrink-0" />
+        ) : null}
+        <WindowControls />
+        <UpdaterBanner />
+        <ChannelStatusBanner />
+        <main
+          ref={mainRef}
+          className={`rsmm-main min-h-0 flex-1 overflow-y-auto px-6 pb-6 md:px-8 ${inTauri() ? 'pt-2' : 'pt-6'}`}
+        >
+          <div
+            className={`mx-auto w-full animate-page-in ${
+              location.pathname === '/browse' ? 'max-w-none' : 'max-w-7xl'
+            }`}
+          >
+            <Outlet />
+          </div>
+        </main>
+      </div>
+
+      <VersionFooter />
+    </div>
   );
 }

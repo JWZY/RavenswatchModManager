@@ -12,6 +12,7 @@ import '@rsmm/ui/styles.css';
 import '@rsmm/ui/registry.css';
 import '@rsmm/ui/registry-detail.css';
 import './desktop.css';
+import './components/grimoire/grimoire.css';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 import { RouterProvider, createRouter } from '@tanstack/react-router';
 import { isTauri } from '@tauri-apps/api/core';

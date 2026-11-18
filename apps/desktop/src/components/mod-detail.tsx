@@ -9,7 +9,7 @@ import {
 import { useQuery, useQueryClient } from '@tanstack/react-query';
 import { Link, useCanGoBack, useNavigate, useRouter } from '@tanstack/react-router';
 import { ArrowLeft, ExternalLink, Globe, Plus, Trash2 } from 'lucide-react';
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useContext, useEffect, useState } from 'react';
 import { api, describeApiError, logApiError } from '../lib/api';
 import { getApiUrl } from '../lib/api-url';
 import { useT } from '../lib/i18n-react';
@@ -34,6 +34,7 @@ import {
   StatPill,
 } from './chrome';
 import { useConfirmDisableHook } from './disable-hook-consent';
+import { GrimoireContext } from './grimoire/grimoire-context';
 import { OverlayButton } from './overlay-button';
 import { PrivateGamesOnlyBadge } from './private-games-only-badge';
 import { useDialog, useToast } from './toast';
@@ -51,6 +52,7 @@ import { useModToggle } from './use-mod-toggle';
  */
 export function ModDetail({ slug, embedded = false }: { slug: string; embedded?: boolean }) {
   const t = useT();
+  const bookShell = useContext(GrimoireContext);
   const navigate = useNavigate();
   const router = useRouter();
   const canGoBack = useCanGoBack();
@@ -76,7 +78,8 @@ export function ModDetail({ slug, embedded = false }: { slug: string; embedded?:
     queryFn: () => api.mods.get(slug),
     retry: (count, err) => (err instanceof ApiError && err.status === 404 ? false : count < 1),
     staleTime: 30_000,
-    enabled: inTauri(),
+    // The book is also a browser proof of concept; its catalogue opens real details.
+    enabled: inTauri() || bookShell,
   });
 
   const liveBySlug = useApp((s) => Object.values(s.localMods).find((m) => m.slug === slug));
