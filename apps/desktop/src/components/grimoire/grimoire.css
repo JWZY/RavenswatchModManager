@@ -20,20 +20,6 @@
   font-display: swap;
   src: url("/grimoire/font-4.ttf") format("truetype");
 }
-@font-face {
-  font-family: "Grimoire Cormorant";
-  font-style: normal;
-  font-weight: 600;
-  font-display: swap;
-  src: url("/grimoire/font-6.ttf") format("truetype");
-}
-@font-face {
-  font-family: "Grimoire Cormorant";
-  font-style: italic;
-  font-weight: 400;
-  font-display: swap;
-  src: url("/grimoire/font-2.ttf") format("truetype");
-}
 
 /* Theme the existing manager through its tokens, including portalled dialogs.
    Legacy colour names now describe their role: parchment is primary ink. */
@@ -166,27 +152,8 @@ html[data-grimoire="true"] {
       transparent 100px
     ), url("/grimoire/paper-wide.webp") center / 100% 100%, #e7d9b9;
 }
-.grimoire-running-head {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 16px;
-  flex-shrink: 0;
-  padding-right: 45px;
-  color: #6d514a;
-  font: 11px / 1.5 "Grimoire Cinzel", Georgia, serif;
-  letter-spacing: 1.2px;
-}
-.grimoire-running-head a {
-  color: inherit;
-  text-decoration: none;
-}
-.grimoire-running-head a span {
-  margin-left: 6px;
-}
 .grimoire-rule {
-  height: 22px;
-  margin-top: 18px;
+  height: 1px;
   flex-shrink: 0;
   position: relative;
   text-align: center;
@@ -198,6 +165,7 @@ html[data-grimoire="true"] {
       #7e78544d calc(50% + 24px)
     )
     top / 100% 1px no-repeat;
+  margin: 24px 0 28px;
 }
 .grimoire-rule::before,
 .grimoire-rule::after {
@@ -224,7 +192,7 @@ html[data-grimoire="true"] {
 .grimoire-tabs {
   position: absolute;
   left: -94px;
-  top: 178px;
+  top: 132px;
   z-index: -1;
   display: flex;
   flex-direction: column;
@@ -297,55 +265,6 @@ html[data-grimoire="true"] {
 .grimoire-ribbon:focus-visible {
   filter: brightness(1.5);
 }
-.grimoire-utility {
-  display: flex;
-  flex-shrink: 0;
-  align-items: center;
-  justify-content: space-between;
-  gap: 12px;
-  min-height: 34px;
-}
-.grimoire-profile {
-  display: flex;
-  min-width: 0;
-  align-items: center;
-  gap: 8px;
-}
-.grimoire-profile > span {
-  font: italic 16px "Grimoire Cormorant", Georgia, serif;
-  white-space: nowrap;
-  color: #6d514a;
-}
-.grimoire-profile > div {
-  max-width: 200px;
-}
-.grimoire-utility-actions {
-  display: flex;
-  align-items: center;
-  gap: 14px;
-}
-.grimoire-search {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  min-height: 34px;
-  color: #6d514a;
-  font-size: 14px;
-}
-.grimoire-search kbd {
-  font-size: 11px;
-  padding: 1px 5px;
-  border: 1px solid #7e785440;
-  border-radius: 3px;
-}
-.grimoire-utility-actions > .relative {
-  border: 0;
-  padding: 0;
-}
-.grimoire-utility-actions .sidebar-account-action {
-  padding: 0;
-  min-height: 32px;
-}
 .grimoire-conflicts {
   color: #882029;
   text-decoration: underline;
@@ -361,31 +280,6 @@ html[data-grimoire="true"] {
   margin: 0 -16px;
   padding: 0 16px 24px;
 }
-.grimoire-chapter-heading {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 28px;
-  min-height: 210px;
-  padding: 20px 0 24px;
-  border-bottom: 1px solid #7c795140;
-  margin-bottom: 28px;
-}
-.grimoire-chapter-copy {
-  min-width: 0;
-}
-.grimoire-eyebrow {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  margin: 0 0 13px;
-  font: 10px "Grimoire Cinzel", Georgia, serif;
-  letter-spacing: 2px;
-  color: #775849;
-}
-.grimoire-eyebrow span {
-  opacity: 0.5;
-}
 .grimoire-chapter-heading h1 {
   margin: 0;
   color: #51252a;
@@ -394,48 +288,6 @@ html[data-grimoire="true"] {
 }
 .grimoire-chapter-heading h1:focus {
   outline: none;
-}
-.grimoire-deck {
-  margin: 14px 0 0;
-  color: #6d514a;
-  font: italic clamp(17px, 1.5vw, 21px) / 1.35 "Grimoire Cormorant", Georgia, serif;
-  text-wrap: balance;
-}
-.grimoire-engraving {
-  width: 29%;
-  min-width: 180px;
-  max-width: 320px;
-  flex-shrink: 0;
-  text-align: center;
-}
-.grimoire-engraving img {
-  width: 100%;
-  height: 150px;
-  object-fit: contain;
-  mix-blend-mode: multiply;
-  opacity: 0.85;
-}
-.grimoire-engraving figcaption {
-  color: #6d514a;
-  font: italic 14px "Grimoire Cormorant", Georgia, serif;
-}
-.grimoire-detail-heading {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 22px 0;
-  color: #6d514a;
-  font-size: 14px;
-}
-.grimoire-detail-heading a {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
-.grimoire-detail-heading > span {
-  font-family: "Grimoire Cinzel", Georgia, serif;
-  font-size: 10px;
-  letter-spacing: 1px;
 }
 .grimoire-content {
   min-width: 0;
@@ -689,19 +541,8 @@ html[data-grimoire="true"] :focus-visible {
     padding-left: 12px;
   }
   .grimoire-tab-number,
-  .grimoire-companion,
   .grimoire-profile-name {
     display: none;
-  }
-  .grimoire-chapter-heading {
-    min-height: 185px;
-    gap: 16px;
-  }
-  .grimoire-engraving {
-    min-width: 150px;
-  }
-  .grimoire-engraving img {
-    height: 130px;
   }
 }
 @media (max-width: 640px) {
@@ -716,19 +557,6 @@ html[data-grimoire="true"] :focus-visible {
     padding-top: 21px;
     background-image: url("/grimoire/paper-tall.webp");
   }
-  .grimoire-running-head {
-    font-size: 9px;
-    letter-spacing: .5px;
-    padding-right: 19px;
-  }
-  .grimoire-running-head a span {
-    display: block;
-    margin: 2px 0 0;
-  }
-  .grimoire-rule {
-    margin-top: 15px;
-    height: 18px;
-  }
   .grimoire-ribbon {
     right: 18px;
     width: 24px;
@@ -740,7 +568,7 @@ html[data-grimoire="true"] :focus-visible {
   }
   .grimoire-tabs {
     left: -33px;
-    top: 170px;
+    top: 110px;
     gap: 10px;
   }
   .grimoire-tabs a {
@@ -758,47 +586,8 @@ html[data-grimoire="true"] :focus-visible {
     left: 7px;
     bottom: 2px;
   }
-  .grimoire-utility-actions {
-    gap: 8px;
-  }
-  .grimoire-profile {
-    gap: 5px;
-  }
-  .grimoire-profile > span {
-    display: none;
-  }
-  .grimoire-profile > div {
-    max-width: 150px;
-  }
-  .grimoire-search > span,
-  .grimoire-search kbd {
-    display: none;
-  }
-  .grimoire-chapter-heading {
-    position: relative;
-    min-height: 0;
-    padding: 22px 0 24px;
-    margin-bottom: 22px;
-  }
-  .grimoire-chapter-copy {
-    position: relative;
-    z-index: 1;
-  }
   .grimoire-chapter-heading h1 {
     font-size: clamp(32px, 8vw, 43px);
-  }
-  .grimoire-eyebrow {
-    font-size: 8px;
-    letter-spacing: 1.3px;
-    gap: 7px;
-  }
-  .grimoire-deck {
-    max-width: 250px;
-    font-size: 17px;
-    margin-top: 10px;
-  }
-  .grimoire-engraving {
-    display: none;
   }
   .grimoire-scroll {
     margin-inline: -8px;
@@ -862,15 +651,8 @@ html[data-grimoire="true"] :focus-visible {
   .grimoire-paper {
     padding-top: 18px;
   }
-  .grimoire-chapter-heading {
-    min-height: 140px;
-    padding-block: 12px;
-  }
   .grimoire-chapter-heading h1 {
     font-size: 44px;
-  }
-  .grimoire-engraving img {
-    height: 100px;
   }
   .grimoire-page-footer {
     min-height: 62px;
@@ -890,28 +672,6 @@ html[data-grimoire="true"] :is(h1, h2, h3, h4, h5, h6, [role="heading"]),
 html[data-grimoire="true"] .font-fraktur {
   color: #51252a;
 }
-.grimoire-utility {
-  position: relative;
-  z-index: 6;
-}
-.grimoire-utility-actions .sidebar-account-action {
-  display: flex;
-  gap: 8px;
-  height: 34px;
-}
-.grimoire-utility-actions .sidebar-account-action > .sidebar-expanded-content {
-  display: none;
-}
-.grimoire-utility-actions [role="menu"] {
-  bottom: auto;
-  top: 100%;
-  left: auto;
-  right: 0;
-  margin-top: 8px;
-}
-.grimoire-profile > div > .absolute {
-  left: 0;
-}
 .grimoire-launch .sidebar-launch-action {
   display: flex;
 }
@@ -920,12 +680,72 @@ html[data-grimoire="true"] .font-fraktur {
   --parchment: 47 53% 83%;
 }
 @media (max-width: 640px) {
-  .grimoire-chapter-heading {
-    padding-block: 12px 16px;
-    margin-bottom: 16px;
-  }
   .grimoire-content .mod-card-body {
     gap: .6rem;
     padding-top: 1rem;
+  }
+}
+.grimoire-chapter-heading {
+  padding: 4px 44px 0 0;
+}
+.grimoire-chapter-heading h1 {
+  text-wrap: balance;
+}
+.grimoire-settings-tools {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+.grimoire-settings-profile {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+  max-width: 240px;
+}
+.grimoire-settings-profile > span {
+  font-size: 14px;
+  color: #6d514a;
+}
+.grimoire-settings-profile [role="menu"] {
+  left: 0;
+}
+.grimoire-settings-tools > .relative {
+  padding: 0;
+  border: 0;
+}
+.grimoire-settings-tools .sidebar-account-action {
+  display: flex;
+  gap: 8px;
+  height: 44px;
+  padding-inline: 8px;
+}
+.grimoire-settings-tools > .relative [role="menu"] {
+  top: 100%;
+  bottom: auto;
+  left: auto;
+  right: 0;
+  margin-top: 8px;
+}
+.grimoire-settings-tools .sidebar-account-action > svg {
+  transform: rotate(180deg);
+}
+@media (max-width: 640px) {
+  .grimoire-settings-tools {
+    position: relative;
+    gap: 8px;
+  }
+  .grimoire-settings-profile {
+    max-width: 170px;
+  }
+  .grimoire-settings-profile > div,
+  .grimoire-settings-tools > .relative {
+    position: static;
+  }
+  .grimoire-settings-tools [role="menu"] {
+    max-width: 100%;
   }
 }

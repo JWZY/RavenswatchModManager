@@ -11,8 +11,10 @@ manager; **Open the grimoire** brings the book back. This choice persists locall
 
 The book wraps the existing React router outlet. Browse uses the live registry,
 including search, filters, collections, card/list views and full mod details.
-Library, profile selection, settings, account navigation, command search and the
-launch menu are the manager's existing components and state. The shell adds no
+Library, settings, profile selection, account navigation, command search and the
+launch menu are the manager's existing components and state. Each chapter starts
+with its title and a single ornamental rule. Profile and account controls live
+in Settings; command search remains available with Ctrl/Cmd+K. The shell adds no
 fixture catalogue or simulated install state.
 
 Two prototype-specific adaptations make the browser preview usable:
@@ -30,7 +32,7 @@ manager retains its existing translations and appearance preferences.
 ## Source and integration
 
 Visual materials come from the supplied local
-`shopify-playground/grimoire` checkout: parchment WebPs, room grain, botanical SVGs,
+`shopify-playground/grimoire` checkout: parchment WebPs, room grain,
 Cinzel, IM Fell English and Cormorant Garamond. They are copied into
 `apps/desktop/public/grimoire`, so this branch has no runtime dependency on that
 checkout or a font CDN. The fonts' SIL Open Font Licenses are included.
@@ -63,6 +65,7 @@ use separate, versioned local storage keys.
 
 Local screenshots are in `.artifacts/grimoire-prototype/` (ignored by Git).
 `before-browse.png` was captured from the unchanged base UI; `after-browse.png`
-uses the same route, live catalogue and viewport. No PR was opened. Any future UX
+uses the same route, live catalogue and viewport. The simplified header is shown
+in `cleanup-before.png` and `cleanup-after.png` at 1510 × 825. No PR was opened. Any future UX
 PR must upload and embed the required before/after images at the top of its
 description, as specified by `AGENTS.md`.

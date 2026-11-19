@@ -1,5 +1,5 @@
 import { Link, Outlet, useLocation, useNavigate } from '@tanstack/react-router';
-import { Bookmark, ChevronLeft, ChevronRight, Search } from 'lucide-react';
+import { Bookmark, ChevronLeft, ChevronRight } from 'lucide-react';
 import {
   type MouseEvent,
   type ReactNode,
@@ -8,7 +8,7 @@ import {
   useRef,
   useState,
 } from 'react';
-import { inTauri, shortcutLabel } from '../../lib/platform';
+import { inTauri } from '../../lib/platform';
 import { attachSmoothWheel } from '../../lib/smooth-scroll';
 import { trackMainWindow } from '../../lib/window-state';
 import { activeProfile, detectConflicts, isEnabledIn, useApp } from '../../store';
@@ -25,27 +25,18 @@ const chapters = [
     label: 'Browse',
     numeral: 'I',
     title: 'The catalogue',
-    subtitle: 'Community creations for a different kind of tale.',
-    artwork: 'moonflower',
-    note: 'New ways to play',
   },
   {
     to: '/',
     label: 'Library',
     numeral: 'II',
     title: 'Your collection',
-    subtitle: 'Choose what comes with you into the next chapter.',
-    artwork: 'moth',
-    note: 'Made for your next run',
   },
   {
     to: '/settings',
     label: 'Settings',
     numeral: 'III',
     title: 'The particulars',
-    subtitle: 'A place for every detail. Make the manager your own.',
-    artwork: 'stars',
-    note: 'Everything in its place',
   },
 ] as const;
 
@@ -191,67 +182,28 @@ export function GrimoireShell({
         </nav>
         <main className="grimoire-paper" ref={paperRef}>
           <div className="grimoire-binding" aria-hidden="true" />
-          <header className="grimoire-running-head">
-            <Link to="/browse">
-              Ravenswatch <span>Mod Manager</span>
-            </Link>
-            <span className="grimoire-companion">A player’s companion</span>
-          </header>
-          <div className="grimoire-rule" aria-hidden="true">
-            <span>❦</span>
-          </div>
-          <div className="grimoire-utility">
-            <div className="grimoire-profile">
-              <span>Playing as</span>
-              <ProfilePopover />
-            </div>
-            <div className="grimoire-utility-actions">
-              {conflictCount > 0 ? (
-                <Link to="/conflicts" className="grimoire-conflicts">
-                  {conflictCount} conflicts
-                </Link>
-              ) : null}
-              <button
-                type="button"
-                className="grimoire-search"
-                aria-label="Search mods and commands"
-                onClick={() =>
-                  window.dispatchEvent(
-                    new KeyboardEvent('keydown', { key: 'k', ctrlKey: true, bubbles: true }),
-                  )
-                }
-              >
-                <Search size={16} aria-hidden="true" />
-                <span>Search</span>
-                <kbd>{shortcutLabel('K')}</kbd>
-              </button>
-              <AccountStrip collapsed />
-            </div>
-          </div>
           <div className="grimoire-scroll rsmm-main" ref={scrollRef}>
             {isChapterCover ? (
-              <header className="grimoire-chapter-heading">
-                <div className="grimoire-chapter-copy">
-                  <p className="grimoire-eyebrow">
-                    Chapter {chapter.numeral} <span aria-hidden="true">/</span> {chapter.label}
-                  </p>
+              <>
+                <header className="grimoire-chapter-heading">
                   <h1 ref={headingRef} tabIndex={-1}>
                     {chapter.title}
                   </h1>
-                  <p className="grimoire-deck">{chapter.subtitle}</p>
+                </header>
+                <div className="grimoire-rule" aria-hidden="true">
+                  <span>❦</span>
                 </div>
-                <figure className="grimoire-engraving" aria-hidden="true">
-                  <img src={`/grimoire/${chapter.artwork}.svg`} alt="" width="310" height="165" />
-                  <figcaption>{chapter.note}</figcaption>
-                </figure>
-              </header>
-            ) : (
-              <div className="grimoire-detail-heading">
-                <span>
-                  Chapter {chapter.numeral} / {chapter.label}
-                </span>
+              </>
+            ) : null}
+            {location.pathname === '/settings' ? (
+              <div className="grimoire-settings-tools">
+                <div className="grimoire-settings-profile">
+                  <span>Profile</span>
+                  <ProfilePopover />
+                </div>
+                <AccountStrip />
               </div>
-            )}
+            ) : null}
             <UpdaterBanner />
             <ChannelStatusBanner />
             <div id="grimoire-content" className="grimoire-content" tabIndex={-1}>
@@ -263,6 +215,12 @@ export function GrimoireShell({
               <span className="grimoire-active-dot" aria-hidden="true" />
               {enabledCount} active {enabledCount === 1 ? 'mod' : 'mods'}
               <span className="grimoire-profile-name"> · {profile.name}</span>
+              {conflictCount > 0 ? (
+                <Link to="/conflicts" className="grimoire-conflicts">
+                  {' '}
+                  · {conflictCount} conflicts
+                </Link>
+              ) : null}
             </div>
             <nav className="grimoire-pagination" aria-label="Turn the page">
               <button
