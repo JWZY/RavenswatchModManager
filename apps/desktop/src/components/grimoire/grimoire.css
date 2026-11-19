@@ -348,6 +348,106 @@ html[data-grimoire="true"] {
 .grimoire-ink-link:active {
   color: #3e1b20;
 }
+.grimoire-add-button {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  width: 100px;
+  min-width: 100px;
+  min-height: 48px;
+  padding: 8px;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  color: #702c32;
+  font: 400 20px / 1.4 "Grimoire Fell", Georgia, serif;
+  text-shadow: 0 0 .4px currentColor;
+  cursor: pointer;
+}
+.grimoire-add-label {
+  position: relative;
+  display: inline-block;
+  padding-bottom: 4px;
+  white-space: nowrap;
+  transform: rotate(-6deg);
+  text-transform: capitalize;
+  mask-image: url("/grimoire/ink-grain.svg");
+  mask-size: 180px 180px;
+}
+.grimoire-add-label::after {
+  content: "";
+  position: absolute;
+  inset: auto 0 0;
+  height: 4px;
+  border-bottom: 1px solid currentColor;
+  border-radius: 50%;
+  opacity: 0.65;
+}
+.grimoire-add-circle {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  stroke: currentColor;
+  stroke-width: 1.1;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  opacity: 0;
+  transition: stroke-dashoffset 180ms ease-out, opacity 100ms ease-out;
+}
+.grimoire-add-circle path + path {
+  opacity: 0.5;
+}
+.grimoire-add-button:focus-visible {
+  outline: 2px solid #882029;
+  outline-offset: 2px;
+}
+.grimoire-add-button:focus-visible .grimoire-add-circle {
+  stroke-dashoffset: 0;
+  opacity: 1;
+}
+.grimoire-add-button:active {
+  color: #3e1b20;
+}
+.grimoire-add-button:disabled {
+  color: #6d514a;
+  cursor: wait;
+}
+.grimoire-content .mod-card-artwork {
+  overflow: visible;
+}
+.grimoire-content .mod-card-actions--overlay {
+  top: calc(100% + 12px);
+  right: 0;
+  bottom: auto;
+}
+.grimoire-content .mod-card-tags {
+  min-height: 36px;
+  padding-right: 108px;
+}
+.grimoire-content
+  .mod-card-artwork:has(.mod-card-actions--overlay)
+  + .mod-card-body:not(:has(.mod-card-tags)) {
+  padding-top: 72px;
+}
+.grimoire-content .installed-state {
+  color: #702c32;
+  font: 400 16px "Grimoire Fell", Georgia, serif;
+}
+.grimoire-content .installed-state > span {
+  color: inherit;
+  background: transparent;
+}
+.grimoire-content .mod-card-list .grimoire-add-button {
+  width: 84px;
+  min-width: 84px;
+  font-size: 18px;
+}
 .grimoire-launch {
   position: absolute;
   z-index: 5;
@@ -580,6 +680,13 @@ html[data-grimoire="true"] :focus-visible {
   opacity: 0.25;
 }
 @media (hover: hover) and (pointer: fine) {
+  .grimoire-add-button:enabled:hover .grimoire-add-circle {
+    stroke-dashoffset: 0;
+    opacity: 1;
+  }
+  .grimoire-add-button:enabled:hover {
+    color: #51252a;
+  }
   .grimoire-ink-link:hover {
     color: #51252a;
   }
@@ -684,6 +791,13 @@ html[data-grimoire="true"] :focus-visible {
   .grimoire-content .registry-result-controls {
     justify-content: space-between;
     width: 100%;
+  }
+  .grimoire-content .mod-card-list-name {
+    flex-wrap: wrap;
+    gap: 4px 8px;
+  }
+  .grimoire-content .mod-card-list-name h2 {
+    flex-basis: 100%;
   }
 }
 @media (max-height: 700px) and (min-width: 641px) {

@@ -22,6 +22,10 @@ omits the vanilla-launch disclosure. A separate text tab near the bottom left
 opens the sign-in/account menu. Settings has no account row or profile selector.
 The page has no bottom footer: its content scrolls through the full sheet, fading
 into the actual parchment at the top and bottom through a gradient mask.
+Catalogue and primary mod-page install actions read **Add** in slanted ink with a
+curved underline. Hover or keyboard focus draws a loose double circle; catalogue
+actions sit below the artwork so the lettering stays readable. The existing
+profile picker, install handlers, installed state and busy state remain connected.
 Command search remains available with
 Ctrl/Cmd+K. The shell adds no
 fixture catalogue or simulated install state.
@@ -91,6 +95,9 @@ bookmark.
   both edge fades, the last card fully visible at the bottom, live gallery
   thumbnails, and opening an unfiltered full-size image. Original interface
   retains its colours and removes the book's filter definitions.
+- Ink Add actions checked in cards, mobile list rows and the mod detail header:
+  hover circle, keyboard focus, profile-picker opening and Escape restoring focus.
+  No install was submitted.
 - Page-turn checks: correct incoming/outgoing content, flex layout retained,
   rapid navigation, resize interruption, reduced motion, keyboard activation,
   zero leftover stages and zero duplicate DOM IDs after cleanup.

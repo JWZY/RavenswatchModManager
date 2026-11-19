@@ -14,9 +14,11 @@ import {
 import { useQuery, useQueryClient } from '@tanstack/react-query';
 import { Link, createFileRoute, useNavigate } from '@tanstack/react-router';
 import { ExternalLink, Loader2, Plus, WifiOff, X } from 'lucide-react';
-import { useEffect, useMemo, useRef, useState } from 'react';
+import { useContext, useEffect, useMemo, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { Button, CopyButton, Cover, Panel, StatPill, useModalChrome } from '../components/chrome';
+import { GrimoireAddButton } from '../components/grimoire/grimoire-add-button';
+import { GrimoireContext } from '../components/grimoire/grimoire-context';
 import { InstalledState } from '../components/installed-state';
 import { ModDetail } from '../components/mod-detail';
 import { PrivateGamesOnlyBadge } from '../components/private-games-only-badge';
@@ -543,6 +545,7 @@ interface InstallButtonProps {
  */
 function InstallButton({ m, installed, profile, installing, onPick }: InstallButtonProps) {
   const t = useT();
+  const bookShell = useContext(GrimoireContext);
   const onDisk = installed.includes(m.slug);
   // "In profile" must mean the mod is BOTH listed by the profile and
   // actually on disk. A profile entry whose folder is gone (failed install,
@@ -551,6 +554,23 @@ function InstallButton({ m, installed, profile, installing, onPick }: InstallBut
   const inProfile = profile.loadOrder.includes(m.slug) && onDisk;
   if (inProfile && !installing[m.slug]) {
     return <InstalledState title={t('Already in "{profile}"', { profile: profile.name })} />;
+  }
+  if (bookShell) {
+    return (
+      <GrimoireAddButton
+        modName={m.name}
+        busy={installing[m.slug]}
+        title={
+          onDisk
+            ? t('On disk — click to add to "{profile}"', { profile: profile.name })
+            : t('Download from index + add to "{profile}"', { profile: profile.name })
+        }
+        onClick={(event) => {
+          event.stopPropagation();
+          onPick(m.slug);
+        }}
+      />
+    );
   }
   return (
     <Button

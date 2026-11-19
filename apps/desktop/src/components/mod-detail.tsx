@@ -34,6 +34,7 @@ import {
   StatPill,
 } from './chrome';
 import { useConfirmDisableHook } from './disable-hook-consent';
+import { GrimoireAddButton } from './grimoire/grimoire-add-button';
 import { GrimoireContext } from './grimoire/grimoire-context';
 import { OverlayButton } from './overlay-button';
 import { PrivateGamesOnlyBadge } from './private-games-only-badge';
@@ -259,6 +260,15 @@ export function ModDetail({ slug, embedded = false }: { slug: string; embedded?:
   const apiBase = getApiUrl().replace(/\/+$/, '');
   const modFolderId = liveBySlug?.id ?? slug;
 
+  function addToLibrary() {
+    const ver = apiLatest ?? latestVersion?.version;
+    if ((!liveBySlug || profile.id === 'default') && ver && inTauri()) {
+      void installVersion(ver, true);
+      return;
+    }
+    installMod(modFolderId);
+  }
+
   return (
     // `data-embedded` is the single lever for the density change: the panels
     // inside are `.grimoire-card`s scattered through this file, and threading a
@@ -321,19 +331,14 @@ export function ModDetail({ slug, embedded = false }: { slug: string; embedded?:
                 {versionBusy === liveBySlug.id ? t('Uninstalling…') : t('Uninstall')}
               </Button>
             </div>
+          ) : bookShell ? (
+            <GrimoireAddButton modName={name} busy={versionBusy !== null} onClick={addToLibrary} />
           ) : (
             <Button
               type="button"
               variant="primary"
               disabled={versionBusy !== null}
-              onClick={() => {
-                const ver = apiLatest ?? latestVersion?.version;
-                if ((!liveBySlug || profile.id === 'default') && ver && inTauri()) {
-                  void installVersion(ver, true);
-                  return;
-                }
-                installMod(modFolderId);
-              }}
+              onClick={addToLibrary}
             >
               <Plus className="h-4 w-4" /> {versionBusy ? t('Installing…') : t('Install')}
             </Button>
