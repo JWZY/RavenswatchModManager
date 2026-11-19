@@ -139,6 +139,7 @@ export const zhCN: Record<string, string> = {
   'Already have an account?': '已有账户？',
   'Already in "{profile}"': '已在“{profile}”中',
   'An empty grimoire': '空白的魔典',
+  'These pages await your first mod.': '书页静候你的第一个模组。',
   'Animate the interface': '界面动画',
   'Any run in progress will be lost — the new loader only takes effect in a fresh session.':
     '正在进行的这一局会丢失——新加载器只在新的会话里生效。',

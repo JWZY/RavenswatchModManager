@@ -1,20 +1,12 @@
 import { Link, Outlet, useLocation, useNavigate } from '@tanstack/react-router';
-import { Bookmark, ChevronLeft, ChevronRight } from 'lucide-react';
-import {
-  type MouseEvent,
-  type ReactNode,
-  useEffect,
-  useLayoutEffect,
-  useRef,
-  useState,
-} from 'react';
+import { ChevronLeft, ChevronRight } from 'lucide-react';
+import { type MouseEvent, type ReactNode, useEffect, useLayoutEffect, useRef } from 'react';
 import { inTauri } from '../../lib/platform';
 import { attachSmoothWheel } from '../../lib/smooth-scroll';
 import { trackMainWindow } from '../../lib/window-state';
 import { activeProfile, detectConflicts, isEnabledIn, useApp } from '../../store';
 import { AccountStrip } from '../account-strip';
 import { ChannelStatusBanner } from '../channel-status-banner';
-import { useToast } from '../toast';
 import { UpdaterBanner } from '../updater';
 import { useBookTurn } from './use-book-turn';
 
@@ -50,20 +42,6 @@ export function readBookPreference(): boolean {
   }
 }
 
-function readBookmarks(): string[] {
-  try {
-    const saved: unknown = JSON.parse(localStorage.getItem('rsmm.grimoire.bookmarks.v1') ?? '[]');
-    return Array.isArray(saved)
-      ? saved.filter(
-          (item): item is string =>
-            typeof item === 'string' && chapters.some((chapter) => chapter.to === item),
-        )
-      : [];
-  } catch {
-    return [];
-  }
-}
-
 export function GrimoireShell({
   launch,
   windowControls,
@@ -75,7 +53,6 @@ export function GrimoireShell({
 }) {
   const location = useLocation();
   const navigate = useNavigate();
-  const toast = useToast();
   const current = chapterIndex(location.pathname);
   const chapter = chapters[current] ?? chapters[0];
   const isChapterCover = location.pathname === chapter.to;
@@ -86,7 +63,6 @@ export function GrimoireShell({
     (id) => localMods[id] && isEnabledIn(profile, id),
   ).length;
   const conflictCount = detectConflicts(profile).length;
-  const [bookmarks, setBookmarks] = useState(readBookmarks);
   const bookRef = useRef<HTMLDivElement>(null);
   const paperRef = useRef<HTMLElement>(null);
   const scrollRef = useRef<HTMLDivElement>(null);
@@ -131,20 +107,6 @@ export function GrimoireShell({
     );
   }
 
-  function toggleBookmark() {
-    const saved = bookmarks.includes(chapter.to);
-    const next = saved
-      ? bookmarks.filter((path) => path !== chapter.to)
-      : [...bookmarks, chapter.to];
-    setBookmarks(next);
-    try {
-      localStorage.setItem('rsmm.grimoire.bookmarks.v1', JSON.stringify(next));
-    } catch {
-      /* Optional preference. */
-    }
-    toast.push(saved ? 'Bookmark removed.' : `${chapter.label} bookmarked.`, 'success');
-  }
-
   return (
     <div className="grimoire-room" data-native={inTauri() || undefined}>
       <a href="#grimoire-content" className="grimoire-skip">
@@ -168,11 +130,6 @@ export function GrimoireShell({
                 {item.numeral}
               </span>
               <span>{item.label}</span>
-              {bookmarks.includes(item.to) ? (
-                <span className="grimoire-tab-bookmark" aria-label="Bookmarked">
-                  ·
-                </span>
-              ) : null}
             </Link>
           ))}
         </nav>
@@ -190,11 +147,6 @@ export function GrimoireShell({
                   <span>❦</span>
                 </div>
               </>
-            ) : null}
-            {location.pathname === '/settings' ? (
-              <div className="grimoire-settings-tools">
-                <AccountStrip />
-              </div>
             ) : null}
             <UpdaterBanner />
             <ChannelStatusBanner />
@@ -236,19 +188,7 @@ export function GrimoireShell({
             <div className="grimoire-launch">{launch}</div>
           </footer>
         </main>
-        <button
-          type="button"
-          className="grimoire-ribbon"
-          aria-label={`${bookmarks.includes(chapter.to) ? 'Remove bookmark from' : 'Bookmark'} ${chapter.label}`}
-          aria-pressed={bookmarks.includes(chapter.to)}
-          onClick={toggleBookmark}
-        >
-          <Bookmark
-            size={19}
-            aria-hidden="true"
-            fill={bookmarks.includes(chapter.to) ? 'currentColor' : 'none'}
-          />
-        </button>
+        <AccountStrip variant="ribbon" />
       </div>
       <div className="grimoire-colophon">
         <span>

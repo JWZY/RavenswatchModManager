@@ -29,7 +29,14 @@ const MENU_ITEM =
   'flex min-h-11 w-full items-center gap-3 rounded px-3 py-2 text-left text-sm text-parchment transition-colors duration-150 hover:bg-char/60 focus-visible:bg-char/60';
 
 /** App navigation stays available while signed out, loading, or offline. */
-export function AccountStrip({ collapsed = false }: { collapsed?: boolean }) {
+export function AccountStrip({
+  collapsed = false,
+  variant = 'sidebar',
+}: {
+  collapsed?: boolean;
+  variant?: 'sidebar' | 'ribbon';
+}) {
+  const ribbon = variant === 'ribbon';
   const t = useT();
   const { data: session, isPending, error } = useSession();
   const user = session?.user;
@@ -103,7 +110,7 @@ export function AccountStrip({ collapsed = false }: { collapsed?: boolean }) {
   return (
     <div
       ref={wrapRef}
-      className="relative shrink-0 border-t border-border/60 p-3"
+      className={ribbon ? 'grimoire-account' : 'relative shrink-0 border-t border-border/60 p-3'}
       onBlur={(event) => {
         if (!event.currentTarget.contains(event.relatedTarget)) setOpen(false);
       }}
@@ -118,14 +125,26 @@ export function AccountStrip({ collapsed = false }: { collapsed?: boolean }) {
             setOpen(true);
           }
         }}
-        aria-label={displayName}
+        aria-label={ribbon && user ? `${t('Account')} · ${displayName}` : displayName}
+        title={ribbon ? (user ? `${t('Account')} · ${displayName}` : displayName) : undefined}
         data-sidebar-tooltip={collapsed ? displayName : undefined}
         aria-haspopup="menu"
         aria-expanded={open}
         aria-controls={menuId}
-        className="sidebar-account-action grid h-14 w-full items-center overflow-hidden rounded border border-transparent py-1.5 text-left transition-colors duration-150 hover:bg-char/40"
+        className={
+          ribbon
+            ? 'grimoire-ribbon'
+            : 'sidebar-account-action grid h-14 w-full items-center overflow-hidden rounded border border-transparent py-1.5 text-left transition-colors duration-150 hover:bg-char/40'
+        }
       >
-        <span className="flex h-8 w-8 shrink-0 items-center justify-center overflow-hidden rounded-full border border-border bg-char/60 text-xs font-semibold text-parchment">
+        <span
+          className={
+            ribbon
+              ? 'grimoire-account-mark'
+              : 'flex h-8 w-8 shrink-0 items-center justify-center overflow-hidden rounded-full border border-border bg-char/60 text-xs font-semibold text-parchment'
+          }
+          aria-hidden={ribbon || undefined}
+        >
           {user?.image ? (
             <img src={user.image} alt="" className="h-full w-full object-cover" />
           ) : user ? (
@@ -134,13 +153,17 @@ export function AccountStrip({ collapsed = false }: { collapsed?: boolean }) {
             <LogIn className="h-4 w-4" aria-hidden />
           )}
         </span>
-        <span className="sidebar-expanded-content min-w-0" aria-hidden={collapsed}>
-          <span className="block truncate text-base text-parchment">{displayName}</span>
-          {status || (user?.email && user.email !== displayName) ? (
-            <span className="block truncate text-xs text-ash">{status || user?.email}</span>
-          ) : null}
-        </span>
-        <ChevronUp className="sidebar-expanded-content h-4 w-4 shrink-0 text-ash" aria-hidden />
+        {ribbon ? null : (
+          <>
+            <span className="sidebar-expanded-content min-w-0" aria-hidden={collapsed}>
+              <span className="block truncate text-base text-parchment">{displayName}</span>
+              {status || (user?.email && user.email !== displayName) ? (
+                <span className="block truncate text-xs text-ash">{status || user?.email}</span>
+              ) : null}
+            </span>
+            <ChevronUp className="sidebar-expanded-content h-4 w-4 shrink-0 text-ash" aria-hidden />
+          </>
+        )}
       </button>
 
       {open ? (

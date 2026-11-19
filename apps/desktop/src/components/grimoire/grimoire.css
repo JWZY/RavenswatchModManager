@@ -226,22 +226,21 @@ html[data-grimoire="true"] {
   border-color: #b956563b;
   transform: translateX(-3px);
 }
-.grimoire-tab-bookmark {
-  position: absolute;
-  bottom: 1px;
-  left: 50%;
-  font-size: 22px;
-}
-.grimoire-ribbon {
+.grimoire-account {
   position: absolute;
   z-index: 5;
   top: -7px;
   right: calc(var(--book-inset) - 16px);
+  width: 30px;
+  height: 82px;
+}
+.grimoire-ribbon {
+  height: 100%;
+  width: 100%;
+  position: relative;
   display: flex;
   align-items: flex-start;
   justify-content: center;
-  width: 30px;
-  height: 82px;
   padding-top: 30px;
   background: linear-gradient(90deg, #491219, #882029 15%, #751d26 80%, #4e141b);
   color: #ebe1bc;
@@ -293,6 +292,32 @@ html[data-grimoire="true"] {
 .grimoire-content {
   min-width: 0;
   outline-offset: 5px;
+}
+.grimoire-empty-library {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: min(560px, calc(100dvh - 290px));
+  padding: 32px 0 56px;
+  text-align: center;
+}
+.grimoire-empty-library > img {
+  width: min(400px, 100%);
+  height: auto;
+  margin-bottom: 20px;
+  mix-blend-mode: multiply;
+}
+.grimoire-empty-library h2 {
+  margin: 0;
+  font: 400 var(--grimoire-title-size) / 1.2 "Grimoire Fell", Georgia, serif;
+}
+.grimoire-empty-library p {
+  max-width: 28ch;
+  margin: 12px 0 24px;
+  color: #6d514a;
+  font-size: 18px;
+  text-wrap: balance;
 }
 .grimoire-page-footer {
   position: relative;
@@ -560,10 +585,12 @@ html[data-grimoire="true"] :focus-visible {
     padding-top: 21px;
     background-image: url("/grimoire/paper-tall.webp");
   }
-  .grimoire-ribbon {
+  .grimoire-account {
     right: 18px;
     width: 24px;
     height: 72px;
+  }
+  .grimoire-ribbon {
     padding-top: 27px;
   }
   .grimoire-ribbon svg {
@@ -581,13 +608,9 @@ html[data-grimoire="true"] :focus-visible {
     justify-content: center;
     font-size: 10px;
   }
-  .grimoire-tabs a > span:not(.grimoire-tab-number):not(.grimoire-tab-bookmark) {
+  .grimoire-tabs a > span:not(.grimoire-tab-number) {
     writing-mode: vertical-rl;
     transform: rotate(180deg);
-  }
-  .grimoire-tab-bookmark {
-    left: 7px;
-    bottom: 2px;
   }
   .grimoire-scroll {
     margin-inline: -8px;
@@ -689,43 +712,31 @@ html[data-grimoire="true"] .font-fraktur {
 .grimoire-chapter-heading h1 {
   text-wrap: balance;
 }
-.grimoire-settings-tools {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: flex-end;
-  align-items: center;
-  gap: 12px;
-  margin-bottom: 24px;
+.grimoire-account-mark {
+  display: grid;
+  place-items: center;
+  width: 20px;
+  height: 20px;
+  overflow: hidden;
+  border-radius: 50%;
+  font: 600 11px / 1 var(--font-body);
 }
-.grimoire-settings-tools > .relative {
-  padding: 0;
-  border: 0;
+.grimoire-account-mark > svg {
+  width: 18px;
+  height: 18px;
 }
-.grimoire-settings-tools .sidebar-account-action {
-  display: flex;
-  gap: 8px;
-  height: 44px;
-  padding-inline: 8px;
-}
-.grimoire-settings-tools > .relative [role="menu"] {
+.grimoire-account > [role="menu"] {
   top: 100%;
+  right: 0;
   bottom: auto;
   left: auto;
-  right: 0;
-  margin-top: 8px;
+  width: 18rem;
+  max-width: calc(100vw - 80px);
+  max-height: calc(100dvh - 140px);
+  margin: 10px 0 0;
+  overflow-y: auto;
+  box-shadow: 0 8px 24px #3e2b2928;
 }
-.grimoire-settings-tools .sidebar-account-action > svg {
-  transform: rotate(180deg);
-}
-@media (max-width: 640px) {
-  .grimoire-settings-tools {
-    position: relative;
-    gap: 8px;
-  }
-  .grimoire-settings-tools > .relative {
-    position: static;
-  }
-  .grimoire-settings-tools [role="menu"] {
-    max-width: 100%;
-  }
+.grimoire-ribbon[aria-expanded="true"] {
+  filter: brightness(1.15);
 }

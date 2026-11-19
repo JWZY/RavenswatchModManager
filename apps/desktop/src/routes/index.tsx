@@ -452,6 +452,19 @@ function LibraryPage() {
   if (waitingToOpenBrowse) return null;
 
   if (installed.length === 0) {
+    if (bookShell) {
+      return (
+        <section className="grimoire-empty-library" aria-labelledby="empty-library-title">
+          <img src="/grimoire/moth.svg" alt="" width={560} height={310} />
+          <h2 id="empty-library-title">{t('An empty grimoire')}</h2>
+          <p>{t('These pages await your first mod.')}</p>
+          <Link to="/browse" className="btn-grim" data-variant="primary">
+            {t('Browse mods')}
+          </Link>
+        </section>
+      );
+    }
+
     return (
       <EmptyState
         title={t('An empty grimoire')}

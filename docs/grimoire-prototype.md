@@ -14,14 +14,17 @@ including search, filters, collections, card/list views and full mod details.
 Library, settings, account navigation, command search and the
 launch menu are the manager's existing components and state. Each chapter starts
 with its plain navigation label (Browse, Library or Settings), sized to match
-the mod-card titles, and a single ornamental rule. Account controls live in
-Settings; the profile selector is omitted. Command search remains available with
+the mod-card titles, and a single ornamental rule. The bookmark ribbon opens the
+existing sign-in/account menu from every page; Settings has no account row or
+profile selector. Command search remains available with
 Ctrl/Cmd+K. The shell adds no
 fixture catalogue or simulated install state.
 
 Two prototype-specific adaptations make the browser preview usable:
 
 - An empty Library stays on its chapter instead of redirecting to Browse.
+  Its empty page uses the original moth engraving directly on the parchment,
+  a compact heading and a link to browse for the first mod.
 - Registry detail fetching is enabled in the book's browser preview as well as
   Tauri. The original interface retains its existing behavior.
 
@@ -34,7 +37,7 @@ manager retains its existing translations and appearance preferences.
 ## Source and integration
 
 Visual materials come from the supplied local
-`shopify-playground/grimoire` checkout: parchment WebPs, room grain,
+`shopify-playground/grimoire` checkout: parchment WebPs, room grain, moth engraving,
 Cinzel, IM Fell English and Cormorant Garamond. They are copied into
 `apps/desktop/public/grimoire`, so this branch has no runtime dependency on that
 checkout or a font CDN. The fonts' SIL Open Font Licenses are included.
@@ -51,16 +54,22 @@ without animation.
 The shell, scoped parchment tokens and page-turn adapter live in
 `apps/desktop/src/components/grimoire`. The theme attribute is applied to the HTML
 element so existing portalled menus and dialogs inherit the same colours. It is
-removed when returning to the original interface. Bookmarks and the shell choice
-use separate, versioned local storage keys.
+removed when returning to the original interface. The shell choice uses a
+versioned local storage key. The ribbon is an account entry point rather than a
+page bookmark.
 
 ## Verification
 
 - Desktop TypeScript check and production Vite build.
 - Existing desktop Vitest suite: 38 files, 428 tests.
 - Browser checks at 1440 × 1000 and 390 × 844: live catalogue search, filters,
-  full mod details, chapter navigation, profile/account menus, command search,
-  bookmarks across reloads and switching between interfaces.
+  full mod details, chapter navigation, account menus, command search,
+  and switching between interfaces.
+- Ribbon checks while signed out: real sign-in navigation, Escape returning focus
+  to the ribbon, and menu placement at 320 × 740. No credentials submitted.
+- Empty Library checked at 1440 × 1000, 390 × 844 and 320 × 740: original moth
+  artwork loads, headings remain 23px, no horizontal overflow, and Browse mods
+  opens the live catalogue.
 - Page-turn checks: correct incoming/outgoing content, flex layout retained,
   rapid navigation, resize interruption, reduced motion, keyboard activation,
   zero leftover stages and zero duplicate DOM IDs after cleanup.
