@@ -188,7 +188,7 @@ function SidebarLaunch({
           : t('Launch Modded');
 
   useEffect(() => {
-    if (!menuOpen || collapsed) return;
+    if (!menuOpen || collapsed || ribbon) return;
     vanillaRef.current?.focus();
     const dismiss = (event: MouseEvent) => {
       if (event.target instanceof Node && !wrapRef.current?.contains(event.target))
@@ -205,11 +205,11 @@ function SidebarLaunch({
       document.removeEventListener('mousedown', dismiss);
       document.removeEventListener('keydown', keydown);
     };
-  }, [menuOpen, collapsed]);
+  }, [menuOpen, collapsed, ribbon]);
 
   useEffect(() => {
-    if (busy || collapsed) setMenuOpen(false);
-  }, [busy, collapsed]);
+    if (busy || collapsed || ribbon) setMenuOpen(false);
+  }, [busy, collapsed, ribbon]);
 
   return (
     <div
@@ -263,7 +263,7 @@ function SidebarLaunch({
             {label}
           </span>
         </button>
-        {collapsed ? null : (
+        {collapsed || ribbon ? null : (
           <button
             ref={disclosureRef}
             type="button"
@@ -285,7 +285,7 @@ function SidebarLaunch({
           </button>
         )}
       </div>
-      {menuOpen && !collapsed ? (
+      {menuOpen && !collapsed && !ribbon ? (
         <div
           id={menuId}
           role="menu"

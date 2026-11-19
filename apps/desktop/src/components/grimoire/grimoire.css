@@ -224,7 +224,7 @@ html[data-grimoire="true"] {
   border-right: 0;
   border-radius: 4px 0 0 4px;
   background: linear-gradient(90deg, #b4a078, #ad986f);
-  font: 11px "Grimoire Cinzel", Georgia, serif;
+  font: 600 11px "Grimoire Cinzel", Georgia, serif;
   color: #4c352d;
   box-shadow: -2px 3px 4px #21050940;
   text-decoration: none;
@@ -352,8 +352,10 @@ html[data-grimoire="true"] {
   position: absolute;
   z-index: 5;
   top: -7px;
-  right: calc(var(--book-inset) - 16px);
-  width: 188px;
+  --ribbon-width: 44px;
+  --ribbon-length: 184px;
+  right: calc(var(--book-inset) - var(--ribbon-width));
+  width: var(--ribbon-width);
 }
 .grimoire-ribbon {
   position: relative;
@@ -365,22 +367,29 @@ html[data-grimoire="true"] {
   z-index: -1;
   inset: 0;
   background: linear-gradient(90deg, #491219, #882029 10%, #751d26 90%, #4e141b);
-  clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 84%, 0 100%);
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 50% 92%, 0 100%);
   box-shadow: inset 3px 0 #c7bb7a30, inset -3px 0 #c7bb7a30;
 }
 .grimoire-ribbon-controls {
-  display: flex;
-  height: 86px;
-  padding: 16px 6px 20px;
+  position: relative;
+  height: var(--ribbon-length);
   color: #f2e6c8;
 }
 .grimoire-ribbon .sidebar-launch-action {
+  position: absolute;
+  top: 4px;
+  left: 100%;
   display: flex;
   justify-content: center;
-  gap: 7px;
-  padding: 0 4px;
+  width: calc(var(--ribbon-length) - 20px);
+  height: var(--ribbon-width);
+  min-height: var(--ribbon-width);
+  gap: 9px;
+  padding: 0 12px;
   color: inherit;
   font-size: 14px;
+  transform: rotate(90deg);
+  transform-origin: top left;
 }
 .grimoire-ribbon .sidebar-launch-action > span {
   padding: 0;
@@ -389,16 +398,10 @@ html[data-grimoire="true"] {
   width: 20px;
   height: 20px;
 }
-.grimoire-ribbon .sidebar-launch-action + button {
-  width: 28px;
-  color: inherit;
-  border: 0;
-}
 .grimoire-ribbon-controls button:focus-visible {
   outline: 2px solid #f2e6c8;
   outline-offset: -2px;
 }
-.grimoire-launch [role="menu"],
 .grimoire-launch [role="alert"] {
   position: absolute;
   top: 100%;
@@ -626,12 +629,11 @@ html[data-grimoire="true"] :focus-visible {
     bottom: 24px;
   }
   .grimoire-launch {
-    right: 12px;
-    width: 132px;
+    --ribbon-width: 36px;
+    --ribbon-length: 172px;
+    right: -4px;
   }
   .grimoire-ribbon .sidebar-launch-action {
-    flex-direction: column;
-    gap: 4px;
     font-size: 13px;
   }
   .grimoire-ribbon .sidebar-launch-action > svg {
@@ -724,7 +726,7 @@ html[data-grimoire="true"] .font-fraktur {
 }
 .grimoire-chapter-heading {
   min-height: 32px;
-  padding: 4px 160px 0 0;
+  padding: 4px 28px 0 0;
 }
 .grimoire-chapter-heading h1 {
   text-wrap: balance;
@@ -747,6 +749,6 @@ html[data-grimoire="true"] .font-fraktur {
 }
 @media (max-width: 640px) {
   .grimoire-chapter-heading {
-    padding-right: 112px;
+    padding-right: 28px;
   }
 }

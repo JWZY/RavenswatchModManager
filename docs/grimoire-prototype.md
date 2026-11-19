@@ -16,8 +16,9 @@ launch menu are the manager's existing components and state. Each chapter starts
 with its plain navigation label (Browse, Library or Settings), sized to match
 the mod-card titles, and a single ornamental rule. Chapter tabs sit near the top
 of the book: the active tab shares the page edge's colour, while inactive tabs
-are darker beige. The wider bookmark ribbon holds the existing Launch Modded
-button, launch icon and options menu. A separate text tab near the bottom left
+are darker beige, with heavier tab labels for readability. A narrow bookmark
+ribbon holds the Launch Modded button and icon rotated 90 degrees. The book
+omits the vanilla-launch disclosure. A separate text tab near the bottom left
 opens the sign-in/account menu. Settings has no account row or profile selector.
 The page has no bottom footer: its content scrolls through the full sheet, fading
 into the actual parchment at the top and bottom through a gradient mask.
@@ -80,8 +81,9 @@ bookmark.
   and switching between interfaces.
 - Account-tab checks while signed out: real sign-in navigation, Escape returning
   focus to the tab, and menu placement at 320 × 568. No credentials submitted.
-- Launch ribbon: the existing launch icon and action, options menu opening below
-  the ribbon, keyboard focus and Escape dismissal. The game was not launched.
+- Launch ribbon: the existing modded-launch action and icon rotated 90 degrees,
+  visible keyboard focus, and no launch-options disclosure in the book.
+  The original sidebar retains its launch options. The game was not launched.
 - Empty Library checked at 1440 × 1000, 390 × 844 and 320 × 740: original moth
   artwork loads, headings remain 23px, no horizontal overflow, and Browse mods
   opens the live catalogue.
