@@ -369,21 +369,11 @@ html[data-grimoire="true"] {
 .grimoire-add-label {
   position: relative;
   display: inline-block;
-  padding-bottom: 4px;
   white-space: nowrap;
   transform: rotate(-6deg);
   text-transform: capitalize;
   mask-image: url("/grimoire/ink-grain.svg");
   mask-size: 180px 180px;
-}
-.grimoire-add-label::after {
-  content: "";
-  position: absolute;
-  inset: auto 0 0;
-  height: 4px;
-  border-bottom: 1px solid currentColor;
-  border-radius: 50%;
-  opacity: 0.65;
 }
 .grimoire-add-circle {
   position: absolute;
@@ -422,18 +412,9 @@ html[data-grimoire="true"] {
   overflow: visible;
 }
 .grimoire-content .mod-card-actions--overlay {
-  top: calc(100% + 12px);
+  top: auto;
   right: 0;
-  bottom: auto;
-}
-.grimoire-content .mod-card-tags {
-  min-height: 36px;
-  padding-right: 108px;
-}
-.grimoire-content
-  .mod-card-artwork:has(.mod-card-actions--overlay)
-  + .mod-card-body:not(:has(.mod-card-tags)) {
-  padding-top: 72px;
+  bottom: 0;
 }
 .grimoire-content .installed-state {
   color: #702c32;

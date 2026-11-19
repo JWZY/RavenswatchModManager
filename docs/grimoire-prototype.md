@@ -22,9 +22,9 @@ omits the vanilla-launch disclosure. A separate text tab near the bottom left
 opens the sign-in/account menu. Settings has no account row or profile selector.
 The page has no bottom footer: its content scrolls through the full sheet, fading
 into the actual parchment at the top and bottom through a gradient mask.
-Catalogue and primary mod-page install actions read **Add** in slanted ink with a
-curved underline. Hover or keyboard focus draws a loose double circle; catalogue
-actions sit below the artwork so the lettering stays readable. The existing
+Catalogue and primary mod-page install actions read **Add** in slanted ink,
+without an underline. Hover or keyboard focus draws a loose double circle;
+catalogue actions sit in the bottom-right corner of each thumbnail. The existing
 profile picker, install handlers, installed state and busy state remain connected.
 Command search remains available with
 Ctrl/Cmd+K. The shell adds no
