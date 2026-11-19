@@ -1,13 +1,13 @@
 import { Link, Outlet, useLocation, useNavigate } from '@tanstack/react-router';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
 import { type MouseEvent, type ReactNode, useEffect, useLayoutEffect, useRef } from 'react';
 import { inTauri } from '../../lib/platform';
 import { attachSmoothWheel } from '../../lib/smooth-scroll';
 import { trackMainWindow } from '../../lib/window-state';
-import { activeProfile, detectConflicts, isEnabledIn, useApp } from '../../store';
+import { useApp } from '../../store';
 import { AccountStrip } from '../account-strip';
 import { ChannelStatusBanner } from '../channel-status-banner';
 import { UpdaterBanner } from '../updater';
+import { GrimoireInkFilter } from './grimoire-ink-filter';
 import { useBookTurn } from './use-book-turn';
 
 const chapters = [
@@ -56,13 +56,7 @@ export function GrimoireShell({
   const current = chapterIndex(location.pathname);
   const chapter = chapters[current] ?? chapters[0];
   const isChapterCover = location.pathname === chapter.to;
-  const profile = useApp(activeProfile);
-  const localMods = useApp((s) => s.localMods);
   const animations = useApp((s) => s.settings.animations);
-  const enabledCount = profile.loadOrder.filter(
-    (id) => localMods[id] && isEnabledIn(profile, id),
-  ).length;
-  const conflictCount = detectConflicts(profile).length;
   const bookRef = useRef<HTMLDivElement>(null);
   const paperRef = useRef<HTMLElement>(null);
   const scrollRef = useRef<HTMLDivElement>(null);
@@ -109,6 +103,7 @@ export function GrimoireShell({
 
   return (
     <div className="grimoire-room" data-native={inTauri() || undefined}>
+      <GrimoireInkFilter />
       <a href="#grimoire-content" className="grimoire-skip">
         Skip to page content
       </a>
@@ -123,6 +118,7 @@ export function GrimoireShell({
             <Link
               key={item.to}
               to={item.to}
+              className="grimoire-tab"
               aria-current={index === current ? 'page' : undefined}
               onClick={(event) => turn(event, index)}
             >
@@ -154,41 +150,9 @@ export function GrimoireShell({
               <Outlet />
             </div>
           </div>
-          <footer className="grimoire-page-footer">
-            <div className="grimoire-active">
-              <span className="grimoire-active-dot" aria-hidden="true" />
-              {enabledCount} active {enabledCount === 1 ? 'mod' : 'mods'}
-              <span className="grimoire-profile-name"> · {profile.name}</span>
-              {conflictCount > 0 ? (
-                <Link to="/conflicts" className="grimoire-conflicts">
-                  {' '}
-                  · {conflictCount} conflicts
-                </Link>
-              ) : null}
-            </div>
-            <nav className="grimoire-pagination" aria-label="Turn the page">
-              <button
-                type="button"
-                disabled={current === 0}
-                aria-label="Previous chapter"
-                onClick={(event) => turn(event, current - 1)}
-              >
-                <ChevronLeft size={16} />
-              </button>
-              <span aria-label={`Chapter ${current + 1} of 3`}>{chapter.numeral}</span>
-              <button
-                type="button"
-                disabled={current === chapters.length - 1}
-                aria-label="Next chapter"
-                onClick={(event) => turn(event, current + 1)}
-              >
-                <ChevronRight size={16} />
-              </button>
-            </nav>
-            <div className="grimoire-launch">{launch}</div>
-          </footer>
         </main>
-        <AccountStrip variant="ribbon" />
+        <div className="grimoire-launch">{launch}</div>
+        <AccountStrip variant="book-tab" />
       </div>
       <div className="grimoire-colophon">
         <span>

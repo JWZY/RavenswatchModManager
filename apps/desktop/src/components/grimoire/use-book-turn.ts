@@ -118,7 +118,7 @@ export function useBookTurn(
       if (disposed || !paper || !library || !previous) return;
       const arriving = copyPaper(paper);
       // The renderer sets display:block on its leaves. Keep our flex-based paper
-      // inside a leaf so the copied scroll area and footer retain their layout.
+      // inside a leaf so the copied scroll area retains its full-page layout.
       const sheets = previous.forward ? [arriving, previous.paper] : [previous.paper, arriving];
       const pages = sheets.map((sheet) => {
         const leaf = document.createElement('div');

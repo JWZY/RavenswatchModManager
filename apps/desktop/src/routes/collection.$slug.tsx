@@ -375,7 +375,7 @@ function CollectionDetailPage() {
                     onClick={() => setLightboxIdx(i)}
                     className="group block w-full text-left"
                   >
-                    <div className="aspect-video overflow-hidden rounded border border-oxblood/30 bg-pitch">
+                    <div className="grimoire-artwork aspect-video overflow-hidden rounded border border-oxblood/30 bg-pitch">
                       <img
                         src={shot.url}
                         alt={shot.caption || t('Screenshot {n}', { n: i + 1 })}

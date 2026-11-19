@@ -163,7 +163,14 @@ function SidebarSearch({ collapsed }: { collapsed: boolean }) {
   );
 }
 
-function SidebarLaunch({ collapsed }: { collapsed: boolean }) {
+function SidebarLaunch({
+  collapsed,
+  variant = 'sidebar',
+}: {
+  collapsed: boolean;
+  variant?: 'sidebar' | 'ribbon';
+}) {
+  const ribbon = variant === 'ribbon';
   const t = useT();
   const { launching, running, launchError, busy, launch, clearError } = useLaunch();
   const [menuOpen, setMenuOpen] = useState(false);
@@ -207,7 +214,7 @@ function SidebarLaunch({ collapsed }: { collapsed: boolean }) {
   return (
     <div
       ref={wrapRef}
-      className="relative flex shrink-0 flex-col gap-2 px-3 pb-3"
+      className={ribbon ? 'grimoire-ribbon' : 'relative flex shrink-0 flex-col gap-2 px-3 pb-3'}
       onBlur={(event) => {
         if (!event.currentTarget.contains(event.relatedTarget)) setMenuOpen(false);
       }}
@@ -230,7 +237,13 @@ function SidebarLaunch({ collapsed }: { collapsed: boolean }) {
           </button>
         </div>
       ) : null}
-      <div className="flex overflow-hidden rounded border border-crimson bg-crimson">
+      <div
+        className={
+          ribbon
+            ? 'grimoire-ribbon-controls'
+            : 'flex overflow-hidden rounded border border-crimson bg-crimson'
+        }
+      >
         <button
           type="button"
           disabled={busy}
@@ -448,7 +461,7 @@ function RootLayout() {
             {book ? (
               <GrimoireShell
                 onUseClassic={switchShell}
-                launch={<SidebarLaunch collapsed={false} />}
+                launch={<SidebarLaunch collapsed={false} variant="ribbon" />}
                 windowControls={<WindowControls />}
               />
             ) : (

@@ -34,9 +34,9 @@ export function AccountStrip({
   variant = 'sidebar',
 }: {
   collapsed?: boolean;
-  variant?: 'sidebar' | 'ribbon';
+  variant?: 'sidebar' | 'book-tab';
 }) {
-  const ribbon = variant === 'ribbon';
+  const bookTab = variant === 'book-tab';
   const t = useT();
   const { data: session, isPending, error } = useSession();
   const user = session?.user;
@@ -110,7 +110,7 @@ export function AccountStrip({
   return (
     <div
       ref={wrapRef}
-      className={ribbon ? 'grimoire-account' : 'relative shrink-0 border-t border-border/60 p-3'}
+      className={bookTab ? 'grimoire-account' : 'relative shrink-0 border-t border-border/60 p-3'}
       onBlur={(event) => {
         if (!event.currentTarget.contains(event.relatedTarget)) setOpen(false);
       }}
@@ -125,36 +125,31 @@ export function AccountStrip({
             setOpen(true);
           }
         }}
-        aria-label={ribbon && user ? `${t('Account')} · ${displayName}` : displayName}
-        title={ribbon ? (user ? `${t('Account')} · ${displayName}` : displayName) : undefined}
+        aria-label={bookTab && user ? `${t('Account')} · ${displayName}` : displayName}
+        title={bookTab ? (user ? `${t('Account')} · ${displayName}` : displayName) : undefined}
         data-sidebar-tooltip={collapsed ? displayName : undefined}
         aria-haspopup="menu"
         aria-expanded={open}
         aria-controls={menuId}
         className={
-          ribbon
-            ? 'grimoire-ribbon'
+          bookTab
+            ? 'grimoire-tab grimoire-account-tab'
             : 'sidebar-account-action grid h-14 w-full items-center overflow-hidden rounded border border-transparent py-1.5 text-left transition-colors duration-150 hover:bg-char/40'
         }
       >
-        <span
-          className={
-            ribbon
-              ? 'grimoire-account-mark'
-              : 'flex h-8 w-8 shrink-0 items-center justify-center overflow-hidden rounded-full border border-border bg-char/60 text-xs font-semibold text-parchment'
-          }
-          aria-hidden={ribbon || undefined}
-        >
-          {user?.image ? (
-            <img src={user.image} alt="" className="h-full w-full object-cover" />
-          ) : user ? (
-            <span>{initialsFor(user.name, user.email)}</span>
-          ) : (
-            <LogIn className="h-4 w-4" aria-hidden />
-          )}
-        </span>
-        {ribbon ? null : (
+        {bookTab ? (
+          <span>{user ? t('Account') : t('Sign in')}</span>
+        ) : (
           <>
+            <span className="flex h-8 w-8 shrink-0 items-center justify-center overflow-hidden rounded-full border border-border bg-char/60 text-xs font-semibold text-parchment">
+              {user?.image ? (
+                <img src={user.image} alt="" className="h-full w-full object-cover" />
+              ) : user ? (
+                <span>{initialsFor(user.name, user.email)}</span>
+              ) : (
+                <LogIn className="h-4 w-4" aria-hidden />
+              )}
+            </span>
             <span className="sidebar-expanded-content min-w-0" aria-hidden={collapsed}>
               <span className="block truncate text-base text-parchment">{displayName}</span>
               {status || (user?.email && user.email !== displayName) ? (

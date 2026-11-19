@@ -212,7 +212,7 @@ export function Cover({
   return (
     <div
       className={cn(
-        'relative aspect-[16/9] w-full overflow-hidden border border-border bg-pitch',
+        'grimoire-artwork relative aspect-[16/9] w-full overflow-hidden border border-border bg-pitch',
         nsfw && 'group',
         className,
       )}

@@ -14,9 +14,14 @@ including search, filters, collections, card/list views and full mod details.
 Library, settings, account navigation, command search and the
 launch menu are the manager's existing components and state. Each chapter starts
 with its plain navigation label (Browse, Library or Settings), sized to match
-the mod-card titles, and a single ornamental rule. The bookmark ribbon opens the
-existing sign-in/account menu from every page; Settings has no account row or
-profile selector. Command search remains available with
+the mod-card titles, and a single ornamental rule. Chapter tabs sit near the top
+of the book: the active tab shares the page edge's colour, while inactive tabs
+are darker beige. The wider bookmark ribbon holds the existing Launch Modded
+button, launch icon and options menu. A separate text tab near the bottom left
+opens the sign-in/account menu. Settings has no account row or profile selector.
+The page has no bottom footer: its content scrolls through the full sheet, fading
+into the actual parchment at the top and bottom through a gradient mask.
+Command search remains available with
 Ctrl/Cmd+K. The shell adds no
 fixture catalogue or simulated install state.
 
@@ -44,6 +49,12 @@ Cinzel, IM Fell English and Cormorant Garamond. They are copied into
 `apps/desktop/public/grimoire`, so this branch has no runtime dependency on that
 checkout or a font CDN. The fonts' SIL Open Font Licenses are included.
 
+Catalogue artwork, collection covers and gallery thumbnails use a live SVG
+filter that extracts sepia outlines and a light ink wash, with a faint pigment
+grain. This approximates an engraving from each original image; it does not
+redraw illustrations or change uploaded files. Full-size gallery images remain
+available in their original form. The filter is scoped to the book interface.
+
 OpenPageFlip 0.7.0 and its MIT license are retained in `public/grimoire/vendor`.
 Chapter turns use inert HTML copies, not screenshots or a second mounted React
 tree. The live route stays mounted beneath the fold. A leaf wrapper preserves the
@@ -57,8 +68,8 @@ The shell, scoped parchment tokens and page-turn adapter live in
 `apps/desktop/src/components/grimoire`. The theme attribute is applied to the HTML
 element so existing portalled menus and dialogs inherit the same colours. It is
 removed when returning to the original interface. The shell choice uses a
-versioned local storage key. The ribbon is an account entry point rather than a
-page bookmark.
+versioned local storage key. The ribbon is the game launcher rather than a page
+bookmark.
 
 ## Verification
 
@@ -67,11 +78,17 @@ page bookmark.
 - Browser checks at 1440 × 1000 and 390 × 844: live catalogue search, filters,
   full mod details, chapter navigation, account menus, command search,
   and switching between interfaces.
-- Ribbon checks while signed out: real sign-in navigation, Escape returning focus
-  to the ribbon, and menu placement at 320 × 740. No credentials submitted.
+- Account-tab checks while signed out: real sign-in navigation, Escape returning
+  focus to the tab, and menu placement at 320 × 568. No credentials submitted.
+- Launch ribbon: the existing launch icon and action, options menu opening below
+  the ribbon, keyboard focus and Escape dismissal. The game was not launched.
 - Empty Library checked at 1440 × 1000, 390 × 844 and 320 × 740: original moth
   artwork loads, headings remain 23px, no horizontal overflow, and Browse mods
   opens the live catalogue.
+- Full-page scroll and engraved artwork checked at 1510 × 825 and 390 × 844:
+  both edge fades, the last card fully visible at the bottom, live gallery
+  thumbnails, and opening an unfiltered full-size image. Original interface
+  retains its colours and removes the book's filter definitions.
 - Page-turn checks: correct incoming/outgoing content, flex layout retained,
   rapid navigation, resize interruption, reduced motion, keyboard activation,
   zero leftover stages and zero duplicate DOM IDs after cleanup.
