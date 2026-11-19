@@ -382,7 +382,7 @@ export function SectionHeader({
   right,
   compact = false,
 }: {
-  title: string;
+  title?: string;
   subtitle?: string;
   right?: ReactNode;
   compact?: boolean;
@@ -401,14 +401,16 @@ export function SectionHeader({
       )}
     >
       <div className="min-w-0 flex-1">
-        <h2
-          className={cn(
-            'font-fraktur leading-none text-parchment',
-            compact ? 'text-xl' : 'text-3xl',
-          )}
-        >
-          {title}
-        </h2>
+        {title ? (
+          <h2
+            className={cn(
+              'font-fraktur leading-none text-parchment',
+              compact ? 'text-xl' : 'text-3xl',
+            )}
+          >
+            {title}
+          </h2>
+        ) : null}
         {subtitle ? (
           <p
             className={cn(

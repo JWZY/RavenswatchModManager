@@ -11,10 +11,12 @@ manager; **Open the grimoire** brings the book back. This choice persists locall
 
 The book wraps the existing React router outlet. Browse uses the live registry,
 including search, filters, collections, card/list views and full mod details.
-Library, settings, profile selection, account navigation, command search and the
+Library, settings, account navigation, command search and the
 launch menu are the manager's existing components and state. Each chapter starts
-with its title and a single ornamental rule. Profile and account controls live
-in Settings; command search remains available with Ctrl/Cmd+K. The shell adds no
+with its plain navigation label (Browse, Library or Settings), sized to match
+the mod-card titles, and a single ornamental rule. Account controls live in
+Settings; the profile selector is omitted. Command search remains available with
+Ctrl/Cmd+K. The shell adds no
 fixture catalogue or simulated install state.
 
 Two prototype-specific adaptations make the browser preview usable:

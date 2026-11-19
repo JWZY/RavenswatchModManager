@@ -1,9 +1,10 @@
 import { createFileRoute } from '@tanstack/react-router';
 import { invoke } from '@tauri-apps/api/core';
 import { Activity, ChevronDown, EyeOff, ShieldAlert, Sparkles, Trash2 } from 'lucide-react';
-import { type KeyboardEvent, useEffect, useMemo, useRef, useState } from 'react';
+import { type KeyboardEvent, useContext, useEffect, useMemo, useRef, useState } from 'react';
 import { AboutPanels } from '../components/about-panels';
 import { Button, Fleuron, MonoTag, Panel, SectionHeader } from '../components/chrome';
+import { GrimoireContext } from '../components/grimoire/grimoire-context';
 import { useLaunch } from '../components/launch';
 import { useToast } from '../components/toast';
 import { UpdaterSettings } from '../components/updater';
@@ -89,6 +90,7 @@ function isTab(value: unknown): value is SettingsTab {
 }
 
 function SettingsPage() {
+  const bookShell = useContext(GrimoireContext);
   const t = useT();
   // Seeded from `?tab=`, so a link can land on a specific group — the command
   // palette's "About" entry is the reason this exists. Kept in local state
@@ -99,7 +101,9 @@ function SettingsPage() {
 
   return (
     <div className="space-y-6">
-      <SectionHeader title={t('Settings')} subtitle={t('Where things live. How they look.')} />
+      {bookShell ? null : (
+        <SectionHeader title={t('Settings')} subtitle={t('Where things live. How they look.')} />
+      )}
 
       <SettingsTabs value={tab} onChange={setTab} />
 

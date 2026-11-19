@@ -14,7 +14,6 @@ import { trackMainWindow } from '../../lib/window-state';
 import { activeProfile, detectConflicts, isEnabledIn, useApp } from '../../store';
 import { AccountStrip } from '../account-strip';
 import { ChannelStatusBanner } from '../channel-status-banner';
-import { ProfilePopover } from '../profile-popover';
 import { useToast } from '../toast';
 import { UpdaterBanner } from '../updater';
 import { useBookTurn } from './use-book-turn';
@@ -24,19 +23,16 @@ const chapters = [
     to: '/browse',
     label: 'Browse',
     numeral: 'I',
-    title: 'The catalogue',
   },
   {
     to: '/',
     label: 'Library',
     numeral: 'II',
-    title: 'Your collection',
   },
   {
     to: '/settings',
     label: 'Settings',
     numeral: 'III',
-    title: 'The particulars',
   },
 ] as const;
 
@@ -187,7 +183,7 @@ export function GrimoireShell({
               <>
                 <header className="grimoire-chapter-heading">
                   <h1 ref={headingRef} tabIndex={-1}>
-                    {chapter.title}
+                    {chapter.label}
                   </h1>
                 </header>
                 <div className="grimoire-rule" aria-hidden="true">
@@ -197,10 +193,6 @@ export function GrimoireShell({
             ) : null}
             {location.pathname === '/settings' ? (
               <div className="grimoire-settings-tools">
-                <div className="grimoire-settings-profile">
-                  <span>Profile</span>
-                  <ProfilePopover />
-                </div>
                 <AccountStrip />
               </div>
             ) : null}

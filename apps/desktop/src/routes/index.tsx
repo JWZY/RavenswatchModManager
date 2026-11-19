@@ -525,7 +525,7 @@ function LibraryPage() {
       <SupportNudge />
       <UpdatesPanel />
       <SectionHeader
-        title={t('Library')}
+        title={bookShell ? undefined : t('Library')}
         subtitle={t.n(
           installed.length,
           '{n} mod in the local folder.',

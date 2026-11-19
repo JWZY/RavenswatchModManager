@@ -52,6 +52,7 @@ html[data-grimoire="true"] {
 }
 
 .grimoire-room {
+  --grimoire-title-size: 23px;
   --book-left: clamp(104px, 9.2vw, 150px);
   --fold-peek: 30px;
   --room-inset: clamp(22px, 3.4vh, 40px);
@@ -283,8 +284,8 @@ html[data-grimoire="true"] {
 .grimoire-chapter-heading h1 {
   margin: 0;
   color: #51252a;
-  font: 400 clamp(40px, 4.2vw, 66px) / 1.05 "Grimoire Fell", Georgia, serif;
-  letter-spacing: -.03em;
+  font: 400 var(--grimoire-title-size) / 1.2 "Grimoire Fell", Georgia, serif;
+  letter-spacing: -.02em;
 }
 .grimoire-chapter-heading h1:focus {
   outline: none;
@@ -468,7 +469,7 @@ html[data-grimoire="true"] .mod-card {
 .grimoire-content .mod-card .mod-card-identity h2 {
   font-family: "Grimoire Fell", Georgia, serif;
   font-weight: 400;
-  font-size: 23px;
+  font-size: var(--grimoire-title-size);
   line-height: 1.2;
 }
 .grimoire-content .mod-card-description {
@@ -529,6 +530,7 @@ html[data-grimoire="true"] :focus-visible {
 }
 @media (max-width: 1050px) {
   .grimoire-room {
+    --grimoire-title-size: 23px;
     --book-left: 89px;
     --book-inset: 32px;
     --fold-peek: 20px;
@@ -547,6 +549,7 @@ html[data-grimoire="true"] :focus-visible {
 }
 @media (max-width: 640px) {
   .grimoire-room {
+    --grimoire-title-size: 23px;
     --book-left: 45px;
     --book-inset: 20px;
     --fold-peek: 12px;
@@ -585,9 +588,6 @@ html[data-grimoire="true"] :focus-visible {
   .grimoire-tab-bookmark {
     left: 7px;
     bottom: 2px;
-  }
-  .grimoire-chapter-heading h1 {
-    font-size: clamp(32px, 8vw, 43px);
   }
   .grimoire-scroll {
     margin-inline: -8px;
@@ -646,13 +646,11 @@ html[data-grimoire="true"] :focus-visible {
 }
 @media (max-height: 700px) and (min-width: 641px) {
   .grimoire-room {
+    --grimoire-title-size: 23px;
     --room-inset: 18px;
   }
   .grimoire-paper {
     padding-top: 18px;
-  }
-  .grimoire-chapter-heading h1 {
-    font-size: 44px;
   }
   .grimoire-page-footer {
     min-height: 62px;
@@ -694,24 +692,10 @@ html[data-grimoire="true"] .font-fraktur {
 .grimoire-settings-tools {
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: flex-end;
   align-items: center;
   gap: 12px;
   margin-bottom: 24px;
-}
-.grimoire-settings-profile {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  min-width: 0;
-  max-width: 240px;
-}
-.grimoire-settings-profile > span {
-  font-size: 14px;
-  color: #6d514a;
-}
-.grimoire-settings-profile [role="menu"] {
-  left: 0;
 }
 .grimoire-settings-tools > .relative {
   padding: 0;
@@ -738,10 +722,6 @@ html[data-grimoire="true"] .font-fraktur {
     position: relative;
     gap: 8px;
   }
-  .grimoire-settings-profile {
-    max-width: 170px;
-  }
-  .grimoire-settings-profile > div,
   .grimoire-settings-tools > .relative {
     position: static;
   }
