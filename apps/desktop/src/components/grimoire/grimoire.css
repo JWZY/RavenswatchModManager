@@ -308,6 +308,16 @@ html[data-grimoire="true"] {
   margin-bottom: 20px;
   mix-blend-mode: multiply;
 }
+.grimoire-empty-library :is(h2, p, .grimoire-ink-link) {
+  mix-blend-mode: multiply;
+  text-shadow: 0 0 .4px currentColor;
+}
+/* A faint loss of pigment lets the paper show through the live text. */
+.grimoire-empty-library :is(h2, p),
+.grimoire-ink-link > span {
+  mask-image: url("/grimoire/ink-grain.svg");
+  mask-size: 180px 180px;
+}
 .grimoire-empty-library h2 {
   margin: 0;
   font: 400 var(--grimoire-title-size) / 1.2 "Grimoire Fell", Georgia, serif;
@@ -315,9 +325,41 @@ html[data-grimoire="true"] {
 .grimoire-empty-library p {
   max-width: 28ch;
   margin: 12px 0 24px;
-  color: #6d514a;
-  font-size: 18px;
+  color: #594038;
+  font: italic 400 20px / 1.45 "Grimoire Cormorant", Georgia, serif;
   text-wrap: balance;
+}
+.grimoire-ink-link {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 8px 12px;
+  color: #702c32;
+  font: 400 18px / 1.4 "Grimoire Fell", Georgia, serif;
+  text-decoration: none;
+}
+.grimoire-ink-link > span {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 10px;
+}
+.grimoire-ink-link::after {
+  content: "";
+  position: absolute;
+  inset: auto 12px 6px;
+  height: 4px;
+  border-bottom: 1px solid currentColor;
+  border-radius: 50%;
+  transform: rotate(-.8deg);
+  opacity: 0.65;
+}
+.grimoire-ink-link:focus-visible {
+  outline: 2px solid #882029;
+  outline-offset: 4px;
+}
+.grimoire-ink-link:active {
+  color: #3e1b20;
 }
 .grimoire-page-footer {
   position: relative;
@@ -543,6 +585,12 @@ html[data-grimoire="true"] :focus-visible {
   opacity: 0.25;
 }
 @media (hover: hover) and (pointer: fine) {
+  .grimoire-ink-link:hover {
+    color: #51252a;
+  }
+  .grimoire-ink-link:hover::after {
+    opacity: 1;
+  }
   .grimoire-tabs a:hover {
     transform: translateX(-5px);
   }

@@ -458,8 +458,10 @@ function LibraryPage() {
           <img src="/grimoire/moth.svg" alt="" width={560} height={310} />
           <h2 id="empty-library-title">{t('An empty grimoire')}</h2>
           <p>{t('These pages await your first mod.')}</p>
-          <Link to="/browse" className="btn-grim" data-variant="primary">
-            {t('Browse mods')}
+          <Link to="/browse" className="grimoire-ink-link">
+            <span>
+              {t('Browse mods')} <span aria-hidden="true">→</span>
+            </span>
           </Link>
         </section>
       );

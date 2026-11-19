@@ -24,7 +24,9 @@ Two prototype-specific adaptations make the browser preview usable:
 
 - An empty Library stays on its chapter instead of redirecting to Browse.
   Its empty page uses the original moth engraving directly on the parchment,
-  a compact heading and a link to browse for the first mod.
+  a compact heading and an underlined ink inscription to browse for the first mod.
+  The lettering blends with the parchment through a faint pigment-grain mask;
+  the browse link retains a 44px hit area and a visible keyboard focus outline.
 - Registry detail fetching is enabled in the book's browser preview as well as
   Tauri. The original interface retains its existing behavior.
 
