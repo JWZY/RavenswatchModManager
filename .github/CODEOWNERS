@@ -23,6 +23,7 @@
 /.github/CODEOWNERS                        @Ovilli @Skigim
 /.github/core-paths.txt                    @Ovilli @Skigim
 /.github/workflows/core-review-request.yml @Ovilli @Skigim
+/.github/workflows/core-review.yml         @Ovilli @Skigim
 /.github/workflows/ci.yml                  @Ovilli @Skigim
 /data/contracts/deprecated.txt             @Ovilli @Skigim
 /scripts/contract_pins.py                  @Ovilli @Skigim
