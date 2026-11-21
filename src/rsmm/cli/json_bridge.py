@@ -2124,6 +2124,7 @@ def build_parser() -> argparse.ArgumentParser:
         description="Machine-readable JSON bridge for the desktop / web UI.",
     )
     sub = ap.add_subparsers(dest="cmd", required=True)
+    sub.add_parser("serve", help="answer JSON requests on stdin until EOF (the desktop's server)")
     sub.add_parser("list", help="list installed mods")
     p_list_profiles = sub.add_parser(
         "list-profiles", help="list the mods of several profiles in one call")
@@ -2243,11 +2244,11 @@ def build_parser() -> argparse.ArgumentParser:
 
 
 def main(argv: list[str] | None = None) -> int:
-    if (sys.argv[1:] if argv is None else argv)[:1] == ["serve"]:
-        from rsmm.cli.json_serve import serve
-        return serve()
     ap = build_parser()
     args = ap.parse_args(argv)
+    if args.cmd == "serve":
+        from rsmm.cli.json_serve import serve
+        return serve()
     if args.cmd == "list":
         return cmd_list()
     if args.cmd == "list-profiles":

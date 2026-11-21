@@ -65,6 +65,7 @@ restore-all
 run
 run --vanilla
 self-heal
+serve
 uninstall-mod
 uninstall-mod --run-hook
 uninstall-mod --skip-hook

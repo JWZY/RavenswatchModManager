@@ -25,7 +25,7 @@ jobs:
       contents: read
       pull-requests: read
     outputs:
-      python: ${{ github.event_name == 'workflow_dispatch' || steps.filter.outputs.python }}
+      python: ${{ github.event_name == 'workflow_dispatch' || steps.filter.outputs.python == 'true' || steps.inputs.outputs.schema == 'true' }}
       sidecar: ${{ github.event_name == 'workflow_dispatch' || steps.inputs.outputs.sidecar }}
       ts: ${{ github.event_name == 'workflow_dispatch' || steps.inputs.outputs.ts }}
       loader: ${{ github.event_name == 'workflow_dispatch' || steps.inputs.outputs.loader }}
@@ -64,6 +64,9 @@ jobs:
               - 'scripts/build-sidecar.py'
               - 'pyproject.toml'
               - '.github/workflows/ci.yml'
+            # tests/test_schema_drift.py reads it; the python filter skips packages/.
+            schema:
+              - 'packages/schemas/src/mod.ts'
             ts:
               - 'apps/**'
               - 'packages/**'
