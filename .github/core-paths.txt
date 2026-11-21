@@ -3,8 +3,17 @@
 # current head. The `core review` job in core-review.yml reads this file
 # through scripts/core_review.py. A breaking change to a pinned contract
 # (scripts/contract_pins.py breaking) needs the review whatever its size, and
-# so does any change to a path listed under the [no exemption] header at the
-# end (those paths are core too).
+# so does any change to a path tagged `no exemption`.
+#
+# A section header tags the patterns below it, up to the next header:
+#   [no exemption]  one changed line is enough to need the review
+#   [bypass]        an owner may bypass their own PR with the `core-bypass`
+#                   label when everything that needs review is tagged bypass;
+#                   the merge then opens an issue for the other owners
+# Both tags can share a header: [no exemption, bypass]. Patterns before the
+# first header have neither tag. A path that matches a tagged pattern has the
+# tag even if an earlier pattern also matches it. Any other "[" line is an
+# error.
 #
 # Glob semantics, one pattern per line, paths relative to the repo root with
 # forward slashes (gitignore style):
@@ -18,34 +27,28 @@
 #   trailing "/" the directory and everything under it
 #   a pattern that matches a directory matches every file under it
 # "!" negation is not supported; a line starting with it is an error.
-# "[no exemption]" is the only section header; any other "[" line is an error.
 #
 # Ring 1 (trust chain) is gated by CODEOWNERS with no exemption and is not
-# listed here. The pin snapshots data/contracts/*.txt are not core: additive
-# SDK work regenerates them, and a removal is caught by the contract check.
+# listed here. The manifest spec, json_bridge, apply and the schemas are not
+# core either: the contract pins catch a breaking change to them, and
+# additive work merges freely. The pin snapshots data/contracts/*.txt are not
+# core: additive SDK work regenerates them.
 
-# R.* SDK: entry, generated tables, submodules
+# R.* SDK: entry and submodules. Mods call these, so review is never bypassed.
 src/loader/lib/**
 src/loader/lua/**
-
-# Native headers and exports (native sources and symbols are under
-# [no exemption] below)
-src/loader/include/**
-src/loader/exports/**
-
-# Manifest spec, json_bridge and the commands around it
-src/rsmm/sdk/manifest_spec.py
-src/rsmm/cli/json_bridge.py
-src/rsmm/cli/_dispatch.py
-src/rsmm/cli/apply_mods.py
-src/rsmm/cli/lint.py
-packages/schemas/src/mod.ts
 
 # Deprecated aliases excuse removals from the pins
 data/contracts/deprecated.txt
 
+# Native headers, exports and the SDK tables generated from data/symbols.json
+[bypass]
+src/loader/include/**
+src/loader/exports/**
+src/loader/lib/*_gen.lua
+
 # One changed line here (a symbol VA, a native hook) can break every user, so
-# any change needs the review.
-[no exemption]
+# any change needs the review; patch day may still need it merged first.
+[no exemption, bypass]
 src/loader/src/**
 data/symbols.json
