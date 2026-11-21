@@ -1,0 +1,41 @@
+name: Core review audit
+
+# Opens an issue, assigned to the owners other than the author, for a PR that
+# merged into main needing owner review (scripts/core_review.py `required`)
+# without an owner's approval of its head: a `core-bypass` merge, or anything
+# else that got past the check. It reads the merged diff, not the label.
+#
+# pull_request_target runs from the base branch with a write token. The only
+# checkout is the merge commit, which is already on main, so nothing from an
+# unmerged PR runs. GitHub runs pull_request_target only from the default
+# branch's copy of this file, so it does nothing until it has reached main.
+on:
+  pull_request_target:
+    types: [closed]
+    branches: [main]
+
+permissions:
+  contents: read
+  pull-requests: read
+  issues: write
+
+jobs:
+  audit:
+    name: post-merge core review
+    runs-on: ubuntu-latest
+    if: github.event.pull_request.merged == true
+    env:
+      GH_TOKEN: ${{ github.token }}
+      REPO: ${{ github.repository }}
+      PR_NUMBER: ${{ github.event.pull_request.number }}
+      MERGE_SHA: ${{ github.event.pull_request.merge_commit_sha }}
+    steps:
+      - uses: actions/checkout@v5
+        with:
+          ref: ${{ github.event.pull_request.merge_commit_sha }}
+          fetch-depth: 0
+
+      # The merge commit's first parent is main before the merge, so the diff
+      # is what the PR brought in, squashed or not.
+      - name: Open an issue if this merged without the review it needed
+        run: python3 scripts/core_review.py audit --repo "$REPO" --pr "$PR_NUMBER" --base "$MERGE_SHA^1" --head "$MERGE_SHA"

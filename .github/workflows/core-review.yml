@@ -1,0 +1,59 @@
+name: Core review
+
+# Owner review of core changes (.github/core-paths.txt, pinned contracts).
+# `core review` fails on a PR until an owner other than the author approves
+# the current head, or, for a change core-paths.txt tags bypassable, until an
+# owner who authored the PR applies the `core-bypass` label. It is its own
+# required check, apart from `ci ok`, so a review or label event reruns only
+# this job. See scripts/core_review.py; core-review-audit.yml opens the
+# post-merge issue for a bypass.
+on:
+  # No `branches` filter on either event, so stacked PRs into other branches
+  # get the check too. Listing `types` replaces the defaults, so the first
+  # three are the defaults kept.
+  pull_request:
+    types: [opened, synchronize, reopened, labeled, unlabeled]
+  pull_request_review:
+    types: [submitted, dismissed]
+
+permissions:
+  contents: read
+  pull-requests: read
+  # Issue events: who applied the bypass label.
+  issues: read
+
+# A push and a review landing together: the newest run decides.
+concurrency:
+  group: core-review-${{ github.event.pull_request.number }}
+  cancel-in-progress: true
+
+jobs:
+  core-review:
+    name: core review
+    runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ github.token }}
+      REPO: ${{ github.repository }}
+      PR_NUMBER: ${{ github.event.pull_request.number }}
+      BASE_SHA: ${{ github.event.pull_request.base.sha }}
+      HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+    steps:
+      # Full history: the diff is merge-base...head. The checkout is the merge
+      # commit and the head is its second parent, so the next step checks out
+      # the head itself and compares the PR's own contracts, not the PR merged
+      # into a newer main.
+      - uses: actions/checkout@v5
+        with:
+          fetch-depth: 0
+
+      - name: Is owner review required?
+        id: required
+        run: |
+          git checkout --detach "$HEAD_SHA"
+          python3 scripts/core_review.py required --base "$BASE_SHA" --head "$HEAD_SHA"
+
+      - name: Has an owner approved this head?
+        if: steps.required.outputs.required == 'true'
+        env:
+          BYPASS: ${{ steps.required.outputs.bypassable == 'true' && '--allow-bypass' || '' }}
+        run: python3 scripts/core_review.py approved --repo "$REPO" --pr "$PR_NUMBER" --head "$HEAD_SHA" $BYPASS
