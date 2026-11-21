@@ -60,24 +60,61 @@ def test_parse_patterns_skips_comments_and_rejects_negation():
         cr.parse_patterns("!a/b\n")
 
 
-def test_parse_sections_splits_no_exemption():
-    allp, strict = cr.parse_sections("a/**\n[no exemption]\n# c\nb.json\n")
-    assert allp == ["a/**", "b.json"] and strict == ["b.json"]
+def test_parse_sections_tags():
+    allp, strict, bypass = cr.parse_sections(
+        "a/**\n[no exemption]\n# c\nb.json\n[bypass]\nc/**\n[no exemption, bypass]\nd\n")
+    assert allp == ["a/**", "b.json", "c/**", "d"]
+    assert strict == ["b.json", "d"] and bypass == ["c/**", "d"]
+
+
+@pytest.mark.parametrize("header", ["[other]", "[bypass, other]", "[]", "[bypass"])
+def test_parse_sections_rejects_unknown_header(header):
     with pytest.raises(ValueError):
-        cr.parse_sections("[other]\na\n")
+        cr.parse_sections(f"{header}\na\n")
 
 
 def test_shipped_core_paths_load_and_match():
     r = cr.load_core_regexes()
     assert cr.is_core("src/loader/lib/rsmm.lua", r)
-    assert cr.is_core("src/rsmm/cli/json_bridge.py", r)
+    assert cr.is_core("src/loader/lua/rsmm/camera.lua", r)
     assert cr.is_core("src/loader/src/hooks.cpp", r)
+    assert not cr.is_core("src/rsmm/cli/json_bridge.py", r)
+    assert not cr.is_core("src/rsmm/cli/apply_mods.py", r)
     assert not cr.is_core("src/rsmm/engine/terrain.py", r)
     assert not cr.is_core("data/contracts/r_surface.txt", r)
     s = cr.load_strict_regexes()
     assert cr.is_core("data/symbols.json", s)
     assert cr.is_core("src/loader/src/hooks.cpp", s)
     assert not cr.is_core("src/loader/lib/rsmm.lua", s)
+    b = cr.load_bypass_regexes()
+    assert cr.is_core("data/symbols.json", b)
+    assert cr.is_core("src/loader/include/hook_ui.h", b)
+    assert cr.is_core("src/loader/lib/engine_gen.lua", b)
+    assert not cr.is_core("src/loader/lib/rsmm.lua", b)
+    assert not cr.is_core("src/loader/lua/rsmm/camera.lua", b)
+
+
+# --- assess (required / bypassable) ---------------------------------------
+
+_CORE = rx("sdk/**", "native/**", "sym.json")
+_STRICT = rx("native/**", "sym.json")
+_BYPASS = rx("native/**", "sym.json", "sdk/*_gen.lua")
+
+
+@pytest.mark.parametrize("numstat,breaking,required,bypassable", [
+    ([("README.md", 50)], [], False, False),
+    ([("sdk/a.lua", 2)], [], False, False),                    # within the exemption
+    ([("native/h.cpp", 1)], [], True, True),                   # native only
+    ([("sym.json", 40), ("sdk/engine_gen.lua", 30)], [], True, True),  # a remap
+    ([("native/h.cpp", 1), ("sdk/a.lua", 2)], [], True, True),  # SDK part is exempt alone
+    ([("native/h.cpp", 1), ("sdk/a.lua", 3)], [], True, False),  # SDK part needs review
+    ([("sdk/a.lua", 30)], [], True, False),                    # SDK Lua is never bypassed
+    ([("native/h.cpp", 1)], ["r_surface: R.x removed"], True, False),  # contract break
+    ([], ["r_surface: R.x removed"], True, False),
+])
+def test_assess(numstat, breaking, required, bypassable):
+    reasons, bp = cr.assess(numstat, breaking, _CORE, _STRICT, _BYPASS)
+    assert bool(reasons) is required and bp is bypassable
 
 
 # --- diff size -----------------------------------------------------------
@@ -181,6 +218,93 @@ def test_cmd_approved_missing_codeowners_fails_closed(monkeypatch, capsys):
     assert "no owners" in capsys.readouterr().out
 
 
+# --- bypass label ----------------------------------------------------------
+
+def ev(event, actor, label=cr.BYPASS_LABEL):
+    return {"id": next(_id), "event": event, "actor": {"login": actor}, "label": {"name": label}}
+
+
+def test_bypass_applier_latest_label_event_wins():
+    assert cr.bypass_applier([]) is None
+    assert cr.bypass_applier([ev("labeled", "Ovilli")]) == "Ovilli"
+    assert cr.bypass_applier([ev("labeled", "Ovilli"), ev("unlabeled", "Ovilli")]) is None
+    assert cr.bypass_applier([ev("labeled", "Ovilli"), ev("unlabeled", "x"),
+                              ev("labeled", "x")]) == "x"
+    assert cr.bypass_applier([ev("labeled", "Ovilli", "other"),
+                              {"id": next(_id), "event": "assigned"}]) is None
+
+
+def _fake_gh(reviews, events):
+    def run(cmd):
+        return json.dumps(events if cmd[-1].endswith("/events") else reviews)
+    return run
+
+
+@pytest.mark.parametrize("author,events,bypass,code", [
+    ("Ovilli", [ev("labeled", "Ovilli")], True, 0),     # owner bypasses own PR
+    ("ovilli", [ev("labeled", "Ovilli")], True, 0),     # login case
+    ("Ovilli", [ev("labeled", "Ovilli")], False, 1),    # change not bypassable
+    ("Ovilli", [ev("labeled", "Skigim")], True, 1),     # another owner's label
+    ("someone", [ev("labeled", "someone")], True, 1),   # author is not an owner
+    ("someone", [ev("labeled", "Ovilli")], True, 1),    # owner labels another's PR
+    ("Ovilli", [ev("labeled", "Ovilli"), ev("unlabeled", "Ovilli")], True, 1),
+])
+def test_cmd_approved_bypass(monkeypatch, capsys, author, events, bypass, code):
+    monkeypatch.setattr(cr, "read_owners", lambda: OWNERS)
+    monkeypatch.setattr(cr, "_run", _fake_gh([], events))
+    assert cr.cmd_approved("o/n", 1, HEAD, author, allow_bypass=bypass) == code
+    if code == 0:
+        assert "bypassed" in capsys.readouterr().out
+
+
+# --- audit -----------------------------------------------------------------
+
+def test_audit_assignees_exclude_author():
+    assert cr.audit_assignees(OWNERS, "ovilli") == ["Skigim"]
+    assert cr.audit_assignees(OWNERS, "someone") == OWNERS
+
+
+def test_audit_issue_names_pr_and_reasons():
+    reasons = ["paths with no line exemption changed:", "  data/symbols.json (4)"]
+    title, body = cr.audit_issue(7, "Remap", "https://x/7", "Ovilli", HEAD, reasons)
+    assert title == "Post-merge core review: #7"
+    assert "@Ovilli" in body and HEAD[:12] in body and "data/symbols.json (4)" in body
+
+
+def _audit_gh(calls, reviews, existing=""):
+    pr = {"user": {"login": "Ovilli"}, "head": {"sha": HEAD}, "title": "t", "html_url": "u"}
+
+    def run(cmd):
+        calls.append(cmd)
+        if cmd[:3] == ["gh", "issue", "list"]:
+            return existing
+        if cmd[:3] == ["gh", "issue", "create"]:
+            return "https://x/issues/9"
+        if cmd[-1].endswith("/reviews"):
+            return json.dumps(reviews)
+        return json.dumps(pr)
+    return run
+
+
+@pytest.mark.parametrize("reasons,reviews,existing,opens", [
+    (["x"], [], "", True),
+    ([], [], "", False),                                   # needed no review
+    (["x"], [rv("Skigim", "APPROVED")], "", False),        # approved at its head
+    (["x"], [rv("Skigim", "APPROVED", OLD)], "", True),    # stale approval
+    (["x"], [], "Post-merge core review: #5\n", False),    # issue already open
+])
+def test_cmd_audit(monkeypatch, reasons, reviews, existing, opens):
+    calls = []
+    monkeypatch.setattr(cr, "read_owners", lambda: OWNERS)
+    monkeypatch.setattr(cr, "_assess_diff", lambda b, h: (reasons, True, []))
+    monkeypatch.setattr(cr, "_run", _audit_gh(calls, reviews, existing))
+    assert cr.cmd_audit("o/n", 5, "base", "head") == 0
+    created = [c for c in calls if c[:3] == ["gh", "issue", "create"]]
+    assert bool(created) is opens
+    if opens:
+        assert created[0][-2:] == ["--assignee", "Skigim"]
+
+
 # --- required (real git repo) -------------------------------------------
 
 def _git(cwd, *args):
@@ -233,6 +357,19 @@ def test_required_one_line_in_no_exemption_path(repo, capsys):
     cr.cmd_required("main", "pr")
     out = capsys.readouterr().out
     assert out.startswith("owner review required") and "no line exemption" in out
+
+
+def test_required_writes_bypassable_output(repo, tmp_path_factory, monkeypatch, capsys):
+    (repo / ".github" / "core-paths.txt").write_text(
+        "[no exemption, bypass]\ncore/a.txt\n", encoding="utf-8")
+    _git(repo, "commit", "-q", "-am", "bypass")
+    _git(repo, "checkout", "-q", "-b", "pr")
+    _commit(repo, "1\n2\n3\n4\n")
+    out_file = tmp_path_factory.mktemp("gh") / "output"
+    monkeypatch.setenv("GITHUB_OUTPUT", str(out_file))
+    cr.cmd_required("main", "pr")
+    assert out_file.read_text(encoding="utf-8").splitlines() == ["required=true", "bypassable=true"]
+    assert "core-bypass" in capsys.readouterr().out
 
 
 def test_required_non_core_change_ignored(repo, capsys):

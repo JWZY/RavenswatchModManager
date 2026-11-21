@@ -2,13 +2,23 @@
 
   required  --base SHA --head SHA          is owner review needed for this diff?
   approved  --repo O/N --pr N --head SHA   has an owner approved this head?
+            [--allow-bypass]               (or has its owner author bypassed it?)
+  audit     --repo O/N --pr N --base SHA --head SHA
+                                           open a post-merge review issue
   match     --files-from FILE              which listed paths are core?
   owners    [--exclude LOGIN]              logins from .github/CODEOWNERS
 
 Core paths live in .github/core-paths.txt (the glob rules are in that file's
 header). Review is required when `contract_pins.py breaking` prints anything
 or when core files change by more than EXEMPT_LINES lines in total, or when
-any path under the file's [no exemption] header changes at all.
+any path tagged `no exemption` changes at all.
+
+The review is bypassable when everything that requires it is under paths
+tagged `bypass`: nothing breaking, and the other core paths would not need
+review on their own. A code owner bypasses their own PR with the
+BYPASS_LABEL label; the label counts only when the PR's author applied it.
+A PR merged into main that needed review without an owner's approval of its
+head gets an issue (`audit`), assigned to the other owners.
 Stdlib only.
 """
 from __future__ import annotations
@@ -25,33 +35,41 @@ ROOT = Path(__file__).resolve().parents[1]
 CORE_PATHS = ROOT / ".github" / "core-paths.txt"
 CODEOWNERS = ROOT / ".github" / "CODEOWNERS"
 EXEMPT_LINES = 2
+BYPASS_LABEL = "core-bypass"
+AUDIT_TITLE = "Post-merge core review: #{pr}"
 
 _LOGIN_RE = re.compile(r"^@([A-Za-z0-9](?:[A-Za-z0-9-]*[A-Za-z0-9])?)$")
 
 
 # --- core paths --------------------------------------------------------------
 
-NO_EXEMPTION_HEADER = "[no exemption]"
+SECTION_TAGS = ("no exemption", "bypass")
 
 
-def parse_sections(text: str) -> tuple[list[str], list[str]]:
-    """-> (every core pattern, the patterns under the [no exemption] header)."""
-    out, strict, in_strict = [], [], False
+def parse_sections(text: str) -> tuple[list[str], list[str], list[str]]:
+    """-> (every core pattern, those tagged `no exemption`, those tagged `bypass`).
+
+    A header line such as ``[no exemption, bypass]`` tags the patterns below it,
+    up to the next header.
+    """
+    out, strict, bypass, tags = [], [], [], set()
     for n, raw in enumerate(text.splitlines(), 1):
         line = raw.strip()
         if not line or line.startswith("#"):
             continue
         if line.startswith("["):
-            if line != NO_EXEMPTION_HEADER:
+            tags = {t.strip() for t in line.strip("[]").split(",")}
+            if not line.endswith("]") or not tags <= set(SECTION_TAGS):
                 raise ValueError(f"core-paths line {n}: unknown section: {line}")
-            in_strict = True
             continue
         if line.startswith("!"):
             raise ValueError(f"core-paths line {n}: negation is not supported: {line}")
         out.append(line)
-        if in_strict:
+        if "no exemption" in tags:
             strict.append(line)
-    return out, strict
+        if "bypass" in tags:
+            bypass.append(line)
+    return out, strict, bypass
 
 
 def parse_patterns(text: str) -> list[str]:
@@ -105,6 +123,10 @@ def load_strict_regexes(path: Path | None = None) -> list[re.Pattern[str]]:
     return compile_patterns(parse_sections((path or CORE_PATHS).read_text(encoding="utf-8"))[1])
 
 
+def load_bypass_regexes(path: Path | None = None) -> list[re.Pattern[str]]:
+    return compile_patterns(parse_sections((path or CORE_PATHS).read_text(encoding="utf-8"))[2])
+
+
 # --- diff size ---------------------------------------------------------------
 
 def parse_numstat(raw: str) -> list[tuple[str, int]]:
@@ -125,6 +147,29 @@ def parse_numstat(raw: str) -> list[tuple[str, int]]:
 def core_changes(numstat: list[tuple[str, int]],
                  regexes: list[re.Pattern[str]]) -> list[tuple[str, int]]:
     return [(p, n) for p, n in numstat if is_core(p, regexes)]
+
+
+def assess(numstat: list[tuple[str, int]], breaking: list[str],
+           core_re: list[re.Pattern[str]], strict_re: list[re.Pattern[str]],
+           bypass_re: list[re.Pattern[str]]) -> tuple[list[str], bool]:
+    """-> (why owner review is required, [] if it is not; may it be bypassed?)."""
+    core = core_changes(numstat, core_re)
+    total = sum(n for _, n in core)
+    strict = core_changes(core, strict_re)
+    reasons = []
+    if breaking:
+        reasons.append("breaking contract changes:")
+        reasons += [f"  {ln}" for ln in breaking]
+    if strict:
+        reasons.append("paths with no line exemption changed:")
+        reasons += [f"  {p} ({n})" for p, n in strict]
+    if total > EXEMPT_LINES:
+        reasons.append(f"core files changed by {total} lines (limit {EXEMPT_LINES}):")
+        reasons += [f"  {p} ({n})" for p, n in core]
+    # Would the paths outside `bypass` need review on their own?
+    rest = [(p, n) for p, n in core if not is_core(p, bypass_re)]
+    rest_needs = bool(core_changes(rest, strict_re)) or sum(n for _, n in rest) > EXEMPT_LINES
+    return reasons, bool(reasons) and not breaking and not rest_needs
 
 
 # --- owners and approval -----------------------------------------------------
@@ -166,6 +211,39 @@ def approving_owners(reviews: list[dict], owners: list[str], author: str,
     ]
 
 
+def bypass_applier(events: list[dict], label: str = BYPASS_LABEL) -> str | None:
+    """Login that applied ``label``, if it is still on the PR (issue events)."""
+    who = None
+    for ev in sorted(events, key=lambda e: e.get("id", 0)):
+        if (ev.get("label") or {}).get("name") != label:
+            continue
+        if ev.get("event") == "labeled":
+            who = (ev.get("actor") or {}).get("login")
+        elif ev.get("event") == "unlabeled":
+            who = None
+    return who
+
+
+def audit_assignees(owners: list[str], author: str) -> list[str]:
+    """Owners other than the author (every owner when the author is not one)."""
+    return [o for o in owners if o.lower() != (author or "").lower()]
+
+
+def audit_issue(pr: int, title: str, url: str, author: str, head: str,
+                reasons: list[str]) -> tuple[str, str]:
+    body = "\n".join([
+        f"#{pr} ([{title}]({url})) by @{author} merged without an owner's approval "
+        f"of its head `{head[:12]}`. It needed one because:",
+        "",
+        "```",
+        *reasons,
+        "```",
+        "",
+        "Review the merged change, then close this issue or link the fix here.",
+    ])
+    return AUDIT_TITLE.format(pr=pr), body
+
+
 def load_paginated(raw: str) -> list[dict]:
     """``gh api --paginate`` prints one JSON array per page, back to back."""
     dec, idx, out = json.JSONDecoder(), 0, []
@@ -196,30 +274,31 @@ def _set_output(key: str, value: str) -> None:
 
 # --- commands ----------------------------------------------------------------
 
-def cmd_required(base: str, head: str) -> int:
+def _assess_diff(base: str, head: str) -> tuple[list[str], bool, list[tuple[str, int]]]:
     # Compare against where the branch left the base, like `git diff base...head`;
     # the contract snapshots are read from the working tree (the head checkout).
     fork = _run(["git", "merge-base", base, head]).strip()
     breaking = _run([sys.executable, str(ROOT / "scripts" / "contract_pins.py"),
                      "breaking", "--base", fork]).splitlines()
-    raw = _run(["git", "diff", "--numstat", "-z", "--no-renames", f"{fork}...{head}"])
-    core = core_changes(parse_numstat(raw), load_core_regexes())
+    numstat = parse_numstat(_run(["git", "diff", "--numstat", "-z", "--no-renames",
+                                  f"{fork}...{head}"]))
+    core_re = load_core_regexes()
+    reasons, bypassable = assess(numstat, breaking, core_re, load_strict_regexes(),
+                                 load_bypass_regexes())
+    return reasons, bypassable, core_changes(numstat, core_re)
+
+
+def cmd_required(base: str, head: str) -> int:
+    reasons, bypassable, core = _assess_diff(base, head)
     total = sum(n for _, n in core)
-    strict = core_changes(core, load_strict_regexes())
-    reasons = []
-    if breaking:
-        reasons.append("breaking contract changes:")
-        reasons += [f"  {ln}" for ln in breaking]
-    if strict:
-        reasons.append("paths with no line exemption changed:")
-        reasons += [f"  {p} ({n})" for p, n in strict]
-    if total > EXEMPT_LINES:
-        reasons.append(f"core files changed by {total} lines (limit {EXEMPT_LINES}):")
-        reasons += [f"  {p} ({n})" for p, n in core]
     _set_output("required", "true" if reasons else "false")
+    _set_output("bypassable", "true" if bypassable else "false")
     if reasons:
         print("owner review required")
         print("\n".join(reasons))
+        if bypassable:
+            print(f"bypassable: a code owner who authored this PR may apply the "
+                  f"{BYPASS_LABEL} label instead")
     else:
         print(f"owner review not required: {total} core line(s) changed "
               f"(limit {EXEMPT_LINES}), nothing breaking")
@@ -228,7 +307,8 @@ def cmd_required(base: str, head: str) -> int:
     return 0
 
 
-def cmd_approved(repo: str, pr: int, head: str, author: str | None) -> int:
+def cmd_approved(repo: str, pr: int, head: str, author: str | None,
+                 allow_bypass: bool = False) -> int:
     owners = read_owners()
     if author is None:
         author = _run(["gh", "api", f"repos/{repo}/pulls/{pr}", "--jq", ".user.login"]).strip()
@@ -237,12 +317,49 @@ def cmd_approved(repo: str, pr: int, head: str, author: str | None) -> int:
     if ok:
         print(f"approved at {head[:12]} by {', '.join(ok)}")
         return 0
+    if allow_bypass and author.lower() in {o.lower() for o in owners}:
+        events = load_paginated(_run(["gh", "api", "--paginate",
+                                      f"repos/{repo}/issues/{pr}/events"]))
+        applier = bypass_applier(events)
+        if applier and applier.lower() == author.lower():
+            print(f"bypassed by @{author} with the {BYPASS_LABEL} label; an issue for "
+                  f"the other owners' review opens when this merges into main")
+            return 0
     eligible = [f"@{o}" for o in owners if o.lower() != author.lower()]
     who = " or ".join(eligible) or "nobody (no owners in .github/CODEOWNERS)"
     print(f"owner review required: approval of {head[:12]} from {who} is needed. "
           f"The author (@{author}) cannot approve their own PR, and a new push "
           f"needs a fresh approval.")
+    if allow_bypass:
+        print(f"This change is bypassable: a code owner who authored it may apply "
+              f"the {BYPASS_LABEL} label instead.")
     return 1
+
+
+def cmd_audit(repo: str, pr: int, base: str, head: str) -> int:
+    reasons, _, _ = _assess_diff(base, head)
+    if not reasons:
+        print(f"#{pr} needed no owner review")
+        return 0
+    info = json.loads(_run(["gh", "api", f"repos/{repo}/pulls/{pr}"]))
+    author, pr_head = info["user"]["login"], info["head"]["sha"]
+    owners = read_owners()
+    reviews = load_paginated(_run(["gh", "api", "--paginate", f"repos/{repo}/pulls/{pr}/reviews"]))
+    ok = approving_owners(reviews, owners, author, pr_head)
+    if ok:
+        print(f"#{pr} was approved at {pr_head[:12]} by {', '.join(ok)}")
+        return 0
+    title, body = audit_issue(pr, info["title"], info["html_url"], author, pr_head, reasons)
+    found = _run(["gh", "issue", "list", "--repo", repo, "--state", "all",
+                  "--search", f'"{title}" in:title', "--json", "title", "--jq", ".[].title"])
+    if title in found.splitlines():
+        print(f"an issue titled {title!r} already exists")
+        return 0
+    cmd = ["gh", "issue", "create", "--repo", repo, "--title", title, "--body", body]
+    for login in audit_assignees(owners, author):
+        cmd += ["--assignee", login]
+    print(_run(cmd).strip())
+    return 0
 
 
 def cmd_match(files_from: Path) -> int:
@@ -271,6 +388,13 @@ def main(argv: list[str] | None = None) -> int:
     p.add_argument("--pr", required=True, type=int)
     p.add_argument("--head", required=True)
     p.add_argument("--author", help="PR author login (default: read from the PR)")
+    p.add_argument("--allow-bypass", action="store_true",
+                   help=f"accept the {BYPASS_LABEL} label from an owner who authored the PR")
+    p = sub.add_parser("audit")
+    p.add_argument("--repo", required=True)
+    p.add_argument("--pr", required=True, type=int)
+    p.add_argument("--base", required=True)
+    p.add_argument("--head", required=True)
     p = sub.add_parser("match")
     p.add_argument("--files-from", required=True, type=Path)
     p = sub.add_parser("owners")
@@ -279,7 +403,9 @@ def main(argv: list[str] | None = None) -> int:
     if args.cmd == "required":
         return cmd_required(args.base, args.head)
     if args.cmd == "approved":
-        return cmd_approved(args.repo, args.pr, args.head, args.author)
+        return cmd_approved(args.repo, args.pr, args.head, args.author, args.allow_bypass)
+    if args.cmd == "audit":
+        return cmd_audit(args.repo, args.pr, args.base, args.head)
     if args.cmd == "match":
         return cmd_match(args.files_from)
     return cmd_owners(args.exclude)
