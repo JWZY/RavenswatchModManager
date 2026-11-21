@@ -744,6 +744,62 @@ def apply_update(game_dir: Path, state: dict | None = None,
     return out
 
 
+def cache_update(game_dir: Path, state: dict,
+                 on_progress: Callable[[int, int], None] | None = None) -> dict:
+    """Download and verify the channel bundle into the cache WITHOUT planting it.
+
+    For a game dir that has no loader: `restore` removes it so a plain Steam
+    launch is vanilla, and planting it back here (the app runs this at start
+    and on focus) made the next plain Steam launch load the loader again. The
+    cache is what `install-loader` — run by every modded launch — replants from,
+    so the new version still reaches the next modded session.
+    """
+    manifest = state.get("_manifest") or fetch_manifest(state["remote_base"])
+    out = {k: v for k, v in state.items() if not k.startswith("_")}
+    out["status"] = "cached"
+    out["cached_version"] = int(manifest["loader_version"])
+    # Nothing planted means check() keeps answering update_available, and the
+    # app asks at start, on focus and before every modded launch: without this
+    # each of those re-downloaded a bundle already sitting in the cache.
+    if _cache_holds(game_dir, manifest):
+        return out
+    raw = _fetch(f"{state['remote_base']}/{BUNDLE_NAME}", limit=_MAX_BUNDLE_BYTES,
+                 on_progress=on_progress)
+    if _sha256(raw) != manifest["bundle_sha256"]:
+        raise LoaderUpdateError(
+            "bundle hash does not match the signed manifest — refusing to cache"
+        )
+    with _update_lock(game_dir), tempfile.TemporaryDirectory() as td:
+        payload = Path(td) / "payload"
+        _extract_bundle(raw, manifest, payload)
+        _cache_bundle(game_dir, manifest, payload)
+    return out
+
+
+def _cache_holds(game_dir: Path, manifest: dict) -> bool:
+    """True when the cache already holds exactly this signed manifest and a
+    payload whose every file matches it. The manifest bytes are compared, not
+    re-verified: they equal ones just fetched and verified from the channel.
+    The cached signature IS verified (replant_cached will need it to pass);
+    comparing it as text breaks on Windows newline translation."""
+    cache = cache_dir(game_dir)
+    try:
+        if (cache / MANIFEST_NAME).read_bytes() != manifest["_raw"]:
+            return False
+        minisign_verify(manifest["_raw"],
+                        (cache / SIGNATURE_NAME).read_text(encoding="utf-8"), public_key())
+        for f in manifest["files"]:
+            src = cache.joinpath("payload", *resolve_destination(f["path"]))
+            size = f.get("size")
+            if isinstance(size, int) and src.stat().st_size != size:
+                return False
+            if _sha256(src.read_bytes()) != f["sha256"]:
+                return False
+    except (OSError, MinisignError, LoaderUpdateError):
+        return False
+    return True
+
+
 def repair_plant(game_dir: Path, state: dict,
                  on_progress: Callable[[int, int], None] | None = None) -> dict | None:
     """Re-plant a loader the channel check found stale (`state["plant_stale"]`).

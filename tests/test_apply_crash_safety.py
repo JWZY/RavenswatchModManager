@@ -101,6 +101,27 @@ def test_restore_drops_an_added_file_a_crashed_apply_left_behind(install, capsys
     assert not added.exists(), "orphaned added file should be dropped by restore"
 
 
+def test_restore_after_a_game_update_never_reinstates_old_backups(install, capsys):
+    """Restore is the update repair (desktop banner, doctor --fix). Skipping the
+    pre-update backups is not enough: it also recorded the new version, so the
+    NEXT restore saw matching versions and copied the old bytes back over the
+    patched file. The backups and their state must go with the first restore."""
+    args = SimpleNamespace(dry_run=False)
+    cooking, game = install.cooking, install.game_dir
+    dest = cooking / "a" / "b.bin"
+    assert apply_mods.cmd_apply(args, install.repo, cooking, game) == 0
+    assert dest.read_bytes() == b"MOD CONTENT"
+
+    (game / "Ravenswatch.exe").write_bytes(b"new build")   # Steam patch...
+    dest.write_bytes(b"VANILLA FROM THE UPDATE")           # ...rewrote the file
+
+    for _ in range(2):
+        assert apply_mods.cmd_restore_all(args, install.repo, cooking, game) == 0
+        assert dest.read_bytes() == b"VANILLA FROM THE UPDATE"
+    capsys.readouterr()
+    assert not list(cooking.rglob("*" + apply_mods.BACKUP_SUFFIX))
+
+
 def test_journal_survives_a_torn_final_line(install):
     cooking = install.cooking
     journal = apply_mods.Journal(cooking)
@@ -596,3 +617,26 @@ def test_plan_apply_restores_a_refused_file_an_older_release_applied(tmp_path, c
     adds, rms, _regs, _syn = _plan_root(tmp_path, "_root/" + rel.replace("\\", "/"), state)
     assert adds == []
     assert rms == [enc]
+
+
+# --- what the start-up self-heal reads (rsmm.cli.self_heal) ------------------
+
+
+def test_apply_records_whether_it_was_for_a_launch(install, capsys):
+    """Only a LAUNCH's apply may be undone unattended; "Apply mods" is the
+    player's choice. Restore clears the record so the self-heal never repeats."""
+    state = _state_path(install.cooking)
+    args = SimpleNamespace(dry_run=False)
+    assert apply_mods.cmd_apply(args, install.repo, install.cooking, install.game_dir) == 0
+    assert json.loads(state.read_text())["applied_for"] == "manual"
+
+    args = SimpleNamespace(dry_run=False, for_launch=True)
+    assert apply_mods.cmd_apply(args, install.repo, install.cooking, install.game_dir) == 0
+    data = json.loads(state.read_text())
+    assert data["applied_for"] == "launch" and "steam_buildid" in data
+
+    rc = apply_mods.cmd_restore_all(SimpleNamespace(dry_run=False), install.repo,
+                                    install.cooking, install.game_dir)
+    assert rc == 0
+    data = json.loads(state.read_text())
+    assert "applied_for" not in data and "steam_buildid" not in data
