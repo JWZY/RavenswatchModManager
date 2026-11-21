@@ -60,12 +60,24 @@ def test_parse_patterns_skips_comments_and_rejects_negation():
         cr.parse_patterns("!a/b\n")
 
 
+def test_parse_sections_splits_no_exemption():
+    allp, strict = cr.parse_sections("a/**\n[no exemption]\n# c\nb.json\n")
+    assert allp == ["a/**", "b.json"] and strict == ["b.json"]
+    with pytest.raises(ValueError):
+        cr.parse_sections("[other]\na\n")
+
+
 def test_shipped_core_paths_load_and_match():
     r = cr.load_core_regexes()
     assert cr.is_core("src/loader/lib/rsmm.lua", r)
     assert cr.is_core("src/rsmm/cli/json_bridge.py", r)
+    assert cr.is_core("src/loader/src/hooks.cpp", r)
     assert not cr.is_core("src/rsmm/engine/terrain.py", r)
     assert not cr.is_core("data/contracts/r_surface.txt", r)
+    s = cr.load_strict_regexes()
+    assert cr.is_core("data/symbols.json", s)
+    assert cr.is_core("src/loader/src/hooks.cpp", s)
+    assert not cr.is_core("src/loader/lib/rsmm.lua", s)
 
 
 # --- diff size -----------------------------------------------------------
@@ -210,6 +222,17 @@ def test_required_large_core_change(repo, capsys):
     assert cr.cmd_required("main", "pr") == 0
     out = capsys.readouterr().out
     assert out.startswith("owner review required") and "core/a.txt (6)" in out
+
+
+def test_required_one_line_in_no_exemption_path(repo, capsys):
+    (repo / ".github" / "core-paths.txt").write_text(
+        "core/**\n[no exemption]\ncore/a.txt\n", encoding="utf-8")
+    _git(repo, "commit", "-q", "-am", "strict")
+    _git(repo, "checkout", "-q", "-b", "pr")
+    _commit(repo, "1\n2\n3\n4\n")  # 1 line only
+    cr.cmd_required("main", "pr")
+    out = capsys.readouterr().out
+    assert out.startswith("owner review required") and "no line exemption" in out
 
 
 def test_required_non_core_change_ignored(repo, capsys):

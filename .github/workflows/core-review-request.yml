@@ -1,7 +1,7 @@
 name: Request core review
 
 # Asks the owners to review a pull request that touches core paths, so the
-# `core review` check in ci.yml has someone to wait for.
+# `core review` check in core-review.yml has someone to wait for.
 #
 # pull_request_target runs from the base branch with a write token, so this
 # file never checks out or runs the PR's code: the default checkout is the base

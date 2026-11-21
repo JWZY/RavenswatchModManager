@@ -1,8 +1,10 @@
 # Core paths: a pull request that changes these by more than 2 lines in total
 # (added + removed, all paths together) needs an owner's approval of its
-# current head. The `core review` job in ci.yml reads this file through
-# scripts/core_review.py. A breaking change to a pinned contract
-# (scripts/contract_pins.py breaking) needs the review whatever its size.
+# current head. The `core review` job in core-review.yml reads this file
+# through scripts/core_review.py. A breaking change to a pinned contract
+# (scripts/contract_pins.py breaking) needs the review whatever its size, and
+# so does any change to a path listed under the [no exemption] header at the
+# end (those paths are core too).
 #
 # Glob semantics, one pattern per line, paths relative to the repo root with
 # forward slashes (gitignore style):
@@ -16,6 +18,7 @@
 #   trailing "/" the directory and everything under it
 #   a pattern that matches a directory matches every file under it
 # "!" negation is not supported; a line starting with it is an error.
+# "[no exemption]" is the only section header; any other "[" line is an error.
 #
 # Ring 1 (trust chain) is gated by CODEOWNERS with no exemption and is not
 # listed here. The pin snapshots data/contracts/*.txt are not core: additive
@@ -25,11 +28,10 @@
 src/loader/lib/**
 src/loader/lua/**
 
-# Native code and symbols
-src/loader/src/**
+# Native headers and exports (native sources and symbols are under
+# [no exemption] below)
 src/loader/include/**
 src/loader/exports/**
-data/symbols.json
 
 # Manifest spec, json_bridge and the commands around it
 src/rsmm/sdk/manifest_spec.py
@@ -41,3 +43,9 @@ packages/schemas/src/mod.ts
 
 # Deprecated aliases excuse removals from the pins
 data/contracts/deprecated.txt
+
+# One changed line here (a symbol VA, a native hook) can break every user, so
+# any change needs the review.
+[no exemption]
+src/loader/src/**
+data/symbols.json

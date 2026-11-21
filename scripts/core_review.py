@@ -7,7 +7,8 @@
 
 Core paths live in .github/core-paths.txt (the glob rules are in that file's
 header). Review is required when `contract_pins.py breaking` prints anything
-or when core files change by more than EXEMPT_LINES lines in total.
+or when core files change by more than EXEMPT_LINES lines in total, or when
+any path under the file's [no exemption] header changes at all.
 Stdlib only.
 """
 from __future__ import annotations
@@ -30,16 +31,31 @@ _LOGIN_RE = re.compile(r"^@([A-Za-z0-9](?:[A-Za-z0-9-]*[A-Za-z0-9])?)$")
 
 # --- core paths --------------------------------------------------------------
 
-def parse_patterns(text: str) -> list[str]:
-    out = []
+NO_EXEMPTION_HEADER = "[no exemption]"
+
+
+def parse_sections(text: str) -> tuple[list[str], list[str]]:
+    """-> (every core pattern, the patterns under the [no exemption] header)."""
+    out, strict, in_strict = [], [], False
     for n, raw in enumerate(text.splitlines(), 1):
         line = raw.strip()
         if not line or line.startswith("#"):
             continue
+        if line.startswith("["):
+            if line != NO_EXEMPTION_HEADER:
+                raise ValueError(f"core-paths line {n}: unknown section: {line}")
+            in_strict = True
+            continue
         if line.startswith("!"):
             raise ValueError(f"core-paths line {n}: negation is not supported: {line}")
         out.append(line)
-    return out
+        if in_strict:
+            strict.append(line)
+    return out, strict
+
+
+def parse_patterns(text: str) -> list[str]:
+    return parse_sections(text)[0]
 
 
 def _glob_to_regex(pat: str) -> re.Pattern[str]:
@@ -83,6 +99,10 @@ def is_core(path: str, regexes: list[re.Pattern[str]]) -> bool:
 
 def load_core_regexes(path: Path | None = None) -> list[re.Pattern[str]]:
     return compile_patterns(parse_patterns((path or CORE_PATHS).read_text(encoding="utf-8")))
+
+
+def load_strict_regexes(path: Path | None = None) -> list[re.Pattern[str]]:
+    return compile_patterns(parse_sections((path or CORE_PATHS).read_text(encoding="utf-8"))[1])
 
 
 # --- diff size ---------------------------------------------------------------
@@ -185,10 +205,14 @@ def cmd_required(base: str, head: str) -> int:
     raw = _run(["git", "diff", "--numstat", "-z", "--no-renames", f"{fork}...{head}"])
     core = core_changes(parse_numstat(raw), load_core_regexes())
     total = sum(n for _, n in core)
+    strict = core_changes(core, load_strict_regexes())
     reasons = []
     if breaking:
         reasons.append("breaking contract changes:")
         reasons += [f"  {ln}" for ln in breaking]
+    if strict:
+        reasons.append("paths with no line exemption changed:")
+        reasons += [f"  {p} ({n})" for p, n in strict]
     if total > EXEMPT_LINES:
         reasons.append(f"core files changed by {total} lines (limit {EXEMPT_LINES}):")
         reasons += [f"  {p} ({n})" for p, n in core]
