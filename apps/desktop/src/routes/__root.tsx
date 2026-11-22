@@ -569,7 +569,7 @@ function RootLayout() {
               <main
                 ref={mainRef}
                 // Clear the 7rem footer fade, with another 1rem below the last item.
-                className="rsmm-main min-h-0 flex-1 overflow-y-auto px-app pt-app pb-32"
+                className="rsmm-main min-h-0 flex-1 overflow-y-auto [scrollbar-gutter:stable] px-app pt-app pb-32"
               >
                 <div className="w-full animate-page-in">
                   <Outlet />
