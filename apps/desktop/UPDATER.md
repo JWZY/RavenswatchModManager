@@ -15,8 +15,10 @@ manifest that the client polls for new versions.
    This produces two files. Keep `~/.tauri/rsmm.key` private; the matching
    `.pub` file goes into the app config.
 
-2. **Set the public key in `tauri.conf.json`.** Replace the empty
-   `plugins.updater.pubkey` value with the contents of the `.pub` file.
+2. **Set the public key in `tauri.windows.conf.json` and `tauri.linux.conf.json`.**
+   Replace `plugins.updater.pubkey` in both with the contents of the `.pub` file.
+   The updater config lives only in these per-platform files, which Tauri merges
+   over `tauri.conf.json`.
 
 3. **Add GitHub repo secrets:**
 

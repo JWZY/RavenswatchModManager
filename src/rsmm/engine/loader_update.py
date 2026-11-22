@@ -75,9 +75,9 @@ DEFAULT_REMOTE_BASE = (
 )
 
 # Same minisign key that signs the desktop bundles — the pubkey in
-# apps/desktop/src-tauri/tauri.conf.json. Embedded rather than read from
-# that file because tauri.conf.json is not bundled into the frozen
-# sidecar. tests/test_loader_update.py asserts the two stay identical.
+# apps/desktop/src-tauri/tauri.{windows,linux}.conf.json. Embedded rather
+# than read from those files because the Tauri config is not bundled into
+# the frozen sidecar. tests/test_loader_update.py asserts the two stay identical.
 PUBLIC_KEY = (
     "untrusted comment: minisign public key: C2FF9DF953A0E966\n"
     "RWRm6aBT+Z3/wpi/ys0CTprsRAFvzG+zsYddJUHzlqak/Krvwy4AmeTG\n"

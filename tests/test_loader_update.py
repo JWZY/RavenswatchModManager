@@ -105,14 +105,19 @@ def test_verify_rejects_rewritten_trusted_comment():
 
 def test_shipped_pubkey_matches_the_desktop_updater_key():
     """The channel reuses the key that signs the desktop bundles. If the two
-    drift, every user's update silently starts failing verification."""
-    conf = json.loads(
-        (Path(__file__).resolve().parents[1]
-         / "apps/desktop/src-tauri/tauri.conf.json").read_text(encoding="utf-8")
-    )
-    tauri_pk = conf["plugins"]["updater"]["pubkey"]
-    assert (minisign.PublicKey.parse(tauri_pk)
-            == minisign.PublicKey.parse(lu.PUBLIC_KEY))
+    drift, every user's update silently starts failing verification. The
+    updater config lives in the per-platform files, which Tauri merges over
+    tauri.conf.json, so the base file must not carry one."""
+    tauri_dir = Path(__file__).resolve().parents[1] / "apps/desktop/src-tauri"
+    base = json.loads((tauri_dir / "tauri.conf.json").read_text(encoding="utf-8"))
+    assert "updater" not in base.get("plugins", {})
+    for platform in ("windows", "linux"):
+        conf = json.loads(
+            (tauri_dir / f"tauri.{platform}.conf.json").read_text(encoding="utf-8")
+        )
+        tauri_pk = conf["plugins"]["updater"]["pubkey"]
+        assert (minisign.PublicKey.parse(tauri_pk)
+                == minisign.PublicKey.parse(lu.PUBLIC_KEY)), platform
 
 
 # --- destination allowlist ------------------------------------------------

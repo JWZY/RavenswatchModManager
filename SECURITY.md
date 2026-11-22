@@ -42,7 +42,7 @@ the following as P0 or P1.
   `shell:allow-spawn` entry, a looser argument scope, or a new plugin permission.
   The webview may only run `rsmm <args>`.
 - Building a sidecar argument from mod or registry text without validating it.
-- Changes to updater endpoints or the updater public key in `tauri.conf.json`.
+- Changes to updater endpoints or the updater public key in `tauri.windows.conf.json` or `tauri.linux.conf.json`.
 
 **API and registry** (`apps/api/`; access model in `apps/api/SECURITY.md`)
 
