@@ -8,7 +8,8 @@
 /src/rsmm/sdk/archive.py                   @Ovilli @Skigim
 /src/rsmm/sdk/repo.py                      @Ovilli @Skigim
 /apps/desktop/src-tauri/src/cli_channel.rs @Ovilli @Skigim
-/apps/desktop/src-tauri/tauri.conf.json    @Ovilli @Skigim
+/apps/desktop/src-tauri/tauri.windows.conf.json @Ovilli @Skigim
+/apps/desktop/src-tauri/tauri.linux.conf.json   @Ovilli @Skigim
 
 # Release and publish
 /.github/workflows/publish-cli.yml         @Ovilli @Skigim

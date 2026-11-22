@@ -1,0 +1,13 @@
+{
+  "$schema": "https://schema.tauri.app/config/2",
+  "plugins": {
+    "updater": {
+      "active": true,
+      "dialog": false,
+      "endpoints": [
+        "https://github.com/Ravenswatch-Modding/RavenswatchModManager/releases/latest/download/latest.json"
+      ],
+      "pubkey": "dW50cnVzdGVkIGNvbW1lbnQ6IG1pbmlzaWduIHB1YmxpYyBrZXk6IEMyRkY5REY5NTNBMEU5NjYKUldSbTZhQlQrWjMvd3BpL3lzMENUcHJzUkFGdnpHK3pzWWRkSlVIemxxYWsvS3J2d3k0QW1lVEcK"
+    }
+  }
+}

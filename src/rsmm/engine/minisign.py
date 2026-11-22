@@ -8,7 +8,7 @@ and Ed25519 verification is implemented here from RFC 8032.
 
 Verification only — this module can never produce a signature. Signing is
 done by `tauri signer sign` in CI, with the same keypair that signs the
-desktop bundles (pubkey in `apps/desktop/src-tauri/tauri.conf.json`).
+desktop bundles (pubkey in `apps/desktop/src-tauri/tauri.{windows,linux}.conf.json`).
 
 Minisign wire format
 --------------------
@@ -145,7 +145,7 @@ def _unwrap_b64(text: str, marker: str) -> str:
     """Undo the extra base64 layer Tauri wraps keys and signatures in.
 
     `tauri signer sign` writes its `.sig` as base64 of the whole minisign
-    file, and `tauri.conf.json` stores the public key the same way. Plain
+    file, and the Tauri config stores the public key the same way. Plain
     minisign files pass through untouched.
     """
     stripped = text.strip()
@@ -169,7 +169,7 @@ class PublicKey:
 
         Also accepts the bare base64 line on its own, and the whole file
         wrapped in one more layer of base64 — which is how Tauri stores it
-        in `tauri.conf.json`.
+        in the Tauri config.
         """
         text = _unwrap_b64(text.strip(), "untrusted comment:")
         lines = [ln for ln in text.splitlines() if ln.strip()]
