@@ -2831,6 +2831,7 @@ def cmd_apply(args, repo: Path, cooking: Path, game_dir: Path) -> int:
                 state.save()
             except OSError as e:
                 print(f"  [warn] failed to write state: {e}", file=sys.stderr)
+                return 1
         return 0
 
     if additions or removals:
@@ -2918,6 +2919,7 @@ def cmd_apply(args, repo: Path, cooking: Path, game_dir: Path) -> int:
             journal.clear()
         except OSError as e:
             print(f"  [warn] failed to write state: {e}", file=sys.stderr)
+            return 1
     return 0
 
 
