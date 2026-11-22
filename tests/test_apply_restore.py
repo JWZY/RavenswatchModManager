@@ -152,6 +152,59 @@ def test_apply_skips_unchanged_override(tmp_path, monkeypatch, capsys):
     assert bak.read_bytes() == b"VANILLA CONTENT"
 
 
+def _fail_state_save(monkeypatch, apply_mods):
+    def boom(self):
+        raise OSError("disk full")
+    monkeypatch.setattr(apply_mods.State, "save", boom)
+
+
+def test_apply_fails_when_state_cannot_be_written(tmp_path, monkeypatch, capsys):
+    """The files are installed, but the state write failed: apply must exit
+    non-zero so the app does not report success. The journal stays behind for
+    the next run to adopt."""
+    from rsmm.cli import apply_mods
+
+    repo, mods_dir, asset_map, game_dir = _make_fake_repo(tmp_path)
+    cooking = game_dir / "DarkTalesResources" / "_Cooking"
+
+    monkeypatch.setattr(apply_mods, "MODS_DIR", mods_dir)
+    monkeypatch.setattr(apply_mods, "ASSET_MAP_JSON", asset_map)
+    import rsmm.engine.find_iyg as find_iyg
+    monkeypatch.setattr(find_iyg, "main", lambda *a, **k: 0)
+    _fail_state_save(monkeypatch, apply_mods)
+
+    rc = apply_mods.cmd_apply(SimpleNamespace(dry_run=False), repo, cooking, game_dir)
+    err = capsys.readouterr().err
+    assert rc == 1
+    assert "[warn] failed to write state: disk full" in err
+    assert (cooking / "a" / "b.bin").read_bytes() == b"MOD CONTENT"
+    assert (cooking / apply_mods.JOURNAL_FILE_NAME).is_file()
+
+
+def test_in_sync_apply_fails_when_state_cannot_be_written(tmp_path, monkeypatch, capsys):
+    """Same contract on the "already in sync" path."""
+    from rsmm.cli import apply_mods
+
+    repo, mods_dir, asset_map, game_dir = _make_fake_repo(tmp_path)
+    cooking = game_dir / "DarkTalesResources" / "_Cooking"
+
+    monkeypatch.setattr(apply_mods, "MODS_DIR", mods_dir)
+    monkeypatch.setattr(apply_mods, "ASSET_MAP_JSON", asset_map)
+    import rsmm.engine.find_iyg as find_iyg
+    monkeypatch.setattr(find_iyg, "main", lambda *a, **k: 0)
+
+    args = SimpleNamespace(dry_run=False)
+    assert apply_mods.cmd_apply(args, repo, cooking, game_dir) == 0
+    capsys.readouterr()
+
+    _fail_state_save(monkeypatch, apply_mods)
+    rc = apply_mods.cmd_apply(args, repo, cooking, game_dir)
+    captured = capsys.readouterr()
+    assert "Mods already in sync." in captured.out
+    assert rc == 1
+    assert "[warn] failed to write state: disk full" in captured.err
+
+
 def test_texture_donor_reads_the_vanilla_backup(tmp_path, monkeypatch):
     """A texture donor must be the game's ORIGINAL bytes, not the live file.
 
