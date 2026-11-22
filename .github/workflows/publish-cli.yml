@@ -33,16 +33,18 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  build:
-    strategy:
-      fail-fast: true
-      matrix:
-        platform: [ubuntu-22.04, windows-latest]
-    runs-on: ${{ matrix.platform }}
+  # CI on main already ran every suite on this commit (both platforms); ship
+  # only if it went green, rather than re-running a subset here. Its own job so
+  # the Windows build runner is not billed for idling while CI finishes.
+  ci-green:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      actions: read
     steps:
       # The channel ships what main holds, and main only takes reviewed
       # changes, so a dispatch from any other ref is refused before anything
-      # builds. publish needs this job, so it never runs either.
+      # builds or waits on CI. build and publish need this job, so neither runs.
       - name: Refuse refs other than main
         if: github.ref != 'refs/heads/main'
         shell: bash
@@ -50,6 +52,24 @@ jobs:
           echo "::error::Publish CLI channel runs on main only (dispatched on $GITHUB_REF)."
           exit 1
 
+      - uses: actions/checkout@v5
+        with:
+          ref: ${{ github.sha }}
+      - name: CI green on this commit
+        timeout-minutes: 45
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_REPO: ${{ github.repository }}
+        run: scripts/ci_green.sh "${{ github.sha }}"
+
+  build:
+    needs: ci-green
+    strategy:
+      fail-fast: true
+      matrix:
+        platform: [ubuntu-22.04, windows-latest]
+    runs-on: ${{ matrix.platform }}
+    steps:
       # Pinned to the dispatched commit so every platform builds the same one
       # and publish can record it as `built_from` (main may move meanwhile).
       - uses: actions/checkout@v5
@@ -90,12 +110,6 @@ jobs:
       - name: Validate loader DLL
         shell: bash
         run: python scripts/validate_loader_dll.py dist/winhttp.dll
-
-      - name: Test the CLI
-        if: matrix.platform == 'ubuntu-22.04'
-        run: |
-          pip install -e ".[dev]"
-          python -m pytest -n auto -m "not slow"
 
       # Same bundle definition and post-build checks as the app's sidecar.
       - name: Build onedir CLI and check it
