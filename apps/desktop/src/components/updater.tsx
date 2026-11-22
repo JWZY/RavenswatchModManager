@@ -353,7 +353,7 @@ export function UpdaterBanner() {
             <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-crimson/20">
               <Download className="h-8 w-8 text-crimson" />
             </div>
-            <h2 id="update-ready-title" className="font-fraktur text-3xl text-crimson">
+            <h2 id="update-ready-title" className="font-fraktur text-2xl text-crimson">
               {t('Action Needed: Update Your Launcher!')}
             </h2>
             <p className="mt-2 font-serif-italic text-parchment">
@@ -439,7 +439,7 @@ export function UpdaterBanner() {
             <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full border border-gilt/40 bg-gilt/10">
               <Check className="h-8 w-8 text-gilt" />
             </div>
-            <h2 id="update-restart-title" className="font-fraktur text-3xl text-crimson">
+            <h2 id="update-restart-title" className="font-fraktur text-2xl text-crimson">
               {t('Ready to restart')}
             </h2>
             <p className="mt-2 font-serif-italic text-parchment">

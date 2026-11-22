@@ -137,27 +137,23 @@ function BrowsePage() {
   return (
     <div className="space-y-app">
       <div className="flex flex-wrap items-center gap-3">
-        <div className="flex items-center gap-2">
-          {/* `aria-pressed`, like every other toggle group in the app: colour
-              alone was the only signal that one of these two was active. */}
-          <Button
+        <div className="flex items-center gap-5">
+          <button
             type="button"
-            size="sm"
             aria-pressed={tab === 'mods'}
-            variant={tab === 'mods' ? 'primary' : 'default'}
+            className={`min-h-[var(--icon-button-size)] rounded font-fraktur text-2xl leading-none transition-colors duration-150 ${tab === 'mods' ? 'text-parchment' : 'text-ash hover:text-white'}`}
             onClick={() => setTab('mods')}
           >
             {t('Mods')}
-          </Button>
-          <Button
+          </button>
+          <button
             type="button"
-            size="sm"
             aria-pressed={tab === 'collections'}
-            variant={tab === 'collections' ? 'primary' : 'default'}
+            className={`min-h-[var(--icon-button-size)] rounded font-fraktur text-2xl leading-none transition-colors duration-150 ${tab === 'collections' ? 'text-parchment' : 'text-ash hover:text-white'}`}
             onClick={() => setTab('collections')}
           >
             {t('Collections')}
-          </Button>
+          </button>
         </div>
         <div className="min-w-[260px] flex-1">
           <RegistrySearchBar
@@ -175,7 +171,11 @@ function BrowsePage() {
             onOpenFilters={tab === 'mods' ? () => setFiltersOpen(true) : undefined}
           />
         </div>
-        {tab === 'mods' ? (
+        {/* Preserve the controls' space so the search bar stays put on both tabs. */}
+        <div
+          className={tab === 'collections' ? 'invisible' : undefined}
+          inert={tab === 'collections'}
+        >
           <RegistryResultsControls
             sort={sort}
             view={view}
@@ -192,7 +192,7 @@ function BrowsePage() {
             onSortChange={setSort}
             onViewChange={(nextView) => update({ browseView: nextView })}
           />
-        ) : null}
+        </div>
       </div>
 
       <div aria-busy={isLoading} className="min-w-0 space-y-4">

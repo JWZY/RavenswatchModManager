@@ -398,7 +398,7 @@ export function SectionHeader({
         <h2
           className={cn(
             'font-fraktur leading-none text-parchment',
-            compact ? 'text-xl' : 'text-3xl',
+            compact ? 'text-xl' : 'text-2xl',
           )}
         >
           {title}
