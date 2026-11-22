@@ -1,8 +1,13 @@
 'use client';
 
 import { createContext, useContext, useEffect, useRef, useState } from 'react';
-import type { ComponentProps, ReactNode } from 'react';
-import { cacheableImageUrl, imageCache } from '../lib/image-cache';
+import type { ComponentProps, ReactNode, SyntheticEvent } from 'react';
+import {
+  type ThumbnailWidth,
+  cacheableImageUrl,
+  imageCache,
+  thumbnailUrl,
+} from '../lib/image-cache';
 
 const ImageCacheContext = createContext(false);
 
@@ -11,7 +16,29 @@ export function ImageCacheProvider({ children }: { children: ReactNode }) {
   return <ImageCacheContext.Provider value>{children}</ImageCacheContext.Provider>;
 }
 
-export function CachedImage({ src, alt, loading, onError, ...props }: ComponentProps<'img'>) {
+export function CachedImage({
+  thumb,
+  ...props
+}: ComponentProps<'img'> & {
+  /** Show a resized copy this wide; falls back to the original if it fails. */
+  thumb?: ThumbnailWidth;
+}) {
+  const original = props.src;
+  const thumbnail =
+    thumb && typeof original === 'string' ? thumbnailUrl(original, thumb) : original;
+  const [failedThumb, setFailedThumb] = useState<string>();
+  if (thumbnail === original || failedThumb === thumbnail) return <PlainImage {...props} />;
+  return (
+    <PlainImage
+      {...props}
+      key={thumbnail}
+      src={thumbnail}
+      onError={() => setFailedThumb(thumbnail)}
+    />
+  );
+}
+
+function PlainImage({ src, alt, loading, onError, ...props }: ComponentProps<'img'>) {
   const enabled = useContext(ImageCacheContext);
   const cached = enabled && typeof src === 'string' && cacheableImageUrl(src);
   const element = useRef<HTMLImageElement>(null);
@@ -49,6 +76,15 @@ export function CachedImage({ src, alt, loading, onError, ...props }: ComponentP
   }, [cached, src, loading]);
 
   const displaySrc = cached ? (resolved?.source === src ? resolved.url : undefined) : src;
+  // A server-rendered <img> can fail before React hydrates, and React never
+  // replays that error event. Without this, a failed thumbnail on the website
+  // never falls back to the original and the card stays blank.
+  // biome-ignore lint/correctness/useExhaustiveDependencies: run once per source; onError is a fresh closure each render
+  useEffect(() => {
+    const img = element.current;
+    if (!cached && img?.complete && img.naturalWidth === 0 && img.getAttribute('src'))
+      onError?.({ currentTarget: img, target: img } as unknown as SyntheticEvent<HTMLImageElement>);
+  }, [displaySrc]);
   return (
     <img
       {...props}

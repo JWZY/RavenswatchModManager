@@ -3,6 +3,7 @@ import {
   type ImageEntry,
   cacheableImageUrl,
   createImageCache,
+  thumbnailUrl,
 } from '@rsmm/ui/image-cache';
 import { describe, expect, it, vi } from 'vitest';
 
@@ -24,6 +25,31 @@ function setup() {
 }
 
 describe('persistent WebView images', () => {
+  it('downloads at most three images at once so a full page cannot flood the network', async () => {
+    const { download, cache } = setup();
+    let active = 0;
+    let peak = 0;
+    const gates: (() => void)[] = [];
+    download.mockImplementation(async () => {
+      active++;
+      peak = Math.max(peak, active);
+      await new Promise<void>((go) => gates.push(go));
+      active--;
+      return fresh;
+    });
+    let settled = 0;
+    const loads = Array.from({ length: 8 }, (_, i) =>
+      cache.load(`${url}?n=${i}`, vi.fn()).finally(() => settled++),
+    );
+    while (settled < 8) {
+      await new Promise((r) => setTimeout(r, 0));
+      gates.shift()?.();
+    }
+    await expect(Promise.all(loads)).resolves.toEqual(Array(8).fill(fresh));
+    expect(download).toHaveBeenCalledTimes(8);
+    expect(peak).toBe(3);
+  });
+
   it('reuses bytes after a new cache instance (app restart) without downloading', async () => {
     const { store, download, cache, now } = setup();
     await expect(cache.load(url, vi.fn())).resolves.toBe(fresh);
@@ -96,5 +122,38 @@ describe('persistent WebView images', () => {
     expect(cacheableImageUrl(src)).toBe(false);
     await expect(cache.load(src, vi.fn())).resolves.toBeUndefined();
     expect(download).not.toHaveBeenCalled();
+  });
+});
+
+describe('registry thumbnails', () => {
+  const upload = 'https://s3-ravenswatch.ovilli.de/ravenswatch-mods/mod-images/x/a b.png';
+
+  it('routes registry uploads through the rsmm.me optimizer and caches the result', () => {
+    vi.stubGlobal('__TAURI_INTERNALS__', {});
+    const thumb = thumbnailUrl(upload, 640);
+    vi.unstubAllGlobals();
+    expect(thumb).toBe(`https://rsmm.me/_next/image?url=${encodeURIComponent(upload)}&w=640&q=75`);
+    expect(cacheableImageUrl(thumb)).toBe(true);
+  });
+
+  it('resizes on the page origin outside the desktop WebView (website, previews)', () => {
+    expect(thumbnailUrl(upload, 384)).toBe(
+      `/_next/image?url=${encodeURIComponent(upload)}&w=384&q=75`,
+    );
+  });
+
+  it('leaves other hosts, bundled art and malformed URLs untouched', () => {
+    for (const src of [
+      '/logo.png',
+      'https://evil.test/x.png',
+      'not a url',
+      'http://cdn.rsmm.me/x.png',
+    ])
+      expect(thumbnailUrl(src, 384)).toBe(src);
+  });
+
+  it('caches only the optimizer path on rsmm.me', () => {
+    expect(cacheableImageUrl('https://rsmm.me/api/whatever.png')).toBe(false);
+    expect(cacheableImageUrl('https://rsmm.me:8443/_next/image?url=x')).toBe(false);
   });
 });

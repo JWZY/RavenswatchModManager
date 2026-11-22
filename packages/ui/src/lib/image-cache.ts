@@ -3,6 +3,9 @@ export const IMAGE_MAX_AGE = 24 * 60 * 60 * 1000;
 const MAX_IMAGE_BYTES = 8 * 1024 * 1024;
 const MAX_CACHE_BYTES = 128 * 1024 * 1024;
 const MAX_ENTRIES = 256;
+// Opening the app mounts every card at once; unbounded parallel downloads of
+// multi-MB screenshots saturated home wifi (router RTT 5 ms -> 3 s).
+const MAX_PARALLEL_DOWNLOADS = 3;
 
 export interface ImageEntry {
   url: string;
@@ -15,11 +18,39 @@ export interface ImageStore {
   write(entry: ImageEntry): Promise<void>;
 }
 
+// Registry uploads are full-size originals (2-4 MB PNG screenshots). Cards
+// and grids ask rsmm.me's Next image optimizer for a resized WebP instead, so
+// a list page costs ~1 MB rather than ~40 MB on a slow home line.
+const THUMBNAIL_SOURCE_HOSTS = [
+  'api.rsmm.me',
+  's3-rsmm.me',
+  'cdn.rsmm.me',
+  's3-ravenswatch.ovilli.de',
+];
+// The website (and its preview deploys) resize on their own origin; the
+// desktop WebView has no optimizer of its own and uses production.
+const thumbnailOrigin = () => ('__TAURI_INTERNALS__' in globalThis ? 'https://rsmm.me' : '');
+/** Widths must be in Next's default deviceSizes/imageSizes or it answers 400. */
+export type ThumbnailWidth = 384 | 640 | 828;
+
+export function thumbnailUrl(src: string, width: ThumbnailWidth): string {
+  try {
+    const url = new URL(src);
+    if (url.protocol !== 'https:' || url.port || !THUMBNAIL_SOURCE_HOSTS.includes(url.hostname))
+      return src;
+  } catch {
+    return src;
+  }
+  return `${thumbnailOrigin()}/_next/image?url=${encodeURIComponent(src)}&w=${width}&q=75`;
+}
+
 // Keep this aligned with desktop img-src. A blob URL must never bypass the
 // image host policy just because connect-src happens to permit a host.
 export function cacheableImageUrl(src: string): boolean {
   try {
     const url = new URL(src);
+    if (url.hostname === 'rsmm.me')
+      return url.protocol === 'https:' && !url.port && url.pathname === '/_next/image';
     return (
       url.protocol === 'https:' &&
       !url.username &&
@@ -106,7 +137,8 @@ export const imageStore: ImageStore = {
 async function downloadImage(url: string): Promise<Blob | undefined> {
   const response = await fetch(url, {
     credentials: 'omit',
-    cache: 'no-cache',
+    // Default HTTP caching: an expired entry revalidates with the stored ETag
+    // (304) instead of downloading every image again.
     signal: AbortSignal.timeout(15_000),
   });
   if (
@@ -149,12 +181,24 @@ async function downloadImage(url: string): Promise<Blob | undefined> {
 
 export function createImageCache(store: ImageStore, download = downloadImage, now = Date.now) {
   const pending = new Map<string, Promise<Blob | undefined>>();
+  let active = 0;
+  const queue: (() => void)[] = [];
+  async function limited(url: string): Promise<Blob | undefined> {
+    if (active >= MAX_PARALLEL_DOWNLOADS) await new Promise<void>((go) => queue.push(go));
+    active++;
+    try {
+      return await download(url);
+    } finally {
+      active--;
+      queue.shift()?.();
+    }
+  }
   function refresh(url: string): Promise<Blob | undefined> {
     const existing = pending.get(url);
     if (existing) return existing;
     const request = (async () => {
       try {
-        const blob = await download(url);
+        const blob = await limited(url);
         if (!blob) return;
         // Storage denial or quota exhaustion must not break a usable image.
         await store.write({ url, blob, updatedAt: now() }).catch(() => {});
