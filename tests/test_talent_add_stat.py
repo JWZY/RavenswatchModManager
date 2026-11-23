@@ -78,14 +78,21 @@ def test_a_talent_that_already_runs_modifiers_keeps_them(beowulf):
     assert EC.check(out, beowulf, name="Hero_Beowulf") == []
 
 
-def test_ultimates_are_refused_with_a_reason(wukong):
-    """An ultimate card has no rarity: a number that differs by rarity is
-    refused (only the Common one would ever show); one flat number is not."""
-    graph = EG.parse(wukong)
-    ultimate = next(c.name[len("Skill Controller "):] for c in graph.components
-                    if c.name.startswith("Skill Controller Ultimate"))
-    with pytest.raises(TA.AddStatError, match="no state|no per-rarity"):
-        TA.add_stat(wukong, talent=ultimate, stat="CD reduce trait",
+def test_an_ultimate_upgrade_takes_a_per_rarity_stat(wukong):
+    """An ultimate upgrade card has rarities like any card: the new number
+    is keyed on its own controller."""
+    out, added = TA.add_stat(wukong, talent="Ultimate 1 Upgrade 1", stat="CD reduce trait",
+                             values=[0.1, 0.2, 0.3, 0.4])
+    graph = EG.parse(out)
+    ctl = comp(out, "Skill Controller Ultimate 1 Upgrade 1")
+    sel = next(c for c in graph.components if c.name == added.selector)
+    assert any(r.guid == ctl.guid for r in sel.refs)
+    assert EC.check(out, wukong, name="Hero_SunWukong") == []
+
+
+def test_an_ultimate_power_card_is_refused_with_a_reason(wukong):
+    with pytest.raises(TA.AddStatError, match="no state"):
+        TA.add_stat(wukong, talent="Ultimate Power 1", stat="CD reduce trait",
                     values=[0.1, 0.2, 0.3, 0.4])
 
 

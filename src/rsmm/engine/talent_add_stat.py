@@ -272,8 +272,8 @@ def owned_state(graph: EG.EntityGraph, ctl: EG.Component, talent: str) -> EG.Com
     states = [by_guid[r.guid] for r in ctl.refs if r.guid in by_guid
               and by_guid[r.guid].cls.endswith("StateSettings")]
     if not states:
-        raise AddStatError(f"talent {talent!r} has no state that marks it as owned, "
-                           "so there is nothing to attach a stat to (ultimates are like this)")
+        raise AddStatError(f"talent {talent!r} has no state that marks it as owned, so there "
+                           "is nothing to attach a stat to (Ultimate Power cards are like this)")
     named = [s for s in states if s.name in (f"Skill {talent}", rebuilt_name(talent))]
     return (named or states)[0]
 
@@ -686,7 +686,7 @@ def add_stat(raw: bytes, *, talent: str, stat: str | int, values=None, percent: 
             raise AddStatError(f"no state {state_name!r} here")
         ctl, fmt = None, None
     else:
-        ctl, state, fmt = card_parts(graph, talent, flat=len(set(amounts.values())) == 1)
+        ctl, state, fmt = card_parts(graph, talent)
 
     tag = (held if invulnerable else "More Bleed Damage" if more_bleed
            else "Bleed Duration" if bleed_dur
@@ -891,25 +891,14 @@ def add_action_trigger(raw: bytes, *, talent: str, on: str, n: int = 1,
         raise AddStatError(f"talent {talent!r}: {e}") from e
 
 
-def card_parts(graph: EG.EntityGraph, talent: str, *,
-               flat: bool = False) -> tuple[EG.Component, EG.Component, EG.Component | None]:
+def card_parts(graph: EG.EntityGraph,
+               talent: str) -> tuple[EG.Component, EG.Component, EG.Component | None]:
     """``(controller, owned state, card description format)`` of a talent: all
     a talent needs to take written parts."""
     ctl = next((c for c in graph.components if c.name == f"Skill Controller {talent}"), None)
     if ctl is None:
         raise AddStatError(f"no talent {talent!r} here (no 'Skill Controller {talent}')")
     state = owned_state(graph, ctl, talent)
-    # A card with rarities has numbers keyed on them; one with none (an
-    # ultimate) would show only the Common number, whatever was asked for.
-    # A talent written from scratch (hero_frame.add_talent) has no number yet
-    # but has rarities like any non-ultimate card: only an ultimate is refused,
-    # and only when its number differs by rarity (``flat``: one number at every
-    # rarity, which is all an ultimate card can show).
-    if talent.startswith("Ultimate") and not flat and not any(
-            c.cls.endswith("ValueSelectorSettings") and any(r.guid == ctl.guid for r in c.refs)
-            for c in graph.components):
-        raise AddStatError(f"talent {talent!r} has no per-rarity number, so its card has "
-                           "no rarity a new number could scale with (ultimates are like this)")
     by_guid = graph.by_guid()
     fmts = [by_guid[r.guid] for r in ctl.refs if r.guid in by_guid
             and by_guid[r.guid].cls.endswith("StringFormatValueSettings")]
