@@ -6,6 +6,8 @@ import { ViewerListingFallback } from './components/viewer-listing-fallback';
 
 export const metadata: Metadata = {
   title: 'Not found · Ravenswatch Mod Manager',
+  // A 404 has no canonical; without this it inherits the root layout's '/'.
+  alternates: { canonical: null },
 };
 
 export default async function NotFound() {

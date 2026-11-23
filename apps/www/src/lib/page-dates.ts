@@ -10,7 +10,7 @@
  * Keys are the route path; `dir` is the route segment under `src/app`.
  */
 export const PAGE_UPDATED: Record<string, { date: string; dir: string }> = {
-  '': { date: '2026-11-17', dir: '.' },
+  '': { date: '2026-11-21', dir: '.' },
   '/download': { date: '2026-11-17', dir: 'download' },
   '/registry': { date: '2026-11-19', dir: 'registry/(list)' },
   '/c': { date: '2026-11-19', dir: 'c' },
@@ -20,7 +20,7 @@ export const PAGE_UPDATED: Record<string, { date: string; dir: string }> = {
   '/contact': { date: '2026-11-17', dir: 'contact' },
   '/privacy': { date: '2026-11-16', dir: 'privacy' },
   '/legal': { date: '2026-11-17', dir: 'legal' },
-  '/dmca': { date: '2026-11-17', dir: 'dmca' },
+  '/dmca': { date: '2026-11-23', dir: 'dmca' },
 };
 
 /** The later of `a` and every parseable date in `rest`; undefined-safe. */

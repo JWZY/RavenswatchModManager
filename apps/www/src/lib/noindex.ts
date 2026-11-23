@@ -12,7 +12,11 @@ import type { Metadata } from 'next';
  * data client-side behind a session the crawler does not have.
  *
  * `follow: false` because there is nothing here worth following either.
+ *
+ * `canonical: null` drops the root layout's `canonical: '/'`, which would
+ * otherwise name the home page as the canonical of a noindex URL.
  */
 export const noindex: Metadata = {
   robots: { index: false, follow: false },
+  alternates: { canonical: null },
 };
