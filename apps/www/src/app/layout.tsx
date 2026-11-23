@@ -6,7 +6,7 @@ import { Coffee, Github } from 'lucide-react';
 import type { Metadata, Viewport } from 'next';
 import localFont from 'next/font/local';
 import Link from 'next/link';
-import Script from 'next/script';
+import { AdsLoader } from './components/ads-loader';
 import { BanGate } from './components/ban-gate';
 import { Nav } from './nav';
 import { Providers } from './providers';
@@ -380,17 +380,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         </footer>
         <Analytics />
         <SpeedInsights />
-        {/* Google AdSense loader (Auto Ads). Production only — Google rejects
-            the script from localhost/preview. Website only, never the desktop app. */}
-        {process.env.NODE_ENV === 'production' ? (
-          <Script
-            id="adsbygoogle-init"
-            strategy="afterInteractive"
-            async
-            crossOrigin="anonymous"
-            src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9139637424510522"
-          />
-        ) : null}
+        <AdsLoader />
       </body>
     </html>
   );
