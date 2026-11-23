@@ -11,15 +11,15 @@
  */
 export const PAGE_UPDATED: Record<string, { date: string; dir: string }> = {
   '': { date: '2026-11-21', dir: '.' },
-  '/download': { date: '2026-11-17', dir: 'download' },
+  '/download': { date: '2026-11-23', dir: 'download' },
   '/registry': { date: '2026-11-19', dir: 'registry/(list)' },
   '/c': { date: '2026-11-19', dir: 'c' },
   '/guides': { date: '2026-10-28', dir: 'guides' },
-  '/modding': { date: '2026-10-03', dir: 'modding' },
-  '/about': { date: '2026-09-02', dir: 'about' },
-  '/contact': { date: '2026-11-17', dir: 'contact' },
-  '/privacy': { date: '2026-11-16', dir: 'privacy' },
-  '/legal': { date: '2026-11-17', dir: 'legal' },
+  '/modding': { date: '2026-11-23', dir: 'modding' },
+  '/about': { date: '2026-11-23', dir: 'about' },
+  '/contact': { date: '2026-11-23', dir: 'contact' },
+  '/privacy': { date: '2026-11-23', dir: 'privacy' },
+  '/legal': { date: '2026-11-23', dir: 'legal' },
   '/dmca': { date: '2026-11-23', dir: 'dmca' },
 };
 
