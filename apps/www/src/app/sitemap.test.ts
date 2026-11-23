@@ -51,10 +51,13 @@ describe('sitemap', () => {
   it('gives every URL a stable lastmod', async () => {
     const api: Record<string, unknown> = {
       '/api/mods': [
-        { slug: 'a', summary: 'x', updatedAt: '2030-01-02T00:00:00Z' },
-        { slug: 'b', summary: '', updatedAt: '2031-01-01T00:00:00Z' },
+        { slug: 'a', descriptionLength: 200, updatedAt: '2030-01-02T00:00:00Z' },
+        { slug: 'b', summary: 'x', descriptionLength: 199, updatedAt: '2031-01-01T00:00:00Z' },
       ],
-      '/api/collections': [{ slug: 'c1', updatedAt: '2020-01-01T00:00:00Z' }],
+      '/api/collections': [
+        { slug: 'c1', description: 'd'.repeat(200), updatedAt: '2020-01-01T00:00:00Z' },
+        { slug: 'c2', description: 'short', updatedAt: '2020-01-01T00:00:00Z' },
+      ],
       '/api/guides': [],
     };
     vi.stubGlobal('fetch', async (url: string) => {
@@ -76,8 +79,14 @@ describe('sitemap', () => {
 
     const at = (u: string) =>
       (first.find((e) => e.url === `https://rsmm.me${u}`)?.lastModified as Date).toISOString();
-    // Listing pages follow the newest entry they SHOW — the summary-less mod is not listed.
+    // Listing pages follow the newest entry they SHOW — the thin mod is not listed.
     expect(at('/registry')).toBe('2030-01-02T00:00:00.000Z');
+    // Pages under the description bar stay out, whatever their summary.
+    const urls = first.map((e) => e.url);
+    expect(urls).toContain('https://rsmm.me/registry/a');
+    expect(urls).not.toContain('https://rsmm.me/registry/b');
+    expect(urls).toContain('https://rsmm.me/c/c1');
+    expect(urls).not.toContain('https://rsmm.me/c/c2');
     expect(at('/download')).toBe('2030-05-05T00:00:00.000Z');
     // Older data never drags a page below its own copy's date.
     expect(at('/c')).toBe(new Date(PAGE_UPDATED['/c']?.date ?? '').toISOString());

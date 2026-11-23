@@ -2,6 +2,7 @@ import { jsonLd } from '@rsmm/schemas';
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { type Entity, fetchEntity } from '../../../lib/entity';
+import { descriptionLength, isThin } from '../../../lib/thin-content';
 
 const SITE = 'Ravenswatch Mod Manager';
 
@@ -60,10 +61,13 @@ export async function generateMetadata({
   const description =
     collection.summary ?? `A collection of ${collection.modCount} mods for Ravenswatch.`;
   const image = collection.imageUrl;
+  // Same thin-content bar as a mod page (lib/thin-content.ts).
+  const thin = isThin(descriptionLength(collection.description));
 
   return {
     title,
     description,
+    ...(thin ? { robots: { index: false, follow: true } } : {}),
     alternates: { canonical: `/c/${slug}` },
     openGraph: {
       type: 'article',
