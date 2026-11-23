@@ -128,6 +128,9 @@ export const modListItemSchema = z.object({
   author: z.string().nullable(),
   summary: z.string().nullable(),
   description: z.string().nullable().optional(),
+  // Trimmed character count of the description; the list carries this instead
+  // of the text. Absent on older API responses.
+  descriptionLength: z.number().int().nonnegative().optional(),
   license: z.string().nullable(),
   repoUrl: sanitizedHttpUrlSchema,
   homepageUrl: sanitizedHttpUrlSchema,

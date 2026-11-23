@@ -23,6 +23,7 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import { api } from '../../../lib/api';
 import { useSession } from '../../../lib/auth-client';
 import { type ListingDraft, listingChanges, readListingDraft } from '../../../lib/listing-draft';
+import { MIN_DESCRIPTION_CHARS, descriptionLength } from '../../../lib/thin-content';
 import { fmtBytes, hexToBase64, putFile, sha256Hex } from '../../../lib/upload';
 import { useScreenshotGallery } from '../../../lib/use-screenshot-gallery';
 import { FileDrop } from '../../components/file-drop';
@@ -799,6 +800,10 @@ function ManageModEditor({ slug }: { slug: string }) {
                   <div data-color-mode="dark" className="md-editor-themed min-h-80">
                     <MDEditor value={description} onChange={setDescription} height={320} />
                   </div>
+                  <p className="text-xs text-muted-foreground">
+                    Search engines list the mod page once the description reaches{' '}
+                    {MIN_DESCRIPTION_CHARS} characters ({descriptionLength(description)} so far).
+                  </p>
                 </div>
                 <div className="space-y-2">
                   <Label htmlFor="category">Category</Label>

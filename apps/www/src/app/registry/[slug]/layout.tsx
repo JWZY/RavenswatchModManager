@@ -2,6 +2,7 @@ import { jsonLd } from '@rsmm/schemas';
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { type Entity, fetchEntity } from '../../../lib/entity';
+import { descriptionLength, isThin } from '../../../lib/thin-content';
 
 const SITE = 'Ravenswatch Mod Manager';
 
@@ -67,12 +68,11 @@ export async function generateMetadata({
   // Prefer the cover image, fall back to the first screenshot.
   const image = mod.imageUrl ?? mod.screenshots?.[0]?.url;
 
-  // Thin-content hygiene: a mod with no author-written summary or long
-  // description is a near-empty page. Keep it reachable but out of the index so
-  // it doesn't drag down the site's overall content quality (matters for ad /
-  // search review). It re-enters the index automatically once the author adds a
-  // description.
-  const thin = !mod.summary?.trim() && (mod.description?.trim().length ?? 0) < 80;
+  // Thin-content hygiene: a mod without a real description is a near-empty
+  // page. Keep it reachable but out of the index (and the sitemap) so it doesn't
+  // drag down the site's content quality for ad and search review. It re-enters
+  // the index once the author writes the description out (lib/thin-content.ts).
+  const thin = isThin(descriptionLength(mod.description));
 
   return {
     title,
