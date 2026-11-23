@@ -35,7 +35,7 @@ export default async function DownloadPage() {
   const currentVersion = release.tag ?? 'the latest release';
 
   return (
-    <main className="relative overflow-hidden animate-page-in">
+    <main className="relative overflow-hidden">
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top,hsl(var(--crimson)/0.1),transparent_40%),radial-gradient(circle_at_bottom_right,hsl(var(--oxblood)/0.08),transparent_32%)]" />
       <div className="relative container mx-auto px-6 py-16 lg:py-24">
         <section className="mx-auto max-w-4xl text-center">
