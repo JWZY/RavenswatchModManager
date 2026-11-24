@@ -1,13 +1,14 @@
 'use client';
 import { Button, Card, CardContent, CardDescription, CardHeader, CardTitle, Input } from '@rsmm/ui';
+import { DiscordIcon, GitHubIcon, GoogleIcon } from '@rsmm/ui/brand-icons';
 import { useQuery } from '@tanstack/react-query';
-import { Github, Mail } from 'lucide-react';
+import { Mail } from 'lucide-react';
 import type { Route } from 'next';
 import Link from 'next/link';
 import { useRouter, useSearchParams } from 'next/navigation';
 import { type FormEvent, Suspense, useState } from 'react';
 import { signIn } from '../../../lib/auth-client';
-import { DiscordIcon, GoogleIcon, authConfigQueryKey, fetchAuthConfig } from '../../../lib/auth-ui';
+import { authConfigQueryKey, fetchAuthConfig } from '../../../lib/auth-ui';
 
 export default function SignInPage() {
   return (
@@ -104,7 +105,7 @@ function SignInInner() {
                   disabled={busy}
                   onClick={() => social('github')}
                 >
-                  <Github className="h-4 w-4" /> Continue with GitHub
+                  <GitHubIcon /> Continue with GitHub
                 </Button>
               ) : null}
               <div className="flex items-center gap-3 pt-1 text-xs text-muted-foreground">

@@ -1,12 +1,12 @@
+import { DiscordIcon, GitHubIcon } from '@rsmm/ui/brand-icons';
 import { createFileRoute } from '@tanstack/react-router';
 import { invoke } from '@tauri-apps/api/core';
-import { Activity, ChevronDown, EyeOff, Github, ShieldAlert, Sparkles, Trash2 } from 'lucide-react';
+import { Activity, ChevronDown, EyeOff, ShieldAlert, Sparkles, Trash2 } from 'lucide-react';
 import { type KeyboardEvent, useEffect, useMemo, useRef, useState } from 'react';
 import { AboutPanels } from '../components/about-panels';
 import { Button, Fleuron, MonoTag, Panel, SectionHeader } from '../components/chrome';
 import { CommandsPanel } from '../components/commands-panel';
 import { GameLogPanel } from '../components/game-log-panel';
-import { DiscordIcon } from '../components/icons/DiscordIcon';
 import { useLaunch } from '../components/launch';
 import { useToast } from '../components/toast';
 import { UpdaterSettings } from '../components/updater';
@@ -128,7 +128,7 @@ function SettingsPage() {
               rel="noreferrer noopener"
               className="inline-flex items-center gap-2 rounded py-1 text-sm font-semibold text-smoke transition-colors duration-150 hover:text-parchment"
             >
-              <Github className="h-5 w-5 shrink-0" aria-hidden="true" />
+              <GitHubIcon className="h-5 w-5 shrink-0" />
               {t('Github')}
             </a>
           </div>

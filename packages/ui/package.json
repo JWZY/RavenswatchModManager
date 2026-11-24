@@ -7,6 +7,7 @@
   "types": "./src/index.ts",
   "exports": {
     ".": "./src/index.ts",
+    "./brand-icons": "./src/components/brand-icons.tsx",
     "./styles.css": "./src/styles.css",
     "./registry.css": "./src/registry.css",
     "./registry-detail.css": "./src/registry-detail.css",
