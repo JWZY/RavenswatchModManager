@@ -3,6 +3,7 @@ import {
   BUNDLED_CHANGELOG,
   type ChangelogEntry,
   entriesSince,
+  filterChangelog,
   latestVersion,
   mergeEntries,
   pendingEntries,
@@ -211,5 +212,46 @@ describe('loader-channel notes', () => {
       loader: { current: 8, seen: 0 },
     });
     expect(shown.map((e) => e.version)).toEqual(['5.1.0']);
+  });
+});
+
+describe('release-note channel filters', () => {
+  const desktop: ChangelogEntry = {
+    version: '6.1.1',
+    loader_version: 66,
+    cli_version: 48,
+    date: '2026-11-22',
+    highlights: ['App release with bundled channel metadata'],
+  };
+  const loader: ChangelogEntry = {
+    version: '',
+    loader_version: 48,
+    date: '2026-11-23',
+    highlights: ['Loader'],
+  };
+  const cli: ChangelogEntry = {
+    version: '',
+    cli_version: 48,
+    date: '2026-11-23',
+    highlights: ['CLI'],
+  };
+  const mixed = [cli, loader, desktop, ...ENTRIES];
+
+  it('keeps every channel and the feed order in All', () => {
+    expect(filterChangelog(mixed, 'all')).toEqual(mixed);
+  });
+
+  it('keeps same-numbered CLI and loader builds in separate channels', () => {
+    expect(filterChangelog(mixed, 'loader')).toEqual([loader]);
+    expect(filterChangelog(mixed, 'cli')).toEqual([cli]);
+  });
+
+  it('classifies app releases only as desktop even with channel metadata', () => {
+    expect(filterChangelog(mixed, 'desktop')).toEqual([desktop, ...ENTRIES]);
+  });
+
+  it('returns an empty list for a channel without notes', () => {
+    expect(filterChangelog(ENTRIES, 'loader')).toEqual([]);
+    expect(filterChangelog([], 'all')).toEqual([]);
   });
 });

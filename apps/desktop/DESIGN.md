@@ -120,6 +120,8 @@ Sizes are rem, so they follow the UI scale (80–150%). No arbitrary sizes below
 
 ## Interaction
 
+- **Release notes.** App updates never open release notes automatically. A static gilt dot on the Settings gear and its Release notes category indicates unread app notes. Opening Release notes shows the full history always expanded and clears both indicators; other Settings categories leave them unread. The read version persists across launches. All, Loader, CLI, and Desktop app filters use the same heading-style tabs as Browse’s Mods/Collections switch; every matching entry stays expanded. Use native list markers, aligned with the first line when text wraps.
+
 - **Focus.** `:focus-visible` draws a 2px gilt outline at a 2px offset, and nothing else draws a ring. A control may change its own border on focus (`.input-grim`, `.field-grim`, `.select-grim`). It never adds `focus:ring-*` and never adds `focus:outline-none`: that utility outranks `:focus-visible` and removes the only keyboard indicator. The one exception is a modal card that is `useModalChrome`'s programmatic focus target (`tabIndex={-1}`), whose own controls carry the ring.
 - **Motion.**
   - 150ms `ease-grimoire` for state changes.
@@ -211,7 +213,7 @@ Overlay z-index, lowest to highest:
 | 45 | Sidebar tooltips |
 | 50 | Command palette |
 | 70 | Dialogs |
-| 75 | Changelog, mod config |
+| 75 | Mod config |
 | 80 | Updater |
 | 85 | AI disclosure |
 | 90 | Screenshot viewer |

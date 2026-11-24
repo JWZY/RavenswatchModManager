@@ -1,6 +1,6 @@
 /**
- * Persistence for the two dialogs that gate the first render: the one-time
- * AI-assistance disclosure and the post-update changelog.
+ * Persistence for the one-time AI-assistance disclosure and the release notes
+ * read in Settings.
  *
  * Both live in `localStorage` rather than the zustand store because the store
  * is the *user's* state — profiles, load order, settings — and is exported,
@@ -9,7 +9,7 @@
  *
  * Every accessor is failure-tolerant: a disabled or full localStorage (private
  * mode, a locked-down WebView profile) must never keep the app from starting.
- * The cost of a failed read is that a dialog shows once more than it should.
+ * The cost of a failed read is a repeated disclosure or unread indicator.
  */
 
 import { LIBRARY_PREVIEW } from './browser-preview';
@@ -34,7 +34,7 @@ function write(key: string, value: string): void {
   try {
     globalThis.localStorage?.setItem(key, value);
   } catch {
-    /* storage unavailable — the dialog returns next launch, which is fine */
+    /* storage unavailable — the notice returns next launch, which is fine */
   }
 }
 

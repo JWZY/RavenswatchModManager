@@ -278,7 +278,10 @@ export function CommandPalette() {
         'commands',
       ),
       go('/settings', t('Settings'), 'paths font size density options preferences'),
-      go('/settings', t('About'), 'version credits release notes', { tab: 'about' }),
+      go('/settings', t('Release notes'), 'changelog updates patch notes history', {
+        tab: 'release-notes',
+      }),
+      go('/settings', t('About'), 'version disclosure credits', { tab: 'about' }),
     ];
   }, [navigate, launch, launchBusy, t, toast, dialog, overlayActions]);
 
