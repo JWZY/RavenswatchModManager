@@ -38,7 +38,7 @@ export function ChangelogHeartButton({
     onSettled: () => client.invalidateQueries({ queryKey }),
   });
   const count = reaction ? reaction.count.toLocaleString(t.tag) : '—';
-  const className = `inline-flex min-h-[var(--icon-button-size)] min-w-[var(--icon-button-size)] shrink-0 items-center justify-center gap-1.5 rounded px-2 text-sm transition-colors duration-150 ${reaction?.hearted ? 'text-crimson hover:text-parchment' : 'text-ash hover:text-parchment'} disabled:pointer-events-none disabled:opacity-50`;
+  const className = `inline-flex min-h-[var(--icon-button-size)] min-w-[var(--icon-button-size)] shrink-0 items-center justify-center gap-2 rounded-md bg-surface-2 px-3 text-sm hover:bg-char/65 transition-colors duration-150 ${reaction?.hearted ? 'text-crimson hover:text-parchment' : 'text-smoke hover:text-parchment'} disabled:pointer-events-none disabled:opacity-50`;
   const content = (
     <>
       <Heart size={16} aria-hidden="true" fill={reaction?.hearted ? 'currentColor' : 'none'} />

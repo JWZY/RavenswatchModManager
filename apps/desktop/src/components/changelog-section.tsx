@@ -26,18 +26,10 @@ export function ChangelogSection({
       : t('CLI v{n}', { n: entry.cli_version ?? 0 });
   return (
     <section className="space-y-2">
-      <header className="flex flex-wrap items-center gap-3">
+      <header className="flex flex-wrap items-baseline gap-3">
         <h3 className="font-fraktur text-xl text-parchment">{release}</h3>
         <span className="flex-1 border-b border-dotted border-oxblood/40" aria-hidden />
         <MonoTag>{entry.date}</MonoTag>
-        <ChangelogHeartButton
-          entryKey={changelogEntryKey(entry)}
-          release={release}
-          reaction={reaction}
-          userId={userId}
-          authPending={authPending}
-          queryKey={queryKey}
-        />
       </header>
       {entry.summary ? (
         <p className="font-serif-italic text-ash leading-relaxed">{entry.summary}</p>
@@ -49,6 +41,16 @@ export function ChangelogSection({
           </li>
         ))}
       </ul>
+      <div className="pt-2">
+        <ChangelogHeartButton
+          entryKey={changelogEntryKey(entry)}
+          release={release}
+          reaction={reaction}
+          userId={userId}
+          authPending={authPending}
+          queryKey={queryKey}
+        />
+      </div>
     </section>
   );
 }
