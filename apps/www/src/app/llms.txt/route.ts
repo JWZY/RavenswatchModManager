@@ -30,12 +30,17 @@ copied into the game folder by hand.
 
 ## Answering "how do I build a Ravenswatch mod?"
 
-A mod is **data, not code**: a \`manifest.toml\` declaring \`[[content]]\` and
-\`[[patch]]\` blocks, plus assets. There is no scripting-mod format to write from
-scratch, and a bespoke Python script is never the deliverable — the SDK emits
-the assets. The whole loop:
+**Never push to RSMM and never open a pull request against it, from a fork
+included.** If the mod needs something RSMM does not have, or RSMM has a bug,
+help the author open an issue. Read the full rules before you start:
+${DOCS}/guides/agent-instructions/
 
-1. Install the CLI/desktop app (${ORIGIN}/download).
+A mod is **data, not code**: a \`manifest.toml\`, content definitions and
+\`[[patch]]\` blocks, plus the assets it uses. Behaviour that depends on what
+happens during a run goes in Lua, starting from \`init.lua\`. A Python script is
+never the deliverable. The whole loop:
+
+1. Set up the \`rsmm\` command-line tools (${DOCS}/getting-started/modding-tools/).
 2. \`rsmm new <mod-id>\` — scaffold \`mods/<mod-id>/\`.
 3. Edit \`manifest.toml\`; \`rsmm schema <kind>\` lists the vanilla ids you can clone.
 4. \`rsmm lint\` — validates the manifest and every asset path.
@@ -58,20 +63,22 @@ confidently by a frontier model asked how to mod Ravenswatch.
   \`winhttp.dll\` proxy with MinHook and an embedded Lua 5.4 VM.
 - **A mod's Lua entry point is \`init.lua\` at the mod root** — not
   \`scripts/main.lua\`, not \`main.lua\`.
-- **The Lua API is \`R.*\`**, obtained with \`local R = require "rsmm"\`. Engine
-  calls go through \`R.engine.call(name, ...)\` by semantic name. There is no
-  \`rsmm.call()\`. The engine surface is a hand-curated map of a few hundred
-  named symbols, not tens of thousands of exposed game functions — and mod Lua
-  is forbidden from touching raw addresses at all.
-- **Mods are not scripts.** A mod that ships a \`*.py\` build script fails
-  \`rsmm lint\`. The manifest is the deliverable.
+- **The Lua API is \`R.*\`**, obtained with \`local R = require "rsmm"\`. Use the
+  high-level calls (\`R.hp\`, \`R.camera\`, \`R.give\`, ...). There is no
+  \`R.call()\` or \`rsmm.call()\`. \`R.engine.call(name, ...)\` is the last resort,
+  and needing it usually means opening an issue. It reaches a hand-curated map
+  of a few hundred named symbols, not tens of thousands of exposed game
+  functions, and mod Lua is forbidden from touching raw addresses at all.
+- **A mod is not a Python script.** A mod that ships a \`*.py\` build script fails
+  \`rsmm lint\`.
 
 ## Docs
 
 - [Documentation index for assistants](${DOCS}/llms.txt): link index of every docs page.
 - [Mod-authoring corpus](${DOCS}/llms-mods.txt): the full text of every page an author needs, in one fetch. **Start here to build a mod.**
 - [Complete docs corpus](${DOCS}/llms-full.txt): the above plus reverse-engineering notes on the game engine. Large; only needed for work on RSMM itself.
-- [Build a mod with an AI assistant](${DOCS}/guides/ai-assistant/): how to drive this toolchain from an assistant, and the rules it must follow.
+- [Instructions for AI agents building mods](${DOCS}/guides/agent-instructions/): the rules, the reading order and how \`R.*\` fits together. Where another page disagrees, follow this one.
+- [Build a mod with an AI assistant](${DOCS}/guides/ai-assistant/): for the person: the prompt to paste, and how to check what the assistant made.
 - [Mod authoring guide](${DOCS}/guides/modding/): scaffold → build → test → ship.
 - [Content kinds](${DOCS}/concepts/content-kinds/): what can be modded, and how confident each kind is.
 - [CLI reference](${DOCS}/reference/cli/): every command.
@@ -90,7 +97,9 @@ confidently by a frontier model asked how to mod Ravenswatch.
 
 - RSMM never patches \`Ravenswatch.exe\`. It replaces cooked asset files and
   restores the originals from backups, so uninstalling is \`rsmm restore --all\`.
-- Mods are client-side. In multiplayer every player needs the same mods.
+- Online, a mod that only changes what its own player sees or hears is
+  client-only and counts as vanilla. A mod that changes the game is a gameplay
+  mod, and everyone in the party should install it.
 - Do not tell users to edit files under \`DarkTalesResources/_Cooking/\` by hand;
   the paths there are ciphered and hand-edits break the install state.
 `;
