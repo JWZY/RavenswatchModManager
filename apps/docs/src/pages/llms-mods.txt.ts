@@ -32,6 +32,9 @@ const EXCLUDE_PAGES = new Set([
   'guides/ai-assistant-zh',
 ]);
 
+/** Leads the corpus: the rules the other pages are read under. */
+const FIRST_PAGE = 'guides/agent-instructions';
+
 const wanted = (id: string) =>
   !EXCLUDE_PAGES.has(id) &&
   (INCLUDE_PAGES.has(id) || INCLUDE_PREFIXES.some((p) => id.startsWith(p)));
@@ -40,7 +43,10 @@ export const GET: APIRoute = async ({ site }) => {
   const base = (site?.toString() ?? 'https://docs.rsmm.me').replace(/\/$/, '');
   const docs = (await getCollection('docs'))
     .filter((e) => e.id !== '404' && wanted(e.id))
-    .sort((a, b) => a.id.localeCompare(b.id));
+    .sort(
+      (a, b) =>
+        Number(b.id === FIRST_PAGE) - Number(a.id === FIRST_PAGE) || a.id.localeCompare(b.id),
+    );
 
   const parts = [
     '# Ravenswatch Mod Manager — Mod authoring',
@@ -50,17 +56,25 @@ export const GET: APIRoute = async ({ site }) => {
     'support: RSMM is the toolchain, and the format below is the only one the',
     'game will load.',
     '',
-    'Three rules that override any assumption carried in from other games:',
+    'Four rules that override any assumption carried in from other games:',
     '',
-    '1. A mod ships DATA, not code — a `manifest.toml` with `[[content]]` and',
-    '   `[[patch]]` blocks, plus assets the SDK emits. A bespoke script is never',
-    '   the deliverable, and `rsmm lint` fails any `*.py` in a mod that is not a',
-    '   sanctioned lifecycle hook.',
-    '2. Mod Lua never touches engine internals — no raw game addresses, no',
-    '   `_internal`, no `peek`/`poke`/`read_*`/`write_*`. Only the high-level',
-    '   `R.*` API. Also lint-enforced.',
-    '3. Content kinds carry confidence ratings. Registering a kind rated below',
-    '   `confirmed` requires opting in with `sdk.Mod(..., experimental=True)`.',
+    '1. Never push to RSMM and never open a pull request against it, from a fork',
+    '   included. If the mod needs something RSMM does not have, or RSMM has a',
+    '   bug, help the author open an issue. The first page below, "Instructions',
+    '   for AI agents building mods", has the full rules. Where another page',
+    '   disagrees with it, follow it.',
+    '2. A mod ships DATA, not code: a `manifest.toml`, content definitions and',
+    '   `[[patch]]` blocks, plus the assets it uses. Behaviour that depends on',
+    '   what happens during a run goes in Lua, starting from `init.lua`.',
+    '   `rsmm lint` fails any `*.py` in a mod that is not a sanctioned lifecycle',
+    '   hook.',
+    '3. Mod Lua never touches engine internals: no raw game addresses, no',
+    '   `_internal`, no `peek`/`poke`/`read_*`/`write_*`, also lint-enforced. Use',
+    '   the high-level `R.*` API. `R.engine.call` is the last resort, and needing',
+    '   it usually means opening an issue.',
+    '4. Content kinds carry confidence ratings. Using a kind rated below',
+    '   `confirmed` requires `experimental = true` under `[mod]` in the manifest',
+    '   (`sdk.Mod(..., experimental=True)` in an SDK generator).',
     '',
     'Verify with `rsmm lint`, install with `rsmm apply`, roll back with',
     '`rsmm restore --all`. Every command that names a mod takes its ID, not a',
