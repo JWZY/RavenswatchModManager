@@ -1,5 +1,5 @@
 ---
-title: Mod Authoring Guide
+title: Authoring mods
 description: Scaffold, build, test, and ship a mod — the single authoring guide.
 ---
 
@@ -12,6 +12,12 @@ This page is the complete reference, and it gets technical fast. If you haven't
 made a mod before, start with [Make your first mod](/getting-started/first-mod/),
 which walks you through one from start to finish, then come back here when you
 want to know what else a mod can do.
+:::
+
+:::tip[Using an AI agent?]
+Give it the [instructions for AI agents](/guides/agent-instructions/). They say
+what to read here, what a mod may use, and what to do when RSMM is missing
+something.
 :::
 
 ```mermaid
@@ -36,8 +42,9 @@ flowchart LR
 
 > **A mod is data, not code.** The shipped artifact is `manifest.toml` + assets
 > — never an arbitrary python script dropped in the mod folder. Reversing a byte
-> layout with a throwaway script is fine for *discovery*, but fold the capability
-> into `rsmm.sdk` and express the mod declaratively before shipping. `rsmm lint`
+> layout with a throwaway script is fine for *discovery*, but express the mod
+> declaratively before shipping. If no content kind or patch covers it,
+> [open an issue](/guides/agent-instructions/#when-rsmm-is-missing-something). `rsmm lint`
 > (and CI) rejects any `*.py` in a mod except the sanctioned `on_disable.py`
 > lifecycle hook. (An SDK generator lives beside the mod folder, for example
 > `mods/build_MyMod.py`; `init.lua` is the one sanctioned in-mod runtime script.)
@@ -1432,19 +1439,23 @@ the SDK, and a mod uses the high-level `R.*` calls built on them. The same goes 
 (`R.x = ...`, `function R.x() end`): keep a table of your own instead. `R.debug.*`
 is a warning unless the mod's `tags` include `debug` or `test`.
 
-Under the SDK, the loader's native `rsmm` table carries the runtime calls:
+The loader's native `rsmm` table is the low-level layer under the SDK. Use `R.log`,
+`R.mod_dir`, `R.mods.list` and `R.on` in a mod instead of their native versions. RSMM
+counts a mod that uses the native table as
+[gameplay](#online-play-client-only-and-gameplay-mods). If `R` has no call for what you
+need, [open an issue](/guides/agent-instructions/#when-rsmm-is-missing-something).
 
 ```lua
-rsmm.log(msg)
-rsmm.mod_dir()                       -- this mod's directory
+rsmm.log(msg)                        -- use R.log
+rsmm.mod_dir()                       -- this mod's directory; use R.mod_dir
 rsmm.game_dir()                      -- absolute install dir
 rsmm.is_in_main_menu()               -- bool
-rsmm.list_mods()                     -- {id, name, version, author, enabled}[]
+rsmm.list_mods()                     -- {id, name, version, author, enabled}[]; use R.mods.list
 rsmm.encoded_path(decoded)           -- decoded -> encoded path
 rsmm.decoded_path(encoded)           -- encoded -> decoded path
 rsmm.register_asset_override(decoded, src_abs_path)
 rsmm.commit()                        -- apply registered overrides
-rsmm.on_event(name, fn)              -- "ready" | "exit"
+rsmm.on_event(name, fn)              -- "ready" | "exit"; use R.on
 ```
 
 To change a run from Lua — rerolls, cooldowns, shards, keys, levels, items, talents, melodies, controls, chapter flow — use the high-level calls in the [Lua gameplay API](/reference/lua-api/).
@@ -2108,7 +2119,7 @@ The loader writes to `<game>/mods/_log.txt`. Read it from the repo:
 ./rsmm log --clear      # Clear before a fresh launch
 ```
 
-Lua errors print as `[lua] <mod-id> ...`; `rsmm.log("msg")` calls land in the same file.
+Lua errors print as `[lua] <mod-id> ...`; `R.log("msg")` calls land in the same file.
 
 ---
 
