@@ -143,6 +143,7 @@ describe('CDN cache for viewer-independent reads', () => {
       '/api/me',
       '/api/logs/abc',
       '/api/session',
+      '/api/changelog/hearts',
     ]) {
       expect(isCdnCacheablePath(p), p).toBe(false);
     }

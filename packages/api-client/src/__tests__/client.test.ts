@@ -309,3 +309,30 @@ describe('retry policy', () => {
     }
   });
 });
+
+describe('release note hearts', () => {
+  it('sends authenticated idempotent writes and validates the response', async () => {
+    const result = { key: 'app:6.1.1', count: 12, hearted: true };
+    const { api, script } = client([json(result), json({ ...result, count: 11, hearted: false })]);
+    expect(await api.changelog.setHeart(result.key, true)).toEqual(result);
+    await api.changelog.setHeart(result.key, false);
+    expect(script.call(0).url).toBe('https://api.example.com/api/changelog/app%3A6.1.1/heart');
+    expect(script.call(0).init).toMatchObject({ method: 'PUT', credentials: 'include' });
+    expect(script.call(1).init.method).toBe('DELETE');
+  });
+
+  it('deduplicates and batches a growing feed, preserving every total', async () => {
+    const keys = Array.from({ length: 105 }, (_, i) => `cli:${i + 1}`);
+    const items = keys.map((key) => ({ key, count: 0, hearted: false }));
+    const { api, script } = client([
+      json({ items: items.slice(0, 100) }),
+      json({ items: items.slice(100) }),
+    ]);
+    expect(await api.changelog.hearts([...keys, ...keys])).toEqual({ items });
+    expect(script.count).toBe(2);
+    expect(new URL(script.call(0).url).searchParams.get('keys')?.split(',')).toHaveLength(100);
+    expect(new URL(script.call(1).url).searchParams.get('keys')?.split(',')).toHaveLength(5);
+    expect(await api.changelog.hearts([])).toEqual({ items: [] });
+    expect(script.count).toBe(2);
+  });
+});

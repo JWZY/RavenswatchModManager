@@ -5,12 +5,13 @@ Access model and operational hardening for the rsmm API.
 ## Access model
 
 - **Public (no auth):** browse/search mods, mod detail, download (rate-limited),
-  reviews list, public collections, **approved** guides, user profiles
+  reviews list, release-note heart totals (plus the viewer’s own reaction), public collections, **approved** guides, user profiles
   (id/name/handle/image only — never email), `/api/health`, `/api/auth-config`,
   and anonymous telemetry (`/run`, `/crash`, rate-limited).
 - **API token (publish routes only, see below):** upload, queue/poll the scan.
 - **Authenticated (+ email-verified in prod):** publish, new versions, edits,
-  image presign, own reviews, create collections/guides, avatar.
+  image presign, own reviews, create collections/guides, avatar, release-note hearts.
+  Hearts use the session user only; one per release note/account, with no public reactor list.
 - **Owner-only:** every mutation checks `ownerId === user.id` → 403 otherwise.
 - **Admin-only:** guide approve/reject + `/api/guides/pending`. Admins are the
   user ids in the `ADMIN_USER_IDS` env var (comma-separated). A non-admin

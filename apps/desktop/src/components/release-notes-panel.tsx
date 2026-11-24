@@ -1,4 +1,8 @@
+import { changelogEntryKey } from '@rsmm/schemas';
+import { useQuery } from '@tanstack/react-query';
 import { type KeyboardEvent, useEffect, useId, useRef, useState } from 'react';
+import { api } from '../lib/api';
+import { useSession } from '../lib/auth-client';
 import { type ChangelogChannel, filterChangelog } from '../lib/changelog';
 import { useChangelog } from '../lib/changelog-state';
 import { msg } from '../lib/i18n';
@@ -17,6 +21,18 @@ export function ReleaseNotesPanel() {
   const t = useT();
   const { entries, ready, markRead } = useChangelog();
   const [channel, setChannel] = useState<ChangelogChannel>('all');
+  const { data: session, isPending: authPending } = useSession();
+  const userId = session?.user.id;
+  const keys = entries.map(changelogEntryKey);
+  const queryKey = ['changelog-hearts', userId ?? null, keys] as const;
+  const reactions = useQuery({
+    queryKey,
+    queryFn: () => api.changelog.hearts(keys),
+    enabled: !authPending && keys.length > 0,
+    staleTime: 30_000,
+    retry: 1,
+  });
+  const byKey = new Map(reactions.data?.items.map((item) => [item.key, item]));
   const id = useId();
   const tabsRef = useRef<HTMLDivElement>(null);
   const visible = filterChangelog(entries, channel);
@@ -78,13 +94,26 @@ export function ReleaseNotesPanel() {
           </button>
         ))}
       </div>
+      {reactions.isError ? (
+        <output className="text-sm text-smoke">
+          {t('Hearts could not be refreshed.')}{' '}
+          <button
+            type="button"
+            className="text-parchment underline underline-offset-2"
+            disabled={reactions.isFetching}
+            onClick={() => void reactions.refetch()}
+          >
+            {t('Retry')}
+          </button>
+        </output>
+      ) : null}
       <div
         role="tabpanel"
         id={`${id}-panel-${channel}`}
         aria-labelledby={`${id}-tab-${channel}`}
         // biome-ignore lint/a11y/noNoninteractiveTabindex: Let keyboard users enter the filtered reading area.
         tabIndex={0}
-        className="flex flex-col gap-6"
+        className="flex flex-col gap-9"
       >
         {visible.length === 0 ? (
           <p className="font-serif-italic text-smoke">
@@ -93,8 +122,12 @@ export function ReleaseNotesPanel() {
         ) : (
           visible.map((entry) => (
             <ChangelogSection
-              key={entry.version || `loader:${entry.loader_version}:cli:${entry.cli_version}`}
+              key={`${userId ?? 'anonymous'}:${changelogEntryKey(entry)}`}
               entry={entry}
+              reaction={byKey.get(changelogEntryKey(entry))}
+              userId={userId}
+              authPending={authPending}
+              queryKey={queryKey}
             />
           ))
         )}

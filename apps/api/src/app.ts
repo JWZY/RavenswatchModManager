@@ -11,6 +11,7 @@ import { discordConfigured, env, githubConfigured, googleConfigured, isProductio
 import { errString, log, requestId } from './logger.js';
 import { verifyUnsubscribeToken } from './notify.js';
 import { createRateLimiter } from './rate-limit.js';
+import { changelogRouter } from './routes/changelog.js';
 import { collectionsRouter } from './routes/collections.js';
 import { cronRouter } from './routes/cron.js';
 import { desktopAuthRouter } from './routes/desktop-auth.js';
@@ -306,6 +307,7 @@ app.on(['GET', 'POST'], '/api/unsubscribe', async (c) => {
   return c.text('You will no longer get review emails. Turn them back on under Account → Privacy.');
 });
 
+app.route('/api/changelog', changelogRouter);
 app.route('/api/mods', modsRouter);
 app.route('/api/mods', modModerationRouter);
 app.route('/api/moderation', moderationRouter);

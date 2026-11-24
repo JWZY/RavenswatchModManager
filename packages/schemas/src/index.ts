@@ -1,3 +1,4 @@
+export * from './changelog';
 export * from './api-token';
 export * from './collection';
 export * from './guide';
