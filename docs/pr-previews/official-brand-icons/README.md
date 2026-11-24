@@ -10,6 +10,7 @@ same crop. The website footer is scrolled into view before capture.
 
 - `desktop-signin-*`: `/signin?preview=library`.
 - `desktop-signup-*`: the same route after clicking **Create one.**
+- `desktop-general-*`: `/settings?preview=library&tab=general`, including the Discord/GitHub links and Paths panel.
 - `desktop-settings-*`: `/settings?preview=library&tab=appearance`.
 - `web-signin-*`: `/auth/signin`.
 - `web-signup-*`: `/auth/signup`.
@@ -24,3 +25,7 @@ Tauri OAuth handoff. The website sign-in layout was also checked at 390 × 844.
 The Google artwork comes from the official sign-in HTML configurator,
 Discord from its official Clyde symbol, and GitHub from Primer Octicons.
 Sources and license attribution are recorded in `THIRD_PARTY_NOTICES.md`.
+
+The General pair was captured in an isolated checkout at base `0eaf3c9b`
+and PR implementation `361b6d1f`, excluding unrelated local Settings layout
+edits. Both images use the same 960 × 472 crop from a 1280 × 1000 viewport.
