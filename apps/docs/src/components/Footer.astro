@@ -1,0 +1,35 @@
+---
+// Starlight's own footer, plus the site-wide policy links from rsmm.me.
+import Default from '@astrojs/starlight/components/Footer.astro';
+
+const links = [
+  { href: 'https://rsmm.me/privacy', label: 'Privacy Policy' },
+  { href: 'https://rsmm.me/legal', label: 'Legal Notice' },
+  { href: 'https://rsmm.me/dmca', label: 'Content Policy' },
+  { href: 'https://rsmm.me/contact', label: 'Contact' },
+];
+---
+
+<Default />
+<nav class="site-links" aria-label="Site policies">
+  {links.map((link) => <a href={link.href}>{link.label}</a>)}
+</nav>
+
+<style>
+  .site-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1.25rem;
+    margin-top: 1.5rem;
+    padding-top: 1rem;
+    border-top: 1px solid var(--sl-color-hairline);
+    font-size: var(--sl-text-sm);
+  }
+  .site-links a {
+    color: var(--sl-color-gray-3);
+    text-decoration: none;
+  }
+  .site-links a:hover {
+    color: var(--sl-color-white);
+  }
+</style>
