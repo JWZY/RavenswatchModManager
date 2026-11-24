@@ -52,7 +52,7 @@ Always, before the first line of a mod:
 
 1. [Mods ship data, not code](https://docs.rsmm.me/concepts/data-not-code/): the rule everything else follows from.
 2. [The mod lifecycle](https://docs.rsmm.me/concepts/mod-lifecycle/): how a mod gets into the game and back out.
-3. [Mod authoring guide](https://docs.rsmm.me/guides/modding/): the main reference. Read up to "Recipes", then the sections your mod touches.
+3. [Authoring mods](https://docs.rsmm.me/guides/modding/): the main reference. Read up to "Recipes", then the sections your mod touches.
 4. [Content kinds & confidence](https://docs.rsmm.me/reference/sdk-api/kinds/): what can be added or changed, and how proven each kind is.
 
 Then by what the mod does:
@@ -63,10 +63,10 @@ Then by what the mod does:
 | Adds or edits items | [Custom items](https://docs.rsmm.me/guides/custom-items/) |
 | Adds or edits enemies, bosses | [Custom enemies](https://docs.rsmm.me/guides/custom-enemies/) |
 | Changes talents | [Talent modding, step by step](https://docs.rsmm.me/guides/talent-tutorial/), [Advanced talent modding](https://docs.rsmm.me/guides/talent-tutorial-advanced/), [Talent name lookup](https://docs.rsmm.me/reference/talent-names/) |
-| Changes numbers | "Numeric balance" in the [authoring guide](https://docs.rsmm.me/guides/modding/) |
-| Runs Lua in game | "Lua-scripted mod" and every `R.*` section in the [authoring guide](https://docs.rsmm.me/guides/modding/), then the [Lua gameplay API](https://docs.rsmm.me/reference/lua-api/) |
-| Reacts to events | "Events" and "Event payloads" in the [authoring guide](https://docs.rsmm.me/guides/modding/), [Event systems](https://docs.rsmm.me/reverse-engineering/event-systems/) |
-| Will be published | "Don't ship vanilla bytes" and "Online play" in the [authoring guide](https://docs.rsmm.me/guides/modding/), `rsmm pack` and `rsmm publish` in the [CLI reference](https://docs.rsmm.me/reference/cli/) |
+| Changes numbers | "Numeric balance" in [Authoring mods](https://docs.rsmm.me/guides/modding/) |
+| Runs Lua in game | "Lua-scripted mod" and every `R.*` section in [Authoring mods](https://docs.rsmm.me/guides/modding/), then the [Lua gameplay API](https://docs.rsmm.me/reference/lua-api/) |
+| Reacts to events | "Events" and "Event payloads" in [Authoring mods](https://docs.rsmm.me/guides/modding/), [Event systems](https://docs.rsmm.me/reverse-engineering/event-systems/) |
+| Will be published | "Don't ship vanilla bytes" and "Online play" in [Authoring mods](https://docs.rsmm.me/guides/modding/), `rsmm pack` and `rsmm publish` in the [CLI reference](https://docs.rsmm.me/reference/cli/) |
 
 Not set up yet: [Set up the modding tools](https://docs.rsmm.me/getting-started/modding-tools/). Something broken: [Troubleshooting](https://docs.rsmm.me/getting-started/troubleshooting/), then `rsmm doctor`.
 
@@ -85,7 +85,7 @@ Not set up yet: [Set up the modding tools](https://docs.rsmm.me/getting-started/
 
 ### When sources disagree
 
-Trust `rsmm lint`, then the Lua SDK source (the module's header comment), then the authoring guide and Lua API page, then everything else. Known out-of-date spot:
+Trust `rsmm lint`, then the Lua SDK source (the module's header comment), then Authoring mods and the Lua API page, then everything else. Known out-of-date spot:
 
 - The reverse-engineering pages show raw engine calls, hooks and memory access (`rsmm.call`, `rsmm.hook`, `rsmm.write_*`) from a mod's `init.lua`. Follow [Off limits](#off-limits) instead.
 
@@ -193,7 +193,7 @@ A namespace can be missing. If a submodule fails to load, or the player's loader
 | Players and network state | `R.player`, `R.lobby`, `R.net` |
 | Recording what a playtest showed | `R.exp` |
 
-A name in this table is not proof that it works. Some calls are experimental, some are kept only for older mods, and a few are placeholders that log "NOT IMPLEMENTED". Before using one, read its section in the [authoring guide](https://docs.rsmm.me/guides/modding/) or the [Lua gameplay API](https://docs.rsmm.me/reference/lua-api/), then the source comment for anything the docs leave open.
+A name in this table is not proof that it works. Some calls are experimental, some are kept only for older mods, and a few are placeholders that log "NOT IMPLEMENTED". Before using one, read its section in [Authoring mods](https://docs.rsmm.me/guides/modding/) or the [Lua gameplay API](https://docs.rsmm.me/reference/lua-api/), then the source comment for anything the docs leave open.
 
 In a clone, submodules are `src/loader/lua/rsmm/<name>.lua` (the file name can differ: `R.game` is `gamevalues.lua`) and the core is `src/loader/lib/rsmm.lua`. The comment above a namespace says what it owns, what was seen working in game, and its limits. `data/contracts/r_surface.txt` lists the names that exist.
 

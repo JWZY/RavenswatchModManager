@@ -111,5 +111,5 @@ not `rsmm lint mods/MyMod`, which fails with `no such mod`.
 ## Related
 
 - [Your first mod](/getting-started/first-mod/) — the same loop, by hand.
-- [Mod authoring guide](/guides/modding/) — scaffold through shipping.
+- [Authoring mods](/guides/modding/) — scaffold through shipping.
 - [CLI reference](/reference/cli/) — every command.

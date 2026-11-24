@@ -18,15 +18,16 @@ exception (Lua via the loader).
 - A finished mod is a `manifest.toml` with `[[content]]` / `[[patch]]` blocks
   plus cooked assets — produced by `rsmm apply`, not by a script you ship.
 - One-off Python to reverse a byte layout is fine as throwaway **discovery**,
-  but the capability must then graduate into `rsmm.sdk` (a kind builder, an
-  engine cooker, or the apply pipeline) and the mod re-expressed declaratively.
+  but express the mod declaratively before shipping. If no content kind or
+  patch covers it,
+  [open an issue](/guides/agent-instructions/#when-rsmm-is-missing-something).
 - `rsmm lint` enforces this: any `*.py` in a mod that isn't a sanctioned
   lifecycle hook (e.g. `on_disable.py`) fails CI.
 
 ```mermaid
 flowchart LR
-    D["throwaway discovery script<br/>(reverse a byte layout)"] -->|"graduate"| S["rsmm.sdk capability<br/>(kind / cooker / pipeline)"]
-    S --> M["declarative manifest.toml"]
+    D["throwaway discovery script<br/>(reverse a byte layout)"] -->|"covered by a kind or patch"| M["declarative manifest.toml"]
+    D -->|"not covered"| I["open an issue"]
     M -->|"rsmm apply"| G["cooked assets installed"]
 ```
 
@@ -40,8 +41,10 @@ SDK end-to-end, so a new item is *manifest + `rsmm apply`* with no script.
 ## Common problems
 
 :::caution
-- **`rsmm lint` fails on a `.py` in my mod.** Move the logic into the SDK and
-  delete the script, or rename it to a sanctioned hook if it truly is one.
+- **`rsmm lint` fails on a `.py` in my mod.** Express the result in
+  `manifest.toml` and delete the script, or rename it to a sanctioned hook if
+  it truly is one. If no content kind or patch covers it,
+  [open an issue](/guides/agent-instructions/#when-rsmm-is-missing-something).
 - **"But I need custom behaviour at runtime."** That's the loader's job:
   Lua + the [event bus / symbol map](/concepts/mappings/), not a Python file
   in the mod.
