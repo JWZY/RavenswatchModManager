@@ -97,7 +97,7 @@ export function PrivateGamesOnlyBadge() {
       <button
         ref={trigger}
         type="button"
-        className="private-games-only-badge"
+        className="registry-tag private-games-only-badge"
         aria-describedby={open ? id : undefined}
         onPointerEnter={(event) => {
           if (event.pointerType !== 'touch') setOpen(true);
