@@ -14,23 +14,30 @@ Paste this at the start of the conversation:
 
 ```text
 I'm modding Ravenswatch with the Ravenswatch Mod Manager (RSMM).
-Read https://docs.rsmm.me/llms-mods.txt first — it is the complete
-mod-authoring documentation in one file. Follow it exactly; do not
-invent a mod format. Then help me build: <what you want>.
+Read https://docs.rsmm.me/guides/agent-quick-start/ first
+and follow it to the pages on building a mod. Do not invent a mod
+format. Then help me build: <what you want>.
 ```
 
 Any assistant that can fetch a URL will then be working from the real
 manifest grammar, the real content kinds, and the real CLI.
 
-**Coding agents (Claude Code, Codex, Cursor):** save [Instructions for AI agents
-building mods](/guides/agent-instructions/) as `AGENTS.md` in the folder that
-holds your mods.
+**Coding agents (Claude Code, Codex, Cursor):** an agent opened in an RSMM clone
+is sent there already. Anywhere else, put this line in an `AGENTS.md`
+(`CLAUDE.md` for Claude Code) in the folder that holds your mods:
+
+```text
+Read https://docs.rsmm.me/guides/agent-quick-start/ first.
+```
 
 **Chinese speakers / DeepSeek users:** [用 AI 助手制作 Mod（中文）](/guides/ai-assistant-zh/)
 is a self-contained Chinese prompt for assistants that can't fetch URLs. It
 covers installing mods, the `rsmm` tools, custom skins, 3D models and uploading.
 
-## The machine-readable entry points
+## The machine-readable files
+
+[Agent quick start](/guides/agent-quick-start/) is the first read for every agent.
+These files come after it:
 
 | URL | What it is | When to use it |
 |-----|-----------|----------------|
@@ -47,7 +54,8 @@ material it cannot act on, and dilutes the rules that matter.
 ## If it drifts
 
 [Instructions for AI agents building mods](/guides/agent-instructions/) has every
-rule the assistant works under. It is the first page of `llms-mods.txt`. If the
+rule the assistant works under. It comes right after the quick start in
+`llms-mods.txt`. If the
 assistant suggests BepInEx, hands you a Python script, invents an `R.*` call, or
 offers to change RSMM itself, paste this:
 

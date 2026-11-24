@@ -32,8 +32,13 @@ const EXCLUDE_PAGES = new Set([
   'guides/ai-assistant-zh',
 ]);
 
-/** Leads the corpus: the rules the other pages are read under. */
-const FIRST_PAGE = 'guides/agent-instructions';
+/** Lead the corpus, in this order: the first read, then the rules. */
+const FIRST_PAGES = ['guides/agent-quick-start', 'guides/agent-instructions'];
+
+const rank = (id: string) => {
+  const i = FIRST_PAGES.indexOf(id);
+  return i === -1 ? FIRST_PAGES.length : i;
+};
 
 const wanted = (id: string) =>
   !EXCLUDE_PAGES.has(id) &&
@@ -43,10 +48,7 @@ export const GET: APIRoute = async ({ site }) => {
   const base = (site?.toString() ?? 'https://docs.rsmm.me').replace(/\/$/, '');
   const docs = (await getCollection('docs'))
     .filter((e) => e.id !== '404' && wanted(e.id))
-    .sort(
-      (a, b) =>
-        Number(b.id === FIRST_PAGE) - Number(a.id === FIRST_PAGE) || a.id.localeCompare(b.id),
-    );
+    .sort((a, b) => rank(a.id) - rank(b.id) || a.id.localeCompare(b.id));
 
   const parts = [
     '# Ravenswatch Mod Manager — Mod authoring',
@@ -56,10 +58,11 @@ export const GET: APIRoute = async ({ site }) => {
     'support: RSMM is the toolchain, and the format below is the only one the',
     'game will load.',
     '',
-    'The first page below, "Instructions for AI agents building mods", has the',
-    'rules. Read it before the rest. Where another page disagrees with it, follow',
-    'it. The rule that matters most: never push to RSMM and never open a pull',
-    'request against it. Changes to RSMM go through an issue.',
+    'Read the first page below, "Agent quick start", before anything else. The',
+    'second, "Instructions for AI agents building mods", has the rules for a mod.',
+    'Where another page disagrees with it, follow it. The rule that matters most:',
+    'never push to RSMM and never open a pull request against it for a mod.',
+    'Changes to RSMM go through an issue.',
     '',
     `Reverse-engineering notes on the game engine are NOT included here; they are in ${base}/llms-full.txt.`,
     `Page index: ${base}/llms.txt · Source: ${base}`,

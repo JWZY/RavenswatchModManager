@@ -40,10 +40,10 @@ export const GET: APIRoute = async ({ site }) => {
     '> installing and authoring mods, the Python SDK and CLI, the cooked-asset',
     '> pipeline, the engine symbol map, and reverse-engineering notes.',
     '',
-    `Building a mod? Read ${base}/llms-mods.txt — the authoring corpus in one`,
-    'fetch, without the engine reverse-engineering notes. Its rules are at',
-    `${base}/guides/agent-instructions/`,
+    `AI agents: read ${base}/guides/agent-quick-start/ first, whatever the task.`,
+    'It says which of these pages you need.',
     '',
+    `Mod-authoring corpus (the authoring pages in one file): ${base}/llms-mods.txt`,
     `Full plain-text corpus (everything, large): ${base}/llms-full.txt`,
     '',
   ];
@@ -54,10 +54,12 @@ export const GET: APIRoute = async ({ site }) => {
     return `- [${entry.data.title}](${pageUrl(base, entry.id)})${desc}`;
   };
 
-  const index = docs.find((e) => e.id === 'index');
-  if (index) {
-    seen.add(index.id);
-    lines.push('## Start here', '', render(index), '');
+  const start = ['guides/agent-quick-start', 'index'].flatMap(
+    (id) => docs.find((e) => e.id === id) ?? [],
+  );
+  if (start.length > 0) {
+    for (const entry of start) seen.add(entry.id);
+    lines.push('## Start here', '', ...start.map(render), '');
   }
 
   for (const [prefix, heading] of SECTIONS) {

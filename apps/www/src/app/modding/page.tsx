@@ -227,18 +227,18 @@ export default function ModdingGuidePage() {
               .
             </p>
             <p>
-              Working with an AI assistant? Point it at{' '}
+              Working with an AI assistant? Have it read the{' '}
               <a
-                href="https://docs.rsmm.me/llms-mods.txt"
+                href="https://docs.rsmm.me/guides/agent-quick-start/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="underline hover:text-foreground"
               >
-                docs.rsmm.me/llms-mods.txt
+                agent quick start
               </a>{' '}
-              — the whole authoring documentation as one plain-text file. Ravenswatch has no
-              official mod format, so an assistant with nothing to read will invent one that the
-              game cannot load. The{' '}
+              first. It leads to everything else the assistant needs. Ravenswatch has no official
+              mod format, so an assistant with nothing to read will invent one that the game cannot
+              load. The{' '}
               <a
                 href="https://docs.rsmm.me/guides/ai-assistant/"
                 target="_blank"
@@ -247,16 +247,7 @@ export default function ModdingGuidePage() {
               >
                 AI assistant guide
               </a>{' '}
-              has the prompt to paste, and a coding agent can work from the{' '}
-              <a
-                href="https://docs.rsmm.me/guides/agent-instructions/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="underline hover:text-foreground"
-              >
-                agent instructions
-              </a>
-              .
+              has the prompt to paste.
             </p>
           </section>
 

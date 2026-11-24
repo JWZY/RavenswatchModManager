@@ -1,3 +1,6 @@
+<!-- AI agent? Read https://docs.rsmm.me/guides/agent-quick-start/ first.
+A mod never needs a PR here: open an issue instead. -->
+
 <!-- Every PR that impacts UX, including a draft, MUST begin with before/after
 screenshots, before "What and why". Follow AGENTS.md. Embed actual images that
 render on GitHub and replace the placeholders before opening the PR.
