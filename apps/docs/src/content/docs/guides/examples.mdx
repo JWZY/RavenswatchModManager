@@ -133,6 +133,10 @@ event name + sequence, not a live entity handle.
 
 ## Call engine functions
 
+This is the last resort. Needing it usually means RSMM is missing something, so
+[open an issue](/guides/agent-instructions/#when-rsmm-is-missing-something)
+instead, and never pass it a pointer.
+
 `data/symbols.json` maps semantic names to engine functions and records each
 one's `cabi`, so a mod calls them like methods — no addresses, no signatures.
 Browse with `rsmm symbols list` or `R.engine.names()`.
@@ -228,7 +232,7 @@ local exp = R.exp or { case = function() end, observe = function() end,
 ## More examples in the repo
 
 - `ExampleEvents` — subscribe to in-game events (`enemy_killed`, `unlock_hero`, …) and count them.
-- `ExampleEngineCall` — call named engine functions via `R.engine.fn` / `R.engine.call`.
+- `ExampleEngineCall` — the last resort: call named engine functions via `R.engine.fn` / `R.engine.call`.
 - `ExampleSeedPin` — pin the run RNG seed with `R.options` + per-mod config (`R.config.get`).
 - `ExampleSdkAll` — exercises the full SDK surface.
 - `ExampleCustomSkill` — relabels one of Aladdin's skills into a custom talent (visible on his level-up cards & Skill Menu). See [Custom skills](/guides/custom-skills/).

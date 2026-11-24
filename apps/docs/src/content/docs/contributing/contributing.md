@@ -6,6 +6,10 @@ description: How to contribute to RSMM.
 Thanks for helping. Bug reports, mods, docs fixes and reverse-engineering findings
 are all welcome.
 
+- **Building a mod?** If it needs something RSMM doesn't have, or you hit a bug, you
+  or your AI agent open an issue. The pull request steps below are for people
+  developing RSMM itself. Give your agent
+  [Instructions for AI agents building mods](/guides/agent-instructions/).
 - **Set up:** [Development setup](/contributing/setup/) covers the
   Python CLI, the desktop app, the website and the loader.
 - **How it fits together:** [Architecture](/architecture/overview/).
@@ -31,7 +35,9 @@ are all welcome.
   stay behind their ownership check. PRs or mods that open them are closed.
 - **Mods ship data, not code.** New capability goes into the SDK; mods consume it
   through a `manifest.toml` and high-level `R.*` calls. `rsmm lint` enforces this.
-- **No hardcoded engine addresses.** Add a symbol to `data/symbols.json` instead.
+  A mod author asks for that capability in an issue.
+- **No hardcoded engine addresses.** RSMM developers add a symbol to
+  `data/symbols.json` instead.
 
 Be kind, see the [code of conduct](https://github.com/Ravenswatch-Modding/RavenswatchModManager/blob/main/CODE_OF_CONDUCT.md). Security issues go through
 the [security policy](https://github.com/Ravenswatch-Modding/RavenswatchModManager/blob/main/SECURITY.md), not public issues.

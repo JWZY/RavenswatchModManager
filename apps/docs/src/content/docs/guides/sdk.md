@@ -25,8 +25,11 @@ bottom for what is still empirical.
    stable; ecosystem grows out of tree.
 4. **Crash-safe** — apply transaction is atomic; a boot canary detects a crashy
    mod and bisects on next launch; per-mod Lua errors never escape `pcall`.
-5. **Programmer freedom** — `R.call` (53k fns), `R.hook` (after TLS injection
-   lands), `R.read/write` memory primitives, event bus, scheduler.
+5. **Programmer freedom** — the high-level `R.*` calls, event bus and scheduler.
+   `R.engine.call` is the last resort: needing it usually means
+   [opening an issue](/guides/agent-instructions/#when-rsmm-is-missing-something),
+   and never pass it a pointer. `R.hook` and the memory primitives are for the SDK
+   itself; `rsmm lint` rejects both in a mod.
 6. **Survives game updates** — pattern-resolver already byte-pattern not VA;
    manifests declare `target_game_build`; mods address fns by name; schemas
    are versioned and auto-migrated.
@@ -64,7 +67,8 @@ Lua side (loader DLL):
 src/loader/lib/
   rsmm.lua            # R = require "rsmm" — the core surface (R.on/R.emit,
                       #   R.entity/R.combat/R.stat/R.xp, R.give, R.item,
-                      #   R.talent, R.options, R.hook, R.kv, R.debug,
+                      #   R.talent, R.options, R.kv, R.debug,
+                      #   R.hook (SDK-only: lint rejects it in a mod),
                       #   R.serialize, R.defs, R.rtti) and it merges the
                       #   submodules below onto R
   engine_gen.lua      # GENERATED: semantic name -> {pattern, offset, sig}
@@ -96,7 +100,7 @@ flowchart TD
     C --> T["transaction<br/>stage → atomic swap"]
     T --> A["rsmm apply<br/>back up + install cooked files"]
     A --> G["Game reads<br/>_Cooking/&lt;encoded&gt;"]
-    L["Lua mods"] -.->|"R.on / R.call (loader DLL)"| G
+    L["Lua mods"] -.->|"R.on / R.* calls (loader DLL)"| G
 ```
 
 ## Manifest v2
@@ -468,7 +472,8 @@ compatibility](/reverse-engineering/loader-compatibility/) established that hook
 installed from the ordinary loader thread stay in place for the session. The scaffold sat behind
 `RSMM_TLS_HOOK=1` for a year doing nothing but calling `MH_Initialize`
 early, and its "queue pending hooks" half was an empty stub — so it was
-removed. `R.hook` works from the normal `DllMain` path.
+removed. `R.hook` works from the normal `DllMain` path, for the SDK's own use:
+`rsmm lint` rejects it in a mod.
 
 ## Versioning + game updates
 
@@ -496,5 +501,5 @@ removed. `R.hook` works from the normal `DllMain` path.
   defaults. No mod break.
 * `apply_mods.py` keeps the same CLI surface; the staging dir is invisible
   to users.
-* `R.hook` exposes "not supported" today and silently upgrades when
-  TLS injection lands.
+* `R.hook` stays inside the SDK. `rsmm lint` rejects it in a mod, which uses the
+  high-level `R.*` calls and events instead.

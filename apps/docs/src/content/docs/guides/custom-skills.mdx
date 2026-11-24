@@ -30,7 +30,7 @@ entity's controller key).
 
 `skill` is a `confirmed` kind, so no experimental opt-in is needed.
 
-```python title="build.py"
+```python title="mods/build_MySkills.py"
 from rsmm import sdk
 
 with sdk.Mod("MySkills") as mod:
@@ -43,6 +43,9 @@ with sdk.Mod("MySkills") as mod:
         # mode="relabel" is the default
     )
 ```
+
+Run it from the clone with its `.venv` active: `python mods/build_MySkills.py`. Keep
+it outside `mods/MySkills/`, where `rsmm lint` would fail it.
 
 Equivalent declarative form:
 
