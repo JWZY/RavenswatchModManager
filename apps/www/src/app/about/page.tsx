@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 
 export default function AboutPage() {
   return (
-    <main className="container mx-auto px-6 py-16 animate-page-in">
+    <main className="container mx-auto px-6 py-16">
       <Card className="mx-auto max-w-3xl grimoire-card">
         <CardHeader>
           <CardTitle>About Ravenswatch Mod Manager</CardTitle>

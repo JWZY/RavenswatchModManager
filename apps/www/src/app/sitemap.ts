@@ -2,6 +2,7 @@ import type { MetadataRoute } from 'next';
 import { getApiUrl } from '../lib/api-url';
 import { PAGE_UPDATED, latest } from '../lib/page-dates';
 import { getLatestRelease } from '../lib/releases';
+import { descriptionLength, isThin } from '../lib/thin-content';
 
 const BASE = 'https://rsmm.me';
 const apiUrl = getApiUrl();
@@ -13,7 +14,9 @@ export const revalidate = 3600;
 interface Entry {
   slug: string;
   updatedAt?: string;
-  summary?: string | null;
+  // Mods list: the length only. Collections list: the text.
+  descriptionLength?: number;
+  description?: string | null;
 }
 
 // Page through a list endpoint (the API caps `limit` at 100) until it runs
@@ -53,7 +56,11 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   // page that lists data — the newest entry it shows, whichever is later. Both
   // only move when the page really changes, unlike `now`, which Google learns
   // to ignore.
-  const listed = mods.filter((m) => m.summary?.trim());
+  // Pages under the thin-content bar are noindexed (registry/[slug] and
+  // c/[slug] layouts); listing them here would send Google a mixed "index this
+  // / don't index this" signal, so leave them out.
+  const listed = mods.filter((m) => !isThin(m.descriptionLength));
+  const listedCollections = collections.filter((c) => !isThin(descriptionLength(c.description)));
   const shows: Record<string, (string | undefined | null)[]> = {
     '': listed.map((m) => m.updatedAt),
     '/registry': listed.map((m) => m.updatedAt),
@@ -70,9 +77,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: path === '' ? 1 : 0.7,
   }));
 
-  // Mods without an author-written summary are noindexed as thin content
-  // (registry/[slug]/layout.tsx) — listing them in the sitemap would send
-  // Google a mixed "index this / don't index this" signal, so leave them out.
   const modRoutes = listed.map((m) => ({
     url: `${BASE}/registry/${m.slug}`,
     lastModified: m.updatedAt ? new Date(m.updatedAt) : undefined,
@@ -80,7 +84,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.6,
   }));
 
-  const collectionRoutes = collections.map((c) => ({
+  const collectionRoutes = listedCollections.map((c) => ({
     url: `${BASE}/c/${c.slug}`,
     lastModified: c.updatedAt ? new Date(c.updatedAt) : undefined,
     changeFrequency: 'weekly' as const,

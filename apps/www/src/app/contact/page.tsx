@@ -13,7 +13,7 @@ const REPO = 'https://github.com/Ravenswatch-Modding/RavenswatchModManager';
 
 export default function ContactPage() {
   return (
-    <main className="container mx-auto px-6 py-16 animate-page-in">
+    <main className="container mx-auto px-6 py-16">
       <Card className="mx-auto max-w-3xl grimoire-card">
         <CardHeader>
           <CardTitle>Contact</CardTitle>

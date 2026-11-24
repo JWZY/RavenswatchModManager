@@ -66,7 +66,7 @@ export default function ModdingGuidePage() {
   };
 
   return (
-    <main className="container mx-auto px-6 py-16 animate-page-in">
+    <main className="container mx-auto px-6 py-16">
       <script
         type="application/ld+json"
         // biome-ignore lint/security/noDangerouslySetInnerHtml: static, server-built JSON-LD. Still serialized through jsonLd() so every ld+json block on the site escapes identically.

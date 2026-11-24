@@ -230,6 +230,9 @@ modsRouter.get('/', zValidator('query', listQuerySchema), async (c) => {
       slug: schema.mods.slug,
       name: schema.mods.name,
       summary: schema.mods.summary,
+      // The length, not the text: the list stays light, and the site's sitemap
+      // needs it to apply the thin-content bar (apps/www lib/thin-content.ts).
+      descriptionLength: sql<number>`char_length(btrim(coalesce(${schema.mods.description}, ''), E' \\t\\r\\n'))`,
       license: schema.mods.license,
       updatedAt: schema.mods.updatedAt,
       category: schema.mods.category,
@@ -346,6 +349,7 @@ modsRouter.get('/', zValidator('query', listQuerySchema), async (c) => {
       name: r.name,
       author: r.authorName,
       summary: r.summary,
+      descriptionLength: r.descriptionLength,
       license: r.license,
       latestVersion: r.latestVersion,
       // null (not 0) when the owner hides the count, so the UI omits the stat

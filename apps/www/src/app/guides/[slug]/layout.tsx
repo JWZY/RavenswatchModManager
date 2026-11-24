@@ -1,7 +1,10 @@
 import { jsonLd } from '@rsmm/schemas';
+import { buttonVariants } from '@rsmm/ui';
 import type { Metadata } from 'next';
+import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { type Entity, fetchEntity } from '../../../lib/entity';
+import { type GuideCard, GuideGrid } from '../../components/guide-grid';
 import { ServerProse } from '../../components/server-prose';
 
 const SITE = 'Ravenswatch Mod Manager';
@@ -154,6 +157,15 @@ export default async function Layout({
   const res = await getGuide(slug);
   // A slug the API does not know is a real 404. A transient API error is not.
   if (res.state === 'missing') notFound();
+  // Crawlable internal links to other published guides. A failed list fetch
+  // just drops the section.
+  let siblings: GuideCard[] = [];
+  if (isPublic(res)) {
+    const list = await fetchEntity<{ items?: GuideCard[] }>('/api/guides?sort=rating&limit=4', 300);
+    if (list.state === 'ok') {
+      siblings = (list.data.items ?? []).filter((g) => g.slug !== slug).slice(0, 3);
+    }
+  }
   return (
     <>
       {isPublic(res) ? (
@@ -180,6 +192,15 @@ export default async function Layout({
         />
       ) : null}
       {children}
+      {siblings.length > 0 ? (
+        <section className="container mx-auto space-y-4 px-6 pb-12">
+          <h2 className="text-xl font-semibold tracking-tight">More guides</h2>
+          <GuideGrid items={siblings} />
+          <Link href="/guides" className={buttonVariants({ variant: 'outline', size: 'sm' })}>
+            All guides
+          </Link>
+        </section>
+      ) : null}
     </>
   );
 }

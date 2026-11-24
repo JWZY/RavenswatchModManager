@@ -6,6 +6,7 @@ import { useQueryClient } from '@tanstack/react-query';
 import { ImageIcon, Loader2, Save, Upload, X } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
 import { api } from '../../../lib/api';
+import { MIN_DESCRIPTION_CHARS, descriptionLength } from '../../../lib/thin-content';
 import { MDEditor } from '../../components/md-editor';
 
 export function describeCollectionError(error: unknown): string {
@@ -187,6 +188,10 @@ export function CollectionEditor({
               height={300}
             />
           </div>
+          <p className="text-xs text-muted-foreground">
+            Search engines list the collection page once the description reaches{' '}
+            {MIN_DESCRIPTION_CHARS} characters ({descriptionLength(editDescription)} so far).
+          </p>
         </div>
 
         <div className="space-y-1.5">
