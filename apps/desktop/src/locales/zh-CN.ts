@@ -1069,4 +1069,10 @@ export const zhCN: Record<string, string> = {
   'Edit reply': '编辑回复',
   Reply: '回复',
   'Delete reply': '删除回复',
+  'Could not save your heart. Please try again.': '无法保存你的点赞，请重试。',
+  'Sign in to heart {release} ({count} total)': '登录以点赞 {release}（共 {count} 个赞）',
+  'Hearts unavailable for {release}': '无法获取 {release} 的点赞',
+  'Remove heart from {release} ({count} total)': '取消点赞 {release}（共 {count} 个赞）',
+  'Heart {release} ({count} total)': '点赞 {release}（共 {count} 个赞）',
+  'Hearts could not be refreshed.': '无法刷新点赞。',
 };

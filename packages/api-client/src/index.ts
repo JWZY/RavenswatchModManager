@@ -22,6 +22,8 @@ import {
   type TelemetryRun,
   apiTokenCreatedSchema,
   apiTokenSummarySchema,
+  changelogHeartSchema,
+  changelogHeartsSchema,
   collectionDetailSchema,
   collectionReviewsResponseSchema,
   collectionSchema,
@@ -551,6 +553,29 @@ export function createApiClient(options: ApiClientOptions) {
   });
 
   return {
+    changelog: {
+      hearts: async (keys: string[]) => {
+        // Keep requests bounded as the rolling release history grows.
+        const unique = [...new Set(keys)];
+        const batches = [];
+        for (let i = 0; i < unique.length; i += 100) {
+          batches.push(
+            request(
+              `/api/changelog/hearts?${new URLSearchParams({ keys: unique.slice(i, i + 100).join(',') })}`,
+              { method: 'GET' },
+              changelogHeartsSchema,
+            ),
+          );
+        }
+        return { items: (await Promise.all(batches)).flatMap((batch) => batch.items) };
+      },
+      setHeart: (key: string, hearted: boolean) =>
+        request(
+          `/api/changelog/${encodeURIComponent(key)}/heart`,
+          { method: hearted ? 'PUT' : 'DELETE' },
+          changelogHeartSchema,
+        ),
+    },
     mods: {
       list: (
         params: {

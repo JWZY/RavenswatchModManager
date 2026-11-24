@@ -1,3 +1,4 @@
+import { changelogEntryKey } from '@rsmm/schemas';
 import feed from '../../../../data/changelog.json';
 import { fetchChangelog } from './rsmm';
 import { compareVersions } from './version';
@@ -92,15 +93,9 @@ export function mergeEntries(
 ): ChangelogEntry[] {
   // Key on what IDENTIFIES the entry. Keying on `version` alone collapsed every
   // loader note onto one another, because they all share the empty string.
-  const key = (e: ChangelogEntry) =>
-    e.version
-      ? `app:${e.version}`
-      : e.loader_version !== undefined
-        ? `loader:${e.loader_version}`
-        : `cli:${e.cli_version}`;
   const byKey = new Map<string, ChangelogEntry>();
-  for (const entry of bundled) byKey.set(key(entry), entry);
-  for (const entry of remote) byKey.set(key(entry), entry);
+  for (const entry of bundled) byKey.set(changelogEntryKey(entry), entry);
+  for (const entry of remote) byKey.set(changelogEntryKey(entry), entry);
   return [...byKey.values()].sort(compareEntries);
 }
 
