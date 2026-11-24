@@ -3,7 +3,7 @@ import { fetchChangelog } from './rsmm';
 import { compareVersions } from './version';
 
 /**
- * Release notes for the "What's new" dialog.
+ * Release notes for Settings → Release notes.
  *
  * The entries themselves are NOT compiled in as a literal. They come from
  * `data/changelog.json` at the repo root, which is the single source shared by
@@ -60,6 +60,21 @@ export function isLoaderEntry(e: ChangelogEntry): boolean {
   return !e.version && typeof e.loader_version === 'number';
 }
 
+export type ChangelogChannel = 'all' | 'loader' | 'cli' | 'desktop';
+
+/** Keep the feed order, and classify app releases before their bundled channel metadata. */
+export function filterChangelog(
+  entries: ChangelogEntry[],
+  channel: ChangelogChannel,
+): ChangelogEntry[] {
+  if (channel === 'all') return entries;
+  return entries.filter((entry) => {
+    if (entry.version) return channel === 'desktop';
+    if (isLoaderEntry(entry)) return channel === 'loader';
+    return channel === 'cli' && typeof entry.cli_version === 'number';
+  });
+}
+
 /**
  * Fold the published feed over the copy shipped in this build.
  *
@@ -98,7 +113,7 @@ function compareEntries(a: ChangelogEntry, b: ChangelogEntry): number {
 
 /**
  * Entries strictly newer than `seen` and no newer than `current`, capped at
- * `limit` so a user who skipped eight releases gets a readable dialog rather
+ * `limit` so a user who skipped eight releases gets a manageable set rather
  * than a wall.
  *
  * Versions compare through the project's own `compareVersions` (semver-aware,
@@ -120,7 +135,7 @@ export function entriesSince(
   return entries
     .filter((e) => {
       // A CLI-channel note has no app or loader version to clamp against; it is
-      // read in About, never announced.
+      // read in Settings, never announced.
       if (!e.version && !isLoaderEntry(e)) return false;
       if (isLoaderEntry(e)) {
         // A loader note has no app version to clamp against; the equivalent
@@ -137,7 +152,7 @@ export function entriesSince(
 }
 
 /**
- * What the "What's new" dialog should show on this launch, given what the user
+ * Which release notes are unread on this launch, given what the user
  * has already been shown and whether this machine has run RSMM before.
  *
  * Three cases, and the middle one is the reason this is a function rather than
@@ -173,7 +188,7 @@ export function pendingEntries(args: {
  * over the bundled copy.
  *
  * Never rejects. The CLI already degrades from live fetch to cache to bundled
- * copy, and a "what changed" dialog that throws because the network is down is
+ * copy, and a release-notes panel that throws because the network is down is
  * worse than one showing slightly old notes.
  */
 export async function loadChangelog(opts: { refresh?: boolean } = {}): Promise<ChangelogEntry[]> {

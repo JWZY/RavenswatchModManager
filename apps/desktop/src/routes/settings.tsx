@@ -9,6 +9,7 @@ import {
   Gamepad2,
   Info,
   Palette,
+  ScrollText,
   Settings2,
   ShieldAlert,
   Sparkles,
@@ -20,6 +21,7 @@ import { Button, Fleuron, MonoTag, SectionHeader } from '../components/chrome';
 import { CommandsPanel } from '../components/commands-panel';
 import { GameLogPanel } from '../components/game-log-panel';
 import { useLaunch } from '../components/launch';
+import { ReleaseNotesPanel } from '../components/release-notes-panel';
 import { useExitSettings } from '../components/settings-navigation';
 import { useToast } from '../components/toast';
 import { UpdaterSettings } from '../components/updater';
@@ -34,6 +36,7 @@ import {
   normalizeFont,
   normalizeFontScale,
 } from '../lib/appearance';
+import { useChangelog } from '../lib/changelog-state';
 import { LOCALES, LOCALE_CHOICES, type Locale, msg, t as tr } from '../lib/i18n';
 import { TParts, useT } from '../lib/i18n-react';
 import {
@@ -110,7 +113,13 @@ const TABS = [
     icon: Activity,
     hint: msg('Game log, launcher log, commands, privacy'),
   },
-  { id: 'about', label: msg('About'), icon: Info, hint: msg('Version, release notes, credits') },
+  {
+    id: 'release-notes',
+    label: msg('Release notes'),
+    icon: ScrollText,
+    hint: msg('App, loader, and CLI changes'),
+  },
+  { id: 'about', label: msg('About'), icon: Info, hint: msg('Version, disclosure, credits') },
 ] as const;
 
 type SettingsTab = (typeof TABS)[number]['id'];
@@ -203,7 +212,9 @@ function SettingsPage() {
         </aside>
         <div className="settings-detail-scroll">
           <div className="settings-detail">
-            <SectionHeader title={t(category.label)} className="items-center" />
+            {tab === 'release-notes' ? null : (
+              <SectionHeader title={t(category.label)} className="items-center" />
+            )}
 
             <div
               ref={contentRef}
@@ -237,6 +248,7 @@ function SettingsPage() {
                   <PrivacyPanel />
                 </>
               ) : null}
+              {tab === 'release-notes' ? <ReleaseNotesPanel /> : null}
               {tab === 'about' ? <AboutPanels /> : null}
             </div>
           </div>
@@ -254,6 +266,7 @@ function SettingsSidebar({
   onChange: (tab: SettingsTab) => void;
 }) {
   const t = useT();
+  const unreadNotes = useChangelog((s) => s.unread);
   // Keep one tab stop in the vertical list, with arrow keys between categories.
   const onKeyDown = (e: KeyboardEvent<HTMLDivElement>) => {
     const index = TABS.findIndex((item) => item.id === value);
@@ -291,6 +304,7 @@ function SettingsSidebar({
     >
       {TABS.map((tab) => {
         const active = tab.id === value;
+        const unread = tab.id === 'release-notes' && unreadNotes;
         const Icon = tab.icon;
         return (
           <button
@@ -298,14 +312,23 @@ function SettingsSidebar({
             type="button"
             role="tab"
             id={`settings-tab-${tab.id}`}
+            aria-label={unread ? t('Release notes — unread') : undefined}
             aria-selected={active}
             aria-controls={`settings-panel-${tab.id}`}
             tabIndex={active ? 0 : -1}
-            title={`${t(tab.label)} — ${t(tab.hint)}`}
+            title={unread ? t('Release notes — unread') : `${t(tab.label)} — ${t(tab.hint)}`}
             onClick={() => onChange(tab.id)}
             className="settings-nav-item"
           >
-            <Icon className="settings-nav-icon" aria-hidden="true" />
+            <span className="relative shrink-0">
+              <Icon className="settings-nav-icon" aria-hidden="true" />
+              {unread ? (
+                <span
+                  className="absolute -right-1 -top-1 h-1.5 w-1.5 rounded-full bg-gilt"
+                  aria-hidden="true"
+                />
+              ) : null}
+            </span>
             <span className="settings-nav-label">{t(tab.label)}</span>
           </button>
         );

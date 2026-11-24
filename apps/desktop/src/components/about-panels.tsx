@@ -1,12 +1,6 @@
-import { useEffect, useState } from 'react';
-import pkg from '../../package.json';
-import { BUNDLED_CHANGELOG, type ChangelogEntry, loadChangelog } from '../lib/changelog';
+import { useChangelog } from '../lib/changelog-state';
 import { useT } from '../lib/i18n-react';
-import { ChangelogSection } from './changelog-dialog';
 import { MonoTag } from './chrome';
-
-/** Releases shown before the panel asks you to expand it. */
-const NOTES_COLLAPSED = 1;
 
 /**
  * The About content, as sections within Settings.
@@ -17,24 +11,7 @@ const NOTES_COLLAPSED = 1;
  */
 export function AboutPanels() {
   const t = useT();
-  const version = pkg.version ?? '0.0.0';
-  const [showAll, setShowAll] = useState(false);
-  // Starts from this build's copy so the panel renders immediately, then swaps
-  // in the published feed — which can carry notes for loader updates that never
-  // had an app release to be compiled into.
-  const [entries, setEntries] = useState<ChangelogEntry[]>(BUNDLED_CHANGELOG);
-
-  useEffect(() => {
-    let alive = true;
-    void loadChangelog().then((list) => {
-      if (alive) setEntries(list);
-    });
-    return () => {
-      alive = false;
-    };
-  }, []);
-
-  const visible = showAll ? entries : entries.slice(0, NOTES_COLLAPSED);
+  const version = useChangelog((s) => s.current);
   const buttonClass = 'btn-grim inline-flex items-center justify-center px-3 py-1.5 text-sm';
 
   return (
@@ -60,44 +37,6 @@ export function AboutPanels() {
             'Nothing reaches your game on an unverified claim: engine addresses are resolved by byte-pattern scan against your own copy of the game and re-verified before the loader is planted, CI re-derives the generated loader and SDK artifacts and fails on drift, a capability is only marked confirmed once it has been proven in a real run, and the loader bundle is cryptographically signed. Every file RSMM replaces is backed up, and Restore returns the install to stock.',
           )}
         </p>
-      </section>
-
-      <section className="settings-section flex flex-col gap-4">
-        <div className="flex items-baseline justify-between gap-3">
-          <div className="min-w-0">
-            <h3 className="settings-section-title text-parchment">{t('Release notes')}</h3>
-            <p className="font-serif-italic mt-1 text-ash">
-              {showAll
-                ? t('Every release this build knows about ({n}).', { n: entries.length })
-                : t('The latest release. Older ones are a click away.')}
-            </p>
-          </div>
-          {entries.length > NOTES_COLLAPSED ? (
-            <button
-              type="button"
-              onClick={() => setShowAll((v) => !v)}
-              className="font-mono shrink-0 text-xs text-ash underline-offset-2 hover:text-parchment hover:underline"
-            >
-              {showAll ? t('Show less') : t('Show all {n}', { n: entries.length })}
-            </button>
-          ) : null}
-        </div>
-        {/* Bounded, because the feed is not. Release notes now come from a
-            rolling channel that can carry up to fifty entries, so rendering
-            them all made this page grow without limit and pushed the panels
-            below it off the bottom. One release is what someone opening About
-            actually wants; the rest scroll inside their own box. */}
-        <div
-          className={
-            showAll
-              ? 'flex max-h-[55vh] flex-col gap-6 overflow-y-auto pr-1'
-              : 'flex flex-col gap-6'
-          }
-        >
-          {visible.map((entry) => (
-            <ChangelogSection key={entry.version} entry={entry} />
-          ))}
-        </div>
       </section>
 
       <section className="settings-section flex flex-wrap items-center justify-between gap-3">

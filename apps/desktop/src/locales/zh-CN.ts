@@ -226,7 +226,6 @@ export const zhCN: Record<string, string> = {
   "Configure — open this mod's settings": '配置——打开此模组的设置',
   Conflicts: '冲突',
   Container: '容器',
-  Continue: '继续',
   'Continue with GitHub': '使用 GitHub 继续',
   'Continue with Google': '使用 Google 继续',
   'Continue with Discord': '使用 Discord 继续',
@@ -313,7 +312,8 @@ export const zhCN: Record<string, string> = {
   'Error detail': '错误详情',
   Errors: '错误',
   'Every check passed. Your setup is ready.': '全部检查通过，环境已就绪。',
-  'Every release this build knows about ({n}).': '此版本已知的全部发行版（{n}）。',
+  'Desktop app': '桌面应用',
+  'No release notes in this category yet.': '此分类暂无发行说明。',
   'Everything essential passed. The warnings are informational.':
     '关键项已全部通过，警告仅供参考。',
   'Everything in JetBrains Mono. For the terminal-minded.':
@@ -597,6 +597,8 @@ export const zhCN: Record<string, string> = {
   'Registry recheck failed: {error}': '重新检查索引失败：{error}',
   'Reinstall the app, or — if you run from source — install the CLI with `pip install -e .`.':
     '请重新安装本程序；如果你从源码运行，请用 `pip install -e .` 安装命令行工具。',
+  'Settings — unread release notes': '设置 — 有未读更新说明',
+  'Release notes — unread': '发行说明 — 未读',
   'Release notes': '发行说明',
   Reload: '重新加载',
   'Remind me later': '稍后提醒我',
@@ -674,11 +676,9 @@ export const zhCN: Record<string, string> = {
   'Share link': '分享链接',
   'Share this log': '分享此日志',
   'Show NSFW content': '显示成人内容',
-  'Show all {n}': '显示全部 {n} 条',
   'Show details': '显示详情',
   'Show every mod currently installed in the local mods folder.':
     '列出本地模组文件夹中已安装的全部模组。',
-  'Show less': '收起',
   'Showing lines the loader flagged. Only failures it was taught to classify carry a tag, so an unflagged line means “not classified”, not “fine”.':
     '只显示加载器标记过的行。只有它学过怎么归类的故障才会带标记，因此没有标记只代表“未归类”，并不代表“没问题”。',
   'Shown once on first launch, kept here for reference.': '首次启动时显示一次，此处保留以供查阅。',
@@ -716,7 +716,6 @@ export const zhCN: Record<string, string> = {
   'The game stopped while {mod} was loading. The log below is from that run.':
     '游戏在加载 {mod} 时停止了。下方日志来自那次运行。',
   'The last launch did not finish starting up': '上次启动没有完成',
-  'The latest release. Older ones are a click away.': '最新的发行版。更早的版本点击即可查看。',
   'The link stops working on {date} and the text is deleted then. Anyone with the link can read it, so treat it as public.':
     '该链接将在 {date} 失效，届时文本也会被删除。任何拿到链接的人都能查看，请视为公开内容。',
   'The loader channel needs a newer launcher — update the launcher first.':
@@ -793,7 +792,8 @@ export const zhCN: Record<string, string> = {
   'Vanilla launch failed (exit {code})': '原版启动失败（退出码 {code}）',
   Version: '版本',
   'Version {version} is ready to install': '版本 {version} 已可安装',
-  'Version, release notes, credits': '版本、发行说明、致谢',
+  'Version, disclosure, credits': '版本、声明、致谢',
+  'App, loader, and CLI changes': '应用、加载器和命令行工具的更新',
   'View license': '查看许可证',
   'View the source': '查看源码',
   Warnings: '警告',
@@ -802,7 +802,6 @@ export const zhCN: Record<string, string> = {
   'Welcome back, modder.': '欢迎回来，模组玩家。',
   'What the script loader wrote inside the game, live.': '脚本加载器在游戏内写下的实时记录。',
   'What went wrong? (optional)': '出了什么问题？（选填）',
-  "What's new": '更新内容',
   'When the app hits an unexpected error, send the error type, message, stack trace, RSMM version and OS to the RSMM API so it can be fixed. No mod list, no file paths, no account details. Turning this off keeps crashes in your local launcher log only.':
     '当本程序遇到意外错误时，把错误类型、错误信息、堆栈、RSMM 版本和操作系统发送到 RSMM API，以便修复。不含模组列表、文件路径和账户信息。关掉之后，崩溃信息只会留在本地启动器日志里。',
   'Which run to read': '要查看哪一次运行',

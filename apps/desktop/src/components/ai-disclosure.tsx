@@ -35,7 +35,7 @@ async function openExternal(url: string): Promise<void> {
  * tells a user nothing they can act on and invites the assumption that nothing
  * was verified.
  *
- * Gates the changelog dialog — see `FirstRunDialogs` — so a returning user is
+ * Gates the CLI update prompt — see `FirstRunDialogs` — so a returning user is
  * never shown two stacked modals.
  */
 export function AiDisclosureDialog({ onAcknowledged }: { onAcknowledged?: () => void }) {
@@ -59,7 +59,7 @@ export function AiDisclosureDialog({ onAcknowledged }: { onAcknowledged?: () => 
 }
 
 /**
- * The card itself, split out like `ChangelogCard` so `useModalChrome` moves
+ * The card itself, split out so `useModalChrome` moves
  * focus when the dialog OPENS rather than when the app shell mounts.
  *
  * No `onClose`: the note has to be answered, so Escape does nothing. Before

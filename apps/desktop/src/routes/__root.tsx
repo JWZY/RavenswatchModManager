@@ -10,10 +10,10 @@ import {
 import { ArrowUp, ChevronDown, PanelLeftClose, PanelLeftOpen, Search, X } from 'lucide-react';
 import { Fragment, useEffect, useId, useMemo, useRef, useState } from 'react';
 import { AccountStrip } from '../components/account-strip';
-import { FirstRunDialogs } from '../components/changelog-dialog';
 import { ChannelStatusBanner } from '../components/channel-status-banner';
 import { CopyButton } from '../components/chrome';
 import { CommandPalette } from '../components/command-palette';
+import { FirstRunDialogs } from '../components/first-run-dialogs';
 import { BrowseIcon } from '../components/icons/BrowseIcon';
 import { ConflictsIcon } from '../components/icons/ConflictsIcon';
 import { LaunchIcon } from '../components/icons/LaunchIcon';
@@ -30,6 +30,8 @@ import { StartupSelfHeal } from '../components/startup-self-heal';
 import { DialogProvider, ToastProvider } from '../components/toast';
 import { UpdaterBanner, VersionFooter } from '../components/updater';
 import { LIBRARY_PREVIEW } from '../lib/browser-preview';
+import { initializeChangelog, useChangelog } from '../lib/changelog-state';
+import { hasRunBefore } from '../lib/first-run';
 import { msg } from '../lib/i18n';
 import { useT } from '../lib/i18n-react';
 import { inTauri, shortcutLabel } from '../lib/platform';
@@ -78,6 +80,7 @@ function useNav(): Nav[] {
 
 function NavLink({ to, icon: Icon, label: source, collapsed }: Nav & { collapsed: boolean }) {
   const t = useT();
+  const unreadNotes = useChangelog((s) => s.unread) && to === '/settings';
   const installed = useApp((s) => s.installed);
   const profile = useApp(activeProfile);
   const localMods = useApp((s) => s.localMods);
@@ -96,7 +99,9 @@ function NavLink({ to, icon: Icon, label: source, collapsed }: Nav & { collapsed
   );
   const outdated = useMemo(() => (to === '/' ? outdatedCount(installed) : 0), [to, installed]);
   const label = t(source);
-  const collapsedLabel = to === '/' ? t('Library · {n} active', { n: activeCount }) : label;
+  const accessibleLabel = unreadNotes ? t('Settings — unread release notes') : label;
+  const collapsedLabel =
+    to === '/' ? t('Library · {n} active', { n: activeCount }) : accessibleLabel;
   const updates =
     outdated > 0
       ? t.n(outdated, '{n} mod with an available update', '{n} mods with available updates')
@@ -104,13 +109,19 @@ function NavLink({ to, icon: Icon, label: source, collapsed }: Nav & { collapsed
   return (
     <Link
       to={to}
-      className="nav-link-grim sidebar-nav-item group"
-      aria-label={collapsed ? collapsedLabel : undefined}
-      data-sidebar-tooltip={collapsed ? collapsedLabel : undefined}
+      className="nav-link-grim sidebar-nav-item group relative"
+      aria-label={collapsed ? collapsedLabel : unreadNotes ? accessibleLabel : undefined}
+      data-sidebar-tooltip={collapsed ? collapsedLabel : unreadNotes ? accessibleLabel : undefined}
       activeProps={{ 'data-active': 'true' }}
       inactiveProps={{ 'data-active': 'false' }}
     >
       <Icon className="nav-icon shrink-0" aria-hidden />
+      {unreadNotes ? (
+        <span
+          className="absolute left-7 top-2 h-1.5 w-1.5 rounded-full bg-gilt"
+          aria-hidden="true"
+        />
+      ) : null}
       <span
         className="sidebar-expanded-content truncate font-serif-italic text-base"
         aria-hidden={collapsed}
@@ -439,6 +450,11 @@ function RootLayout() {
   const t = useT();
   const location = useLocation();
   const router = useRouter();
+  // Capture before child startup effects can persist a fresh profile.
+  const [returningInstall] = useState(hasRunBefore);
+  useEffect(() => {
+    if (!LIBRARY_PREVIEW) void initializeChangelog(returningInstall);
+  }, [returningInstall]);
   const settingsOpen = location.pathname === '/settings';
   const returnHref = useRef('/');
   const nav = useNav();
