@@ -270,7 +270,7 @@ deliverable today.
 
 **Canonical folder.**
 - One layout, never two. `manifest.toml` + `assets/` + optional
-  (`init.lua`, `build.py`, `README.md`, `LICENSE`).
+  (`init.lua`, `README.md`, `LICENSE`).
 - `rsmm lint <id>` validates structure, surfaces missing fields.
 
 **Discoverability.**

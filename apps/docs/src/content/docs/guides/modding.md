@@ -30,8 +30,8 @@ flowchart LR
 > file by hand is the normal way to make a mod. `rsmm new` scaffolds it, the
 > editor schema autocompletes it, and `rsmm lint` checks it. The Python SDK
 > (`with sdk.Mod(...)`) is an optional *generator* for the same file, useful
-> when a mod has many similar entries to produce. Your `build.py` is a tool you
-> run; it is **not** shipped inside the mod. See
+> when a mod has many similar entries to produce. The generator is a tool you
+> run; it stays **outside** the mod folder. See
 > [Authoring with the Python SDK](#authoring-with-the-python-sdk) below.
 
 > **A mod is data, not code.** The shipped artifact is `manifest.toml` + assets
@@ -39,8 +39,8 @@ flowchart LR
 > layout with a throwaway script is fine for *discovery*, but fold the capability
 > into `rsmm.sdk` and express the mod declaratively before shipping. `rsmm lint`
 > (and CI) rejects any `*.py` in a mod except the sanctioned `on_disable.py`
-> lifecycle hook. (The SDK `build.py` lives in the mod source but is a generator,
-> not loaded at runtime; `init.lua` is the one sanctioned in-mod runtime script.)
+> lifecycle hook. (An SDK generator lives beside the mod folder, for example
+> `mods/build_MyMod.py`; `init.lua` is the one sanctioned in-mod runtime script.)
 
 ---
 
@@ -171,11 +171,11 @@ A `stat` field can take its number from the mod's config instead:
 setting and multiplies it by 15 (write the shipped value there, so 1.0 leaves the
 game as it was). Like every content config, it takes effect on the next launch.
 
-The same blocks from the optional Python SDK — `python3 mods/MyMod/build.py`
-writes the manifest above:
+The same blocks from the optional Python SDK. `python mods/build_MyMod.py`, run
+from the clone with its `.venv` active, writes `mods/MyMod/manifest.toml`:
 
 ```python
-# mods/MyMod/build.py
+# mods/build_MyMod.py
 from rsmm import sdk
 
 with sdk.Mod("MyMod", author="me", load_order=50) as m:
@@ -259,9 +259,11 @@ mods/MyMod/
             DarkTalesResources/#   install root. Prefer a `kind = "ot"` patch
                 ApplicationSettings.ot   # for plaintext .ot files (below).
     init.lua                   # Optional: Lua script run by the loader DLL
-    build.py                   # Optional: Python SDK build script
     on_disable.py              # Optional: cleanup hook when mod is disabled
 ```
+
+A Python SDK generator goes beside this folder (`mods/build_MyMod.py`). Inside
+it, `rsmm lint` fails any `.py` but `on_disable.py`.
 
 ### manifest.toml
 
@@ -362,8 +364,12 @@ Design rationale: [SDK guide](/guides/sdk/).
 A mod is a `with sdk.Mod(...) as m:` block — calls accumulate in memory and the
 tree is written when the block exits.
 
+Save the generator outside `mods/FrostPack/`. `rsmm lint` fails a `build.py` in
+there, and each build replaces the whole folder, keeping only an `init.lua` you
+wrote yourself. The mod is written to `mods/<id>/` wherever the script is.
+
 ```python
-# mods/FrostPack/build.py
+# mods/build_FrostPack.py
 from rsmm import sdk
 
 with sdk.Mod("FrostPack", version="1.0.0", author="you", name="Frost Pack") as m:
@@ -371,7 +377,8 @@ with sdk.Mod("FrostPack", version="1.0.0", author="you", name="Frost Pack") as m
 ```
 
 ```bash
-python mods/FrostPack/build.py   # writes mods/FrostPack/manifest.toml + assets
+# in the clone, with its .venv active
+python mods/build_FrostPack.py   # writes mods/FrostPack/manifest.toml + lang/EN.toml
 rsmm list                        # see it registered
 rsmm apply                       # install into the game
 ```
@@ -1440,12 +1447,11 @@ rsmm.commit()                        -- apply registered overrides
 rsmm.on_event(name, fn)              -- "ready" | "exit"
 ```
 
-To call a game function by name, use `R.engine.call` (see
-[Calling game functions](/reverse-engineering/calling-game-functions/)).
-
 To change a run from Lua — rerolls, cooldowns, shards, keys, levels, items, talents, melodies, controls, chapter flow — use the high-level calls in the [Lua gameplay API](/reference/lua-api/).
 
-See `examples/ExampleEngineCall/init.lua` and `examples/ExampleSeedPin/init.lua` for working examples. Full game-function API + caveats: [Calling game functions](/reverse-engineering/calling-game-functions/).
+`R.engine.call` runs a named engine function and is the last resort. Needing it usually means RSMM is missing something, so [open an issue](/guides/agent-instructions/#when-rsmm-is-missing-something) instead. If you use it anyway, never pass it a pointer: that has been behind the loader's in-game crashes.
+
+See `examples/ExampleSeedPin/init.lua` for a working example, and `examples/ExampleEngineCall/init.lua` for the last resort. How the engine side works: [Calling game functions](/reverse-engineering/calling-game-functions/).
 
 ### Events
 
@@ -2162,12 +2168,14 @@ client-only group. Lint warns when a mod declares `cosmetic` or `local-only` (or
 nothing) but changes the game. Declare `deterministic-shared` or
 `host-authoritative` for those.
 
-For Lua, the client-only calls are the whole of `R.log`, `R.on`/`R.off`/`R.once`,
-`R.overlay`, `R.config`, `R.kv`, `R.schedule`, `R.exp`, `R.health`, `R.i18n`,
-`R.damage`, `R.camera` and `R.input`, plus these reads: `R.entity.hero`/`ready`/`hp`/`hp_frac`/`max_hp`,
-`R.stat.get`/`cached`/`keys`/`names`, `R.hp.get`/`frac`/`max`,
+For Lua, the client-only calls are the whole of `R.log`,
+`R.on`/`R.on_match`/`R.off`/`R.once`, `R.overlay`, `R.config`, `R.kv`, `R.schedule`,
+`R.exp`, `R.health`, `R.i18n`, `R.damage`, `R.camera`, `R.audio`, `R.input` and `R.ui`,
+plus these reads: `R.entity.hero`/`ready`/`capture_enabled`/`hp`/`hp_frac`/`max_hp`,
+`R.stat.get`/`cached`/`keys`/`names`/`key`, `R.hp.get`/`frac`/`max`,
 `R.game.get`/`flag`/`cached`/`ready`/`describe`,
-`R.events.known`/`count`/`category` and `R.net.peers`. Anything else, including `R[...]` lookups or
+`R.events.known`/`count`/`category`, `R.net.peers`,
+`R.lobby.members`/`allies`/`hero_name` and `R.debug.components`. Anything else, including `R[...]` lookups or
 passing `R` to another function, counts as gameplay.
 
 ## Load order
@@ -2218,7 +2226,7 @@ kind's rating is the weakest mode it ships, so read these alongside it:
 | **Reskin an existing hero** (texture/model override) | ✅ confirmed | See `JulietReskin`. |
 | **New selectable skin slot** | ⚠️ experimental | Needs the loader skin detour; the DLC-entitlement filter rejects new keys by default (`RSMM_SKIN_FORCE_SHOW=1` to test). Replacing an existing slot is ✅ confirmed. |
 | **Engine event hooks** (`R.on("OnDamage", …)`) | ⚠️ experimental | The event bus + payload envelope ship in the loader, and emitter addresses are mapped — but the runtime path is **not yet verified end-to-end on CI** (loader is Windows-only). Treat as unproven until the loader smoke test (below) is green. |
-| **Call any of 53k game functions from Lua** (`R.engine.call`) | ✅ confirmed | Covers seed pinning, stat reads, save inspection, forced option overrides. Interception (hooks) is the experimental part above. |
+| **Call a named engine function from Lua** (`R.engine.call`) | ✅ confirmed | The last resort, limited to the names in `R.engine.names()`. Needing it usually means an issue, and never pass it a pointer. |
 
 **Opting into unverified kinds.** Registering any non-`confirmed` kind requires
 `sdk.Mod(..., experimental=True)` (and the manifest records `experimental = true`);

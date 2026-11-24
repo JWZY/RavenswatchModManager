@@ -43,7 +43,11 @@ Like Forge/Fabric build APIs over mappings, RSMM generates:
   and a Lua resolver entry (the Access-Transformer analog).
 - **Event bus** — `kind="event"` symbols generate `R.on("<lua_event>", cb)`
   hooks (the Mixin analog).
-- **High-level Lua** — `R.engine.resolve(name)` / `R.engine.call(name, …)`.
+- **High-level Lua** — the `R.*` calls mods use, built by the SDK on
+  `R.engine.resolve(name)` and `R.engine.call(name, …)`. `rsmm lint` rejects
+  `resolve` in a mod, and `call` is a mod's last resort: needing it usually means
+  [opening an issue](/guides/agent-instructions/#when-rsmm-is-missing-something),
+  and never pass it a pointer.
 
 :::note[Don't hardcode addresses]
 Add a symbol and reference `Sym::Name` / `ADDR["Name"]` instead of baking an

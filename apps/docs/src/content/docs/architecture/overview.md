@@ -97,8 +97,8 @@ mods/<id>/
   on_disable.py                optional cleanup hook when the mod is disabled
 ```
 
-The full layout, including `build.py` and the manifest's `[[content]]` and
-`[[patch]]` tables, is in [Authoring mods](/guides/modding/).
+The full layout and the manifest's `[[content]]` and `[[patch]]` tables are in
+[Authoring mods](/guides/modding/).
 
 ```toml
 [mod]

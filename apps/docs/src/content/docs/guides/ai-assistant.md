@@ -77,10 +77,13 @@ Harmony, MelonLoader and DLL plugins will not load**. RSMM's loader is a
 `winhttp.dll` proxy with MinHook and an embedded Lua 5.4 VM.
 
 **A mod's Lua entry point is `init.lua` at the mod root**, and the API is `R.*`
-via `local R = require "rsmm"`. Engine calls go through
-`R.engine.call(name, ...)` by semantic name against a hand-curated symbol map.
-There is no `rsmm.call()`, and the map is a few hundred named symbols — not the
-tens of thousands of raw game functions an assistant may claim are exposed.
+via `local R = require "rsmm"`. A mod works through the high-level calls
+(`R.hp`, `R.camera`, `R.give`, ...). `R.engine.call(name, ...)` is the last
+resort: needing it usually means RSMM is missing something, so
+[open an issue](/guides/agent-instructions/#when-rsmm-is-missing-something) instead,
+and never pass it a pointer. It reaches a few hundred named symbols, not the tens
+of thousands of raw game functions an assistant may claim are exposed, and there
+is no `R.call()` or `rsmm.call()`.
 
 **Don't hand-edit the game folder.** Cooked asset paths under
 `DarkTalesResources/_Cooking/` are ciphered, and RSMM tracks what it replaced

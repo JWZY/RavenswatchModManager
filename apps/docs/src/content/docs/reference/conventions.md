@@ -44,8 +44,12 @@ emitted bytes are not verified and may not appear or may crash.
 
 ## Surviving game updates
 
-- Address engine functions by **name** (`R.call("Name")`), never by raw
-  address — the [symbol map](/concepts/mappings/) re-resolves by byte pattern.
+- Use the high-level `R.*` calls, never a raw address. They find engine functions
+  by **name**, and the [symbol map](/concepts/mappings/) re-resolves each name by
+  byte pattern. `R.engine.call("Name", ...)` is the last resort: needing it usually
+  means RSMM is missing something, so
+  [open an issue](/guides/agent-instructions/#when-rsmm-is-missing-something) instead,
+  and never pass it a pointer.
 - Declare `target_game_build` in your manifest so RSMM can warn on drift.
 - Prefer `[[patch]]` over whole-file overrides where possible: patches merge
   and are far more update-resilient than replacing a whole cooked file.

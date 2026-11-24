@@ -22,7 +22,7 @@ is never picked.
 
 The enemy kind is confirmed, so no `experimental` opt-in is needed.
 
-```python title="build.py"
+```python title="mods/build_MyEnemies.py"
 from rsmm import sdk
 
 with sdk.Mod("MyEnemies") as mod:
@@ -33,6 +33,9 @@ with sdk.Mod("MyEnemies") as mod:
         # **fields override stat-block values on the clone
     )
 ```
+
+Run it from the clone with its `.venv` active: `python mods/build_MyEnemies.py`. Keep
+it outside `mods/MyEnemies/`, where `rsmm lint` would fail it.
 
 Equivalent declarative form:
 

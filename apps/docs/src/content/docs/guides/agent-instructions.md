@@ -85,11 +85,9 @@ Not set up yet: [Set up the modding tools](https://docs.rsmm.me/getting-started/
 
 ### When sources disagree
 
-Trust `rsmm lint`, then the Lua SDK source (the module's header comment), then the authoring guide and Lua API page, then everything else. Known out-of-date spots:
+Trust `rsmm lint`, then the Lua SDK source (the module's header comment), then the authoring guide and Lua API page, then everything else. Known out-of-date spot:
 
-- `R.call(...)` in some pages is `R.engine.call(...)`. Where a page presents it as the normal way to reach the engine, follow [Off limits](#off-limits) instead.
-- The SDK v3 page is a design document. It lists `R.hook` and memory access as open to mods; lint rejects both.
-- The guide shows `build.py` inside the mod folder. Lint fails on it there, so keep a generator script outside `mods/<id>/`.
+- The reverse-engineering pages show raw engine calls, hooks and memory access (`rsmm.call`, `rsmm.hook`, `rsmm.write_*`) from a mod's `init.lua`. Follow [Off limits](#off-limits) instead.
 
 ## How a mod is built
 
