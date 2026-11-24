@@ -1,8 +1,9 @@
 import { jsonLd } from '@rsmm/schemas';
 import { buttonVariants } from '@rsmm/ui';
+import { GitHubIcon } from '@rsmm/ui/brand-icons';
 import { Analytics } from '@vercel/analytics/next';
 import { SpeedInsights } from '@vercel/speed-insights/next';
-import { Coffee, Github } from 'lucide-react';
+import { Coffee } from 'lucide-react';
 import type { Metadata, Viewport } from 'next';
 import localFont from 'next/font/local';
 import Link from 'next/link';
@@ -319,7 +320,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                   aria-label="RSMM on GitHub"
                   className={buttonVariants({ variant: 'ghost', size: 'sm' })}
                 >
-                  <Github className="h-4 w-4" aria-hidden="true" />
+                  <GitHubIcon />
                 </a>
                 <a
                   href="https://ko-fi.com/W7W41FW3YE"

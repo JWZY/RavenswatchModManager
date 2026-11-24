@@ -1,10 +1,10 @@
+import { DiscordIcon, GitHubIcon, GoogleIcon } from '@rsmm/ui/brand-icons';
 import { useQuery } from '@tanstack/react-query';
 import { createFileRoute, useNavigate } from '@tanstack/react-router';
 import { openUrl } from '@tauri-apps/plugin-opener';
-import { Github, Globe, UserPlus } from 'lucide-react';
+import { UserPlus } from 'lucide-react';
 import { type FormEvent, useEffect, useState } from 'react';
 import { Button, CopyButton, Panel, SectionHeader } from '../components/chrome';
-import { DiscordIcon } from '../components/icons/DiscordIcon';
 import { UserRoundArrowLeft } from '../components/icons/UserRoundArrowLeft';
 import { describeApiError } from '../lib/api';
 import { getApiUrl } from '../lib/api-url';
@@ -205,7 +205,7 @@ function SignInPage() {
                 onClick={() => social('google')}
                 className="w-full justify-center"
               >
-                <Globe className="h-4 w-4" aria-hidden /> {t('Continue with Google')}
+                <GoogleIcon /> {t('Continue with Google')}
               </Button>
             ) : null}
             {config.data?.providers.discord ? (
@@ -227,7 +227,7 @@ function SignInPage() {
                 onClick={() => social('github')}
                 className="w-full justify-center"
               >
-                <Github className="h-4 w-4" /> {t('Continue with GitHub')}
+                <GitHubIcon /> {t('Continue with GitHub')}
               </Button>
             ) : null}
             <div className="flex items-center gap-3 pt-1 font-mono text-xs text-ash">
