@@ -3,13 +3,14 @@ title: Contributing
 description: How to contribute to RSMM.
 ---
 
+**AI agent?** Read [Agent quick start](/guides/agent-quick-start/) first.
+
 Thanks for helping. Bug reports, mods, docs fixes and reverse-engineering findings
 are all welcome.
 
 - **Building a mod?** If it needs something RSMM doesn't have, or you hit a bug, you
   or your AI agent open an issue. The pull request steps below are for people
-  developing RSMM itself. Give your agent
-  [Instructions for AI agents building mods](/guides/agent-instructions/).
+  developing RSMM itself.
 - **Set up:** [Development setup](/contributing/setup/) covers the
   Python CLI, the desktop app, the website and the loader.
 - **How it fits together:** [Architecture](/architecture/overview/).

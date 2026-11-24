@@ -48,6 +48,15 @@ export default defineConfig({
           tag: 'meta',
           attrs: { name: 'twitter:image:alt', content: 'Ravenswatch Mod Manager documentation' },
         },
+        // The first read for every AI agent.
+        {
+          tag: 'link',
+          attrs: {
+            rel: 'help',
+            title: 'AI agents: read first',
+            href: '/guides/agent-quick-start/',
+          },
+        },
         // AI-assistant ingestion (https://llmstxt.org/). `llms-mods.txt` is
         // advertised alongside the index because it, not the full corpus, is
         // what an assistant building a mod should actually pull.
@@ -122,6 +131,7 @@ export default defineConfig({
           label: 'Guides',
           items: [
             { label: 'Authoring mods', slug: 'guides/modding' },
+            { label: 'Agent quick start', slug: 'guides/agent-quick-start' },
             { label: 'Build a mod with an AI assistant', slug: 'guides/ai-assistant' },
             { label: 'Instructions for AI agents', slug: 'guides/agent-instructions' },
             { label: '用 AI 助手制作 Mod（中文）', slug: 'guides/ai-assistant-zh' },

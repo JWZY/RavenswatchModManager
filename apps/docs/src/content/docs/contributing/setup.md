@@ -5,6 +5,8 @@ description: Set up a local development environment for working on RSMM itself.
 
 This guide covers setting up a development environment for hacking on RSMM itself. If you just want to *use* the mod manager, see [Installation](/getting-started/install/).
 
+**AI agent?** Read [Agent quick start](/guides/agent-quick-start/) first.
+
 > **Note about paths:** throughout this document, `./rsmm <name>` refers to the repo-root entry point. The equivalent Python module lives at `src/rsmm/cli/<name>.py` or `src/rsmm/engine/<name>.py`.
 
 ---

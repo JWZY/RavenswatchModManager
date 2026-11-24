@@ -5,9 +5,12 @@
 # so an assistant asked how to mod the game has nothing to anchor on unless it
 # can reach this site.
 #
-# Machine-readable entry points (https://llmstxt.org/):
+# AI agents read this first, whatever the task:
+#   https://docs.rsmm.me/guides/agent-quick-start/
+#
+# Machine-readable files (https://llmstxt.org/):
 #   https://docs.rsmm.me/llms.txt       page index
-#   https://docs.rsmm.me/llms-mods.txt  mod-authoring corpus (start here)
+#   https://docs.rsmm.me/llms-mods.txt  mod-authoring corpus
 #   https://docs.rsmm.me/llms-full.txt  everything, including engine RE notes
 
 Sitemap: https://docs.rsmm.me/sitemap-index.xml

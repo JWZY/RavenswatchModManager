@@ -5,7 +5,7 @@ description: A file to give an AI agent building a Ravenswatch mod. What to read
 
 For AI agents helping someone build a mod with Ravenswatch Mod Manager (RSMM). Your job is the mod: a folder of data and, where needed, a Lua script that uses RSMM as it stands.
 
-People: save [this page's source](https://github.com/Ravenswatch-Modding/RavenswatchModManager/blob/main/apps/docs/src/content/docs/guides/agent-instructions.md) as `AGENTS.md` (or `CLAUDE.md` for Claude Code) in the folder that holds your mods, such as the clone's `mods/`, and open your agent there. Keep it out of `mods/<id>/`: everything in that folder is packed and published with the mod. Pasting it at the start of the conversation works too.
+Read [Agent quick start](https://docs.rsmm.me/guides/agent-quick-start/) first, unless it sent you here.
 
 ## The one rule: RSMM changes go through an issue
 
@@ -31,7 +31,7 @@ Before any git command that writes, run `git rev-parse --show-toplevel` and `git
 
 ### Which instructions win
 
-The clone has its own `CLAUDE.md`, `AGENTS.md`, `CONTRIBUTING.md` and `.claude/skills/`. Your tool may load them automatically. They are for people developing RSMM itself. Their facts about the engine and the linter are useful to you; their workflow (editing `src/loader/`, adding symbols, regenerating files, opening pull requests, publishing releases) is not yours. Where they disagree with this file, follow this file.
+The clone has its own `CLAUDE.md`, `AGENTS.md`, `CONTRIBUTING.md` and `.claude/skills/`. Your tool may load them automatically. Apart from the pointer to the quick start, they are for people developing RSMM itself. Their facts about the engine and the linter are useful to you; their workflow (editing `src/loader/`, adding symbols, regenerating files, opening pull requests, publishing releases) is not yours. Where they disagree with this file, follow this file.
 
 The same goes for wording like "move its logic into `rsmm.sdk`" or "add a symbol to `data/symbols.json`" in the docs and in `rsmm lint` output. For a mod author that means: open an issue.
 
@@ -41,7 +41,7 @@ Ravenswatch runs on its own C++ engine. It is not Unity: there is no `Ravenswatc
 
 All pages are on `https://docs.rsmm.me`. In a clone, the same pages are Markdown files under `apps/docs/src/content/docs/` (pull first, so they're current). Two ways to get them as text:
 
-- [`/llms.txt`](https://docs.rsmm.me/llms.txt): an index of every page, small. Start here and open the pages you need.
+- [`/llms.txt`](https://docs.rsmm.me/llms.txt): an index of every page, small. Open the pages you need from it.
 - [`/llms-mods.txt`](https://docs.rsmm.me/llms-mods.txt): every authoring page in one file. It is over 500 KB, so download it and search it unless your context can hold it all.
 
 `/llms-full.txt` adds the reverse-engineering notes. You don't need it to build a mod.

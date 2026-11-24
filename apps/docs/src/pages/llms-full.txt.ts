@@ -15,6 +15,8 @@ export const GET: APIRoute = async ({ site }) => {
   const parts = [
     '# Ravenswatch Mod Manager — Full documentation',
     '',
+    `AI agents: read ${base}/guides/agent-quick-start/ first, whatever the task.`,
+    '',
     `Concatenated plain text of every docs page. Source: ${base}`,
     '',
   ];

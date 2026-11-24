@@ -140,6 +140,9 @@ appears on the site.
 </tr>
 </table>
 
+Working with an AI agent, on a mod or on RSMM? Have it read the
+[Agent quick start](https://docs.rsmm.me/guides/agent-quick-start/) first.
+
 For the game itself (heroes, talents, items, enemies), the unofficial
 [Ravenswatch Wiki](https://ravenswatch.wiki.gg/), maintained by Skigim, is the reference.
 

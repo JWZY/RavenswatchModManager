@@ -15,7 +15,7 @@ want to know what else a mod can do.
 :::
 
 :::tip[Using an AI agent?]
-Give it the [instructions for AI agents](/guides/agent-instructions/). They say
+Have it read [Agent quick start](/guides/agent-quick-start/) first. It leads to
 what to read here, what a mod may use, and what to do when RSMM is missing
 something.
 :::

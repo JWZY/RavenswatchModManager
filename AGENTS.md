@@ -1,5 +1,7 @@
 # Agent instructions
 
+**Read [Agent quick start](apps/docs/src/content/docs/guides/agent-quick-start.md) first, every time** (also at https://docs.rsmm.me/guides/agent-quick-start/), unless it sent you here. It says which of the project's files your task needs. The rest of this file is for developing RSMM and reviewing its pull requests. If you are building a mod, it isn't for you.
+
 ## Pull requests that impact UX
 
 Every PR that impacts user experience, including a draft PR, **MUST include before and after screenshots at the top of its description**, before the summary, rationale, or testing notes. This applies to visual changes, user-facing copy, interactions, and user flows.

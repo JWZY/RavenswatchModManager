@@ -2,6 +2,12 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
+Read the agent quick start first, every time. It says which of the project's files your task needs:
+
+@apps/docs/src/content/docs/guides/agent-quick-start.md
+
+The rest of this file is for developing RSMM. If you are building a mod, it isn't for you.
+
 Follow the shared agent instructions in [AGENTS.md](AGENTS.md), including the mandatory before/after screenshots at the top of every PR description that impacts UX.
 
 ## Repository shape
