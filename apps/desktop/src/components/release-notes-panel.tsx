@@ -113,7 +113,7 @@ export function ReleaseNotesPanel() {
         aria-labelledby={`${id}-tab-${channel}`}
         // biome-ignore lint/a11y/noNoninteractiveTabindex: Let keyboard users enter the filtered reading area.
         tabIndex={0}
-        className="flex flex-col gap-6"
+        className="flex flex-col gap-9"
       >
         {visible.length === 0 ? (
           <p className="font-serif-italic text-smoke">
