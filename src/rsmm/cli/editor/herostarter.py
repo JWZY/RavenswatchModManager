@@ -707,7 +707,6 @@ def recreate(req: Request) -> dict:
     if talents:
         frame["talents"] = talents
     for n, c in enumerate(ult_upgrades[:2], 1):
-        # An ultimate card has no rarity, so no per-rarity number: a flat stat.
         stat, line, values = _TALENT_FX["Ultimate"][(n - 1) % 2]
         amount = values[-1]
         u = {"title": c["name"], "description": "• " + line.replace("&+{0}%~", f"#+{amount:.0%}@")
