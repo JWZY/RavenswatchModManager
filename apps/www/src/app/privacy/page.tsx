@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 
 // Bump whenever a section changes materially. Shown at the top so a returning
 // reader can tell at a glance whether anything moved since they last agreed.
-const LAST_UPDATED = '16 November 2026';
+const LAST_UPDATED = '24 November 2026';
 
 function Section({ n, title, children }: { n: number; title: string; children: React.ReactNode }) {
   return (
@@ -55,7 +55,8 @@ export default function PrivacyPage() {
                 legal notice
               </Link>{' '}
               and in the project repository. This policy covers the registry website (rsmm.me), the
-              API backend (api.rsmm.me), and the desktop client.
+              documentation site (docs.rsmm.me), the API backend (api.rsmm.me), and the desktop
+              client.
             </p>
           </Section>
 
@@ -206,7 +207,11 @@ export default function PrivacyPage() {
             <ul className="list-disc space-y-1 pl-5">
               <li>Neon — PostgreSQL database hosting</li>
               <li>Cloudflare R2 / S3-compatible storage — mod files, images and avatars</li>
-              <li>Vercel — hosting for the website and the API</li>
+              <li>
+                Vercel — hosting for the website, the documentation site and the API. Vercel Web
+                Analytics on both sites and Speed Insights on this website count page views and
+                load times without cookies and without identifying you
+              </li>
               <li>GitHub, Google and Discord — optional sign-in providers</li>
               <li>GitHub — release file downloads</li>
               <li>
@@ -218,7 +223,8 @@ export default function PrivacyPage() {
               <li>Google AdSense — advertising on this website only (section 9)</li>
             </ul>
             <p className="pt-2">
-              The desktop application carries no advertising and no third-party analytics.
+              The desktop application carries no advertising and no third-party analytics. The
+              documentation site carries no advertising.
             </p>
           </Section>
 
