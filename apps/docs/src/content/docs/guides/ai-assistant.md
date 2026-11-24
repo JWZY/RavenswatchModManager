@@ -22,6 +22,10 @@ invent a mod format. Then help me build: <what you want>.
 Any assistant that can fetch a URL will then be working from the real
 manifest grammar, the real content kinds, and the real CLI.
 
+**Coding agents (Claude Code, Codex, Cursor):** save [Instructions for AI agents
+building mods](/guides/agent-instructions/) as `AGENTS.md` in the folder that
+holds your mods.
+
 **Chinese speakers / DeepSeek users:** [用 AI 助手制作 Mod（中文）](/guides/ai-assistant-zh/)
 is a self-contained Chinese prompt for assistants that can't fetch URLs. It
 covers installing mods, the `rsmm` tools, custom skins, 3D models and uploading.
@@ -55,7 +59,8 @@ code](/concepts/data-not-code/).
 **Mod Lua never touches engine internals.** No literal game addresses, no
 `_internal`, no `peek`/`poke`/`read_*`/`write_*`, no `engine.resolve`. Only the
 high-level `R.*` API. Also lint-enforced. If the capability you want doesn't
-exist in `R.*` yet, that's an RSMM change, not a mod change.
+exist in `R.*` yet, that's an RSMM change, not a mod change: [open an
+issue](/guides/agent-instructions/#when-rsmm-is-missing-something).
 
 **Don't guess at content kinds.** The list of what can be modded is fixed and
 each kind carries an honesty rating — `confirmed`, `experimental`, or `guess`.
