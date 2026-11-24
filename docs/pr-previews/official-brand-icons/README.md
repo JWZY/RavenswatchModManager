@@ -16,8 +16,10 @@ same crop. The website footer is scrolled into view before capture.
 - `web-signup-*`: `/auth/signup`.
 - `web-footer-*`: the shared website footer on `/auth/signup`.
 
-A temporary local API returns all three providers as available and a null
-session. It contains no credentials and is not shipped. The desktop uses
+Authentication screenshots use a temporary local API with Google and Discord
+available, GitHub disabled, and a null session. The original all-provider
+screenshot fixture has been replaced to reflect the supported sign-in options.
+The fixture contains no credentials and is not shipped. The desktop uses
 its existing browser preview with sample mods. No OAuth requests or live
 account changes were made. These screenshots verify rendering, not a native
 Tauri OAuth handoff. The website sign-in layout was also checked at 390 × 844.
@@ -29,3 +31,7 @@ Sources and license attribution are recorded in `THIRD_PARTY_NOTICES.md`.
 The General pair was captured in an isolated checkout at base `0eaf3c9b`
 and PR implementation `361b6d1f`, excluding unrelated local Settings layout
 edits. Both images use the same 960 × 472 crop from a 1280 × 1000 viewport.
+
+This PR changes icon imports and artwork only. The config-gated GitHub
+authentication button already existed on the base branch; no sign-in provider,
+availability gate, callback, or authentication handler is added or enabled.
