@@ -36,9 +36,9 @@ help the author open an issue. Read the full rules before you start:
 ${DOCS}/guides/agent-instructions/
 
 A mod is **data, not code**: a \`manifest.toml\`, content definitions and
-\`[[patch]]\` blocks, plus the assets it uses. Behaviour that depends on what
-happens during a run goes in Lua, starting from \`init.lua\`. A Python script is
-never the deliverable. The whole loop:
+\`[[patch]]\` blocks, plus the assets it uses, and Lua where behaviour depends on
+what happens during a run. A Python script is never the deliverable. The whole
+loop:
 
 1. Set up the \`rsmm\` command-line tools (${DOCS}/getting-started/modding-tools/).
 2. \`rsmm new <mod-id>\` — scaffold \`mods/<mod-id>/\`.
@@ -56,21 +56,13 @@ produces a mod that does not load.
 Measured against real answers, not hypothetical. Each of these was produced
 confidently by a frontier model asked how to mod Ravenswatch.
 
-- **Ravenswatch is not a Unity game.** It is a native C++ engine (FMOD, Epic
-  Online Services, D3D12). There is no \`Ravenswatch_Data/\`, no
-  \`Assembly-CSharp.dll\`, no mono runtime. **BepInEx, Harmony, MelonLoader and
-  DLL plugins do not apply and will not load.** RSMM's loader is a
-  \`winhttp.dll\` proxy with MinHook and an embedded Lua 5.4 VM.
-- **A mod's Lua entry point is \`init.lua\` at the mod root** — not
-  \`scripts/main.lua\`, not \`main.lua\`.
-- **The Lua API is \`R.*\`**, obtained with \`local R = require "rsmm"\`. Use the
-  high-level calls (\`R.hp\`, \`R.camera\`, \`R.give\`, ...). There is no
-  \`R.call()\` or \`rsmm.call()\`. \`R.engine.call(name, ...)\` is the last resort,
-  and needing it usually means opening an issue. It reaches a hand-curated map
-  of a few hundred named symbols, not tens of thousands of exposed game
-  functions, and mod Lua is forbidden from touching raw addresses at all.
-- **A mod is not a Python script.** A mod that ships a \`*.py\` build script fails
-  \`rsmm lint\`.
+- **Ravenswatch is not a Unity game.** It is a native C++ engine. **BepInEx,
+  Harmony, MelonLoader and DLL plugins do not apply and will not load.**
+- **A mod's Lua entry point is \`init.lua\` at the mod root**, and the Lua API is
+  \`R.*\`, obtained with \`local R = require "rsmm"\`. There is no \`R.call()\` or
+  \`rsmm.call()\`.
+
+The rest of the rules: ${DOCS}/guides/agent-instructions/
 
 ## Docs
 

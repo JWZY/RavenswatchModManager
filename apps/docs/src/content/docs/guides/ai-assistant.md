@@ -44,51 +44,16 @@ mostly vtable layouts and crash triage written for people extending RSMM's
 engine support; feeding it to an assistant spends most of its context on
 material it cannot act on, and dilutes the rules that matter.
 
-## Rules an assistant gets wrong by default
+## If it drifts
 
-These are the assumptions carried in from modding other games. State them
-explicitly if your assistant starts drifting.
+[Instructions for AI agents building mods](/guides/agent-instructions/) has every
+rule the assistant works under. It is the first page of `llms-mods.txt`. If the
+assistant suggests BepInEx, hands you a Python script, invents an `R.*` call, or
+offers to change RSMM itself, paste this:
 
-**A mod ships data, not code.** The deliverable is a `manifest.toml` with
-`[[content]]` and `[[patch]]` blocks plus assets the SDK emits — never a Python
-script that pokes at game files. `rsmm lint` fails any `*.py` in a mod that
-isn't a sanctioned lifecycle hook, so a script-shaped answer doesn't just
-violate convention, it fails CI. See [Mods ship data, not
-code](/concepts/data-not-code/).
-
-**Mod Lua never touches engine internals.** No literal game addresses, no
-`_internal`, no `peek`/`poke`/`read_*`/`write_*`, no `engine.resolve`. Only the
-high-level `R.*` API. Also lint-enforced. If the capability you want doesn't
-exist in `R.*` yet, that's an RSMM change, not a mod change: [open an
-issue](/guides/agent-instructions/#when-rsmm-is-missing-something).
-
-**Don't guess at content kinds.** The list of what can be modded is fixed and
-each kind carries an honesty rating — `confirmed`, `experimental`, or `guess`.
-Registering a kind rated below `confirmed` raises unless the mod opts in with
-`sdk.Mod(..., experimental=True)`. An assistant will happily invent a kind name
-that sounds right; `rsmm lint` will reject it. See [Content
-kinds](/concepts/content-kinds/).
-
-**Ravenswatch is not a Unity game.** This one is worth stating out loud,
-because a model that doesn't know the engine reaches for the most common one.
-Ravenswatch is native C++ (FMOD, Epic Online Services, D3D12) — there is no
-`Ravenswatch_Data/`, no `Assembly-CSharp.dll`, no mono runtime, and **BepInEx,
-Harmony, MelonLoader and DLL plugins will not load**. RSMM's loader is a
-`winhttp.dll` proxy with MinHook and an embedded Lua 5.4 VM.
-
-**A mod's Lua entry point is `init.lua` at the mod root**, and the API is `R.*`
-via `local R = require "rsmm"`. A mod works through the high-level calls
-(`R.hp`, `R.camera`, `R.give`, ...). `R.engine.call(name, ...)` is the last
-resort: needing it usually means RSMM is missing something, so
-[open an issue](/guides/agent-instructions/#when-rsmm-is-missing-something) instead,
-and never pass it a pointer. It reaches a few hundred named symbols, not the tens
-of thousands of raw game functions an assistant may claim are exposed, and there
-is no `R.call()` or `rsmm.call()`.
-
-**Don't hand-edit the game folder.** Cooked asset paths under
-`DarkTalesResources/_Cooking/` are ciphered, and RSMM tracks what it replaced
-so it can roll back. Hand-edits there corrupt that state. Every change goes
-through `rsmm apply` / `rsmm restore --all`.
+```text
+Re-read https://docs.rsmm.me/guides/agent-instructions/ and follow it.
+```
 
 ## Verify what it produced
 

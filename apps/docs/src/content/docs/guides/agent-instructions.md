@@ -37,7 +37,7 @@ The same goes for wording like "move its logic into `rsmm.sdk`" or "add a symbol
 
 ## Read the docs first
 
-Ravenswatch runs on its own C++ engine. It is not Unity, and BepInEx, Harmony and MelonLoader do not load. Knowledge from modding other games will mislead you, so read before you write. Don't invent a manifest key, content kind, event or `R.*` call; look it up.
+Ravenswatch runs on its own C++ engine. It is not Unity: there is no `Ravenswatch_Data/`, `Assembly-CSharp.dll` or mono runtime, and BepInEx, Harmony, MelonLoader and DLL plugins do not load. RSMM's loader is a `winhttp.dll` proxy with an embedded Lua 5.4. Knowledge from modding other games will mislead you, so read before you write. Don't invent a manifest key, content kind, event or `R.*` call; look it up.
 
 All pages are on `https://docs.rsmm.me`. In a clone, the same pages are Markdown files under `apps/docs/src/content/docs/` (pull first, so they're current). Two ways to get them as text:
 
@@ -91,12 +91,14 @@ Trust `rsmm lint`, then the Lua SDK source (the module's header comment), then A
 
 ## How a mod is built
 
+A mod is data: a `manifest.toml` and the assets it uses, plus Lua where needed. A Python script is never the deliverable. `rsmm lint` fails any `*.py` in a mod except the `on_disable.py` lifecycle hook, and an SDK generator stays outside the mod folder.
+
 Use the first of these that can do the job:
 
 1. **A `[[patch]]`** in `manifest.toml` for a number, a texture swap or a plaintext field. Patches from different mods merge.
-2. **A content definition**, in its own folder (`items/ember_charm/item.toml`) or as `[[content]]`, for something new or changed.
+2. **A content definition**, in its own folder (`items/ember_charm/item.toml`) or as `[[content]]`, for something new or changed. Each content kind is rated `confirmed`, `experimental` or `guess`, and one rated below `confirmed` needs `experimental = true` under `[mod]` (`sdk.Mod(..., experimental=True)` in an SDK generator).
 3. **An asset override** under `assets/`. One mod owns the whole file, so two mods overriding the same file conflict.
-4. **`init.lua`**, for behaviour that depends on what happens during a run.
+4. **`init.lua`** at the mod root (not `main.lua` or `scripts/main.lua`), for behaviour that depends on what happens during a run.
 5. **An issue**, when none of the above can do it.
 
 Aim for mods that feel built into the game: its own menus, key bindings and events before anything drawn on top or forced every frame. For settings, a `config_schema.toml` gives the mod rows in Settings > Mods. For keys, `R.input.keybinds` adds rows to the game's Controls menu. `R.overlay` is for data the game has nowhere to show.
@@ -166,7 +168,7 @@ If a part has no owner yet, that part is the issue. Build the rest against what 
 
 ## How the `R.*` submodules work
 
-`local R = require "rsmm"` is the only entry point, and every Lua file in the mod that uses `R` needs it in scope. `R` is the Lua SDK. Each `R.<name>` namespace owns one concern. Many live in their own file and the rest in the core file; the SDK attaches them all to `R`, so use `R.camera`, not `require "rsmm.camera"`.
+`local R = require "rsmm"` is the only entry point (there is no `R.call()` or `rsmm.call()`), and every Lua file in the mod that uses `R` needs it in scope. `R` is the Lua SDK. Each `R.<name>` namespace owns one concern. Many live in their own file and the rest in the core file; the SDK attaches them all to `R`, so use `R.camera`, not `require "rsmm.camera"`.
 
 A namespace can be missing. If a submodule fails to load, or the player's loader is older than it, that namespace is nil while the rest of `R` keeps working. Check for what you use and log a plain reason when it isn't there. Many calls return `nil, reason` or `false`; log the reason when there is one, and look in `rsmm log` when there isn't.
 
@@ -208,7 +210,7 @@ Lint doesn't catch all of these, but leave them alone too:
 
 - Any name starting with an underscore, such as `R.stat._set`.
 - `R.debug` and `R.watch`, unless the mod is a debugging tool. `R.debug` needs the mod tagged `debug` or `test`.
-- `R.engine.call` and `R.engine.fn`. They pass lint, but needing one usually means a producer is missing, so write the issue. If the author decides to use one anyway, never pass it a pointer: that has been behind the loader's in-game crashes.
+- `R.engine.call` and `R.engine.fn`. They reach a few hundred named functions. They pass lint, but needing one usually means a producer is missing, so write the issue. If the author decides to use one anyway, never pass it a pointer: that has been behind the loader's in-game crashes.
 
 ### Runtime rules
 

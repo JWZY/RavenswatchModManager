@@ -247,7 +247,16 @@ export default function ModdingGuidePage() {
               >
                 AI assistant guide
               </a>{' '}
-              covers the prompt and the rules it needs to follow.
+              has the prompt to paste, and a coding agent can work from the{' '}
+              <a
+                href="https://docs.rsmm.me/guides/agent-instructions/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline hover:text-foreground"
+              >
+                agent instructions
+              </a>
+              .
             </p>
           </section>
 
