@@ -15,7 +15,8 @@
     "./registry-media": "./src/lib/registry-media.ts",
     "./image-cache": "./src/lib/image-cache.ts",
     "./tailwind-preset": "./tailwind.preset.cjs",
-    "./reviews": "./src/reviews.ts"
+    "./reviews": "./src/reviews.ts",
+    "./dialog.css": "./src/dialog.css"
   },
   "scripts": {
     "check-types": "tsc --noEmit"

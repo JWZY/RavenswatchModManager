@@ -50,6 +50,7 @@ How the desktop app looks, and the rules screens follow to stay that way. The sy
 | Conflict / warning strip | `.ember-banner` | crimson wash |
 
 - A container that needs its own background and border uses one of these, not a hand-composed `bg-pitch/60 border border-border`.
+- **Modal behavior:** Use the shared `Dialog` from `@rsmm/ui`; the [shared dialog contract](../../packages/ui/README.md#dialog-behavior) owns focus containment, Escape, scroll locking, and restoration. `useDialog()` remains the prompt/confirmation adapter. Destructive confirmations focus Cancel, and Enter activates the focused button. Do not recreate modality with `<dialog open>` or `role="dialog"` on a backdrop.
 - **Modal backdrop:** Generic desktop dialogs use `bg-pitch/80` behind a raised card, opened with `animate-fade-in`. Registry filters and global search use the registry's shared backdrop. The full-screen image viewer uses `bg-pitch/95`, because it replaces the screen rather than sitting over it.
 - No `backdrop-blur` on surfaces. They are opaque, and the blur forced compositing layers that hid a WebKitGTK scroll artifact (see the `body` comment in `styles.css`).
 - **Exception: the in-game overlay HUD** (`components/overlay-hud.tsx`). Its card is `bg-pitch/85` with `backdrop-blur-sm`, because it sits in its own window over the running game, which should stay faintly visible through it. Nothing in the main window follows it.

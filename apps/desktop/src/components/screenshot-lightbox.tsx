@@ -1,8 +1,7 @@
-import { CachedImage } from '@rsmm/ui';
+import { CachedImage, Dialog } from '@rsmm/ui';
 import { ChevronLeft, ChevronRight, X } from 'lucide-react';
-import { useEffect, useRef } from 'react';
+import { useRef } from 'react';
 import { useT } from '../lib/i18n-react';
-import { useModalChrome } from './chrome';
 
 /**
  * Full-screen screenshot viewer, shared by the mod page and the collection
@@ -30,17 +29,6 @@ export function ScreenshotLightbox({
 }) {
   const t = useT();
   const closeRef = useRef<HTMLButtonElement>(null);
-  // Escape is handled by the window listener below, alongside the arrows.
-  useModalChrome(closeRef);
-  useEffect(() => {
-    function onKey(e: KeyboardEvent) {
-      if (e.key === 'Escape') onClose();
-      else if (e.key === 'ArrowLeft') onPrev();
-      else if (e.key === 'ArrowRight') onNext();
-    }
-    window.addEventListener('keydown', onKey);
-    return () => window.removeEventListener('keydown', onKey);
-  }, [onClose, onPrev, onNext]);
 
   const active = shots[idx];
   if (!active) return null;
@@ -49,7 +37,20 @@ export function ScreenshotLightbox({
     (name ? t('{name} screenshot {n}', { name, n: idx + 1 }) : t('Screenshot {n}', { n: idx + 1 }));
 
   return (
-    <dialog open aria-label={label} className="fixed inset-0 z-[90] bg-pitch/95">
+    <Dialog
+      overlay
+      initialFocusRef={closeRef}
+      onDismiss={onClose}
+      aria-label={label}
+      className="fixed inset-0 z-[90] bg-pitch/95"
+      onKeyDown={(event) => {
+        if (event.key === 'ArrowLeft' || event.key === 'ArrowRight') {
+          event.preventDefault();
+          if (event.key === 'ArrowLeft') onPrev();
+          else onNext();
+        }
+      }}
+    >
       <div className="absolute inset-0 overflow-y-auto">
         <button
           type="button"
@@ -106,6 +107,6 @@ export function ScreenshotLightbox({
           </button>
         </>
       ) : null}
-    </dialog>
+    </Dialog>
   );
 }

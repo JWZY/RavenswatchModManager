@@ -2,6 +2,7 @@
    Reference values from design brief: Pitch, Oxblood, Crimson, Char,
    Ash, Smoke, Parchment. State colours stay inside this set. */
 
+@import "./dialog.css";
 @import "./tokens.css";
 
 @tailwind base;
@@ -143,25 +144,9 @@
     color: hsl(var(--parchment));
   }
 
-  /* Focus ring — gilt 2px per brief. */
-  /* `<dialog open>` is a NON-modal dialog: it never enters the top layer, and
-     it keeps every default the UA stylesheet gives a dialog — `background:
-     canvas` (a light box, whatever the app's theme), a solid border, `1em`
-     padding, and `max-width`/`max-height` caps. The overlays in this app all
-     set their own `fixed inset-0` box and their own backdrop, so those
-     defaults show up as a pale bordered rectangle behind the real overlay.
-     That is the grey box the command palette was painting under itself.
-
-     Reset once here rather than on each `className`: there are five of these
-     and the next one would have shipped with the same box.
-
-     The size goes too. The UA gives a dialog `width`/`height: fit-content`,
-     which `fixed inset-0` does not override, so each overlay shrank to its
-     own content and sat centred by `margin: auto`: the command palette's
-     backdrop dimmed a box around the palette instead of the window (and the
-     palette ignored its `pt-[12vh]`), and the screenshot viewer — all of
-     whose content is absolutely positioned — collapsed to 0×0, showing its
-     buttons and no image. `auto` lets the inset decide. */
+  /* Legacy native dialog skins reset the browser's canvas and size defaults.
+     Shared Dialog's fullscreen shell is scoped in dialog.css; its custom skins
+     (registry filters, for example) continue to own their geometry. */
   dialog {
     width: auto;
     height: auto;

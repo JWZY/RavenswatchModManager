@@ -1,0 +1,28 @@
+/* Shared modal mechanics. Each host keeps its existing card and backdrop. */
+:where(.rsmm-dialog) {
+  overscroll-behavior: contain;
+}
+
+.rsmm-dialog--overlay {
+  position: fixed;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  max-height: none;
+  margin: 0;
+  border: 0;
+  padding: 0;
+  background: transparent;
+  color: inherit;
+  overflow-y: auto;
+}
+
+.rsmm-dialog--overlay::backdrop {
+  background: transparent;
+}
+
+/* Flex/grid utility classes must never make a closed dialog visible. */
+.rsmm-dialog:not([open]) {
+  display: none;
+}

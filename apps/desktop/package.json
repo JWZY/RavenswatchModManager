@@ -19,7 +19,8 @@
     "routes:generate": "tsr generate",
     "check-types": "tsr generate && tsc --noEmit",
     "test": "vitest run",
-    "clean": "rm -rf dist .turbo src-tauri/target"
+    "clean": "rm -rf dist .turbo src-tauri/target",
+    "test:dialogs": "node --test e2e/dialogs.test.mjs"
   },
   "dependencies": {
     "@base-ui/react": "1.9.0",
@@ -65,6 +66,7 @@
     "tailwindcss": "3.4.17",
     "typescript": "5.7.3",
     "vite": "6.4.5",
-    "vitest": "4.1.12"
+    "vitest": "4.1.12",
+    "playwright": "1.58.2"
   }
 }

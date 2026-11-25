@@ -1,8 +1,8 @@
 'use client';
-import { Button } from '@rsmm/ui';
+import { Button, Dialog } from '@rsmm/ui';
 import { useMutation } from '@tanstack/react-query';
 import { Flag, X } from 'lucide-react';
-import { useState } from 'react';
+import { useId, useState } from 'react';
 import { api } from '../../lib/api';
 
 const REASONS: { value: string; label: string }[] = [
@@ -17,6 +17,7 @@ const REASONS: { value: string; label: string }[] = [
 /** "Report this mod" button + modal. Available to everyone (reporting malware
  *  must not require an account). Posts to POST /api/mods/:slug/report. */
 export function ReportModal({ slug }: { slug: string }) {
+  const titleId = useId();
   const [open, setOpen] = useState(false);
   const [reason, setReason] = useState('malware');
   const [detail, setDetail] = useState('');
@@ -41,10 +42,17 @@ export function ReportModal({ slug }: { slug: string }) {
         <Flag className="mr-1.5 h-4 w-4" /> Report
       </Button>
       {open && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4">
-          <div className="w-full max-w-md rounded-lg border border-border bg-background p-6 shadow-xl">
+        <Dialog
+          overlay
+          aria-labelledby={titleId}
+          onDismiss={() => setOpen(false)}
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 p-4"
+        >
+          <div className="max-h-[calc(100dvh-2rem)] w-full max-w-md overflow-y-auto rounded-lg border border-border bg-background p-6 shadow-xl">
             <div className="mb-4 flex items-center justify-between">
-              <h2 className="text-lg font-semibold">Report this mod</h2>
+              <h2 id={titleId} className="text-lg font-semibold">
+                Report this mod
+              </h2>
               <button type="button" onClick={() => setOpen(false)} aria-label="Close">
                 <X className="h-5 w-5 text-muted-foreground" />
               </button>
@@ -102,7 +110,7 @@ export function ReportModal({ slug }: { slug: string }) {
               </form>
             )}
           </div>
-        </div>
+        </Dialog>
       )}
     </>
   );

@@ -247,6 +247,12 @@ jobs:
       - name: Test
         run: pnpm test
 
+      - name: Install Chromium for modal keyboard regressions
+        run: pnpm --filter desktop exec playwright install --with-deps chromium
+
+      - name: Dialog browser regressions
+        run: pnpm --filter desktop test:dialogs
+
       # Builds the Starlight docs site; starlight-links-validator fails the
       # build on any broken internal link, so doc rot is caught in CI.
       - name: Build docs (validate internal links)

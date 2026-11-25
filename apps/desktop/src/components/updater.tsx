@@ -1,3 +1,4 @@
+import { Dialog } from '@rsmm/ui';
 import { ProgressBar } from '@rsmm/ui';
 import { AlertTriangle, ArrowRight, Check, Download, RefreshCw } from 'lucide-react';
 import type { ReactNode } from 'react';
@@ -49,7 +50,7 @@ import {
   relaunchApp,
   relaunchMigrated,
 } from '../lib/updater';
-import { Button, Fleuron, Panel, useModalChrome } from './chrome';
+import { Button, Fleuron, Panel } from './chrome';
 import { useDialog, useToast } from './toast';
 
 interface UpdateStatus {
@@ -303,24 +304,22 @@ function UpdateBlocker({
   children: ReactNode;
 }) {
   const cardRef = useRef<HTMLDivElement>(null);
-  const onKeyDown = useModalChrome(cardRef, onDismiss);
   return (
-    <div
-      // biome-ignore lint/a11y/useSemanticElements: matches the app's other overlays — <dialog>'s top-layer backdrop conflicts with the overlay stacking
-      role="dialog"
-      aria-modal="true"
+    <Dialog
+      overlay
+      initialFocusRef={cardRef}
+      onDismiss={onDismiss}
       aria-labelledby={labelledBy}
       className="fixed inset-0 z-[80] flex items-center justify-center bg-pitch/80"
-      onKeyDown={onKeyDown}
     >
       <div
         ref={cardRef}
         tabIndex={-1}
-        className="mx-4 w-full max-w-lg rounded-lg border-2 border-crimson bg-pitch p-8 shadow-2xl focus:outline-none"
+        className="mx-4 max-h-[calc(100dvh-2rem)] w-full max-w-lg overflow-y-auto rounded-lg border-2 border-crimson bg-pitch p-8 shadow-2xl focus:outline-none"
       >
         {children}
       </div>
-    </div>
+    </Dialog>
   );
 }
 
