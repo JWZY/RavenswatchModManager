@@ -1,5 +1,6 @@
 import {
   CheckCircle2,
+  ChevronDown,
   Loader2,
   Play,
   RotateCcw,
@@ -228,116 +229,115 @@ export function CommandsPanel() {
     <section
       id="commands"
       aria-labelledby="commands-heading"
-      className="settings-group scroll-mt-6"
+      className="settings-section scroll-mt-6"
     >
-      <div className="settings-section">
-        <h3 id="commands-heading" className="settings-section-title text-parchment">
-          {t('Commands')}
-        </h3>
-        <p className="font-serif-italic mt-1 text-ash">
-          {t('Run the common rsmm lifecycle commands from one place.')}
-        </p>
-        <Fleuron className="my-3" />
-        <div className="settings-command-grid">
-          {commands.map((command) => (
-            <Panel key={command.id} variant="inset" className="p-4">
-              <div className="flex items-start justify-between gap-3">
-                <div className="min-w-0">
-                  <p className="font-serif text-base text-parchment">{command.label}</p>
-                  <p className="mt-1 text-sm text-ash">{command.description}</p>
-                </div>
-                <MonoTag
-                  tone={
-                    command.tone === 'primary' || command.tone === 'danger'
-                      ? 'crimson'
-                      : command.tone
-                  }
-                >
-                  {command.id}
-                </MonoTag>
-              </div>
-              <div className="mt-4 flex items-center gap-2">
-                <Button
-                  type="button"
-                  size="sm"
-                  variant={command.tone === 'default' ? 'default' : command.tone}
-                  onClick={() => runCommand(command)}
-                  disabled={busyId !== null || (launchBusy && !command.readOnly)}
-                  title={
-                    launchBusy && !command.readOnly
-                      ? t('Unavailable while Ravenswatch is launching or running')
-                      : undefined
-                  }
-                >
-                  {command.icon}
-                  <span>{busyId === command.id ? t('Running…') : t('Run')}</span>
-                </Button>
-              </div>
-            </Panel>
-          ))}
-        </div>
-      </div>
-
-      <div className="settings-section">
-        <div className="flex flex-wrap items-center justify-between gap-3">
-          <div className="min-w-0">
-            <h4 className="settings-section-title text-parchment">{t('Command log')}</h4>
+      <details className="group/commands">
+        <summary className="flex min-h-10 cursor-pointer list-none items-center justify-between gap-3 rounded [&::-webkit-details-marker]:hidden">
+          <h3 id="commands-heading" className="settings-section-title text-parchment">
+            {t('Commands')}
+          </h3>
+          <ChevronDown
+            className="h-4 w-4 shrink-0 text-ash group-open/commands:rotate-180"
+            aria-hidden="true"
+          />
+        </summary>
+        <div className="settings-group mt-3">
+          <div className="settings-section">
             <p className="font-serif-italic mt-1 text-ash">
-              {t('Outputs from the last commands you ran in this page.')}
+              {t('Run the common rsmm lifecycle commands from one place.')}
             </p>
-          </div>
-          <Button type="button" size="sm" onClick={() => setEntries([])}>
-            {t('Clear log')}
-          </Button>
-        </div>
-        <Fleuron className="my-3" />
-        <div className="space-y-3">
-          {entries.length === 0 ? (
-            <p className="font-serif-italic text-ash">{t('No commands have been run yet.')}</p>
-          ) : (
-            entries.map((entry) => (
-              <div key={entry.id} className="grimoire-card grimoire-card--inset p-4">
-                <div className="flex flex-wrap items-center justify-between gap-2">
-                  <div className="flex items-center gap-2">
-                    <p className="font-serif-italic text-parchment">{entry.label}</p>
-                    <MonoTag
-                      tone={
-                        entry.status === 'success'
-                          ? 'gilt'
-                          : entry.status === 'error'
-                            ? 'crimson'
-                            : 'default'
+            <Fleuron className="my-3" />
+            <div className="settings-command-grid">
+              {commands.map((command) => (
+                <Panel key={command.id} variant="inset" className="p-4">
+                  <div className="min-w-0">
+                    <p className="font-serif text-base text-parchment">{command.label}</p>
+                    <p className="mt-1 text-sm text-ash">{command.description}</p>
+                  </div>
+                  <div className="mt-4 flex items-center gap-2">
+                    <Button
+                      type="button"
+                      size="sm"
+                      variant={command.tone === 'default' ? 'default' : command.tone}
+                      onClick={() => runCommand(command)}
+                      disabled={busyId !== null || (launchBusy && !command.readOnly)}
+                      title={
+                        launchBusy && !command.readOnly
+                          ? t('Unavailable while Ravenswatch is launching or running')
+                          : undefined
                       }
                     >
-                      {entry.status === 'running'
-                        ? t('running')
-                        : entry.status === 'success'
-                          ? t('success')
-                          : entry.status === 'error'
-                            ? t('error')
-                            : t('idle')}
-                    </MonoTag>
+                      {command.icon}
+                      <span>{busyId === command.id ? t('Running…') : t('Run')}</span>
+                    </Button>
                   </div>
-                  <span className="font-mono text-xs text-ash">
-                    {formatClock(entry.startedAt, t.tag)}
-                    {formatDuration(entry.startedAt, entry.finishedAt)
-                      ? ` · ${formatDuration(entry.startedAt, entry.finishedAt)}`
-                      : ''}
-                  </span>
-                </div>
-                {entry.status === 'running' ? (
-                  <p className="font-serif-italic mt-3 flex items-center gap-2 text-ash">
-                    <Loader2 className="h-4 w-4 animate-spin" aria-hidden="true" />
-                    {t('Working…')}
-                  </p>
-                ) : (
-                  <CommandResult kind={entry.kind} result={entry.result} error={entry.error} />
-                )}
+                </Panel>
+              ))}
+            </div>
+          </div>
+
+          <div className="settings-section">
+            <div className="flex flex-wrap items-center justify-between gap-3">
+              <div className="min-w-0">
+                <h4 className="settings-section-title text-parchment">{t('Command log')}</h4>
+                <p className="font-serif-italic mt-1 text-ash">
+                  {t('Outputs from the last commands you ran in this page.')}
+                </p>
               </div>
-            ))
-          )}
+              <Button type="button" size="sm" onClick={() => setEntries([])}>
+                {t('Clear log')}
+              </Button>
+            </div>
+            <Fleuron className="my-3" />
+            <div className="space-y-3">
+              {entries.length === 0 ? (
+                <p className="font-serif-italic text-ash">{t('No commands have been run yet.')}</p>
+              ) : (
+                entries.map((entry) => (
+                  <div key={entry.id} className="grimoire-card grimoire-card--inset p-4">
+                    <div className="flex flex-wrap items-center justify-between gap-2">
+                      <div className="flex items-center gap-2">
+                        <p className="font-serif-italic text-parchment">{entry.label}</p>
+                        <MonoTag
+                          tone={
+                            entry.status === 'success'
+                              ? 'gilt'
+                              : entry.status === 'error'
+                                ? 'crimson'
+                                : 'default'
+                          }
+                        >
+                          {entry.status === 'running'
+                            ? t('running')
+                            : entry.status === 'success'
+                              ? t('success')
+                              : entry.status === 'error'
+                                ? t('error')
+                                : t('idle')}
+                        </MonoTag>
+                      </div>
+                      <span className="font-mono text-xs text-ash">
+                        {formatClock(entry.startedAt, t.tag)}
+                        {formatDuration(entry.startedAt, entry.finishedAt)
+                          ? ` · ${formatDuration(entry.startedAt, entry.finishedAt)}`
+                          : ''}
+                      </span>
+                    </div>
+                    {entry.status === 'running' ? (
+                      <p className="font-serif-italic mt-3 flex items-center gap-2 text-ash">
+                        <Loader2 className="h-4 w-4 animate-spin" aria-hidden="true" />
+                        {t('Working…')}
+                      </p>
+                    ) : (
+                      <CommandResult kind={entry.kind} result={entry.result} error={entry.error} />
+                    )}
+                  </div>
+                ))
+              )}
+            </div>
+          </div>
         </div>
-      </div>
+      </details>
     </section>
   );
 }

@@ -344,204 +344,220 @@ export function GameLogPanel() {
   };
 
   return (
-    <section id="game-log" aria-labelledby="game-log-heading" className="scroll-mt-6 space-y-4">
-      <HealthBanner health={health} onReEnable={onReEnable} />
-
-      <div className="settings-section">
-        <h3 id="game-log-heading" className="settings-section-title text-parchment">
-          {t('Game log')}
-        </h3>
-        <p className="font-serif-italic mt-1 text-ash">
-          {t('What the script loader wrote inside the game, live.')}
-        </p>
-        <Fleuron className="my-3" />
-        <div className="flex flex-wrap items-center justify-between gap-3">
-          <div className="flex flex-wrap items-center gap-2">
-            <h4 className="font-serif text-base text-parchment">{sourceLabel(source, t)}</h4>
-            {gameUp && followable ? (
-              <MonoTag tone="gilt">{t('game running')}</MonoTag>
-            ) : idle ? null : meta?.exists ? (
-              <MonoTag>{t.n(sessions, '{n} session', '{n} sessions')}</MonoTag>
-            ) : null}
-            {tail.truncated ? <MonoTag>{t('oldest lines trimmed')}</MonoTag> : null}
-            {problems.errors > 0 ? (
-              <MonoTag tone="crimson">{t.n(problems.errors, '{n} error', '{n} errors')}</MonoTag>
-            ) : null}
-            {problems.warnings > 0 ? (
-              <MonoTag>{t.n(problems.warnings, '{n} warning', '{n} warnings')}</MonoTag>
-            ) : null}
-          </div>
-          <div className="flex flex-wrap items-center gap-2">
-            <Button
-              type="button"
-              size="sm"
-              disabled={!followable}
-              variant={follow && followable ? 'gilt' : 'default'}
-              onClick={() => setFollow((f) => !f)}
-              title={
-                followable
-                  ? follow
-                    ? t('Stop watching the log file')
-                    : t('Watch the log file for new lines')
-                  : t('A finished run never changes — nothing to follow')
-              }
-            >
-              {follow && followable ? (
-                <Pause className="h-3.5 w-3.5" aria-hidden />
-              ) : (
-                <Play className="h-3.5 w-3.5" aria-hidden />
-              )}
-              {follow && followable ? t('Following') : t('Paused')}
-            </Button>
-            <Button type="button" size="sm" onClick={() => void load()}>
-              <RefreshCw className="h-3.5 w-3.5" aria-hidden />
-              {t('Refresh')}
-            </Button>
-            <CopyButton value={buffered.join('\n')} />
-            <Button
-              type="button"
-              size="sm"
-              disabled={!meta?.exists || buffered.length === 0}
-              onClick={() => setSharing({ lines: buffered, path: meta?.path ?? null })}
-              title={t('Upload this log and get a link to paste into a bug report')}
-            >
-              <Link2 className="h-3.5 w-3.5" aria-hidden />
-              {t('Share link')}
-            </Button>
-            <Button
-              type="button"
-              size="sm"
-              disabled={!runsDir}
-              onClick={() => void onOpenFolder()}
-              title={t('Open the folder that holds every archived run')}
-            >
-              <FolderOpen className="h-3.5 w-3.5" aria-hidden />
-              {t('Open folder')}
-            </Button>
-            <Button
-              type="button"
-              size="sm"
-              disabled={!runsDir}
-              onClick={() => void onDeleteLogs()}
-              title={t('Delete the archived runs and the last run’s log')}
-            >
-              <Trash2 className="h-3.5 w-3.5" aria-hidden />
-              {t('Delete logs')}
-            </Button>
-          </div>
-        </div>
-
-        <Fleuron className="my-3" />
-
-        <div className="mb-3 flex flex-wrap items-center gap-2">
-          <Select
-            value={
-              source.kind === 'run'
-                ? `run:${source.name}`
-                : source.kind === 'current'
-                  ? 'now'
-                  : source.kind
-            }
-            onChange={(v) =>
-              setSource(
-                v === 'now'
-                  ? { kind: 'current' }
-                  : v === 'last'
-                    ? { kind: 'last' }
-                    : { kind: 'run', name: v.slice('run:'.length) },
-              )
-            }
-            ariaLabel={t('Which run to read')}
-          >
-            <option value="now">{t('Current run')}</option>
-            {/* The loader archives a run when the NEXT one starts, so with no
-                game up the newest log is the one finished run the archive below
-                does not hold yet. While a game runs, that run is the newest
-                archive entry, and a second "previous" entry only repeated it. */}
-            {!gameUp || source.kind === 'last' ? (
-              <option value="last">{t('Last run')}</option>
-            ) : null}
-            {runs.map((r) => (
-              <option key={r.name} value={`run:${r.name}`}>
-                {r.name.replace(/\.log$/, '')} · {Math.max(1, Math.round(r.bytes / 1024))} KB
-              </option>
-            ))}
-          </Select>
-          <input
-            value={query}
-            onChange={(e) => setQuery(e.target.value)}
-            placeholder={t('Search game log...')}
-            aria-label={t('Search game log')}
-            className="field-grim font-data min-w-56 flex-1 text-sm"
+    <section
+      id="game-log"
+      aria-labelledby="game-log-heading"
+      className="settings-section scroll-mt-6"
+    >
+      <details open className="group/game-log">
+        <summary className="flex min-h-10 cursor-pointer list-none items-center justify-between gap-3 rounded [&::-webkit-details-marker]:hidden">
+          <h3 id="game-log-heading" className="settings-section-title text-parchment">
+            {t('Game log')}
+          </h3>
+          <ChevronDown
+            className="h-4 w-4 shrink-0 text-ash group-open/game-log:rotate-180"
+            aria-hidden="true"
           />
-          <Select value={tag} onChange={setTag} ariaLabel={t('Filter by subsystem')}>
-            <option value="all">{t('All subsystems')}</option>
-            {tags.map((t) => (
-              <option key={t} value={t}>
-                {t}
-              </option>
-            ))}
-          </Select>
-          <label className="font-mono flex cursor-pointer items-center gap-2 text-xs text-ash">
-            <input
-              type="checkbox"
-              checked={problemsOnly}
-              onChange={(e) => setProblemsOnly(e.target.checked)}
-              className="h-3.5 w-3.5 accent-crimson"
-            />
-            {t('problems only')}
-          </label>
-          <label className="font-mono flex cursor-pointer items-center gap-2 text-xs text-ash">
-            <input
-              type="checkbox"
-              checked={allSessions}
-              onChange={(e) => setAllSessions(e.target.checked)}
-              className="h-3.5 w-3.5 accent-crimson"
-            />
-            {t('all sessions')}
-          </label>
-        </div>
+        </summary>
+        <div className="mt-3 space-y-4">
+          <HealthBanner health={health} onReEnable={onReEnable} />
 
-        {problemsOnly ? (
-          <p className="font-serif-italic mb-2 text-xs text-ash">
-            {t(
-              'Showing lines the loader flagged. Only failures it was taught to classify carry a tag, so an unflagged line means “not classified”, not “fine”.',
-            )}
-          </p>
-        ) : null}
-
-        {idle ? (
-          <Panel variant="inset" className="p-3">
-            <p className="font-serif-italic text-ash">
-              {t('Ravenswatch is not running. Its log shows here as soon as you start it.')}
+          <div className="settings-section">
+            <p className="font-serif-italic mt-1 text-ash">
+              {t('What the script loader wrote inside the game, live.')}
             </p>
-            {meta?.exists ? (
-              <Button
-                type="button"
-                size="sm"
-                className="mt-2"
-                onClick={() => setSource({ kind: 'last' })}
-              >
-                {t('Show the last run')}
-              </Button>
-            ) : null}
-          </Panel>
-        ) : (
-          <LogBody
-            loading={loading}
-            error={error}
-            meta={meta}
-            lines={visible}
-            total={lines.length}
-            scrollRef={scrollRef}
-            onScroll={onScroll}
-          />
-        )}
+            <Fleuron className="my-3" />
+            <div className="flex flex-wrap items-center justify-between gap-3">
+              <div className="flex flex-wrap items-center gap-2">
+                <h4 className="font-serif text-base text-parchment">{sourceLabel(source, t)}</h4>
+                {gameUp && followable ? (
+                  <MonoTag tone="gilt">{t('game running')}</MonoTag>
+                ) : idle ? null : meta?.exists ? (
+                  <MonoTag>{t.n(sessions, '{n} session', '{n} sessions')}</MonoTag>
+                ) : null}
+                {tail.truncated ? <MonoTag>{t('oldest lines trimmed')}</MonoTag> : null}
+                {problems.errors > 0 ? (
+                  <MonoTag tone="crimson">
+                    {t.n(problems.errors, '{n} error', '{n} errors')}
+                  </MonoTag>
+                ) : null}
+                {problems.warnings > 0 ? (
+                  <MonoTag>{t.n(problems.warnings, '{n} warning', '{n} warnings')}</MonoTag>
+                ) : null}
+              </div>
+              <div className="flex flex-wrap items-center gap-2">
+                <Button
+                  type="button"
+                  size="sm"
+                  disabled={!followable}
+                  variant={follow && followable ? 'gilt' : 'default'}
+                  onClick={() => setFollow((f) => !f)}
+                  title={
+                    followable
+                      ? follow
+                        ? t('Stop watching the log file')
+                        : t('Watch the log file for new lines')
+                      : t('A finished run never changes — nothing to follow')
+                  }
+                >
+                  {follow && followable ? (
+                    <Pause className="h-3.5 w-3.5" aria-hidden />
+                  ) : (
+                    <Play className="h-3.5 w-3.5" aria-hidden />
+                  )}
+                  {follow && followable ? t('Following') : t('Paused')}
+                </Button>
+                <Button type="button" size="sm" onClick={() => void load()}>
+                  <RefreshCw className="h-3.5 w-3.5" aria-hidden />
+                  {t('Refresh')}
+                </Button>
+                <CopyButton value={buffered.join('\n')} />
+                <Button
+                  type="button"
+                  size="sm"
+                  disabled={!meta?.exists || buffered.length === 0}
+                  onClick={() => setSharing({ lines: buffered, path: meta?.path ?? null })}
+                  title={t('Upload this log and get a link to paste into a bug report')}
+                >
+                  <Link2 className="h-3.5 w-3.5" aria-hidden />
+                  {t('Share link')}
+                </Button>
+                <Button
+                  type="button"
+                  size="sm"
+                  disabled={!runsDir}
+                  onClick={() => void onOpenFolder()}
+                  title={t('Open the folder that holds every archived run')}
+                >
+                  <FolderOpen className="h-3.5 w-3.5" aria-hidden />
+                  {t('Open folder')}
+                </Button>
+                <Button
+                  type="button"
+                  size="sm"
+                  disabled={!runsDir}
+                  onClick={() => void onDeleteLogs()}
+                  title={t('Delete the archived runs and the last run’s log')}
+                >
+                  <Trash2 className="h-3.5 w-3.5" aria-hidden />
+                  {t('Delete logs')}
+                </Button>
+              </div>
+            </div>
 
-        {meta?.path ? (
-          <p className="font-data mt-2 break-all text-xs text-ash">{meta.path}</p>
-        ) : null}
-      </div>
+            <Fleuron className="my-3" />
+
+            <div className="mb-3 flex flex-wrap items-center gap-2">
+              <Select
+                value={
+                  source.kind === 'run'
+                    ? `run:${source.name}`
+                    : source.kind === 'current'
+                      ? 'now'
+                      : source.kind
+                }
+                onChange={(v) =>
+                  setSource(
+                    v === 'now'
+                      ? { kind: 'current' }
+                      : v === 'last'
+                        ? { kind: 'last' }
+                        : { kind: 'run', name: v.slice('run:'.length) },
+                  )
+                }
+                ariaLabel={t('Which run to read')}
+              >
+                <option value="now">{t('Current run')}</option>
+                {/* The loader archives a run when the NEXT one starts, so with no
+                    game up the newest log is the one finished run the archive below
+                    does not hold yet. While a game runs, that run is the newest
+                    archive entry, and a second "previous" entry only repeated it. */}
+                {!gameUp || source.kind === 'last' ? (
+                  <option value="last">{t('Last run')}</option>
+                ) : null}
+                {runs.map((r) => (
+                  <option key={r.name} value={`run:${r.name}`}>
+                    {r.name.replace(/\.log$/, '')} · {Math.max(1, Math.round(r.bytes / 1024))} KB
+                  </option>
+                ))}
+              </Select>
+              <input
+                value={query}
+                onChange={(e) => setQuery(e.target.value)}
+                placeholder={t('Search game log...')}
+                aria-label={t('Search game log')}
+                className="field-grim font-data min-w-56 flex-1 text-sm"
+              />
+              <Select value={tag} onChange={setTag} ariaLabel={t('Filter by subsystem')}>
+                <option value="all">{t('All subsystems')}</option>
+                {tags.map((t) => (
+                  <option key={t} value={t}>
+                    {t}
+                  </option>
+                ))}
+              </Select>
+              <label className="font-mono flex cursor-pointer items-center gap-2 text-xs text-ash">
+                <input
+                  type="checkbox"
+                  checked={problemsOnly}
+                  onChange={(e) => setProblemsOnly(e.target.checked)}
+                  className="h-3.5 w-3.5 accent-crimson"
+                />
+                {t('problems only')}
+              </label>
+              <label className="font-mono flex cursor-pointer items-center gap-2 text-xs text-ash">
+                <input
+                  type="checkbox"
+                  checked={allSessions}
+                  onChange={(e) => setAllSessions(e.target.checked)}
+                  className="h-3.5 w-3.5 accent-crimson"
+                />
+                {t('all sessions')}
+              </label>
+            </div>
+
+            {problemsOnly ? (
+              <p className="font-serif-italic mb-2 text-xs text-ash">
+                {t(
+                  'Showing lines the loader flagged. Only failures it was taught to classify carry a tag, so an unflagged line means “not classified”, not “fine”.',
+                )}
+              </p>
+            ) : null}
+
+            {idle ? (
+              <Panel variant="inset" className="p-3">
+                <p className="font-serif-italic text-ash">
+                  {t('Ravenswatch is not running. Its log shows here as soon as you start it.')}
+                </p>
+                {meta?.exists ? (
+                  <Button
+                    type="button"
+                    size="sm"
+                    className="mt-2"
+                    onClick={() => setSource({ kind: 'last' })}
+                  >
+                    {t('Show the last run')}
+                  </Button>
+                ) : null}
+              </Panel>
+            ) : (
+              <LogBody
+                loading={loading}
+                error={error}
+                meta={meta}
+                lines={visible}
+                total={lines.length}
+                scrollRef={scrollRef}
+                onScroll={onScroll}
+              />
+            )}
+
+            {meta?.path ? (
+              <p className="font-data mt-2 break-all text-xs text-ash">{meta.path}</p>
+            ) : null}
+          </div>
+        </div>
+      </details>
 
       {sharing ? (
         <ShareLogDialog
