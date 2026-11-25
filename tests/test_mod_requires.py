@@ -134,14 +134,12 @@ def test_stale_manifest_but_dll_is_the_bundled_one(tmp_path, bundle):
     assert R.loader_install(g) == {"state": "release", "version": 50}
 
 
-def test_loader_requirement_against_no_loader_skips(tmp_path, bundle, capsys):
+def test_loader_requirement_against_no_loader_only_warns(tmp_path, bundle, capsys):
+    # A launch applies before it plants the loader, so this is not a skip.
     m = A.Mod(_write(tmp_path, "\n[requires]\nloader = 58\n"))
-    skipped = A.requires_gate([m], tmp_path / "g")
-    assert m.enabled is False
-    assert skipped == [{"id": "m", "needs": {"loader": 58},
-                        "reason": "needs loader v58, no loader is installed - "
-                                  "run rsmm install-loader"}]
-    assert "no loader is installed - run rsmm install-loader" in capsys.readouterr().err
+    assert A.requires_gate([m], tmp_path / "g") == []
+    assert m.enabled is True
+    assert "needs loader v58, no loader is installed yet" in capsys.readouterr().err
 
 
 def test_loader_requirement_against_dev_build_applies_with_a_warning(
