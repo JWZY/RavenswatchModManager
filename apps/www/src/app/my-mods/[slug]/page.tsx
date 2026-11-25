@@ -8,6 +8,7 @@ import {
   AlertTriangle,
   BarChart3,
   Eye,
+  EyeOff,
   Loader2,
   Package,
   Pencil,
@@ -26,6 +27,7 @@ import { type ListingDraft, listingChanges, readListingDraft } from '../../../li
 import { MIN_DESCRIPTION_CHARS, descriptionLength } from '../../../lib/thin-content';
 import { fmtBytes, hexToBase64, putFile, sha256Hex } from '../../../lib/upload';
 import { useScreenshotGallery } from '../../../lib/use-screenshot-gallery';
+import { archiveVersionMismatch, readArchiveVersion } from '../../../lib/zip-manifest';
 import { FileDrop } from '../../components/file-drop';
 import { MDEditor } from '../../components/md-editor';
 import { ModStats } from '../../components/mod-stats';
@@ -575,15 +577,37 @@ function ManageModEditor({ slug }: { slug: string }) {
     setVideos(videos.filter((_, i) => i !== idx));
   }
 
+  // Authors hide the listing from the store, or show it again.
+  const visibilityMut = useMutation({
+    mutationFn: (hidden: boolean) => api.mods.setHidden(slug, hidden),
+    onSuccess: () => {
+      qc.invalidateQueries({ queryKey: ['my-mod', slug] });
+      qc.invalidateQueries({ queryKey: ['me', 'mods'] });
+      qc.invalidateQueries({ queryKey: ['mods', 'detail', slug] });
+      qc.invalidateQueries({ queryKey: ['registry'] });
+    },
+  });
+
   // New version section
   const [newVersion, setNewVersion] = useState('');
   const [newZip, setNewZip] = useState<File | null>(null);
   const [changelog, setChangelog] = useState<string | undefined>('');
   const [zipProgress, setZipProgress] = useState<{ loaded: number; total: number } | null>(null);
+  // The new version's number comes from the archive: it has to match anyway.
+  const newZipPick = useRef(0);
+  async function chooseNewZip(file: File | null) {
+    const pick = ++newZipPick.current;
+    setNewZip(file);
+    if (!file) return;
+    const packed = await readArchiveVersion(file);
+    if (packed && pick === newZipPick.current) setNewVersion(packed);
+  }
   const newVersionMut = useMutation({
     mutationFn: async () => {
       if (!newZip) throw new Error('no zip selected');
       if (!SEMVER_RE.test(newVersion)) throw new Error('version must be semver x.y.z');
+      const mismatch = await archiveVersionMismatch(newZip, newVersion);
+      if (mismatch) throw new Error(mismatch);
       const sha = await sha256Hex(newZip);
       const mod = detail.data?.mod;
       if (!mod) throw new Error('mod not loaded');
@@ -741,15 +765,47 @@ function ManageModEditor({ slug }: { slug: string }) {
                   />
                 </div>
               </div>
-              <Link
-                href={`/registry/${mod.slug}` as never}
-                className={buttonVariants({ variant: 'outline', className: 'justify-self-start' })}
-              >
-                <Eye className="h-4 w-4" aria-hidden="true" /> View public page
-              </Link>
+              <div className="flex flex-wrap gap-2 justify-self-start">
+                <Link
+                  href={`/registry/${mod.slug}` as never}
+                  className={buttonVariants({ variant: 'outline' })}
+                >
+                  <Eye className="h-4 w-4" aria-hidden="true" /> View public page
+                </Link>
+                {(mod.takedownStatus ?? 'active') === 'active' ||
+                mod.takedownStatus === 'unlisted' ? (
+                  <Button
+                    variant="outline"
+                    disabled={visibilityMut.isPending}
+                    onClick={() => visibilityMut.mutate(mod.takedownStatus !== 'unlisted')}
+                  >
+                    {visibilityMut.isPending ? (
+                      <Spinner />
+                    ) : mod.takedownStatus === 'unlisted' ? (
+                      <Eye className="h-4 w-4" aria-hidden="true" />
+                    ) : (
+                      <EyeOff className="h-4 w-4" aria-hidden="true" />
+                    )}{' '}
+                    {mod.takedownStatus === 'unlisted' ? 'Show in store' : 'Hide from store'}
+                  </Button>
+                ) : null}
+              </div>
             </header>
 
-            {mod.takedownStatus && mod.takedownStatus !== 'active' ? (
+            {mod.takedownStatus === 'unlisted' ? (
+              <p className="flex items-center gap-2 rounded-md border border-border bg-muted/40 p-3 text-sm text-muted-foreground">
+                <EyeOff className="h-4 w-4 shrink-0" aria-hidden="true" />
+                Hidden from the store: not listed, searchable or installable. Download links already
+                copied still work; delete a version to remove its file.
+              </p>
+            ) : null}
+            {visibilityMut.isError ? (
+              <p className="text-sm text-destructive">{describeApiError(visibilityMut.error)}</p>
+            ) : null}
+
+            {mod.takedownStatus &&
+            mod.takedownStatus !== 'active' &&
+            mod.takedownStatus !== 'unlisted' ? (
               <div className="flex items-start gap-3 rounded-md border border-destructive/40 bg-destructive/10 p-4">
                 <AlertTriangle className="mt-0.5 h-5 w-5 shrink-0 text-destructive" />
                 <div className="text-sm">
@@ -1058,7 +1114,7 @@ function ManageModEditor({ slug }: { slug: string }) {
                         label="Mod archive (.zip)"
                         hint="up to 500 MB"
                         file={newZip}
-                        onFile={setNewZip}
+                        onFile={chooseNewZip}
                         disabled={newVersionMut.isPending}
                       />
                     </div>

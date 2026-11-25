@@ -9,6 +9,8 @@ const state = vi.hoisted(() => ({
   updates: [] as Record<string, unknown>[],
   conflicts: [] as Record<string, unknown>[],
   exists: true,
+  // Whether a conditional UPDATE's WHERE matched (false: a moderator's status).
+  updateMatches: true,
 }));
 const mod = () => ({ id: 'sample-id', slug: 'sample', ownerId: 'owner', tags: state.tags });
 
@@ -19,7 +21,11 @@ vi.mock('@rsmm/db', () => {
     update: () => ({
       set: (values: Record<string, unknown>) => {
         state.updates.push(values);
-        return { where: () => ({ returning: async () => (state.exists ? [mod()] : []) }) };
+        return {
+          where: () => ({
+            returning: async () => (state.exists && state.updateMatches ? [mod()] : []),
+          }),
+        };
       },
     }),
     insert: () => ({
@@ -81,6 +87,30 @@ beforeEach(() => {
   state.updates = [];
   state.conflicts = [];
   state.exists = true;
+  state.updateMatches = true;
+});
+
+describe('authors hide their own mod from the store', () => {
+  it('lets owners and co-authors hide and show it, but not strangers', async () => {
+    for (const [user, status] of [
+      [null, 401],
+      ['stranger', 403],
+      ['owner', 200],
+      ['coauthor', 200],
+    ] as const) {
+      const res = await request(user, '/api/mods/sample/visibility', { hidden: true });
+      expect(res.status).toBe(status);
+    }
+    expect(state.updates.map((u) => u.takedownStatus)).toEqual(['unlisted', 'unlisted']);
+    await request('owner', '/api/mods/sample/visibility', { hidden: false });
+    expect(state.updates.at(-1)?.takedownStatus).toBe('active');
+  });
+
+  it("refuses to undo a moderator's takedown", async () => {
+    state.updateMatches = false;
+    const res = await request('owner', '/api/mods/sample/visibility', { hidden: false });
+    expect(res.status).toBe(409);
+  });
 });
 
 describe('Private games only permission boundary', () => {
@@ -182,6 +212,23 @@ describe('Private games only permission boundary', () => {
       if (tags === undefined) expect(update).not.toHaveProperty('tags');
       else expect(update?.tags).toHaveProperty('queryChunks');
     }
+  });
+
+  it('keeps the listing description when a later upload carries a manifest description', async () => {
+    const response = await request(
+      'owner',
+      '/api/mods/upload',
+      {
+        slug: 'sample',
+        version: '1.0.2',
+        sha256: 'c'.repeat(64),
+        sizeBytes: 100,
+        manifest: { id: 'sample', name: 'Sample', version: '1.0.2', description: 'One-liner.' },
+      },
+      'POST',
+    );
+    expect(response.status).toBe(200);
+    expect(state.conflicts[0]).not.toHaveProperty('description');
   });
 
   it('lets a co-author upload a version without taking the mod, and refuses a stranger', async () => {

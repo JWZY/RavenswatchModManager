@@ -1,7 +1,7 @@
 'use client';
 
 import { ApiError } from '@rsmm/api-client';
-import type { ModCategory } from '@rsmm/schemas';
+import { type ModCategory, parseModManifest } from '@rsmm/schemas';
 import { Badge, Button, Input, ProgressBar, Spinner } from '@rsmm/ui';
 
 function Label({
@@ -25,9 +25,9 @@ import { useRouter } from 'next/navigation';
 import { useEffect, useMemo, useRef, useState } from 'react';
 import { api } from '../../lib/api';
 import { useSession } from '../../lib/auth-client';
-import { parseModManifest } from '../../lib/manifest-toml';
+
 import { fmtBytes, hexToBase64, putFile, sha256Hex } from '../../lib/upload';
-import { readManifestText } from '../../lib/zip-manifest';
+import { archiveVersionMismatch, readManifestText } from '../../lib/zip-manifest';
 import { FileDrop } from '../components/file-drop';
 import { MDEditor } from '../components/md-editor';
 
@@ -88,6 +88,7 @@ export default function PublishPage() {
   const [repoUrl, setRepoUrl] = useState('');
   const [homepageUrl, setHomepageUrl] = useState('');
   const [nsfw, setNsfw] = useState(false);
+  const [hidden, setHidden] = useState(false);
   const [phase, setPhase] = useState<Phase>({ kind: 'idle' });
   // What choosing the archive did to the form: nothing to read, or which fields
   // it filled (and which it declined because the manifest's value is unusable).
@@ -160,8 +161,8 @@ export default function PublishPage() {
   /**
    * Choose the archive, then fill in what its own `manifest.toml` already says
    * (id, name, version, author, summary, tags, license, links) instead of asking
-   * for it a second time. Only EMPTY fields — or the untouched `0.1.0` default
-   * and the account-name author default — are written, so nothing the user
+   * for it a second time. The version is always taken. Otherwise only EMPTY fields
+   * — or the account-name author default — are written, so nothing else the user
    * typed is overwritten. A manifest that is missing or unreadable leaves the
    * form exactly as it was.
    */
@@ -194,10 +195,9 @@ export default function PublishPage() {
     }
     if (meta.version) {
       if (SEMVER_RE.test(meta.version)) {
-        if (now.version === '' || now.version === '0.1.0') {
-          setVersion(meta.version);
-          filled.push('version');
-        }
+        // Always: the store version has to match the archive's anyway.
+        setVersion(meta.version);
+        filled.push('version');
       } else declined.push('version');
     }
     if (meta.author && (now.author.trim() === '' || now.author === session?.user?.name)) {
@@ -237,6 +237,8 @@ export default function PublishPage() {
   async function publish() {
     if (!zip) return;
     try {
+      const mismatch = await archiveVersionMismatch(zip, version);
+      if (mismatch) throw new Error(mismatch);
       setPhase({ kind: 'hashing' });
       const sha = await sha256Hex(zip);
 
@@ -260,6 +262,8 @@ export default function PublishPage() {
         sha256: sha,
         sizeBytes: zip.size,
       });
+      // Before the bytes land, so the scan never releases it into the store.
+      if (hidden) await api.mods.setHidden(slug, true);
 
       setPhase({ kind: 'uploading-zip', loaded: 0, total: zip.size });
       await putFile(presigned.uploadUrl, zip, {
@@ -611,6 +615,27 @@ export default function PublishPage() {
           <p className="text-xs text-muted-foreground">
             If checked, the mod will be hidden behind a blur by default. Users can opt in via
             settings.
+          </p>
+        </section>
+
+        {/* ─── Visibility ─── */}
+        <section className="grimoire-card space-y-4 p-5">
+          <h2 className="text-lg font-semibold">Visibility</h2>
+          <label className="flex cursor-pointer items-center gap-3 text-sm">
+            <input
+              type="checkbox"
+              checked={hidden}
+              onChange={(e) => setHidden(e.target.checked)}
+              className="h-4 w-4 rounded border-border accent-crimson"
+            />
+            <span>
+              <strong>Hide from the store</strong> for now
+            </span>
+          </label>
+          <p className="text-xs text-muted-foreground">
+            A hidden mod is left out of the store, search and profiles, and the app can&apos;t
+            install it. It isn&apos;t secret: a download link someone already copied keeps working.
+            Show it in the store any time from <em>My Mods</em>.
           </p>
         </section>
 

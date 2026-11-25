@@ -13,7 +13,7 @@ import {
   reviewUpsertSchema,
   setPrivateOnlyTag,
 } from '@rsmm/schemas';
-import { and, asc, desc, eq, gte, ilike, notInArray, or, sql } from 'drizzle-orm';
+import { and, asc, desc, eq, gte, ilike, inArray, notInArray, or, sql } from 'drizzle-orm';
 import { Hono } from 'hono';
 import { z } from 'zod';
 import { isAdmin } from '../admin.js';
@@ -36,6 +36,7 @@ import {
 } from '../scan-service.js';
 import { kickScanWorker } from '../scan-worker.js';
 import {
+  assetKey,
   deleteObject,
   fetchPublicObject,
   modUploadKey,
@@ -729,7 +730,9 @@ modsRouter.post('/upload', zValidator('json', modUploadRequestSchema), async (c)
           set: {
             name: body.manifest.name,
             summary: body.manifest.summary,
-            description: body.manifest.description,
+            // No description: the long description is written on the listing
+            // page, while a manifest's `description` is a one-liner, so every
+            // `rsmm publish` used to replace the author's text with it.
             license: body.manifest.license,
             repoUrl: body.manifest.repo_url,
             homepageUrl: body.manifest.homepage_url,
@@ -865,6 +868,7 @@ modsRouter.post(
     const rows = await db
       .select({
         assetUrl: schema.modVersions.assetUrl,
+        version: schema.modVersions.version,
         sha256: schema.modVersions.sha256,
         modId: schema.mods.id,
         ownerId: schema.mods.ownerId,
@@ -892,7 +896,11 @@ modsRouter.post(
     if (!virusTotalConfigured()) {
       // No malware scan, but the store still checks what the mod changes.
       const bytes = await fetchPublicObject(row.assetUrl, MAX_VT_LARGE_BYTES);
-      await labelIfGameplay(row.slug, bytes?.bytes ?? null);
+      await labelIfGameplay(row.slug, bytes?.bytes ?? null, {
+        id: versionId,
+        version: row.version,
+        sha256: row.sha256,
+      });
       await releaseVersion(versionId, row.sha256, 'skipped');
       return c.json({ ok: true, status: 'skipped', flagged: false, position: null });
     }
@@ -952,6 +960,50 @@ modsRouter.get(
       etaSeconds: info.etaSeconds,
       stats: info.stats,
     });
+  },
+);
+
+// Authors hide their own listing from the store and show it again. Hiding is
+// the takedown gate's 'unlisted' value, so every public route that serves only
+// 'active' mods drops it with no change of its own. Only active <-> unlisted:
+// a moderator's 'hidden' or 'removed' is not the author's to undo.
+const visibilitySchema = z.object({ hidden: z.boolean() });
+modsRouter.use('/:slug/visibility', ownerLimiter);
+modsRouter.patch(
+  '/:slug/visibility',
+  zValidator('param', slugParamSchema),
+  zValidator('json', visibilitySchema),
+  async (c) => {
+    const user = c.get('user');
+    if (!user) return c.json({ error: 'unauthorized' }, 401);
+    const { slug } = c.req.valid('param');
+    const { hidden } = c.req.valid('json');
+    const db = getDb();
+
+    const existing = await db.query.mods.findFirst({ where: eq(schema.mods.slug, slug) });
+    if (!existing) return c.json({ error: 'not found' }, 404);
+    if (!(await canManageMod(existing, user.id))) return c.json({ error: 'forbidden' }, 403);
+
+    const to = hidden ? 'unlisted' : 'active';
+    // The status test sits in the UPDATE so a moderator's takedown landing in
+    // between cannot be overwritten.
+    const rows = await db
+      .update(schema.mods)
+      .set({ takedownStatus: to, updatedAt: new Date() })
+      .where(
+        and(
+          eq(schema.mods.id, existing.id),
+          inArray(schema.mods.takedownStatus, ['active', 'unlisted']),
+        ),
+      )
+      .returning({ id: schema.mods.id });
+    if (rows.length === 0) {
+      return c.json(
+        { error: 'a moderator has hidden this mod; reply in its Moderation section' },
+        409,
+      );
+    }
+    return c.json({ ok: true, takedownStatus: to });
   },
 );
 
@@ -1151,6 +1203,7 @@ modsRouter.delete(
         id: schema.modVersions.id,
         version: schema.modVersions.version,
         sha256: schema.modVersions.sha256,
+        assetUrl: schema.modVersions.assetUrl,
         slug: schema.mods.slug,
         ownerId: schema.mods.ownerId,
       })
@@ -1168,7 +1221,7 @@ modsRouter.delete(
     // The row is what makes a version downloadable, so it goes first; a failed
     // storage delete only leaves an unreachable object behind.
     try {
-      await deleteObject(modUploadKey(row.slug, row.version, row.sha256));
+      await deleteObject(assetKey(row.assetUrl));
     } catch (err) {
       c.get('log').warn('version zip delete failed', { versionId, err: errString(err) });
     }
