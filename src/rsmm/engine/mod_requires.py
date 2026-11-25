@@ -172,9 +172,10 @@ def check(requires: dict[str, int], game_dir: Path | None) -> dict:
             inst = loader_install(game_dir)
             state, have = inst["state"], inst["version"]
         if state == "none":
-            reasons.append(f"needs loader v{need}, no loader is installed - "
-                           "run rsmm install-loader")
-            needs["loader"] = need
+            # Not a skip: a launch applies first and plants the loader after
+            # (run.py), so "none" here is the normal state right before launch.
+            warning = (f"needs loader v{need}, no loader is installed yet - "
+                       "the launch installs one, or run rsmm install-loader")
         elif state == "dev" or have is None:
             warning = ("the installed loader is a dev or unrecognized build - "
                        f"can't confirm it has loader v{need}")
