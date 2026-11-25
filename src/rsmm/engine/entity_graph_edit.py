@@ -852,8 +852,9 @@ class EntityFile:
                 if t.kind == "object" and t.text == "oCEntityCpntValuePicker"]
 
     def source_value(self, comp: str, n: int, target: str, *, accessor: int | None = None) -> None:
-        """Make the n-th number slot of ``comp`` read component ``target`` (an f32
-        node of this file), literal or sourced before; its inline number goes.
+        """Make the n-th number slot of ``comp`` read component ``target`` (a node
+        of this file read as the slot's decimal, int, bool or vec3), literal or
+        sourced before; its inline value goes.
         ``accessor`` names which output to read, for a target with several (a
         Timer: ``TIMER_ELAPSED`` / ``TIMER_TIME_LEFT``)."""
         c = self.component(comp)
@@ -868,17 +869,20 @@ class EntityFile:
         if u < 0:
             raise EntityEditError(f"{comp!r}: number slot {n} has no value")
         kind = struct.unpack_from("<I", p, u + 8)[0]
-        table = {0: self.F32_ACCESSOR, 1: self.INT_ACCESSOR, 3: self.VEC3_ACCESSOR}.get(kind)
+        table = {0: self.F32_ACCESSOR, 1: self.INT_ACCESSOR, 2: self.BOOL_ACCESSOR,
+                 3: self.VEC3_ACCESSOR}.get(kind)
         if table is None:
-            raise EntityEditError(f"{comp!r}: number slot {n} is not a decimal, int, or vec3")
+            raise EntityEditError(f"{comp!r}: number slot {n} is not a decimal, int, bool, or vec3")
         acc = accessor if accessor is not None else table.get(t.cls)
         if acc is None:
-            want = "a vec3" if kind == 3 else "an int" if kind == 1 else "a number"
+            want = {3: "a vec3", 2: "a bool", 1: "an int"}.get(kind, "a number")
             raise EntityEditError(f"{target!r} is a {t.cls}; no known way to read it into {want}")
         p[at:u] = b"\x01\x00" + self._picker(target) + struct.pack("<I", acc)
         u = p.find(union, at)
         if kind == 1:
             struct.pack_into("<i", p, u + 16, 0)
+        elif kind == 2:
+            p[u + 16] = 0
         else:
             struct.pack_into("<f", p, u + 16, 0.0)
 
@@ -928,6 +932,8 @@ class EntityFile:
         "oCEntityCpntStateSettings": 0x0FD2832A,
         "oCEntityCpntValueSettings": 0x0FD2832A,
         "oCEntityCpntGetValueSettings": 0x16ABF2ED,
+        # A tester's result (Hero_Red: 39 reads; 424 shipped entity files).
+        "oCEntityCpntTesterSettings": 0x103B05AF,
     }
 
     def add_subobject(self, owner: str, list_field: str, donor: EntityFile, obj: int, *,
@@ -942,9 +948,9 @@ class EntityFile:
         f = next((x for x in EF.fields(c) if x.name == list_field), None)
         if f is None:
             raise EntityEditError(f"{owner!r} has no field {list_field!r}")
-        pad = id_list_pad(c.cls, list_field)
+        pad, tail = id_list_bounds(c, f)
         n = struct.unpack_from("<I", c.body, f.offset + pad)[0]
-        if f.size != pad + 4 + 4 * n:
+        if f.size != pad + 4 + 4 * n + tail:
             raise EntityEditError(f"{owner!r}.{list_field} is not an id list")
         payload = self._copy_subobject(donor, obj, refs, switch)
         new_id = len(self.objects)
@@ -966,9 +972,9 @@ class EntityFile:
         f = next((x for x in EF.fields(c) if x.name == list_field), None)
         if f is None:
             raise EntityEditError(f"{owner!r} has no field {list_field!r}")
-        pad = id_list_pad(c.cls, list_field)
+        pad, tail = id_list_bounds(c, f)
         n = struct.unpack_from("<I", c.body, f.offset + pad)[0]
-        if f.size != pad + 4 + 4 * n:
+        if f.size != pad + 4 + 4 * n + tail:
             raise EntityEditError(f"{owner!r}.{list_field} is not an id list")
         if not 0 <= index < n:
             raise EntityEditError(f"{owner}.{list_field} has entries 0..{n - 1}")
@@ -988,12 +994,13 @@ class EntityFile:
         f = next((x for x in EF.fields(c) if x.name == list_field), None)
         if f is None:
             raise EntityEditError(f"{owner!r} has no field {list_field!r}")
-        n = struct.unpack_from("<I", c.body, f.offset)[0]
-        if f.size != 4 + 4 * n:
+        pad, tail = id_list_bounds(c, f)
+        n = struct.unpack_from("<I", c.body, f.offset + pad)[0]
+        if f.size != pad + 4 + 4 * n + tail:
             raise EntityEditError(f"{owner!r}.{list_field} is not an id list")
         if not 0 <= index < n:
             raise EntityEditError(f"{owner}.{list_field} has entries 0..{n - 1}")
-        oid = struct.unpack_from("<I", c.body, f.offset + 4 + 4 * index)[0]
+        oid = struct.unpack_from("<I", c.body, f.offset + pad + 4 + 4 * index)[0]
         if self._class(oid) != "oCDtDamageDebuffSettings":
             raise EntityEditError(f"{owner}.{list_field}[{index}] is a {self._class(oid)}, "
                                   "not a damage debuff")
@@ -1600,6 +1607,17 @@ def id_list_pad(cls: str, field: str) -> int:
     """Bytes before the ``u32 count`` of id list ``field``: a Gpn traverser's
     ``bytes_3`` holds 4 of its own ahead of the list (the PR #149 kit edits)."""
     return 4 if cls == "oCEntityCpntGpnTraverserSettings" and field == "bytes_3" else 0
+
+
+def id_list_bounds(c: EG.Component, f: EF.Field) -> tuple[int, int]:
+    """``(pad, tail)`` around ``u32 count + count * u32`` in id-list field ``f``:
+    collector selectors wrap ids in ``BEGIN oCEntityCollectorSelectorSettings ... END``."""
+    if f.kind == "obj" and f.size >= 16 and c.body[f.offset:f.offset + 4] == _B \
+            and c.body[f.offset + f.size - 4:f.offset + f.size] == _E:
+        ci = struct.unpack_from("<I", c.body, f.offset + 4)[0]
+        if ci < len(c.classes) and c.classes[ci] == "oCEntityCollectorSelectorSettings":
+            return 8, 4
+    return id_list_pad(c.cls, f.name), 0
 
 
 @cache
