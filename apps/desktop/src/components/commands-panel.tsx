@@ -241,20 +241,9 @@ export function CommandsPanel() {
         <div className="settings-command-grid">
           {commands.map((command) => (
             <Panel key={command.id} variant="inset" className="p-4">
-              <div className="flex items-start justify-between gap-3">
-                <div className="min-w-0">
-                  <p className="font-serif text-base text-parchment">{command.label}</p>
-                  <p className="mt-1 text-sm text-ash">{command.description}</p>
-                </div>
-                <MonoTag
-                  tone={
-                    command.tone === 'primary' || command.tone === 'danger'
-                      ? 'crimson'
-                      : command.tone
-                  }
-                >
-                  {command.id}
-                </MonoTag>
+              <div className="min-w-0">
+                <p className="font-serif text-base text-parchment">{command.label}</p>
+                <p className="mt-1 text-sm text-ash">{command.description}</p>
               </div>
               <div className="mt-4 flex items-center gap-2">
                 <Button

@@ -243,8 +243,8 @@ function SettingsPage() {
               {tab === 'diagnostics' ? (
                 <>
                   <GameLogPanel />
-                  <LauncherLogPanel />
                   <CommandsPanel />
+                  <LauncherLogPanel />
                   <PrivacyPanel />
                 </>
               ) : null}
@@ -470,8 +470,8 @@ function UpdatesPanel() {
   );
 }
 
-/** The launcher log, filtered. Mounted only while its group is open, which is
- * also what stops the live poll below when you are elsewhere in Settings. */
+/** The launcher log, collapsed by default. Mounted only on Diagnostics;
+ * live polling continues while collapsed so reopening shows the current run. */
 function LauncherLogPanel() {
   const t = useT();
   const [launcherLog, setLauncherLog] = useState('');
@@ -538,11 +538,17 @@ function LauncherLogPanel() {
   });
 
   return (
-    <section className="settings-section">
-      <div className="flex flex-wrap items-center justify-between gap-3">
+    <details className="settings-section group/launcher-log">
+      <summary className="flex min-h-10 cursor-pointer list-none items-center justify-between gap-3 rounded [&::-webkit-details-marker]:hidden">
+        <h3 className="settings-section-title text-parchment">{t('Launcher log')}</h3>
+        <ChevronDown
+          className="h-4 w-4 shrink-0 text-ash group-open/launcher-log:rotate-180"
+          aria-hidden="true"
+        />
+      </summary>
+      <div className="mt-3 flex flex-wrap items-center justify-between gap-3">
         <div className="min-w-0">
-          <h3 className="settings-section-title text-parchment">{t('Launcher log')}</h3>
-          <p className="font-serif-italic text-ash mt-1">
+          <p className="font-serif-italic text-ash">
             {t('Current run only. Cleared whenever you launch Vanilla or Modded.')}
           </p>
         </div>
@@ -608,7 +614,7 @@ function LauncherLogPanel() {
           ))}
         </ul>
       )}
-    </section>
+    </details>
   );
 }
 
