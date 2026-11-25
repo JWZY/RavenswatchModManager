@@ -1,3 +1,4 @@
+export { Dialog } from './components/dialog';
 export { CachedImage, ImageCacheProvider } from './components/cached-image';
 export { cn } from './lib/cn';
 export { Button, buttonVariants } from './components/button';

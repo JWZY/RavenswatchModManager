@@ -1,9 +1,10 @@
+import { Dialog } from '@rsmm/ui';
 import { Cpu } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { ackDisclosure, disclosureAck } from '../lib/first-run';
 import { useT } from '../lib/i18n-react';
-import { Button, useModalChrome } from './chrome';
+import { Button } from './chrome';
 
 /**
  * Revision of the disclosure text below. Bump it when the substance changes —
@@ -59,7 +60,7 @@ export function AiDisclosureDialog({ onAcknowledged }: { onAcknowledged?: () => 
 }
 
 /**
- * The card itself, split out so `useModalChrome` moves
+ * The card itself, split out so the shared dialog moves
  * focus when the dialog OPENS rather than when the app shell mounts.
  *
  * No `onClose`: the note has to be answered, so Escape does nothing. Before
@@ -68,13 +69,11 @@ export function AiDisclosureDialog({ onAcknowledged }: { onAcknowledged?: () => 
 function AiDisclosureCard({ onAccept: accept }: { onAccept: () => void }) {
   const t = useT();
   const cardRef = useRef<HTMLDivElement>(null);
-  useModalChrome(cardRef);
 
   return createPortal(
-    <div
-      // biome-ignore lint/a11y/useSemanticElements: <dialog> needs an imperative showModal() and brings its own top-layer backdrop, which fights the app's overlay z-order; the other modals here use the same role="dialog" pattern
-      role="dialog"
-      aria-modal="true"
+    <Dialog
+      overlay
+      initialFocusRef={cardRef}
       aria-labelledby="ai-disclosure-title"
       className="fixed inset-0 z-[85] flex items-center justify-center p-4 animate-fade-in"
     >
@@ -111,7 +110,7 @@ function AiDisclosureCard({ onAccept: accept }: { onAccept: () => void }) {
           </Button>
         </footer>
       </div>
-    </div>,
+    </Dialog>,
     document.body,
   );
 }

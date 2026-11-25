@@ -1,7 +1,8 @@
 'use client';
 
+import { Dialog } from './dialog';
 import { Check, Star, X } from 'lucide-react';
-import { useEffect, useRef, useState } from 'react';
+import { useId, useState } from 'react';
 
 export interface RegistryFilterValue {
   category: string;
@@ -52,37 +53,15 @@ export function RegistryFilterDialog({
   };
 }) {
   const [draft, setDraft] = useState(value);
-  const dialog = useRef<HTMLDialogElement>(null);
-
-  useEffect(() => {
-    const node = dialog.current;
-    node?.showModal();
-    const overflow = document.body.style.overflow;
-    document.body.style.overflow = 'hidden';
-    return () => {
-      node?.close();
-      document.body.style.overflow = overflow;
-    };
-  }, []);
-
-  const close = () => {
-    dialog.current?.close();
-    onClose();
-  };
-  const apply = () => {
-    dialog.current?.close();
-    onApply(draft);
-  };
+  const titleId = useId();
+  const close = onClose;
+  const apply = () => onApply(draft);
 
   return (
-    <dialog
-      ref={dialog}
+    <Dialog
+      onDismiss={close}
       className="registry-filter-dialog"
-      aria-labelledby="registry-filter-title"
-      onCancel={(event) => {
-        event.preventDefault();
-        close();
-      }}
+      aria-labelledby={titleId}
       onClick={(event) => {
         if (event.target === event.currentTarget) close();
       }}
@@ -94,7 +73,7 @@ export function RegistryFilterDialog({
         }}
       >
         <header className="registry-filter-header">
-          <h2 id="registry-filter-title">{labels.title ?? 'Filters'}</h2>
+          <h2 id={titleId}>{labels.title ?? 'Filters'}</h2>
           <button
             type="button"
             className="registry-icon-button"
@@ -225,6 +204,6 @@ export function RegistryFilterDialog({
           </button>
         </footer>
       </form>
-    </dialog>
+    </Dialog>
   );
 }

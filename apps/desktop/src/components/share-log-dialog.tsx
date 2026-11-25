@@ -1,3 +1,4 @@
+import { Dialog } from '@rsmm/ui';
 import { isRateLimited } from '@rsmm/api-client';
 import { openUrl } from '@tauri-apps/plugin-opener';
 import { Check, Copy, ExternalLink, Link2, Loader2, X } from 'lucide-react';
@@ -13,7 +14,7 @@ import { buildLogReport, describeLoader } from '../lib/log-share';
 import type { DoctorCheck, LocalMod } from '../lib/rsmm';
 import { listLocalMods } from '../lib/rsmm';
 import { detectOs } from '../lib/telemetry';
-import { Button, CopyButton, Fleuron, MonoTag, Panel, useModalChrome } from './chrome';
+import { Button, CopyButton, Fleuron, MonoTag, Panel } from './chrome';
 import { useToast } from './toast';
 
 /**
@@ -52,7 +53,6 @@ export function ShareLogDialog({
   const [shared, setShared] = useState<{ url: string; expiresAt: string } | null>(null);
   const cardRef = useRef<HTMLDivElement>(null);
   const titleId = useId();
-  const onKeyDown = useModalChrome(cardRef, onClose);
 
   // Gathered up front, not at upload time: the preview has to show what will
   // actually be sent, and a fetch hidden behind the button would make the
@@ -162,13 +162,12 @@ export function ShareLogDialog({
   // window. It used to have no dialog role, no Escape and no focus move, so
   // Tab walked the whole app behind it.
   return createPortal(
-    <div
-      // biome-ignore lint/a11y/useSemanticElements: see ai-disclosure.tsx — <dialog>'s top-layer backdrop conflicts with the app's overlay stacking
-      role="dialog"
-      aria-modal="true"
+    <Dialog
+      overlay
+      initialFocusRef={cardRef}
+      onDismiss={onClose}
       aria-labelledby={titleId}
       className="fixed inset-0 z-[70] flex items-center justify-center p-4 animate-fade-in"
-      onKeyDown={onKeyDown}
     >
       <div className="absolute inset-0 bg-pitch/80" />
       <div
@@ -327,7 +326,7 @@ export function ShareLogDialog({
           </div>
         )}
       </div>
-    </div>,
+    </Dialog>,
     document.body,
   );
 }

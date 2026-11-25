@@ -58,3 +58,31 @@ surface above. The translucent web card is also covered by the regression test.
 Run `pnpm --filter desktop test src/lib/theme-tokens.test.ts` for the token
 contract, generated Tailwind mappings and contrast matrix. Run both app builds
 and inspect their actual rendered styles when changing imports or host rules.
+
+## Dialog behavior
+
+Use `Dialog` from `@rsmm/ui` for modal content in either host. Both host stylesheets
+already import `@rsmm/ui/dialog.css`. Mount it while the task is open, or control
+its `open` prop. Supply `aria-labelledby` pointing to the visible title (or an
+`aria-label` for an image viewer), and `aria-describedby` for a short explanation.
+
+`Dialog` uses `showModal()` for native background inertness and top-layer stacking,
+wraps Tab/Shift+Tab within the active dialog, locks page scrolling until the last
+shared dialog closes, and restores the opening control before unmount. Use
+`initialFocusRef` for a field, a reading target with `tabIndex={-1}`, or Cancel on
+a destructive confirmation. The desktop `useDialog()` adapter handles prompt and
+confirmation results; Enter on Cancel must never submit the task.
+
+`onDismiss` owns Escape. Omit it for a notice that must be answered; do not add a
+window-level Escape listener. Cards and backdrop click policy stay with the host.
+Use `overlay` for the existing full-window backdrop/card layout, or keep a custom
+native-dialog skin such as `registry-filter-dialog`. Bound tall cards to the
+viewport and give their content a scroller. Render interactive popovers inside
+the dialog rather than portalling them to the inert page behind it.
+
+Run `pnpm --filter desktop exec playwright install chromium` once, then
+`pnpm --filter desktop test:dialogs`. The browser suite uses actual production
+components with local fixtures, checks keyboard/stacking/scroll behavior in
+React StrictMode, and intercepts API requests. Run this suite manually; CI
+integration is deferred to a separate follow-up. Native Tauri WebViews and
+assistive technology still need platform verification.

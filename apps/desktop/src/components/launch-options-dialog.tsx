@@ -1,8 +1,9 @@
+import { Dialog } from '@rsmm/ui';
 import { useId, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { useT } from '../lib/i18n-react';
 import { LOADER_LAUNCH_OPTIONS, setLaunchOptions } from '../lib/rsmm';
-import { Button, CopyButton, useModalChrome } from './chrome';
+import { Button, CopyButton } from './chrome';
 
 /**
  * Linux/Proton: Wine ignores the loader's winhttp.dll unless Steam's launch
@@ -22,7 +23,6 @@ export function LaunchOptionsDialog({
   const t = useT();
   const titleId = useId();
   const cardRef = useRef<HTMLDivElement>(null);
-  const onKeyDown = useModalChrome(cardRef, onCancel);
   const [writing, setWriting] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
@@ -51,19 +51,18 @@ export function LaunchOptionsDialog({
   };
 
   return createPortal(
-    <div
-      // biome-ignore lint/a11y/useSemanticElements: see ai-disclosure.tsx — <dialog>'s top-layer backdrop conflicts with the app's overlay stacking
-      role="dialog"
-      aria-modal="true"
+    <Dialog
+      overlay
+      initialFocusRef={cardRef}
+      onDismiss={onCancel}
       aria-labelledby={titleId}
       className="fixed inset-0 z-[70] flex items-center justify-center p-4 animate-fade-in"
-      onKeyDown={onKeyDown}
     >
       <div className="absolute inset-0 bg-pitch/80" />
       <div
         ref={cardRef}
         tabIndex={-1}
-        className="grimoire-card grimoire-card--raised relative w-full max-w-xl p-6 focus:outline-none"
+        className="grimoire-card grimoire-card--raised relative max-h-[calc(100dvh-2rem)] w-full max-w-xl overflow-y-auto p-6 focus:outline-none"
       >
         <h3 id={titleId} className="font-fraktur text-2xl text-parchment">
           {t('Steam launch options needed')}
@@ -95,7 +94,7 @@ export function LaunchOptionsDialog({
           </Button>
         </div>
       </div>
-    </div>,
+    </Dialog>,
     document.body,
   );
 }

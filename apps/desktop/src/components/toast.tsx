@@ -1,7 +1,8 @@
+import { Dialog } from '@rsmm/ui';
 import { createContext, useCallback, useContext, useEffect, useId, useRef, useState } from 'react';
 import type { ReactNode } from 'react';
 import { useT } from '../lib/i18n-react';
-import { Button, useModalChrome } from './chrome';
+import { Button } from './chrome';
 
 type ToastTone = 'default' | 'success' | 'error';
 
@@ -126,14 +127,14 @@ function DialogModal({
   const [value, setValue] = useState(isPrompt ? (state.opts.initialValue ?? '') : '');
   const inputRef = useRef<HTMLInputElement>(null);
   const textareaRef = useRef<HTMLTextAreaElement>(null);
+  const cancelBtnRef = useRef<HTMLButtonElement>(null);
+  const titleId = useId();
+  const bodyId = useId();
   const confirmBtnRef = useRef<HTMLButtonElement>(null);
   const fieldId = useId();
   const multiline = state.kind === 'prompt' && state.opts.multiline;
   const fieldRef = multiline ? textareaRef : inputRef;
 
-  // A prompt focuses its field, a confirm its OK button; either way focus
-  // returns to whatever opened the dialog.
-  const onChromeKeyDown = useModalChrome(isPrompt ? fieldRef : confirmBtnRef, cancel);
   // biome-ignore lint/correctness/useExhaustiveDependencies: select once, on open — re-running on a new ref would wipe a selection the user just made
   useEffect(() => {
     if (isPrompt) fieldRef.current?.select();
@@ -154,23 +155,35 @@ function DialogModal({
   const opts = state.opts;
 
   return (
-    <dialog
-      open
-      aria-label={opts.title}
+    <Dialog
+      overlay
+      onDismiss={cancel}
+      initialFocusRef={isPrompt ? fieldRef : state.opts.destructive ? cancelBtnRef : confirmBtnRef}
+      aria-labelledby={titleId}
+      aria-describedby={state.kind === 'confirm' && state.opts.body ? bodyId : undefined}
       className="fixed inset-0 z-[70] flex items-center justify-center p-4 animate-fade-in"
       onKeyDown={(e) => {
-        onChromeKeyDown(e);
-        if (e.key === 'Enter' && !multiline) {
+        if (
+          e.key === 'Enter' &&
+          isPrompt &&
+          !multiline &&
+          e.target === inputRef.current &&
+          !e.nativeEvent.isComposing
+        ) {
           e.preventDefault();
           commit();
         }
       }}
     >
       <div className="absolute inset-0 bg-pitch/80" onClick={cancel} />
-      <div className="grimoire-card grimoire-card--raised relative w-[min(480px,92vw)] p-5">
-        <h3 className="font-fraktur text-xl text-parchment">{opts.title}</h3>
+      <div className="grimoire-card grimoire-card--raised relative max-h-[calc(100dvh-2rem)] w-[min(480px,92vw)] overflow-y-auto p-5">
+        <h3 id={titleId} className="font-fraktur text-xl text-parchment">
+          {opts.title}
+        </h3>
         {state.kind === 'confirm' && state.opts.body ? (
-          <p className="font-serif-italic text-ash mt-2">{state.opts.body}</p>
+          <p id={bodyId} className="font-serif-italic text-ash mt-2">
+            {state.opts.body}
+          </p>
         ) : null}
         {state.kind === 'prompt' ? (
           <div className="mt-3">
@@ -182,6 +195,7 @@ function DialogModal({
             {state.opts.multiline ? (
               <textarea
                 id={fieldId}
+                aria-label={state.opts.label ? undefined : opts.title}
                 ref={textareaRef}
                 value={value}
                 onChange={(e) => setValue(e.target.value)}
@@ -192,6 +206,7 @@ function DialogModal({
             ) : (
               <input
                 id={fieldId}
+                aria-label={state.opts.label ? undefined : opts.title}
                 ref={inputRef}
                 value={value}
                 onChange={(e) => setValue(e.target.value)}
@@ -202,7 +217,7 @@ function DialogModal({
           </div>
         ) : null}
         <div className="mt-5 flex justify-end gap-2">
-          <Button type="button" size="sm" onClick={cancel}>
+          <Button type="button" size="sm" ref={cancelBtnRef} onClick={cancel}>
             {(state.kind === 'confirm' && state.opts.cancelLabel) || t('Cancel')}
           </Button>
           <Button type="button" size="sm" variant="primary" ref={confirmBtnRef} onClick={commit}>
@@ -214,6 +229,6 @@ function DialogModal({
           </Button>
         </div>
       </div>
-    </dialog>
+    </Dialog>
   );
 }

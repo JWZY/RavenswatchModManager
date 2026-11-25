@@ -1,3 +1,4 @@
+import { Dialog } from '@rsmm/ui';
 /**
  * "Configure" button for a mod that declares config fields.
  *
@@ -18,7 +19,7 @@ import { SlidersHorizontal, X } from 'lucide-react';
 import { type ReactNode, useCallback, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { useT } from '../lib/i18n-react';
-import { Button, useModalChrome } from './chrome';
+import { Button } from './chrome';
 import { ModConfigPanel } from './mod-config-panel';
 
 export function ConfigButton({
@@ -145,7 +146,7 @@ export function ConfigButton({
 }
 
 /**
- * The overlay and card. A component of its own so `useModalChrome` moves focus
+ * The overlay and card. A component of its own so the shared dialog moves focus
  * when the dialog OPENS (the button is mounted for as long as its row is):
  * portalled to the body, the card comes after the whole app in DOM order, and
  * without the move the first tab stop was the sidebar.
@@ -164,16 +165,14 @@ function ConfigDialog({
   children: ReactNode;
 }) {
   const cardRef = useRef<HTMLDivElement>(null);
-  const onKeyDown = useModalChrome(cardRef, onEscape);
   return createPortal(
-    <div
-      // biome-ignore lint/a11y/useSemanticElements: see ai-disclosure.tsx — <dialog>'s top-layer backdrop conflicts with the app's overlay stacking
-      role="dialog"
-      aria-modal="true"
+    <Dialog
+      overlay
+      initialFocusRef={cardRef}
+      onDismiss={onEscape}
       aria-label={label}
       className="fixed inset-0 z-[75] flex items-center justify-center p-4 animate-fade-in"
       onClick={(e) => e.stopPropagation()}
-      onKeyDown={onKeyDown}
     >
       <div className="absolute inset-0 bg-pitch/80" onClick={onBackdrop} />
       {/* Fixed-height column: header, then the only scroller. The close
@@ -191,7 +190,7 @@ function ConfigDialog({
       >
         {children}
       </div>
-    </div>,
+    </Dialog>,
     document.body,
   );
 }

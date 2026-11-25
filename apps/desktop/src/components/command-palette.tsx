@@ -9,7 +9,7 @@ import { closeOverlay, openOverlay, resetPosition, toggleOverlay } from '../lib/
 import { type PaletteAction, type PaletteRow, buildRows } from '../lib/palette';
 import { restoreAll } from '../lib/rsmm';
 import { useApp } from '../store';
-import { useModalChrome } from './chrome';
+import { Dialog } from '@rsmm/ui';
 import { useLaunch } from './launch';
 import { useDeclaredOverlays } from './overlay-button';
 import { useDialog, useToast } from './toast';
@@ -56,6 +56,7 @@ export function CommandPalette() {
     function onKey(e: KeyboardEvent) {
       const meta = e.metaKey || e.ctrlKey;
       if (meta && e.key.toLowerCase() === 'k') {
+        if (document.querySelector('dialog:modal:not([data-command-palette])')) return;
         e.preventDefault();
         setOpen((o) => !o);
       }
@@ -420,7 +421,7 @@ export function CommandPalette() {
 }
 
 /**
- * The overlay and card. A component of its own so `useModalChrome` runs when
+ * The overlay and card. A component of its own so the shared dialog runs when
  * the palette OPENS — the palette itself is mounted for the whole session to
  * hear Ctrl+K.
  */
@@ -435,20 +436,21 @@ function PaletteFrame({
   onClose: () => void;
   children: ReactNode;
 }) {
-  const onKeyDown = useModalChrome(focusRef, onClose);
   return (
-    <dialog
-      open
+    <Dialog
+      overlay
+      data-command-palette
+      initialFocusRef={focusRef}
+      onDismiss={onClose}
       aria-label={label}
       aria-modal="true"
       className="fixed inset-0 z-50 flex items-start justify-center pt-[12vh] animate-fade-in"
       onClick={onClose}
-      onKeyDown={onKeyDown}
     >
       <div className="registry-search-backdrop" />
       <div className="registry-search-dialog" onClick={(e) => e.stopPropagation()}>
         {children}
       </div>
-    </dialog>
+    </Dialog>
   );
 }
