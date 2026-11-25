@@ -2,6 +2,19 @@
   "generated": "2026-11-25",
   "entries": [
     {
+      "version": "6.2.0",
+      "date": "2026-11-25",
+      "summary": "Settings is now a full page with sidebar navigation; release notes can be turned off; tidier mod lists and a better first-launch window size",
+      "highlights": [
+        "Settings opens as a full page with a sidebar",
+        "Release notes are optional (Settings), and they now have hearts",
+        "Compact private-game and NSFW markers in mod lists; official provider logos restored",
+        "First launch opens at 1366x768; desktop sign-in state_mismatch fixed",
+        "Bundles every CLI and SDK change since 6.1.1: Library load order picks the winning mod, custom hero skeletons, and more"
+      ],
+      "loader_version": 66
+    },
+    {
       "version": "",
       "date": "2026-11-25",
       "summary": "Scratch heroes lock their book like shipped heroes and rebuild from the real book; ultimate upgrade cards take per-rarity stats; ally summon overrides and GetValue accessors fixed; override link checks run after the last step; collector-selector lists and bool slots in ability edits; a mod's own emitted files no longer flagged as unknown paths",
@@ -495,16 +508,6 @@
       "summary": "style(desktop): write the design system down, share the text field and screenshot viewer, size dialogs to the window ",
       "highlights": [
         "Skigim"
-      ],
-      "loader_version": 49
-    },
-    {
-      "version": "5.9.28",
-      "date": "2026-10-29",
-      "summary": "Hero builder and anonymous install counting.",
-      "highlights": [
-        "Hero builder: build a hero's abilities from blocks, with much faster apply",
-        "The app now sends one anonymous ping a day so we can count real installs — turn it off in Settings → Privacy"
       ],
       "loader_version": 49
     }
