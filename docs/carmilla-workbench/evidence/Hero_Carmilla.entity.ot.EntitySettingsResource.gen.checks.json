@@ -1,0 +1,2272 @@
+[
+  {
+    "error": true,
+    "where": "Vampyr Wings Albedo Mask",
+    "message": "links to [3d graphic object] Hero_Carmilla\\Base\\Character Mesh Vampyr Wings, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Vampyr Wings Emissive Mix Shader Param",
+    "message": "links to [3d graphic object] Hero_Carmilla\\Base\\Character Mesh Vampyr Wings, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Vampyr Wings Emissive Mul B Shader Param",
+    "message": "links to [3d graphic object] Hero_Carmilla\\Base\\Character Mesh Vampyr Wings, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Vampyr Wings Emissive Mul Shader Param",
+    "message": "links to [3d graphic object] Hero_Carmilla\\Base\\Character Mesh Vampyr Wings, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Vampyr Wings Fresnel Shader Param",
+    "message": "links to [3d graphic object] Hero_Carmilla\\Base\\Character Mesh Vampyr Wings, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Vampyr Wings Texture B Ratio Shader Param",
+    "message": "links to [3d graphic object] Hero_Carmilla\\Base\\Character Mesh Vampyr Wings, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Character Mesh",
+    "message": "links to [State] Character_Common\\Base\\State Hide Character, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Character Mesh",
+    "message": "links to [Anim skeleton] Hero_Carmilla\\Base\\Mesh Skeleton, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Character Mesh",
+    "message": "links to [Value Selector] Character_Common\\Attributes\\Character Mesh Scale Selector, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Character Mesh",
+    "message": "links to [3d graphic object] Hero_Carmilla_FX\\Base\\Character Mesh, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Character Mesh Left VampyrArm",
+    "message": "links to [State] Character_Common\\Base\\State Hide Character, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Character Mesh Left VampyrArm",
+    "message": "links to [Shader Param] Character_Common\\Shading\\Emissive Power Shader Param, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Character Mesh Left VampyrArm",
+    "message": "links to [Anim skeleton] Hero_Carmilla\\Base\\Mesh Skeleton, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Character Mesh Left VampyrArm",
+    "message": "links to [Value Selector] Character_Common\\Attributes\\Character Mesh Scale Selector, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Character Mesh Left VampyrArm",
+    "message": "links to [3d graphic object] Hero_Carmilla_FX\\Base\\Character Mesh Left VampyrArm, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Character Mesh Light Wings",
+    "message": "links to [State] Character_Common\\Base\\State Hide Character, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Character Mesh Light Wings",
+    "message": "links to [Anim skeleton] Hero_Carmilla\\Base\\Mesh Skeleton, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Character Mesh Light Wings",
+    "message": "links to [Value Selector] Character_Common\\Attributes\\Character Mesh Scale Selector, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Character Mesh Light Wings",
+    "message": "links to [3d graphic object] Hero_Carmilla_FX\\Base\\Character Mesh Light Wings, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Character Mesh Right VampyrArm",
+    "message": "links to [State] Character_Common\\Base\\State Hide Character, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Character Mesh Right VampyrArm",
+    "message": "links to [Shader Param] Character_Common\\Shading\\Emissive Power Shader Param, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Character Mesh Right VampyrArm",
+    "message": "links to [Anim skeleton] Hero_Carmilla\\Base\\Mesh Skeleton, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Character Mesh Right VampyrArm",
+    "message": "links to [Value Selector] Character_Common\\Attributes\\Character Mesh Scale Selector, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Character Mesh Right VampyrArm",
+    "message": "links to [3d graphic object] Hero_Carmilla_FX\\Base\\Character Mesh Right VampyrArm, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Character Mesh Vampyr Wings",
+    "message": "links to [State] Character_Common\\Base\\State Hide Character, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Character Mesh Vampyr Wings",
+    "message": "links to [Shader Param] Character_Common\\Shading\\Appearing Shader Param, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Character Mesh Vampyr Wings",
+    "message": "links to [Anim skeleton] Hero_Carmilla\\Base\\Mesh Skeleton, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Character Mesh Vampyr Wings",
+    "message": "links to [Value Selector] Character_Common\\Attributes\\Character Mesh Scale Selector, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Character Mesh Vampyr Wings",
+    "message": "links to [3d graphic object] Hero_Carmilla_FX\\Base\\Character Mesh Vampyr Wings, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Character Mesh Whip",
+    "message": "links to [Anim skeleton] Hero_Carmilla\\Base\\Mesh Skeleton, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Character Mesh Whip",
+    "message": "links to [Value Selector] Character_Common\\Attributes\\Character Mesh Scale Selector, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Character Mesh Whip Trail",
+    "message": "links to [State] Character_Common\\Base\\State Hide Character, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Character Mesh Whip Trail",
+    "message": "links to [Shader Param] Character_Common\\Shading\\Appearing Shader Param, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Character Mesh Whip Trail",
+    "message": "links to [Anim skeleton] Hero_Carmilla\\Base\\Mesh Skeleton, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Character Mesh Whip Trail",
+    "message": "links to [Value Selector] Character_Common\\Attributes\\Character Mesh Scale Selector, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Secondary Ability Visor Mesh",
+    "message": "links to [Multi values operations] Hero_Carmilla\\Ability Secondary\\Secondary Ability Max Reach Position Operation, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Carmilla Physic",
+    "message": "links to [Anim skeleton] Hero_Carmilla\\Base\\Mesh Skeleton, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Carmilla Physic Ragdoll",
+    "message": "links to [Anim skeleton] Hero_Carmilla\\Base\\Mesh Skeleton, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "_DBG Heal Key Controller",
+    "message": "links to [Key Controller] Hero_Common\\_Debug\\_DBG Heal Key Controller, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Basic Attack Controller Selector",
+    "message": "links to [Dt Ability Controller] Hero_Carmilla\\Hero Controller\\Basic Attack Controller, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Basic Attack Controller Selector",
+    "message": "links to [Component Selector] Hero_Common\\Hero Controller\\Basic Attack Controller Selector, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Dash Ability Clip Selector",
+    "message": "links to [Anim Clip] Hero_Common\\Ability Dash\\Dash Ability Clip, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Dash Ability Clip Selector",
+    "message": "links to [Component Selector] Hero_Common\\Ability Dash\\Dash Ability Clip Selector, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Locomotion Idle Selector",
+    "message": "links to [State] Hero_Carmilla\\Move\\State Default Locomotion Idle, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Locomotion Idle Selector",
+    "message": "links to [Component Selector] Hero_Common\\Move\\Locomotion Idle Selector, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Locomotion Move Selector",
+    "message": "links to [State] Hero_Common\\Move\\State Default Locomotion Move, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Locomotion Move Selector",
+    "message": "links to [Component Selector] Hero_Common\\Move\\Locomotion Move Selector, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Trait Ability Controller Selector",
+    "message": "links to [Dt Ability Controller] Hero_Carmilla\\Hero Controller\\Trait Ability Controller, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Trait Ability Controller Selector",
+    "message": "links to [Component Selector] Hero_Common\\Hero Controller\\Trait Ability Controller Selector, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Child State Can Fight",
+    "message": "links to [State] Character_Common\\Base\\Child State Can Fight, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Child State Dash Ability",
+    "message": "links to [State] Hero_Common\\Ability Dash\\Child State Dash Ability, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Child State Deathdoor In",
+    "message": "links to [State] Hero_Common\\Bhv Deathdoor\\Child State Deathdoor In, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Event Basic Attack Active Finisher",
+    "message": "links to [Fx] Hero_Carmilla_FX\\Ability Basic\\Basic Attack Fx Finisher, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Event Basic Attack Active Finisher",
+    "message": "links to [Fx] Character_Common\\Camera_Shake\\Camera Shake Vertical Short Medium, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Event Basic Attack Active Finisher Trait Night",
+    "message": "links to [Fx] Hero_Carmilla_FX\\Ability Basic\\Basic Attack Fx Finisher Trait Night, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Event Basic Attack Active Finisher Trait Night",
+    "message": "links to [Fx] Character_Common\\Camera_Shake\\Camera Shake Vertical Short Medium, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Event Basic Attack Active Step 1",
+    "message": "links to [Fx] Hero_Carmilla_FX\\Ability Basic\\Basic Attack Fx Step 1, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Event Basic Attack Active Step 2",
+    "message": "links to [Fx] Hero_Carmilla_FX\\Ability Basic\\Basic Attack Fx Step 2, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Event Basic Attack Active Step 2 B",
+    "message": "links to [Fx] Hero_Carmilla_FX\\Ability Basic\\Basic Attack Fx Step 2 B, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Event Defensive Ability Character Impact",
+    "message": "links to [Fx] Character_Common\\Camera_Shake\\Camera Shake Vertical Short Light, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Event Initialize Arms Shading",
+    "message": "links to [3d graphic object] Hero_Carmilla\\Base\\Character Mesh Right VampyrArm, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Event Initialize Arms Shading",
+    "message": "links to [3d graphic object] Hero_Carmilla\\Base\\Character Mesh Left VampyrArm, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Event On Basic Attack Character Impact",
+    "message": "links to [Fx] Character_Common\\Camera_Shake\\Camera Shake Vertical Short Light, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Event On Basic Attack Character Impact Finisher",
+    "message": "links to [Fx] Character_Common\\Camera_Shake\\Camera Shake Vertical Short Heavy, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Event On Skill Dash Blood Character Impact",
+    "message": "links to [Fx] Character_Common\\Camera_Shake\\Camera Shake Vertical Short Light, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Event Secondary Ability Attack Active",
+    "message": "links to [Fx] Character_Common\\Camera_Shake\\Camera Shake Vertical Short Heavy, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Event Skill Attack Special Rush Character Impact",
+    "message": "links to [Fx] Character_Common\\Camera_Shake\\Camera Shake Omni Short Light, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Event Skill Passive Taunt Reset idle",
+    "message": "links to [Component Selector] Hero_Carmilla\\Move\\Locomotion Idle Selector, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Event Skill Passive Taunt Reset idle",
+    "message": "links to [Component Selector] Hero_Carmilla\\Move\\Locomotion Idle Selector, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Event Skill Power Quest Proc",
+    "message": "links to [State] Hero_Common\\UI\\Event On Quest Proc, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Event Skill Special Quest Proc",
+    "message": "links to [State] Hero_Common\\UI\\Event On Quest Proc, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Event Skill Ultimate 1 Combo Pike Active",
+    "message": "links to [Fx] Character_Common\\Camera_Shake\\Camera Shake Vertical Short Medium, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Event Skill Ultimate 1 Combo Pike Character Impact",
+    "message": "links to [Fx] Character_Common\\Camera_Shake\\Camera Shake Vertical Short Heavy, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Event Skill Ultimate 2 Add Zone Attack Active Combo Zone",
+    "message": "links to [Fx] Character_Common\\Camera_Shake\\Camera Shake Vertical Short Heavy, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Event Ultimate 1 Ability Active",
+    "message": "links to [Fx] Character_Common\\Camera_Shake\\Camera Shake Vertical Short Heavy, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Event Ultimate 2 Ability Active Activation",
+    "message": "links to [Fx] Character_Common\\Camera_Shake\\Camera Shake Vertical Short Heavy, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Event Ultimate 2 Ability Active Combo 1",
+    "message": "links to [Fx] Character_Common\\Camera_Shake\\Camera Shake Vertical Short Medium, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Event Ultimate 2 Ability Active Combo 2",
+    "message": "links to [Fx] Character_Common\\Camera_Shake\\Camera Shake Vertical Short Medium, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Event Ultimate 2 Ability Active Combo Finisher",
+    "message": "links to [Fx] Character_Common\\Camera_Shake\\Camera Shake Vertical Short Heavy, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Skill Power Quest",
+    "message": "links to [Value] Hero_Common\\UI\\Quest Feedback Resource is AP, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Skill Special Quest",
+    "message": "links to [Value] Hero_Carmilla\\UI\\Quest Feedback Resource is Custom, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "State Ability Secondary",
+    "message": "links to [Cpnt Value Tester] Hero_Common\\Move\\Move Inertia Activation Tester, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "State Ability Secondary",
+    "message": "links to [State] Character_Common\\Base\\State Intangible, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "State Ability Secondary Attack Hidden",
+    "message": "links to [State] Character_Common\\Base\\State Intangible, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "State Ability Secondary Attack Hidden",
+    "message": "links to [State] Character_Common\\Base\\State Hide Character, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "State Basic Attack",
+    "message": "links to [Cpnt Value Tester] Hero_Common\\Move\\Move Inertia Activation Tester, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "State Basic Attack",
+    "message": "links to [Gpn Detector] Hero_Common\\Ability Common\\Ability In Range Default Detector, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "State Default Locomotion Idle",
+    "message": "links to [Animatic] Hero_Carmilla\\Move\\Default Idle Anim, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "State Default Locomotion Idle",
+    "message": "links to [State] Hero_Common\\Move\\State Default Locomotion Idle, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "State Defensive Ability ",
+    "message": "links to [State] Character_Common\\Base\\State Intangible, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "State Left Vampyr Arm",
+    "message": "links to [Value] Character_Common\\Shading\\Shader Mask 1, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "State Light Wings",
+    "message": "links to [3d graphic object] Hero_Carmilla\\Base\\Character Mesh Light Wings, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "State Physic Ragdoll Enabled",
+    "message": "links to [State] Hero_Common\\Physic Anims\\State Physic Ragdoll Enabled, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "State Primary Ability",
+    "message": "links to [Cpnt Value Tester] Hero_Common\\Move\\Move Inertia Activation Tester, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "State Right Vampyr Arm",
+    "message": "links to [Value] Character_Common\\Shading\\Shader Mask 2, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "State Skill Power Quest Complete",
+    "message": "links to [State] Hero_Common\\UI\\Event On Quest Complete, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "State Skill Special Quest Complete",
+    "message": "links to [State] Hero_Common\\UI\\Event On Quest Complete, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "State Skill Trait Life Tap Ongoing",
+    "message": "links to [Cpnt Value Tester] Hero_Common\\Move\\Move Inertia Activation Tester, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "State Trait Ability Active",
+    "message": "links to [Fx] Character_Common\\Camera_Shake\\Camera Shake Omni Short Medium, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "State Trait Ability Day",
+    "message": "links to [Cpnt Value Tester] Hero_Common\\Move\\Move Inertia Activation Tester, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "State Trait Ability Night",
+    "message": "links to [Cpnt Value Tester] Hero_Common\\Move\\Move Inertia Activation Tester, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "State Ultimate 1 Ability",
+    "message": "links to [Fx] Hero_Carmilla\\Ability Ultimate 1\\Fx Ultimate 1 Trigger, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "State Ultimate 1 Ability",
+    "message": "links to [State] Hero_Common\\Ability Ultimate\\Event Ultimate Trigger FX, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "State Ultimate 2 Ability Enabled",
+    "message": "links to [Fx] Hero_Carmilla\\Ability Ultimate 2\\Fx Ultimate 2 Trigger, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "State Ultimate 2 Ability Enabled",
+    "message": "links to [State] Hero_Common\\Ability Ultimate\\Event Ultimate Trigger FX, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "State Ultimate 2 Basic Attack",
+    "message": "links to [Cpnt Value Tester] Hero_Common\\Move\\Move Inertia Activation Tester, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "State Ultimate 2 Basic Attack",
+    "message": "links to [Gpn Detector] Hero_Common\\Ability Common\\Ability In Range Default Detector, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "State Vampyr Wings",
+    "message": "links to [3d graphic object] Hero_Carmilla\\Base\\Character Mesh Vampyr Wings, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "_DBG Event Heal",
+    "message": "links to [Dt Resource Gain] Hero_Common\\_Debug\\_Debug Heal Resource Gain, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Trait Abillity Is Enabled Condition",
+    "message": "links to [Cpnt Value Tester] Hero_Common\\Hero Controller\\Child Enable Trait Ability Condition, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Ultimate 2 Is Enabled Condition",
+    "message": "links to [Cpnt Value Tester] Hero_Common\\Hero Controller\\Child Enable Ultimate Power 2 Condition, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Dash Ability Look At Tester",
+    "message": "links to [Look At TopDown] Hero_Common\\Ability Dash\\Dash Ability Look At, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Dash Ability Look At Tester",
+    "message": "links to [Cpnt Value Tester] Hero_Common\\Ability Dash\\Dash Ability Look At Tester, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Emissive Active Tester",
+    "message": "links to [State] Character_Common\\Shading\\State Emissive, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Emissive Active Tester",
+    "message": "links to [Cpnt Value Tester] Character_Common\\Shading\\Emissive Active Tester, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "State Concealed Custom Condition",
+    "message": "links to [Cpnt Value Tester] Character_Common\\Base\\State Concealed Custom Condition, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Use Appear Custom Value Condition",
+    "message": "links to [Cpnt Value Tester] Hero_Common\\Shading\\Use Appear Custom Value Condition, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Default Move Anim",
+    "message": "links to [Animatic player] Hero_Common\\Base\\Base Move Anim Player, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Default Move Anim",
+    "message": "links to [Character Locomotion] Hero_Common\\Move\\Move Locomotion, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Default Move Anim",
+    "message": "links to [Character Locomotion] Hero_Common\\Move\\Move Locomotion, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Default Move Anim",
+    "message": "links to [Two speed animatic] Hero_Common\\Move\\Default Move Anim, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Winged Move Anim",
+    "message": "links to [Animatic player] Hero_Common\\Base\\Base Move Anim Player, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Winged Move Anim",
+    "message": "links to [Character Locomotion] Hero_Common\\Move\\Move Locomotion, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Winged Move Anim",
+    "message": "links to [Character Locomotion] Hero_Common\\Move\\Move Locomotion, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Physic Layer",
+    "message": "links to [Anim layer node] Character_Common\\Additive Anims\\Additive Layer, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Physic Layer",
+    "message": "links to [Anim skeleton] Hero_Carmilla\\Base\\Mesh Skeleton, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Physic Layer",
+    "message": "links to [Anim layer node] Character_Common\\Physic Anims\\Physic Layer, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Physic Layer_Ragdoll",
+    "message": "links to [Animatic player] Character_Common\\Physic Anims\\Root Anim Player, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Physic Layer_Ragdoll",
+    "message": "links to [Anim layer node] Hero_Carmilla\\Physic Anims\\Physic Layer, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Physic Layer_Ragdoll",
+    "message": "links to [Anim skeleton] Hero_Carmilla\\Base\\Mesh Skeleton, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Ability Secondary Anim Aiming In",
+    "message": "links to [Animatic player] Character_Common\\Base\\Main Anim Player, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Ability Secondary Anim Aiming Loop",
+    "message": "links to [Animatic player] Character_Common\\Base\\Main Anim Player, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Ability Secondary Anim Attack",
+    "message": "links to [Animatic player] Character_Common\\Base\\Main Anim Player, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Ability Secondary Anim Jump",
+    "message": "links to [Animatic player] Character_Common\\Base\\Main Anim Player, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Ability Ultimate 1 Anim",
+    "message": "links to [Animatic player] Character_Common\\Base\\Main Anim Player, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Basic Attack Anim Finisher",
+    "message": "links to [Animatic player] Character_Common\\Base\\Main Anim Player, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Basic Attack Anim Finisher",
+    "message": "links to [Value Selector] Hero_Common\\Ability Common\\Ability In Range Root Motion Value Selector, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Basic Attack Anim Finisher",
+    "message": "links to [Modifier Listener] Character_Common\\Base\\Basic Attack Speed Modifier Listener, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Basic Attack Anim Finisher Trait Night",
+    "message": "links to [Animatic player] Character_Common\\Base\\Main Anim Player, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Basic Attack Anim Finisher Trait Night",
+    "message": "links to [Value Selector] Hero_Common\\Ability Common\\Ability In Range Root Motion Value Selector, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Basic Attack Anim Finisher Trait Night",
+    "message": "links to [Modifier Listener] Character_Common\\Base\\Basic Attack Speed Modifier Listener, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Basic Attack Anim Step 1",
+    "message": "links to [Animatic player] Character_Common\\Base\\Main Anim Player, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Basic Attack Anim Step 1",
+    "message": "links to [Value Selector] Hero_Common\\Ability Common\\Ability In Range Root Motion Value Selector, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Basic Attack Anim Step 1",
+    "message": "links to [Modifier Listener] Character_Common\\Base\\Basic Attack Speed Modifier Listener, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Basic Attack Anim Step 2",
+    "message": "links to [Animatic player] Character_Common\\Base\\Main Anim Player, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Basic Attack Anim Step 2",
+    "message": "links to [Value Selector] Hero_Common\\Ability Common\\Ability In Range Root Motion Value Selector, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Basic Attack Anim Step 2",
+    "message": "links to [Modifier Listener] Character_Common\\Base\\Basic Attack Speed Modifier Listener, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Cinematic Mood Anim Face Danger In",
+    "message": "links to [Animatic player] Character_Common\\Base\\Main Anim Player, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Cinematic Mood Anim Face Danger In",
+    "message": "links to [Animatic] Character_Common\\Bhv Cinematic\\Cinematic Mood Anim Face Danger In, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Cinematic Mood Anim Face Danger Loop",
+    "message": "links to [Animatic player] Character_Common\\Base\\Main Anim Player, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Cinematic Mood Anim Face Danger Loop",
+    "message": "links to [Animatic] Character_Common\\Bhv Cinematic\\Cinematic Mood Anim Face Danger Loop, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Dash Ability Anim",
+    "message": "links to [Animatic player] Character_Common\\Base\\Main Anim Player, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Dash Ability Anim",
+    "message": "links to [Animatic] Hero_Common\\Ability Dash\\Dash Ability Anim, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Dash Wings Ability Anim",
+    "message": "links to [Animatic player] Character_Common\\Base\\Main Anim Player, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Deathdoor Anim Ally Revive Loop",
+    "message": "links to [Animatic player] Character_Common\\Base\\Main Anim Player, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Deathdoor Anim Ally Revive Loop",
+    "message": "links to [Animatic] Hero_Common\\Bhv Deathdoor\\Deathdoor Anim Ally Revive Loop, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Deathdoor Anim Ally Revive Out",
+    "message": "links to [Animatic player] Character_Common\\Base\\Main Anim Player, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Deathdoor Anim Ally Revive Out",
+    "message": "links to [Animatic] Hero_Common\\Bhv Deathdoor\\Deathdoor Anim Ally Revive Out, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Deathdoor Anim Divine Revive In",
+    "message": "links to [Animatic player] Character_Common\\Base\\Main Anim Player, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Deathdoor Anim Divine Revive In",
+    "message": "links to [Animatic] Hero_Common\\Bhv Deathdoor\\Deathdoor Anim Divine Revive In, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Deathdoor Anim Divine Revive Loop",
+    "message": "links to [Animatic player] Character_Common\\Base\\Main Anim Player, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Deathdoor Anim Divine Revive Loop",
+    "message": "links to [Animatic] Hero_Common\\Bhv Deathdoor\\Deathdoor Anim Divine Revive Loop, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Deathdoor Anim Divine Revive Out",
+    "message": "links to [Animatic player] Character_Common\\Base\\Main Anim Player, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Deathdoor Anim Divine Revive Out",
+    "message": "links to [Animatic] Hero_Common\\Bhv Deathdoor\\Deathdoor Anim Divine Revive Out, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Deathdoor Anim Idle",
+    "message": "links to [Animatic player] Character_Common\\Base\\Main Anim Player, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Deathdoor Anim Idle",
+    "message": "links to [Animatic] Hero_Common\\Bhv Deathdoor\\Deathdoor Anim Idle, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Deathdoor Anim In",
+    "message": "links to [Animatic player] Character_Common\\Base\\Main Anim Player, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Deathdoor Anim In",
+    "message": "links to [Animatic] Hero_Common\\Bhv Deathdoor\\Deathdoor Anim In, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Deathdoor Anim Special Revive Out",
+    "message": "links to [Animatic player] Character_Common\\Base\\Main Anim Player, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Deathdoor Anim Special Revive Out",
+    "message": "links to [Animatic] Hero_Common\\Bhv Deathdoor\\Deathdoor Anim Special Revive Out, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Default Idle Anim",
+    "message": "links to [Animatic player] Hero_Common\\Base\\Base Move Anim Player, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Default Idle Anim",
+    "message": "links to [Animatic] Hero_Common\\Move\\Default Idle Anim, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Defensive Ability Anim In",
+    "message": "links to [Animatic player] Character_Common\\Base\\Main Anim Player, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Defensive Ability Anim Loop",
+    "message": "links to [Animatic player] Character_Common\\Base\\Main Anim Player, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Defensive Ability Anim Out",
+    "message": "links to [Animatic player] Character_Common\\Base\\Main Anim Player, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Dying Death Anim Default",
+    "message": "links to [Animatic player] Character_Common\\Base\\Main Anim Player, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Dying Death Anim Default",
+    "message": "links to [Animatic] Hero_Common\\Bhv Dying\\Dying Death Anim Default, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Dying Death Anim Default In",
+    "message": "links to [Animatic player] Character_Common\\Base\\Main Anim Player, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Dying Death Anim Default In",
+    "message": "links to [Animatic] Hero_Common\\Bhv Dying\\Dying Death Anim Default In, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Hit Stunned Anim In",
+    "message": "links to [Animatic player] Character_Common\\Base\\Main Anim Player, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Hit Stunned Anim In",
+    "message": "links to [Animatic] Character_Common\\Bhv Hit Stunned\\Hit Stunned Anim In, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Hit Stunned Anim Loop",
+    "message": "links to [Animatic player] Character_Common\\Base\\Main Anim Player, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Hit Stunned Anim Loop",
+    "message": "links to [Animatic] Character_Common\\Bhv Hit Stunned\\Hit Stunned Anim Loop, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Interacting Anim In",
+    "message": "links to [Animatic player] Character_Common\\Base\\Main Anim Player, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Interacting Anim In",
+    "message": "links to [Animatic] Hero_Common\\Bhv Interacting\\Interacting Anim In, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Interacting Anim Loop",
+    "message": "links to [Animatic player] Character_Common\\Base\\Main Anim Player, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Interacting Anim Loop",
+    "message": "links to [Animatic] Hero_Common\\Bhv Interacting\\Interacting Anim Loop, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Preview Default Idle Animatic",
+    "message": "links to [Animatic player] Character_Common\\Base\\Main Anim Player, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Preview Default Idle Animatic",
+    "message": "links to [Animatic] Character_Common\\Bhv Preview\\Preview Default Idle Animatic, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Preview Default In Animatic",
+    "message": "links to [Animatic player] Character_Common\\Base\\Main Anim Player, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Preview Default In Animatic",
+    "message": "links to [Animatic] Hero_Common\\Bhv Preview\\Preview Default In Animatic, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Preview Defeat Animatic",
+    "message": "links to [Animatic player] Character_Common\\Base\\Main Anim Player, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Preview Defeat Animatic",
+    "message": "links to [Animatic] Hero_Common\\Bhv Preview\\Preview Defeat Animatic, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Preview Select Hero Idle Animatic",
+    "message": "links to [Animatic player] Character_Common\\Base\\Main Anim Player, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Preview Select Hero Idle Animatic",
+    "message": "links to [Animatic] Hero_Common\\Bhv Preview\\Preview Select Hero Idle Animatic, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Preview Select Hero In Animatic",
+    "message": "links to [Animatic player] Character_Common\\Base\\Main Anim Player, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Preview Select Hero In Animatic",
+    "message": "links to [Animatic] Hero_Common\\Bhv Preview\\Preview Select Hero In Animatic, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Preview Victory Animatic",
+    "message": "links to [Animatic player] Character_Common\\Base\\Main Anim Player, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Preview Victory Animatic",
+    "message": "links to [Animatic] Hero_Common\\Bhv Preview\\Preview Victory Animatic, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Primary Ability Anim In",
+    "message": "links to [Animatic player] Character_Common\\Base\\Main Anim Player, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Primary Ability Anim Loop",
+    "message": "links to [Animatic player] Character_Common\\Base\\Main Anim Player, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Primary Ability Anim Out",
+    "message": "links to [Animatic player] Character_Common\\Base\\Main Anim Player, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Skill Attack Special Rush Anim",
+    "message": "links to [Animatic player] Character_Common\\Base\\Main Anim Player, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Skill Dash Blood Anim",
+    "message": "links to [Animatic player] Character_Common\\Base\\Main Anim Player, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Skill Dash Blood Wings Anim",
+    "message": "links to [Animatic player] Character_Common\\Base\\Main Anim Player, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Skill Dash Taunt Animatic",
+    "message": "links to [Animatic player] Character_Common\\Base\\Main Anim Player, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Skill Passive Taunt Animatic",
+    "message": "links to [Animatic player] Hero_Common\\Base\\Base Move Anim Player, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Skill Trait Life Tap Anim",
+    "message": "links to [Animatic player] Character_Common\\Base\\Main Anim Player, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Skill Trait Push Back Anim",
+    "message": "links to [Animatic player] Character_Common\\Base\\Main Anim Player, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Skill Trait Push Back Life Tap Anim",
+    "message": "links to [Animatic player] Character_Common\\Base\\Main Anim Player, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Skill Ultimate 1 Combo Pike Anim Combo",
+    "message": "links to [Animatic player] Character_Common\\Base\\Main Anim Player, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Skill Ultimate 1 Combo Pike Anim Combo",
+    "message": "links to [Value Selector] Hero_Common\\Ability Common\\Ability In Range Root Motion Value Selector, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Skill Ultimate 1 Combo Pike Anim Combo",
+    "message": "links to [Modifier Listener] Character_Common\\Base\\Basic Attack Speed Modifier Listener, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Skill Ultimate 1 Combo Pike Anim Combo Wings",
+    "message": "links to [Animatic player] Character_Common\\Base\\Main Anim Player, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Skill Ultimate 1 Combo Pike Anim Combo Wings",
+    "message": "links to [Value Selector] Hero_Common\\Ability Common\\Ability In Range Root Motion Value Selector, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Skill Ultimate 1 Combo Pike Anim Combo Wings",
+    "message": "links to [Modifier Listener] Character_Common\\Base\\Basic Attack Speed Modifier Listener, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Skill Ultimate 2 Add Zone Attack Anim Combo Zone",
+    "message": "links to [Animatic player] Character_Common\\Base\\Main Anim Player, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Skill Ultimate 2 Add Zone Attack Anim Combo Zone",
+    "message": "links to [Value Selector] Hero_Common\\Ability Common\\Ability In Range Root Motion Value Selector, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Skill Ultimate 2 Add Zone Attack Anim Combo Zone",
+    "message": "links to [Modifier Listener] Character_Common\\Base\\Basic Attack Speed Modifier Listener, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Spawning Default Appearance Anim",
+    "message": "links to [Animatic player] Character_Common\\Base\\Main Anim Player, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Spawning Default Appearance Anim",
+    "message": "links to [Animatic] Character_Common\\Bhv Spawning\\Spawning Default Appearance Anim, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Teleporting In Anim",
+    "message": "links to [Animatic player] Character_Common\\Base\\Main Anim Player, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Teleporting In Anim",
+    "message": "links to [Animatic] Hero_Common\\Bhv Teleporting\\Teleporting In Anim, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Teleporting Out Anim",
+    "message": "links to [Animatic player] Character_Common\\Base\\Main Anim Player, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Teleporting Out Anim",
+    "message": "links to [Animatic] Hero_Common\\Bhv Teleporting\\Teleporting Out Anim, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Teleporting Out End Cine Anim",
+    "message": "links to [Animatic player] Character_Common\\Base\\Main Anim Player, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Teleporting Out End Cine Anim",
+    "message": "links to [Value] Hero_Common\\Bhv Cinematic\\Teleporting Out End Cine Play speed ratio, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Teleporting Out End Cine Anim",
+    "message": "links to [Animatic] Hero_Common\\Bhv Cinematic\\Teleporting Out End Cine Anim, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Trait Ability Anim Day",
+    "message": "links to [Animatic player] Character_Common\\Base\\Main Anim Player, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Trait Ability Anim Night",
+    "message": "links to [Animatic player] Character_Common\\Base\\Main Anim Player, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Ultimate 2 Ability Anim Activation",
+    "message": "links to [Animatic player] Character_Common\\Base\\Main Anim Player, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Ultimate 2 Ability Anim Combo 1",
+    "message": "links to [Animatic player] Character_Common\\Base\\Main Anim Player, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Ultimate 2 Ability Anim Combo 1",
+    "message": "links to [Value Selector] Hero_Common\\Ability Common\\Ability In Range Root Motion Value Selector, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Ultimate 2 Ability Anim Combo 1",
+    "message": "links to [Modifier Listener] Character_Common\\Base\\Basic Attack Speed Modifier Listener, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Ultimate 2 Ability Anim Combo 2",
+    "message": "links to [Animatic player] Character_Common\\Base\\Main Anim Player, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Ultimate 2 Ability Anim Combo 2",
+    "message": "links to [Value Selector] Hero_Common\\Ability Common\\Ability In Range Root Motion Value Selector, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Ultimate 2 Ability Anim Combo 2",
+    "message": "links to [Modifier Listener] Character_Common\\Base\\Basic Attack Speed Modifier Listener, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Ultimate 2 Ability Anim Combo Finisher",
+    "message": "links to [Animatic player] Character_Common\\Base\\Main Anim Player, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Ultimate 2 Ability Anim Combo Finisher",
+    "message": "links to [Value Selector] Hero_Common\\Ability Common\\Ability In Range Root Motion Value Selector, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Ultimate 2 Ability Anim Combo Finisher",
+    "message": "links to [Modifier Listener] Character_Common\\Base\\Basic Attack Speed Modifier Listener, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Winged Idle Anim",
+    "message": "links to [Animatic player] Hero_Common\\Base\\Base Move Anim Player, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Character Specific Game Ui",
+    "message": "links to [Game Ui] Character_Common\\UI\\Game Ui, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Character Specific Game Ui",
+    "message": "links to [Game Ui] Character_Common\\UI\\Character Specific Game Ui, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Blood_Gauge_Frame",
+    "message": "links to [Game Ui] Hero_Carmilla\\UI\\Character Specific Game Ui, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Blood Gauge Ui",
+    "message": "links to [Game Ui] Hero_Carmilla\\UI\\Character Specific Game Ui, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Primary Ability Spawner",
+    "message": "links to [Value Selector] Character_Common\\Attributes\\Collision Radius Selector, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Skill Power Special Bomb Spawner",
+    "message": "links to [Value Selector] Character_Common\\Attributes\\Collision Radius Selector, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Life Bar Entity to spawn",
+    "message": "links to [Entity selector to spawn] Hero_Common\\Life Bar\\Life Bar Entity to spawn, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Default Bark player",
+    "message": "links to [Cpnt Value Tester] Hero_Common\\Barks\\CanBark Value Tester, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Default Bark player",
+    "message": "links to [Bark player] Hero_Common\\Barks\\Default Bark player, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Basic Attack Supposed Damage Operation",
+    "message": "links to [Value Selector] Character_Common\\Base\\Level Damage Selector, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Basic Attack Supposed Damage Operation",
+    "message": "links to [Multi values operations] Hero_Common\\Base\\Basic Attack AP Multiplier Operation, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Blood Gain Heal Operation Store",
+    "message": "links to [Value Selector] Character_Common\\Base\\Level Damage Selector, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Blood Health Loss Operation",
+    "message": "links to [Dt Character Controller] Character_Common\\Base\\Character Controller, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Defensive Ability Bleed Value Operation",
+    "message": "links to [Dt Character Controller] Character_Common\\Base\\Character Controller, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Defensive Ability Bleed Value Operation",
+    "message": "links to [Multi values operations] Hero_Common\\Base\\Defensive Ability AP Multiplier Operation, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Defensive Ability Move Speed Operation",
+    "message": "links to [Value] Character_Common\\Base\\Move Speed Ratio Replicate Value, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Defensive Ability Move Speed Start Operation",
+    "message": "links to [Value Selector] Hero_Common\\Move\\Run Locomotion Speed Selector, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Defensive Ability Supposed Damage Operation",
+    "message": "links to [Value Selector] Character_Common\\Base\\Level Damage Selector, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Defensive Ability Supposed Damage Operation",
+    "message": "links to [Multi values operations] Hero_Common\\Base\\Defensive Ability AP Multiplier Operation, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Primary Ability Blood Attack Supposed DPS Operation",
+    "message": "links to [Value Selector] Character_Common\\Base\\Level Damage Selector, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Primary Ability Blood Attack Supposed DPS Operation",
+    "message": "links to [Multi values operations] Hero_Common\\Base\\Primary Ability AP Multiplier Operation, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Primary Ability Camera Target Operation",
+    "message": "links to [Entity Listener] Character_Common\\Base\\Self Entity Listener, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Primary Ability Explosion Supposed Damage Operation",
+    "message": "links to [Value Selector] Character_Common\\Base\\Level Damage Selector, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Primary Ability Explosion Supposed Damage Operation",
+    "message": "links to [Multi values operations] Hero_Common\\Base\\Primary Ability AP Multiplier Operation, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Secondary Ability Distance To Target Destination Operation",
+    "message": "links to [Entity Listener] Character_Common\\Base\\Self Entity Listener, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Secondary Ability Jump To Target Destination Operation",
+    "message": "links to [Entity Listener] Character_Common\\Base\\Self Entity Listener, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Secondary Ability Supposed Damage Operation",
+    "message": "links to [Value Selector] Character_Common\\Base\\Level Damage Selector, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Secondary Ability Supposed Damage Operation",
+    "message": "links to [Multi values operations] Hero_Common\\Base\\Secondary Ability AP Multiplier Operation, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Skill Attack Bleed Value Operation",
+    "message": "links to [Value Selector] Character_Common\\Base\\Level Damage Selector, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Skill Attack Bleed Value Operation",
+    "message": "links to [Multi values operations] Hero_Common\\Base\\Basic Attack AP Multiplier Operation, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Skill Defense Projectile Supposed Damage Operation",
+    "message": "links to [Value Selector] Character_Common\\Base\\Level Damage Selector, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Skill Defense Projectile Supposed Damage Operation",
+    "message": "links to [Multi values operations] Hero_Common\\Base\\Defensive Ability AP Multiplier Operation, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Skill Special Quest Healing Operation",
+    "message": "links to [Value Selector] Character_Common\\Base\\Level Healing Selector, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Skill Trait Heal Buff Gain Life Operations",
+    "message": "links to [Dt Character Controller] Character_Common\\Base\\Character Controller, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Skill Trait Life Tap Health Cost Operation",
+    "message": "links to [Dt Character Controller] Character_Common\\Base\\Character Controller, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Skill Trait Push Back Supposed Damage Operation",
+    "message": "links to [Dt Character Controller] Character_Common\\Base\\Character Controller, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Trait Ability Day Heal Operation",
+    "message": "links to [Value Selector] Character_Common\\Base\\Level Healing Selector, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Trait Ability Move Speed Operation",
+    "message": "links to [Value Operation] Hero_Common\\Move\\Run Locomotion Speed Operation, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Trait Ability Move Speed Operation",
+    "message": "links to [Dt Hero Controller] Hero_Common_Update5\\Hero Controller\\Hero Controller, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Ultimate 1 Supposed DPS Operation",
+    "message": "links to [Value Selector] Character_Common\\Base\\Level Damage Selector, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Ultimate 1 Supposed DPS Operation",
+    "message": "links to [Multi values operations] Hero_Common\\Base\\Ultimate AP Multiplier Operation, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Ultimate 2 Activation Supposed Damage Operation",
+    "message": "links to [Value Selector] Character_Common\\Base\\Level Damage Selector, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Ultimate 2 Activation Supposed Damage Operation",
+    "message": "links to [Multi values operations] Hero_Common\\Base\\Ultimate AP Multiplier Operation, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Ultimate 2 Combo Supposed Damage Operation",
+    "message": "links to [Value Selector] Character_Common\\Base\\Level Damage Selector, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Ultimate 2 Combo Supposed Damage Operation",
+    "message": "links to [Multi values operations] Hero_Common\\Base\\Ultimate AP Multiplier Operation, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Vampyr Arm Left Appear Operation",
+    "message": "links to [Value Selector] Hero_Common\\Shading\\Appear Value Selector, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Vampyr Arm Right Appear Operation",
+    "message": "links to [Value Selector] Hero_Common\\Shading\\Appear Value Selector, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Mesh Skeleton",
+    "message": "links to [Animatic player] Character_Common\\Physic Anims\\Root Anim Player, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Mesh Skeleton",
+    "message": "links to [Anim skeleton] Character_Common\\Base\\Mesh Skeleton, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Skill Controller Attack Bleed",
+    "message": "links to [Dt Hero Controller] Hero_Common_Update5\\Hero Controller\\Hero Controller, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Skill Controller Attack Last Combo Move",
+    "message": "links to [Dt Hero Controller] Hero_Common_Update5\\Hero Controller\\Hero Controller, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Skill Controller Attack Special Rush",
+    "message": "links to [Dt Hero Controller] Hero_Common_Update5\\Hero Controller\\Hero Controller, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Skill Controller Dash Blood",
+    "message": "links to [Dt Hero Controller] Hero_Common_Update5\\Hero Controller\\Hero Controller, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Skill Controller Dash Taunt",
+    "message": "links to [Dt Hero Controller] Hero_Common_Update5\\Hero Controller\\Hero Controller, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Skill Controller Defense Aoe Bleed",
+    "message": "links to [Dt Hero Controller] Hero_Common_Update5\\Hero Controller\\Hero Controller, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Skill Controller Defense Master",
+    "message": "links to [Dt Hero Controller] Hero_Common_Update5\\Hero Controller\\Hero Controller, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Skill Controller Defense Projectile",
+    "message": "links to [Dt Hero Controller] Hero_Common_Update5\\Hero Controller\\Hero Controller, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Skill Controller Passive Blood Reserve",
+    "message": "links to [Dt Hero Controller] Hero_Common_Update5\\Hero Controller\\Hero Controller, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Skill Controller Passive Critical Bleed",
+    "message": "links to [Dt Hero Controller] Hero_Common_Update5\\Hero Controller\\Hero Controller, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Skill Controller Passive Life Use Regen",
+    "message": "links to [Dt Hero Controller] Hero_Common_Update5\\Hero Controller\\Hero Controller, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Skill Controller Passive Taunt",
+    "message": "links to [Dt Hero Controller] Hero_Common_Update5\\Hero Controller\\Hero Controller, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Skill Controller Power Bleed Crit",
+    "message": "links to [Dt Hero Controller] Hero_Common_Update5\\Hero Controller\\Hero Controller, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Skill Controller Power Maintained Damage",
+    "message": "links to [Dt Hero Controller] Hero_Common_Update5\\Hero Controller\\Hero Controller, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Skill Controller Power Projectile",
+    "message": "links to [Dt Hero Controller] Hero_Common_Update5\\Hero Controller\\Hero Controller, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Skill Controller Power Quest",
+    "message": "links to [Dt Hero Controller] Hero_Common_Update5\\Hero Controller\\Hero Controller, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Skill Controller Power Range",
+    "message": "links to [Dt Hero Controller] Hero_Common_Update5\\Hero Controller\\Hero Controller, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Skill Controller Power Special Bomb",
+    "message": "links to [Dt Hero Controller] Hero_Common_Update5\\Hero Controller\\Hero Controller, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Skill Controller Special Critical Distance",
+    "message": "links to [Dt Hero Controller] Hero_Common_Update5\\Hero Controller\\Hero Controller, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Skill Controller Special Cross Damage",
+    "message": "links to [Dt Hero Controller] Hero_Common_Update5\\Hero Controller\\Hero Controller, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Skill Controller Special Marked",
+    "message": "links to [Dt Hero Controller] Hero_Common_Update5\\Hero Controller\\Hero Controller, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Skill Controller Special Quest",
+    "message": "links to [Dt Hero Controller] Hero_Common_Update5\\Hero Controller\\Hero Controller, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Skill Controller Trait Heal Buff",
+    "message": "links to [Dt Hero Controller] Hero_Common_Update5\\Hero Controller\\Hero Controller, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Skill Controller Trait Life Tap",
+    "message": "links to [Dt Hero Controller] Hero_Common_Update5\\Hero Controller\\Hero Controller, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Skill Controller Trait Push back",
+    "message": "links to [Dt Hero Controller] Hero_Common_Update5\\Hero Controller\\Hero Controller, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Skill Controller Ultimate 1 Upgrade 1",
+    "message": "links to [Dt Hero Controller] Hero_Common_Update5\\Hero Controller\\Hero Controller, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Skill Controller Ultimate 1 Upgrade 1",
+    "message": "links to [Dt Skill Controller] Hero_Common\\Skills\\Skill Controller Ultimate 1 Upgrade 1, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Skill Controller Ultimate 1 Upgrade 2",
+    "message": "links to [Dt Hero Controller] Hero_Common_Update5\\Hero Controller\\Hero Controller, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Skill Controller Ultimate 1 Upgrade 2",
+    "message": "links to [Dt Skill Controller] Hero_Common\\Skills\\Skill Controller Ultimate 1 Upgrade 2, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Skill Controller Ultimate 2 Upgrade 1",
+    "message": "links to [Dt Hero Controller] Hero_Common_Update5\\Hero Controller\\Hero Controller, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Skill Controller Ultimate 2 Upgrade 1",
+    "message": "links to [Dt Skill Controller] Hero_Common\\Skills\\Skill Controller Ultimate 2 Upgrade 1, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Skill Controller Ultimate 2 Upgrade 2",
+    "message": "links to [Dt Hero Controller] Hero_Common_Update5\\Hero Controller\\Hero Controller, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Skill Controller Ultimate 2 Upgrade 2",
+    "message": "links to [Dt Skill Controller] Hero_Common\\Skills\\Skill Controller Ultimate 2 Upgrade 2, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Skill Controller Ultimate Power 1",
+    "message": "links to [Dt Hero Controller] Hero_Common_Update5\\Hero Controller\\Hero Controller, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Skill Controller Ultimate Power 1",
+    "message": "links to [State] Hero_Common\\Skills\\Skill Ultimate Power 1, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Skill Controller Ultimate Power 1",
+    "message": "links to [String Format] Hero_Carmilla\\Skills\\Skill String Name Ultimate Power 1, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Skill Controller Ultimate Power 1",
+    "message": "links to [String Format] Hero_Carmilla\\Skills\\Skill String Desc Ultimate Power 1, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Skill Controller Ultimate Power 1",
+    "message": "links to [Dt Skill Controller] Hero_Common\\Skills\\Skill Controller Ultimate Power 1, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Skill Controller Ultimate Power 2",
+    "message": "links to [Dt Hero Controller] Hero_Common_Update5\\Hero Controller\\Hero Controller, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Skill Controller Ultimate Power 2",
+    "message": "links to [State] Hero_Common\\Skills\\Skill Ultimate Power 2, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Skill Controller Ultimate Power 2",
+    "message": "links to [String Format] Hero_Carmilla\\Skills\\Skill String Name Ultimate Power 2, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Skill Controller Ultimate Power 2",
+    "message": "links to [String Format] Hero_Carmilla\\Skills\\Skill String Desc Ultimate Power 2, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Skill Controller Ultimate Power 2",
+    "message": "links to [Dt Skill Controller] Hero_Common\\Skills\\Skill Controller Ultimate Power 2, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Basic Attack Damage",
+    "message": "links to [Dt Character Controller] Character_Common\\Base\\Character Controller, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Defensive Ability Damage",
+    "message": "links to [Dt Character Controller] Character_Common\\Base\\Character Controller, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Defensive Ability Props Damage",
+    "message": "links to [Dt Character Controller] Character_Common\\Base\\Character Controller, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Secondary Ability Attack Damage",
+    "message": "links to [Dt Character Controller] Character_Common\\Base\\Character Controller, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Secondary Ability Props Damage",
+    "message": "links to [Dt Character Controller] Character_Common\\Base\\Character Controller, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Skill Defense Aoe Bleed Damage",
+    "message": "links to [Value Selector] Character_Common\\Base\\Level Damage Selector, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Skill Special Cross Damage Damage",
+    "message": "links to [Value Selector] Character_Common\\Base\\Level Damage Selector, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Skill Trait Push Back Damage",
+    "message": "links to [Value Selector] Character_Common\\Base\\Level Damage Selector, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Ultimate 2 Ability Damage",
+    "message": "links to [Dt Character Controller] Character_Common\\Base\\Character Controller, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Basic Attack Controller",
+    "message": "links to [Cpnt Value Tester] Hero_Common\\Hero Controller\\Enable Basic Attack Condition, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Basic Attack Controller",
+    "message": "links to [Dt Ability Controller] Hero_Common\\Hero Controller\\Basic Attack Controller, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Defensive Ability Controller",
+    "message": "links to [Counter] Hero_Common\\Hero Controller\\Defensive Ability Max Charges Counter, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Defensive Ability Controller",
+    "message": "links to [Cpnt Value Tester] Hero_Common\\Hero Controller\\Enable Defensive Ability Condition, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Defensive Ability Controller",
+    "message": "links to [Dt Ability Controller] Hero_Common\\Hero Controller\\Defensive Ability Controller, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Primary Ability Controller",
+    "message": "links to [Value Selector] Hero_Common\\MO Charge To Damage\\Primary Charge To Damage Charge Selector, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Primary Ability Controller",
+    "message": "links to [Cpnt Value Tester] Hero_Common\\Hero Controller\\Enable Primary Ability Condition, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Primary Ability Controller",
+    "message": "links to [Dt Ability Controller] Hero_Common\\Hero Controller\\Primary Ability Controller, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Secondary Ability Controller",
+    "message": "links to [Value Selector] Hero_Common\\MO Charge To Damage\\Secondary Charge To Damage Charge Selector, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Secondary Ability Controller",
+    "message": "links to [Cpnt Value Tester] Hero_Common\\Hero Controller\\Enable Secondary Ability Condition, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Secondary Ability Controller",
+    "message": "links to [Dt Ability Controller] Hero_Common\\Hero Controller\\Secondary Ability Controller, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Trait Ability Controller",
+    "message": "links to [Counter] Hero_Common\\Hero Controller\\Trait Ability Max Charges Counter, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Trait Ability Controller",
+    "message": "links to [Cpnt Value Tester] Hero_Common\\Hero Controller\\Enable Trait Ability Condition, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Trait Ability Controller",
+    "message": "links to [Dt Ability Controller] Hero_Common\\Hero Controller\\Trait Ability Controller, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Ultimate 2 Basic Attack Controller",
+    "message": "links to [Cpnt Value Tester] Hero_Common\\Hero Controller\\Enable Basic Attack Condition, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Ultimate Power 2 Controller",
+    "message": "links to [Counter] Hero_Common\\Hero Controller\\Ultimate Ability Max Charges Counter, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Ultimate Power 2 Controller",
+    "message": "links to [Cpnt Value Tester] Hero_Common\\Hero Controller\\Enable Ultimate Power 1 Condition, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Ultimate Power 2 Controller",
+    "message": "links to [Dt Skill Controller] Hero_Carmilla\\Skills\\Skill Controller Ultimate Power 1, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Ultimate Power 2 Controller",
+    "message": "links to [Dt Ability Controller] Hero_Common\\Hero Controller\\Ultimate Power 1 Controller, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Ultimate Power 2 Controller",
+    "message": "links to [Counter] Hero_Common\\Hero Controller\\Ultimate Ability Max Charges Counter, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Ultimate Power 2 Controller",
+    "message": "links to [Cpnt Value Tester] Hero_Common\\Hero Controller\\Enable Ultimate Power 2 Condition, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Ultimate Power 2 Controller",
+    "message": "links to [Dt Skill Controller] Hero_Carmilla\\Skills\\Skill Controller Ultimate Power 2, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Ultimate Power 2 Controller",
+    "message": "links to [Dt Ability Controller] Hero_Common\\Hero Controller\\Ultimate Power 2 Controller, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Skill String Desc Ultimate Power 1",
+    "message": "links to [String Format] Hero_Common\\Skills\\Skill String Desc Ultimate Power 1, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Skill String Desc Ultimate Power 2",
+    "message": "links to [String Format] Hero_Common\\Skills\\Skill String Desc Ultimate Power 2, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Skill String Name Ultimate Power 1",
+    "message": "links to [String Format] Hero_Common\\Skills\\Skill String Name Ultimate Power 1, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Skill String Name Ultimate Power 2",
+    "message": "links to [String Format] Hero_Common\\Skills\\Skill String Name Ultimate Power 2, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Hero FMod Global Param",
+    "message": "links to [FMod Global Param] Hero_Common\\Base\\Hero FMod Global Param, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Skill Defense Projectile Spread Pos",
+    "message": "links to [Value Selector] Character_Common\\Attributes\\Collision Radius Selector, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Skill Defense Projectile Damage Multiplier Spawner Value",
+    "message": "links to [Value] Projectile_Model\\Damage Multiplier Default, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Skill Power Special Bomb Explode Now Spawner Value",
+    "message": "links to [Value] Hero_Carmilla_Power_Orb\\Skill Power Special Bomb\\Skill Power Special Bomb Explode Direct Value, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Blood Gain FMod Event Skill Dash Blood",
+    "message": "links to [Entity 3d Node] Character_Common\\Base\\Locator Torso, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Blood Gain FMod Event Skill Life Tap",
+    "message": "links to [Entity 3d Node] Character_Common\\Base\\Locator Torso, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Blood Gain FMod Event Special",
+    "message": "links to [Entity 3d Node] Character_Common\\Base\\Entity Node, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Dash Ability FMod Event Anim",
+    "message": "links to [FMod Event] Hero_Common\\Ability Dash\\Dash Ability FMod Event Anim, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Deathdooor FMod Event Ally Revive Out",
+    "message": "links to [FMod Event] Hero_Common\\Bhv Deathdoor\\Deathdooor FMod Event Ally Revive Out, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Deathdooor FMod Event Divine Revive In",
+    "message": "links to [FMod Event] Hero_Common\\Bhv Deathdoor\\Deathdooor FMod Event Divine Revive In, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Deathdooor FMod Event Divine Revive Loop",
+    "message": "links to [FMod Event] Hero_Common\\Bhv Deathdoor\\Deathdooor FMod Event Divine Revive Loop, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Deathdooor FMod Event Divine Revive Out",
+    "message": "links to [FMod Event] Hero_Common\\Bhv Deathdoor\\Deathdooor FMod Event Divine Revive Out, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Deathdooor FMod Event Idle",
+    "message": "links to [FMod Event] Hero_Common\\Bhv Deathdoor\\Deathdooor FMod Event Idle, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Deathdooor FMod Event In",
+    "message": "links to [FMod Event] Hero_Common\\Bhv Deathdoor\\Deathdooor FMod Event In, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Default Move Anim FMod Event",
+    "message": "links to [FMod Event] Hero_Common\\Move\\Default Move Anim FMod Event, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Dying Death FMod Event Anim Default",
+    "message": "links to [FMod Event] Character_Common\\Bhv Dying\\Dying Death FMod Event Anim Default, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Footstep FMod Event Default",
+    "message": "links to [FMod Event] Character_Common\\Move\\Footstep FMod Event Default, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Hit Stunned FMod Event",
+    "message": "links to [FMod Event] Character_Common\\Bhv Hit Stunned\\Hit Stunned FMod Event, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Hurt Voice FMod Event",
+    "message": "links to [FMod Event] Hero_Common\\Base\\Hurt Voice FMod Event, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Preview Default In FMod Event",
+    "message": "links to [FMod Event] Hero_Common\\Bhv Preview\\Preview Default In FMod Event, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Preview Defeat FMod Event",
+    "message": "links to [FMod Event] Hero_Common\\Bhv Preview\\Preview Defeat FMod Event, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Preview Select Hero In FMod Event",
+    "message": "links to [FMod Event] Hero_Common\\Bhv Preview\\Preview Select Hero In FMod Event, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Preview Victory FMod Event",
+    "message": "links to [FMod Event] Hero_Common\\Bhv Preview\\Preview Victory FMod Event, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Spawning Default Appearance FMod Event",
+    "message": "links to [FMod Event] Character_Common\\Bhv Spawning\\Spawning Default Appearance FMod Event, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Teleporting In FMod Event",
+    "message": "links to [FMod Event] Hero_Common\\Bhv Teleporting\\Teleporting In FMod Event, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Teleporting Out FMod Event",
+    "message": "links to [FMod Event] Hero_Common\\Bhv Teleporting\\Teleporting Out FMod Event, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Ability Root Motion Factor Selector",
+    "message": "links to [Value Selector] Hero_Common\\Ability Common\\Ability Root Motion Factor Selector, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Albedo Mix Custom Color Selector",
+    "message": "links to [Value Selector] Hero_Common\\Shading\\Albedo Mix Hero Color Selector, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Appear Custom Value Selector",
+    "message": "links to [Value Selector] Hero_Common\\Shading\\Appear Custom Value Selector, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Defensive Ability Look At Direction Selector",
+    "message": "links to [Dt Hero Controller] Hero_Common_Update5\\Hero Controller\\Hero Controller, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Emissive Power Selector",
+    "message": "links to [Value Selector] Character_Common\\Shading\\Emissive Power Selector, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Emissive Smooth Speed Selector",
+    "message": "links to [Value Selector] Character_Common\\Shading\\Emissive Smooth Speed Selector, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Fmod Trait Active Day Night Value Selector",
+    "message": "links to [State] Character_Common\\Daily Cycle\\State Nighttime, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Fresnel Color Main Selector Custom",
+    "message": "links to [Value] Character_Common\\Shading\\Fresnel Custom Base Color, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Fresnel Color Main Selector Custom",
+    "message": "links to [Value Selector] Character_Common\\Shading\\Fresnel Color Main Selector Custom, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Ground Marker Scale Selector",
+    "message": "links to [Value] Hero_Common\\Base\\Ground Marker Scale Value, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Ground Marker Scale Selector",
+    "message": "links to [Value Selector] Hero_Common\\Base\\Ground Marker Scale Selector, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Ground Shadow Scale Selector",
+    "message": "links to [Value] Hero_Common\\Base\\Ground Shadow Scale Value, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Ground Shadow Scale Selector",
+    "message": "links to [Value Selector] Hero_Common\\Base\\Ground Shadow Scale Selector, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Mask 1 Value Selector",
+    "message": "links to [Value Selector] Character_Common\\Shading\\Mask 1 Value Selector, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Mask 2 Value Selector",
+    "message": "links to [Value Selector] Character_Common\\Shading\\Mask 2 Value Selector, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Minimap Big Marker Icon Selector",
+    "message": "links to [Value Selector] Hero_Common\\UI Minimap Marker\\Minimap Big Marker Icon Selector, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Physic Anim Carmilla Value Selector",
+    "message": "links to [State] Hero_Carmilla\\Physic Anims\\State Physic Ragdoll Enabled, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Physic Anim Ragdoll Value Selector",
+    "message": "links to [State] Hero_Carmilla\\Physic Anims\\State Physic Ragdoll Enabled, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Quest Complete Feedback Skill Icon Selector",
+    "message": "links to [Value Selector] Hero_Common\\UI\\Quest Complete Feedback Skill Icon Selector, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Quest Complete Feedback Skill Rarity Selector",
+    "message": "links to [Value Selector] Hero_Common\\UI\\Quest Complete Feedback Skill Rarity Selector, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Quest Feedback Resource Amount Value Selector",
+    "message": "links to [Value Selector] Hero_Common\\UI\\Quest Feedback Resource Amount Value Selector, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Secondary Ability Recover Move Direction Selection",
+    "message": "links to [Dt Hero Controller] Hero_Common_Update5\\Hero Controller\\Hero Controller, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Secondary Ability Recover Move Direction Selection",
+    "message": "links to [Entity Listener] Character_Common\\Base\\Self Entity Listener, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Skill Ultimate 1 Combo Pike Damage Selector",
+    "message": "links to [Dt Skill Controller] Hero_Carmilla\\Skills\\Skill Controller Ultimate 1 Upgrade 2, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Skill Ultimate 1 Combo Pike Damage Selector",
+    "message": "links to [Dt Skill Controller] Hero_Carmilla\\Skills\\Skill Controller Ultimate 1 Upgrade 2, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Skill Ultimate 1 Combo Pike Damage Selector",
+    "message": "links to [Dt Skill Controller] Hero_Carmilla\\Skills\\Skill Controller Ultimate 1 Upgrade 2, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Skill Ultimate 1 Return Damage Selector",
+    "message": "links to [Dt Skill Controller] Hero_Carmilla\\Skills\\Skill Controller Ultimate 1 Upgrade 1, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Skill Ultimate 1 Return Damage Selector",
+    "message": "links to [Dt Skill Controller] Hero_Carmilla\\Skills\\Skill Controller Ultimate 1 Upgrade 1, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Skill Ultimate 1 Return Damage Selector",
+    "message": "links to [Dt Skill Controller] Hero_Carmilla\\Skills\\Skill Controller Ultimate 1 Upgrade 1, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Skill Ultimate 2 Add Zone Attack Damage Selector",
+    "message": "links to [Dt Skill Controller] Hero_Carmilla\\Skills\\Skill Controller Ultimate 2 Upgrade 2, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Skill Ultimate 2 Add Zone Attack Damage Selector",
+    "message": "links to [Dt Skill Controller] Hero_Carmilla\\Skills\\Skill Controller Ultimate 2 Upgrade 2, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Skill Ultimate 2 Add Zone Attack Damage Selector",
+    "message": "links to [Dt Skill Controller] Hero_Carmilla\\Skills\\Skill Controller Ultimate 2 Upgrade 2, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Skill Ultimate 2 Increase Max Attack Selector",
+    "message": "links to [Dt Skill Controller] Hero_Carmilla\\Skills\\Skill Controller Ultimate 2 Upgrade 1, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Skill Ultimate 2 Increase Max Attack Selector",
+    "message": "links to [Dt Skill Controller] Hero_Carmilla\\Skills\\Skill Controller Ultimate 2 Upgrade 1, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Skill Ultimate 2 Increase Max Attack Selector",
+    "message": "links to [Dt Skill Controller] Hero_Carmilla\\Skills\\Skill Controller Ultimate 2 Upgrade 1, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Primary Ability Look At",
+    "message": "links to [Dt Hero Controller] Hero_Common_Update5\\Hero Controller\\Hero Controller, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Secondary Ability Aiming Look At",
+    "message": "links to [Dt Hero Controller] Hero_Common_Update5\\Hero Controller\\Hero Controller, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Skill Dash Taunt Look At",
+    "message": "links to [Value] Hero_Common\\Hero Controller\\Hero Controller Aim Input, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Trait Ability Look At",
+    "message": "links to [Dt Hero Controller] Hero_Common_Update5\\Hero Controller\\Hero Controller, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Abilities Banner Picture",
+    "message": "links to [Value] Hero_Common\\UI\\Abilities Banner Picture, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Basic Attack Radius",
+    "message": "links to [Value] Hero_Carmilla_FX\\Ability Basic\\Basic Attack Radius, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Basic Attack Radius Finisher",
+    "message": "links to [Value] Hero_Carmilla_FX\\Ability Basic\\Basic Attack Radius Finisher, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Character Mesh Scale",
+    "message": "links to [Value] Character_Common\\Attributes\\Character Mesh Scale, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Minimap Marker Color Value",
+    "message": "links to [Value] Hero_Common\\UI Minimap Marker\\Minimap Marker Color Value, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Portrait Picture",
+    "message": "links to [Value] Hero_Common\\UI\\Portrait Picture, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Preview Camera Distance",
+    "message": "links to [Value] Hero_Common\\Bhv Preview\\Preview Camera Distance, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Preview Camera Y Target Translate",
+    "message": "links to [Value] Hero_Common\\Bhv Preview\\Preview Camera Y Target Translate, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Preview Camera Y Translate",
+    "message": "links to [Value] Hero_Common\\Bhv Preview\\Preview Camera Y Translate, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Quest Feedback Resource is Custom",
+    "message": "links to [Value] Hero_Common\\UI\\Quest Feedback Resource is Custom, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Dash Wings Ability Clip",
+    "message": "links to [State] Hero_Common\\Ability Dash\\State Dash Ability, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Skill Dash Blood Clip",
+    "message": "links to [State] Hero_Common\\Ability Dash\\State Dash Ability, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Skill Dash Blood Wings Clip",
+    "message": "links to [State] Hero_Common\\Ability Dash\\State Dash Ability, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Skill Dash Taunt Anim Clip",
+    "message": "links to [State] Hero_Common\\Ability Dash\\State Dash Ability, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Basic Attack Combo Default",
+    "message": "links to [Dt Ability Controller] Hero_Carmilla\\Hero Controller\\Basic Attack Controller, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Skill Ultimate 1 Combo Pike Combo",
+    "message": "links to [Dt Ability Controller] Hero_Carmilla\\Hero Controller\\Basic Attack Controller, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Fx Ultimate 1 Trigger",
+    "message": "links to [Fx] Hero_Common\\Ability Ultimate 1\\Fx Ultimate 1 Trigger, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Fx Ultimate 2 Trigger",
+    "message": "links to [Fx] Hero_Common\\Ability Ultimate 2\\Fx Ultimate 2 Trigger, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Skill Attack Special Rush Damage",
+    "message": "links to [Dt Character Controller] Character_Common\\Base\\Character Controller, which exists nowhere"
+  },
+  {
+    "error": false,
+    "where": "",
+    "message": "5 new resource(s) and no preload cache to check them against: GameUis\\Common_Ui\\Life_Bar_Hero_Carmilla.entity.ot, GameUis\\Common_Ui\\Life_Bar_Hero_Peer.entity.ot, Heroes\\Hero_Carmilla\\Hero_Carmilla_Bat_Projectile.entity.ot, Heroes\\Hero_Carmilla\\Hero_Carmilla_Power_Orb.entity.ot, Heroes\\Hero_Carmilla\\Hero_Carmilla_Ultimate_1.entity.ot"
+  }
+]

@@ -1,0 +1,87 @@
+[
+  {
+    "error": true,
+    "where": "Dash Ability Clip Selector",
+    "message": "links to [Anim Clip] Hero_Common\\Ability Dash\\Dash Ability Clip, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Dash Ability Clip Selector",
+    "message": "links to [Component Selector] Hero_Carmilla\\Ability Dash\\Dash Ability Clip Selector, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Dash Controller Selector",
+    "message": "links to [Dt Ability Controller] Hero_Carmilla_Update6\\Hero Controller\\Dash Ability Controller, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Dash Controller Selector",
+    "message": "links to [Component Selector] Hero_Common\\Hero Controller\\Dash Controller Selector, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Dash Ability Consume Charge Condition",
+    "message": "links to [Cpnt Value Tester] Hero_Common\\Hero Controller\\Dash Ability Consume Charge Condition, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Skill Dash Taunt Animatic",
+    "message": "links to [Animatic player] Character_Common\\Base\\Main Anim Player, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Skill Controller Dash Taunt",
+    "message": "links to [Dt Hero Controller] Hero_Common_Update5\\Hero Controller\\Hero Controller, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Skill Controller Trait Life Tap",
+    "message": "links to [Dt Hero Controller] Hero_Common_Update5\\Hero Controller\\Hero Controller, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Dash Ability Controller",
+    "message": "links to [State] Hero_Common\\Ability Dash\\State Dash Ability, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Dash Ability Controller",
+    "message": "links to [Value] Hero_Common\\Hero Controller\\Dash Cooldown Default, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Dash Ability Controller",
+    "message": "links to [Counter] Hero_Common\\Hero Controller\\Dash Ability Max Charges Counter, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Dash Ability Controller",
+    "message": "links to [Cpnt Value Tester] Hero_Common\\Hero Controller\\Dash Ability Interruptible Condition, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Dash Ability Controller",
+    "message": "links to [Cpnt Value Tester] Hero_Carmilla_Update6\\Hero Controller\\Dash Ability Consume Charge Condition, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Dash Ability Controller",
+    "message": "links to [Cpnt Value Tester] Hero_Common\\Hero Controller\\Dash Ability Enabled Condition, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Dash Ability Controller",
+    "message": "links to [Value Selector] Hero_Common\\Ability Dash\\Dash Look At Dir Selector, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Dash Ability Controller",
+    "message": "links to [Dt Ability Controller] Hero_Common\\Hero Controller\\Dash Ability Controller, which exists nowhere"
+  },
+  {
+    "error": true,
+    "where": "Dash Taunt Ability Controller",
+    "message": "links to [Value Selector] Hero_Common\\Ability Dash\\Dash Look At Dir Selector, which exists nowhere"
+  }
+]

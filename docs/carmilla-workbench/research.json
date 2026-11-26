@@ -1,0 +1,4137 @@
+{
+  "date": "26 November 2026",
+  "version": "0.4.2",
+  "talents": [
+    {
+      "id": "cruel-strike",
+      "name": "Cruel Strike",
+      "key": "Attack Last Combo Move",
+      "group": "Skill Attack Last Combo Move",
+      "slot": "Attack",
+      "tier": "Standard",
+      "trigger": "DASH / DEFENSE → next ATTACK",
+      "effect": "Starts the next attack at the combo finisher and boosts its damage.",
+      "tags": [
+        "ATTACK",
+        "mobility"
+      ],
+      "synergy": "Puncture and Dispersion let setup actions do useful work before the finisher; Razor Claws can benefit from stronger attacks.",
+      "gap": "A finisher shortcut may compete with talents needing a full combo. Test Heartbreak and Mass Punishment rather than assuming their extra steps count.",
+      "status": "Direct bridge",
+      "components": [
+        {
+          "layer": "Base",
+          "index": 39,
+          "name": "Skill Attack Last Combo Move Timer",
+          "class": "oCEntityCpntTimerSettings",
+          "guid": "3060fccf879845448c6aaf8cbe82849a"
+        },
+        {
+          "layer": "Base",
+          "index": 106,
+          "name": "Event Skill Attack Last Combo Move Reset",
+          "class": "oCEntityCpntStateSettings",
+          "guid": "9d6e1d95dc61de4e843b9c0c0e8d14e4"
+        },
+        {
+          "layer": "Base",
+          "index": 107,
+          "name": "Event Skill Attack Last Combo Move Trigger",
+          "class": "oCEntityCpntStateSettings",
+          "guid": "0f996da5c5e50044bae463042a500640"
+        },
+        {
+          "layer": "Base",
+          "index": 145,
+          "name": "Skill Attack Last Combo Move",
+          "class": "oCEntityCpntStateSettings",
+          "guid": "f0f0e067f75bda43bdb7005469d0d54d"
+        },
+        {
+          "layer": "Base",
+          "index": 204,
+          "name": "State Skill Attack Last Combo Move Flag",
+          "class": "oCEntityCpntStateSettings",
+          "guid": "310cb0cf037f8245b43f41ecb3b31243"
+        },
+        {
+          "layer": "Base",
+          "index": 270,
+          "name": "Skill Attack Last Combo Move Tester",
+          "class": "oCEntityCpntTesterSettings",
+          "guid": "35a7378b6fe37f499888734f30a3cc90"
+        },
+        {
+          "layer": "Base",
+          "index": 455,
+          "name": "Skill Controller Attack Last Combo Move",
+          "class": "oCDtEntityCpntSkillControllerSettings",
+          "guid": "ba8ddf5ab2e58945bfd83c754bafb645"
+        },
+        {
+          "layer": "Base",
+          "index": 534,
+          "name": "Skill String Desc Attack Last Combo Move",
+          "class": "oCEntityCpntStringFormatValueSettings",
+          "guid": "838552528500ac419c5ce635cd097cc0"
+        },
+        {
+          "layer": "Base",
+          "index": 743,
+          "name": "Skill Attack Last Combo Move Damage Selector",
+          "class": "oCEntityCpntValueSelectorSettings",
+          "guid": "696bf4069e7d5e47984c3f91286aa36b"
+        }
+      ],
+      "consumers": [
+        {
+          "layer": "Base",
+          "name": "Child State Dash Ability",
+          "group": "Ability Dash"
+        },
+        {
+          "layer": "Base",
+          "name": "Event Basic Attack Active Finisher",
+          "group": "Ability Basic"
+        },
+        {
+          "layer": "Base",
+          "name": "Event Basic Attack Active Finisher Trait Night",
+          "group": "Ability Basic"
+        },
+        {
+          "layer": "Base",
+          "name": "Event Skill Ultimate 1 Combo Pike Active",
+          "group": "Skill Ultimate 1 Combo Pike"
+        },
+        {
+          "layer": "Base",
+          "name": "Event Skill Ultimate 2 Add Zone Attack Active Combo Zone",
+          "group": "Skill Ultimate 2 Add Zone Attack"
+        },
+        {
+          "layer": "Base",
+          "name": "Event Ultimate 2 Ability Active Combo Finisher",
+          "group": "Ability Ultimate 2"
+        },
+        {
+          "layer": "Base",
+          "name": "State Defensive Ability ",
+          "group": "Ability Defensive"
+        },
+        {
+          "layer": "Base",
+          "name": "State Skill Attack Special Rush Flag",
+          "group": "Skill Attack Special Rush"
+        },
+        {
+          "layer": "Base",
+          "name": "Skill Controller Attack Last Combo Move",
+          "group": "Skills"
+        },
+        {
+          "layer": "Base",
+          "name": "Skill String Desc Attack Last Combo Move",
+          "group": "Skills"
+        },
+        {
+          "layer": "Base",
+          "name": "Ability Basic Combo Start Selector",
+          "group": "Ability Basic"
+        },
+        {
+          "layer": "Base",
+          "name": "Ability Ultimate 2 Combo Start Selector",
+          "group": "Ability Ultimate 2"
+        },
+        {
+          "layer": "Base",
+          "name": "Skill Ultimate 1 Combo Pike Combo Start Selector",
+          "group": "Skill Ultimate 1 Combo Pike"
+        },
+        {
+          "layer": "Base",
+          "name": "Skill Ultimate 2 Add Zone Attack Combo Start Selector",
+          "group": "Skill Ultimate 2 Add Zone Attack"
+        }
+      ],
+      "confidence": "Card + partial entity graph",
+      "modEffect": "Starts the next attack at the combo finisher and boosts its damage.",
+      "modTrigger": "DASH / DEFENSE → next ATTACK"
+    },
+    {
+      "id": "onslaught",
+      "name": "Onslaught",
+      "key": "Attack Special Rush",
+      "group": "Skill Attack Special Rush",
+      "slot": "Attack",
+      "tier": "Standard",
+      "trigger": "SPECIAL → next ATTACK (game)",
+      "effect": "After SPECIAL, the next ATTACK becomes a rush dealing 800/1000/1200/1400% ATTACK damage.",
+      "tags": [
+        "SPECIAL",
+        "ATTACK",
+        "mobility"
+      ],
+      "synergy": "SPECIAL hands a payoff to ATTACK. Victimization can improve follow-up damage against the marked victim.",
+      "gap": "The original version splits investment between a SPECIAL trigger and ATTACK scaling. Your edit moves both the input and scaling; see review.",
+      "status": "Changed in package",
+      "components": [
+        {
+          "layer": "Base",
+          "index": 40,
+          "name": "Skill Attack Special Rush Timer",
+          "class": "oCEntityCpntTimerSettings",
+          "guid": "f7a2b5ac5e9b174aa78c9fc94544818c"
+        },
+        {
+          "layer": "Base",
+          "index": 108,
+          "name": "Event Skill Attack Special Rush Character Impact",
+          "class": "oCEntityCpntStateSettings",
+          "guid": "a937043b8525be429490eaa95c14019f"
+        },
+        {
+          "layer": "Base",
+          "index": 109,
+          "name": "Event Skill Attack Special Rush Reset",
+          "class": "oCEntityCpntStateSettings",
+          "guid": "8d2a042b0386704e8a7ce5e5cdf8755e"
+        },
+        {
+          "layer": "Base",
+          "index": 110,
+          "name": "Event Skill Attack Special Rush Trigger",
+          "class": "oCEntityCpntStateSettings",
+          "guid": "75b984678c98784392126da20d25337b"
+        },
+        {
+          "layer": "Base",
+          "index": 146,
+          "name": "Skill Attack Special Rush",
+          "class": "oCEntityCpntStateSettings",
+          "guid": "b8b0b73d568c1f48bd24bc3296defdb5"
+        },
+        {
+          "layer": "Base",
+          "index": 205,
+          "name": "State Skill Attack Special Rush Attack",
+          "class": "oCEntityCpntStateSettings",
+          "guid": "e68bab2480e859409c05b5577cf5c213"
+        },
+        {
+          "layer": "Base",
+          "index": 206,
+          "name": "State Skill Attack Special Rush Flag",
+          "class": "oCEntityCpntStateSettings",
+          "guid": "c9f4f6aeb293f746ae202800d5d927d3"
+        },
+        {
+          "layer": "Base",
+          "index": 271,
+          "name": "Skill Attack Special Rush Tester",
+          "class": "oCEntityCpntTesterSettings",
+          "guid": "c5a6fd9b0ecf56499d87d82bf9df0392"
+        },
+        {
+          "layer": "Base",
+          "index": 358,
+          "name": "Skill Attack Special Rush Anim",
+          "class": "oCEntityCpntAnimaticSettings",
+          "guid": "5120507cdc8df848854ff0254f8b23f3"
+        },
+        {
+          "layer": "Base",
+          "index": 420,
+          "name": "Skill Attack Special Rush Damage Multiplier Operation",
+          "class": "oCEntityCpntValueOperationsSettings",
+          "guid": "ff92d27c69390a4e8cbe367984b78bf7"
+        },
+        {
+          "layer": "Base",
+          "index": 456,
+          "name": "Skill Controller Attack Special Rush",
+          "class": "oCDtEntityCpntSkillControllerSettings",
+          "guid": "4a49b6579d257549854cd127e0fef380"
+        },
+        {
+          "layer": "Base",
+          "index": 535,
+          "name": "Skill String Desc Attack Special Rush",
+          "class": "oCEntityCpntStringFormatValueSettings",
+          "guid": "600f5d807d0020488d5b5fd72a1459b8"
+        },
+        {
+          "layer": "Base",
+          "index": 650,
+          "name": "Skill Attack Special Rush Character Impact FMod Event",
+          "class": "oCEntityCpntFModEventSettings",
+          "guid": "2b101c175bae6640b86924b21698908a"
+        },
+        {
+          "layer": "Base",
+          "index": 651,
+          "name": "Skill Attack Special Rush FMod Event Anim",
+          "class": "oCEntityCpntFModEventSettings",
+          "guid": "a4ab5e9c4ade2443b9e6217e4b6e95d2"
+        },
+        {
+          "layer": "Base",
+          "index": 744,
+          "name": "Skill Attack Special Rush Damage Selector",
+          "class": "oCEntityCpntValueSelectorSettings",
+          "guid": "61bc29d97df52c4789ff1d69c0de7d18"
+        },
+        {
+          "layer": "Base",
+          "index": 801,
+          "name": "Skill Attack Special Rush Zone Attack",
+          "class": "oCEntityCpntZoneAttackSettings",
+          "guid": "fc0ec63167308942bdcd3d8dcb75d869"
+        },
+        {
+          "layer": "Base",
+          "index": 971,
+          "name": "Skill Attack Special Rush Clip",
+          "class": "oCEntityCpntAnimClipSettings",
+          "guid": "4fad607649d1fc49ad252da5e8d995ea"
+        },
+        {
+          "layer": "Base",
+          "index": 972,
+          "name": "Skill Attack Special Rush Ult 2 Clip",
+          "class": "oCEntityCpntAnimClipSettings",
+          "guid": "5a44720f4541fe4183e450cee2ff52fc"
+        },
+        {
+          "layer": "Base",
+          "index": 997,
+          "name": "Skill Attack Special Rush Props Traverser",
+          "class": "oCEntityCpntGpnTraverserSettings",
+          "guid": "ada608a1fc00aa49bba4120e0487c5c3"
+        },
+        {
+          "layer": "Base",
+          "index": 998,
+          "name": "Skill Attack Special Rush Traverser",
+          "class": "oCEntityCpntGpnTraverserSettings",
+          "guid": "0c53088cfdf1984a9383e4d9407678a5"
+        },
+        {
+          "layer": "Base",
+          "index": 1044,
+          "name": "Skill Attack Special Final Slash Fx",
+          "class": "oCEntityCpntFxSettings",
+          "guid": "dcc77a64654f134b9178444d57655c50"
+        },
+        {
+          "layer": "Base",
+          "index": 1045,
+          "name": "Skill Attack Special Rush Character Impact",
+          "class": "oCEntityCpntFxSettings",
+          "guid": "cab7961654321041b5e6a960f192b83a"
+        },
+        {
+          "layer": "Base",
+          "index": 1046,
+          "name": "Skill Attack Special Rush Claws Fx",
+          "class": "oCEntityCpntFxSettings",
+          "guid": "cb9e9b46d8f8a14b944e76f7520c44a2"
+        },
+        {
+          "layer": "Base",
+          "index": 1047,
+          "name": "Skill Attack Special Rush Dash Fx",
+          "class": "oCEntityCpntFxSettings",
+          "guid": "3e8f5b7bbcf51b43bf7cc83ef660b04c"
+        },
+        {
+          "layer": "Base",
+          "index": 2032,
+          "name": "Skill Attack Special Rush Damage",
+          "class": "oCDtEntityCpntDamageSettings",
+          "guid": "61ce1a92c1065b88abed7db12dd3446a"
+        }
+      ],
+      "consumers": [
+        {
+          "layer": "Base",
+          "name": "Ability Ultimate 2 Clip Combo 1 Selector",
+          "group": "Ability Ultimate 2"
+        },
+        {
+          "layer": "Base",
+          "name": "Basic Attack Character Impact Default Event Selector",
+          "group": "Ability Basic"
+        },
+        {
+          "layer": "Base",
+          "name": "Dash Ability Clip Selector",
+          "group": "Ability Dash"
+        },
+        {
+          "layer": "Base",
+          "name": "Child State Dash Ability",
+          "group": "Ability Dash"
+        },
+        {
+          "layer": "Base",
+          "name": "State Ability Secondary Attack",
+          "group": "Ability Secondary"
+        },
+        {
+          "layer": "Base",
+          "name": "State Skill Attack Last Combo Move Flag",
+          "group": "Skill Attack Last Combo Move"
+        },
+        {
+          "layer": "Base",
+          "name": "State Ultimate 2 Basic Attack",
+          "group": "Ability Ultimate 2"
+        },
+        {
+          "layer": "Base",
+          "name": "Skill Controller Attack Special Rush",
+          "group": "Skills"
+        },
+        {
+          "layer": "Base",
+          "name": "Skill String Desc Attack Special Rush",
+          "group": "Skills"
+        },
+        {
+          "layer": "Base",
+          "name": "Basic Attack Damage Multiplier Selector",
+          "group": "Ability Basic"
+        },
+        {
+          "layer": "Update6",
+          "name": "Dash Ability Clip Selector",
+          "group": "Ability Dash"
+        }
+      ],
+      "confidence": "Card + partial entity graph",
+      "modEffect": "SPECIAL arms a three-second window; the rush is routed into DASH. Damage uses the SPECIAL bite class and 100/125/150/175% selector. Dash priority and Blood Lash reset concerns remain.",
+      "modTrigger": "SPECIAL → next DASH (intended)",
+      "modTags": [
+        "SPECIAL",
+        "DASH",
+        "mobility"
+      ]
+    },
+    {
+      "id": "razor-claws",
+      "name": "Razor Claws",
+      "key": "Attack Bleed",
+      "group": "Skill Attack Bleed",
+      "slot": "Attack",
+      "tier": "Standard",
+      "trigger": "ATTACK hit",
+      "effect": "Adds bleeding damage to attacks.",
+      "tags": [
+        "ATTACK",
+        "BLEED"
+      ],
+      "synergy": "Feeds Sadism and lets a subsequent POWER use Flesh Rip. The reworked Blood Reserve could accelerate reapplication.",
+      "gap": "Bleed application requires attacking; a long POWER channel stops that refresh cycle. Exact bleed lifetime is outside this package.",
+      "status": "Status source",
+      "components": [
+        {
+          "layer": "Base",
+          "index": 144,
+          "name": "Skill Attack Bleed",
+          "class": "oCEntityCpntStateSettings",
+          "guid": "d9751450a762274891ab4ff25637d637"
+        },
+        {
+          "layer": "Base",
+          "index": 419,
+          "name": "Skill Attack Bleed Value Operation",
+          "class": "oCEntityCpntValueOperationsSettings",
+          "guid": "5f6caa81cfa5c848b8944a0d700eb58f"
+        },
+        {
+          "layer": "Base",
+          "index": 454,
+          "name": "Skill Controller Attack Bleed",
+          "class": "oCDtEntityCpntSkillControllerSettings",
+          "guid": "c57f8986663ece4a9577cd55daed0250"
+        },
+        {
+          "layer": "Base",
+          "index": 490,
+          "name": "Skill Attack Bleed Modifier",
+          "class": "oCEntityCpntModifierSettings",
+          "guid": "4d55144d82bf4741aa47bdbbc9e70a93"
+        },
+        {
+          "layer": "Base",
+          "index": 533,
+          "name": "Skill String Desc Attack Bleed",
+          "class": "oCEntityCpntStringFormatValueSettings",
+          "guid": "957601e68cd72149868d57c8ab811fcc"
+        },
+        {
+          "layer": "Base",
+          "index": 742,
+          "name": "Skill Attack Bleed Value Selector",
+          "class": "oCEntityCpntValueSelectorSettings",
+          "guid": "dd4474dd9d086e41b8a231da38dc839f"
+        }
+      ],
+      "consumers": [
+        {
+          "layer": "Base",
+          "name": "Skill Controller Attack Bleed",
+          "group": "Skills"
+        },
+        {
+          "layer": "Base",
+          "name": "Skill String Desc Attack Bleed",
+          "group": "Skills"
+        }
+      ],
+      "confidence": "Card + partial entity graph",
+      "modEffect": "Adds bleeding damage to attacks.",
+      "modTrigger": "ATTACK hit"
+    },
+    {
+      "id": "blood-rage",
+      "name": "Blood Rage",
+      "key": "Power Quest",
+      "group": "Skill Power Quest",
+      "slot": "Power",
+      "tier": "Starting",
+      "trigger": "Hold POWER and hit; quest completion",
+      "effect": "Builds general DMG through a quest, then rewards qualifying held POWER explosions.",
+      "tags": [
+        "POWER",
+        "BLOOD"
+      ],
+      "synergy": "The general DMG reward can help other damage sources. Furious Tempest uses the same held-POWER rhythm.",
+      "gap": "Completion is gated by blood use and the POWER hold timer. Injection spawns an immediate orb; its final formula lives in a missing child entity.",
+      "status": "Starter / conditional",
+      "components": [
+        {
+          "layer": "Base",
+          "index": 25,
+          "name": "Skill Power Quest Proc Counter",
+          "class": "oCEntityCpntCounterSettings",
+          "guid": "753e35a63d6cab4693977f08f7a317d1"
+        },
+        {
+          "layer": "Base",
+          "index": 121,
+          "name": "Event Skill Power Quest Proc",
+          "class": "oCEntityCpntStateSettings",
+          "guid": "7a94f2bc122b814cb40d89977eae788f"
+        },
+        {
+          "layer": "Base",
+          "index": 159,
+          "name": "Skill Power Quest",
+          "class": "oCEntityCpntStateSettings",
+          "guid": "228340babf52994282603ee748a88a9d"
+        },
+        {
+          "layer": "Base",
+          "index": 211,
+          "name": "State Skill Power Quest Complete",
+          "class": "oCEntityCpntStateSettings",
+          "guid": "e70057a1685c8a4798090c898f4b41d3"
+        },
+        {
+          "layer": "Base",
+          "index": 212,
+          "name": "State Skill Power Quest Complete Proc Active",
+          "class": "oCEntityCpntStateSettings",
+          "guid": "e57bd2de086f9f459d74a154e86492ec"
+        },
+        {
+          "layer": "Base",
+          "index": 282,
+          "name": "Skill Power Quest Complete Proc Active Tester",
+          "class": "oCEntityCpntTesterSettings",
+          "guid": "07aedb0d3100574792ffb663b800b108"
+        },
+        {
+          "layer": "Base",
+          "index": 283,
+          "name": "Skill Power Quest Complete Proc Condition",
+          "class": "oCEntityCpntTesterSettings",
+          "guid": "10fcf5debdd9534d9674279ac0b1e248"
+        },
+        {
+          "layer": "Base",
+          "index": 284,
+          "name": "Skill Power Quest Proc Tester",
+          "class": "oCEntityCpntTesterSettings",
+          "guid": "f3802bc0a4e6bf4e8ad4888ff41b993c"
+        },
+        {
+          "layer": "Base",
+          "index": 427,
+          "name": "Skill Power Quest Modifier Value Operation",
+          "class": "oCEntityCpntValueOperationsSettings",
+          "guid": "021a8e228b992e438db7f64c436fd0e1"
+        },
+        {
+          "layer": "Base",
+          "index": 469,
+          "name": "Skill Controller Power Quest",
+          "class": "oCDtEntityCpntSkillControllerSettings",
+          "guid": "5a5688b2e122f847be94c3f36db1d3ee"
+        },
+        {
+          "layer": "Base",
+          "index": 498,
+          "name": "Skill Power Quest Modifier",
+          "class": "oCEntityCpntModifierSettings",
+          "guid": "ccbab0e10db06a4588593df6de2bf295"
+        },
+        {
+          "layer": "Base",
+          "index": 548,
+          "name": "Skill String Desc Power Quest",
+          "class": "oCEntityCpntStringFormatValueSettings",
+          "guid": "97df4fb0ff1bb642a38998a13c1bcd7c"
+        },
+        {
+          "layer": "Base",
+          "index": 761,
+          "name": "Skill Power Quest Complete Explosion Factor Operand",
+          "class": "oCEntityCpntValueSelectorSettings",
+          "guid": "d7543ecc90226940b02cc6c30dc70eb5"
+        },
+        {
+          "layer": "Base",
+          "index": 762,
+          "name": "Skill Power Quest Damage Multiplier Selector",
+          "class": "oCEntityCpntValueSelectorSettings",
+          "guid": "9d0eed1b7d9cf54fae5babe9e8687dd7"
+        },
+        {
+          "layer": "Base",
+          "index": 822,
+          "name": "SKILL_POWER_QUEST_PROC_COUNTER_INC Event Sender",
+          "class": "oCEntityCpntNamedEventSenderSettings",
+          "guid": "c46efca5d8fcd342bcbffed8b273226e"
+        },
+        {
+          "layer": "Base",
+          "index": 912,
+          "name": "Skill Power Quest Complete Active Value",
+          "class": "oCEntityCpntValueSettings",
+          "guid": "8f3f870d62c7094e9ad25f83d0168411"
+        },
+        {
+          "layer": "Base",
+          "index": 913,
+          "name": "Skill Power Quest Complete Explosion Damage Multiplier Value",
+          "class": "oCEntityCpntValueSettings",
+          "guid": "e41f66385139eb4cab39a4bd40a91c77"
+        },
+        {
+          "layer": "Base",
+          "index": 914,
+          "name": "Skill Power Quest Count",
+          "class": "oCEntityCpntValueSettings",
+          "guid": "4b23ac46352d004aaa8c581b65b439e3"
+        },
+        {
+          "layer": "Base",
+          "index": 915,
+          "name": "Skill Power Quest Has Proc Flag",
+          "class": "oCEntityCpntValueSettings",
+          "guid": "4fddae1f2772f640a258cc5d93c34779"
+        },
+        {
+          "layer": "Base",
+          "index": 916,
+          "name": "Skill Power Quest Min Hold Time",
+          "class": "oCEntityCpntValueSettings",
+          "guid": "abe7111304754c48b7e5e840afcb5f1e"
+        },
+        {
+          "layer": "Base",
+          "index": 917,
+          "name": "Skill Power Quest Value Per Proc",
+          "class": "oCEntityCpntValueSettings",
+          "guid": "036ce68ad042134a97e80fe3ae977587"
+        }
+      ],
+      "consumers": [
+        {
+          "layer": "Base",
+          "name": "Event On Primary Ability Character Impact Attack",
+          "group": "Ability Primary"
+        },
+        {
+          "layer": "Base",
+          "name": "Event On Primary Ability Character Impact Explosion",
+          "group": "Ability Primary"
+        },
+        {
+          "layer": "Base",
+          "name": "State Primary Ability",
+          "group": "Ability Primary"
+        },
+        {
+          "layer": "Base",
+          "name": "State Primary Ability Active",
+          "group": "Ability Primary"
+        },
+        {
+          "layer": "Base",
+          "name": "Skill Controller Power Quest",
+          "group": "Skills"
+        },
+        {
+          "layer": "Base",
+          "name": "Skill String Desc Power Quest",
+          "group": "Skills"
+        },
+        {
+          "layer": "Base",
+          "name": "Quest Complete Feedback Skill Icon Selector",
+          "group": "UI"
+        },
+        {
+          "layer": "Base",
+          "name": "Quest Complete Feedback Skill Rarity Selector",
+          "group": "UI"
+        },
+        {
+          "layer": "Base",
+          "name": "Quest Feedback Resource Amount Value Selector",
+          "group": "UI"
+        }
+      ],
+      "confidence": "Card + partial entity graph",
+      "modEffect": "Builds general DMG through a quest, then rewards qualifying held POWER explosions.",
+      "modTrigger": "Hold POWER and hit; quest completion"
+    },
+    {
+      "id": "flesh-rip",
+      "name": "Flesh Rip",
+      "key": "Power Bleed Crit",
+      "group": "Skill Power Bleed Crit",
+      "slot": "Power",
+      "tier": "Standard",
+      "trigger": "POWER hits a bleeding enemy",
+      "effect": "Adds POWER critical chance while the target is bleeding.",
+      "tags": [
+        "POWER",
+        "BLEED",
+        "criticals"
+      ],
+      "synergy": "Razor Claws, DEFENSE bleed, and Dispersion can set it up. Sadism rewards the resulting critical hits.",
+      "gap": "The prerequisite is target bleed at impact time. Holding POWER gives your own attack-based bleed less opportunity to refresh.",
+      "status": "Conditional payoff",
+      "components": [
+        {
+          "layer": "Base",
+          "index": 156,
+          "name": "Skill Power Bleed Crit",
+          "class": "oCEntityCpntStateSettings",
+          "guid": "b32e4b646128a041980f213e535cb6ef"
+        },
+        {
+          "layer": "Base",
+          "index": 466,
+          "name": "Skill Controller Power Bleed Crit",
+          "class": "oCDtEntityCpntSkillControllerSettings",
+          "guid": "8dc83171698cc049a767204284a06e84"
+        },
+        {
+          "layer": "Base",
+          "index": 545,
+          "name": "Skill String Desc Power Bleed Crit",
+          "class": "oCEntityCpntStringFormatValueSettings",
+          "guid": "7ed2f734e0072344bed9ef5754eae145"
+        },
+        {
+          "layer": "Base",
+          "index": 756,
+          "name": "Skill Power Bleed Crit Chance Selector",
+          "class": "oCEntityCpntValueSelectorSettings",
+          "guid": "6b67adb2749c8d4a80e93679e4a4ae2f"
+        },
+        {
+          "layer": "Base",
+          "index": 903,
+          "name": "Skill Power Bleed Crit Chance Value",
+          "class": "oCEntityCpntValueSettings",
+          "guid": "3680d05856c77e4090dd6cda36572eed"
+        },
+        {
+          "layer": "Base",
+          "index": 904,
+          "name": "Skill Power Bleed Crit is Active Value",
+          "class": "oCEntityCpntValueSettings",
+          "guid": "de8545e13becc541a0ff1c8203acaf47"
+        }
+      ],
+      "consumers": [
+        {
+          "layer": "Base",
+          "name": "Skill Controller Power Bleed Crit",
+          "group": "Skills"
+        },
+        {
+          "layer": "Base",
+          "name": "Skill String Desc Power Bleed Crit",
+          "group": "Skills"
+        }
+      ],
+      "confidence": "Card + partial entity graph",
+      "modEffect": "Adds POWER critical chance while the target is bleeding.",
+      "modTrigger": "POWER hits a bleeding enemy"
+    },
+    {
+      "id": "furious-tempest",
+      "name": "Furious Tempest",
+      "key": "Power Maintained Damage",
+      "group": "Skill Power Maintained Damage",
+      "slot": "Power",
+      "tier": "Standard",
+      "trigger": "Fuel held POWER with BLOOD",
+      "effect": "Ramps POWER damage over a three-second hold.",
+      "tags": [
+        "POWER",
+        "BLOOD",
+        "channel"
+      ],
+      "synergy": "Shares the hold rhythm with Blood Rage. Can overlap Flesh Rip while bleed remains active.",
+      "gap": "Three seconds of ramp plus setup time consumes a short bleed window. Winged Form's blood-free abilities require separate ramp testing.",
+      "status": "Timing pressure",
+      "components": [
+        {
+          "layer": "Base",
+          "index": 157,
+          "name": "Skill Power Maintained Damage",
+          "class": "oCEntityCpntStateSettings",
+          "guid": "a4e7cde4c9a7804ab118cd9bf33819cb"
+        },
+        {
+          "layer": "Base",
+          "index": 424,
+          "name": "Skill Power Maintained Damage Multiplier Operations",
+          "class": "oCEntityCpntValueOperationsSettings",
+          "guid": "56ca695c91256844984f88ef45cec67b"
+        },
+        {
+          "layer": "Base",
+          "index": 425,
+          "name": "Skill Power Maintained Damage Ratio Operations",
+          "class": "oCEntityCpntValueOperationsSettings",
+          "guid": "10b615ac70467e49921798fa276cd83b"
+        },
+        {
+          "layer": "Base",
+          "index": 467,
+          "name": "Skill Controller Power Maintained Damage",
+          "class": "oCDtEntityCpntSkillControllerSettings",
+          "guid": "b1228cd767f11b4b9160c8893bb7b17b"
+        },
+        {
+          "layer": "Base",
+          "index": 546,
+          "name": "Skill String Desc Power Maintained Damage",
+          "class": "oCEntityCpntStringFormatValueSettings",
+          "guid": "a726f95e25457f43bdd411db6b6096d7"
+        },
+        {
+          "layer": "Base",
+          "index": 596,
+          "name": "Skill Power Maintained Damage Value Anim",
+          "class": "oCEntityCpntValueAnimSettings",
+          "guid": "88ae929a6e7b024dbf6c0d17c924f87a"
+        },
+        {
+          "layer": "Base",
+          "index": 757,
+          "name": "Skill Power Maintained Damage Multiplier Selector",
+          "class": "oCEntityCpntValueSelectorSettings",
+          "guid": "86579ec3315cb642a7bcb4808dbb3be1"
+        },
+        {
+          "layer": "Base",
+          "index": 758,
+          "name": "Skill Power Maintained Damage Selector",
+          "class": "oCEntityCpntValueSelectorSettings",
+          "guid": "b3b08f24ddbbcb4b80f888d2197700f8"
+        },
+        {
+          "layer": "Base",
+          "index": 905,
+          "name": "Skill Power Maintained Damage Is Active Value",
+          "class": "oCEntityCpntValueSettings",
+          "guid": "678301fa6ba3a247abbb4e8ad81e021b"
+        },
+        {
+          "layer": "Base",
+          "index": 906,
+          "name": "Skill Power Maintained Damage Maintained Duration",
+          "class": "oCEntityCpntValueSettings",
+          "guid": "799924d72d266f44aebc44ea68ae22e5"
+        },
+        {
+          "layer": "Base",
+          "index": 907,
+          "name": "Skill Power Maintained Damage Multiplier Value",
+          "class": "oCEntityCpntValueSettings",
+          "guid": "718ba673a8df424483ddf3a0df4a4666"
+        },
+        {
+          "layer": "Base",
+          "index": 908,
+          "name": "Skill Power Maintained Damage Ratio",
+          "class": "oCEntityCpntValueSettings",
+          "guid": "555b104297bdae47866606c5a891d305"
+        }
+      ],
+      "consumers": [
+        {
+          "layer": "Base",
+          "name": "Skill Controller Power Maintained Damage",
+          "group": "Skills"
+        },
+        {
+          "layer": "Base",
+          "name": "Skill String Desc Power Maintained Damage",
+          "group": "Skills"
+        }
+      ],
+      "confidence": "Card + partial entity graph",
+      "modEffect": "Ramps POWER damage over a three-second hold.",
+      "modTrigger": "Fuel held POWER with BLOOD"
+    },
+    {
+      "id": "injection",
+      "name": "Injection",
+      "key": "Power Special Bomb",
+      "group": "Skill Power Special Bomb",
+      "slot": "Power",
+      "tier": "Standard",
+      "trigger": "SPECIAL bite → delayed seed explosion",
+      "effect": "Places a seed on the bitten target; the seed later produces a POWER explosion.",
+      "tags": [
+        "SPECIAL",
+        "POWER"
+      ],
+      "synergy": "Already a bridge from SPECIAL to POWER. Victimization is a plausible multiplier on the seeded victim.",
+      "gap": "A POWER label does not promise Blood Rage's held-cast bonus. The spawned Power Orb and seed-status behavior are not supplied.",
+      "status": "External dependency",
+      "components": [
+        {
+          "layer": "Base",
+          "index": 161,
+          "name": "Skill Power Special Bomb",
+          "class": "oCEntityCpntStateSettings",
+          "guid": "9a96efa210e81848a39cc99520a78bb1"
+        },
+        {
+          "layer": "Base",
+          "index": 385,
+          "name": "Skill Power Special Bomb Spawner",
+          "class": "oCEntityCpntEntitySpawnerSettings",
+          "guid": "fa434faf11e70f4b82f6057388c6a991"
+        },
+        {
+          "layer": "Base",
+          "index": 471,
+          "name": "Skill Controller Power Special Bomb",
+          "class": "oCDtEntityCpntSkillControllerSettings",
+          "guid": "370bab50874dc746892fc7b342423791"
+        },
+        {
+          "layer": "Base",
+          "index": 499,
+          "name": "Skill Power Special Bomb Modifier",
+          "class": "oCEntityCpntModifierSettings",
+          "guid": "8815fa82ce707645aef6afde578b25c1"
+        },
+        {
+          "layer": "Base",
+          "index": 550,
+          "name": "Skill String Desc Power Special Bomb",
+          "class": "oCEntityCpntStringFormatValueSettings",
+          "guid": "849420f6626d1d47bd0f0d3f553788de"
+        },
+        {
+          "layer": "Base",
+          "index": 581,
+          "name": "Skill Power Special Bomb Explode Now Spawner Value",
+          "class": "oCEntityCpntSpawnerValueSettings",
+          "guid": "af497ad1cf4fbb49b4c4eaa461a7882c"
+        },
+        {
+          "layer": "Base",
+          "index": 699,
+          "name": "Blood Bomb Explode Listener",
+          "class": "oCEntityCpntNamedEventListenerSettings",
+          "guid": "d4f7b1439b0ffc4fbdc9c83cdd975ffe"
+        },
+        {
+          "layer": "Base",
+          "index": 765,
+          "name": "Skill Power Special Bomb Damage Selector",
+          "class": "oCEntityCpntValueSelectorSettings",
+          "guid": "c4272bbfa5490b41b12207ef7ecb0597"
+        },
+        {
+          "layer": "Base",
+          "index": 920,
+          "name": "Skill Power Special Bomb Damage Multiplier Value",
+          "class": "oCEntityCpntValueSettings",
+          "guid": "fc26ff6eb7f50048bdf8f0a62c254e0c"
+        },
+        {
+          "layer": "Base",
+          "index": 921,
+          "name": "Skill Power Special Bomb Time Before Explosion Value",
+          "class": "oCEntityCpntValueSettings",
+          "guid": "524330ad2ebddf42ba4c873695c6393f"
+        }
+      ],
+      "consumers": [
+        {
+          "layer": "Base",
+          "name": "Skill Controller Power Special Bomb",
+          "group": "Skills"
+        },
+        {
+          "layer": "Base",
+          "name": "Skill String Desc Power Special Bomb",
+          "group": "Skills"
+        }
+      ],
+      "confidence": "Card + partial entity graph",
+      "modEffect": "Places a seed on the bitten target; the seed later produces a POWER explosion.",
+      "modTrigger": "SPECIAL bite → delayed seed explosion"
+    },
+    {
+      "id": "wild-heart",
+      "name": "Wild Heart",
+      "key": "Power Range",
+      "group": "Skill Power Range",
+      "slot": "Power",
+      "tier": "Standard",
+      "trigger": "POWER travel / explosion",
+      "effect": "Speeds up the orb and widens its explosion.",
+      "tags": [
+        "POWER",
+        "area"
+      ],
+      "synergy": "A larger explosion can help hit coverage for POWER builds; possible Injection interaction shares the orb template.",
+      "gap": "Injection inheritance of radius must be checked in the missing Power Orb entity, not inferred from the card.",
+      "status": "Coverage",
+      "components": [
+        {
+          "layer": "Base",
+          "index": 160,
+          "name": "Skill Power Range",
+          "class": "oCEntityCpntStateSettings",
+          "guid": "f5872603dc7bc7419ddd7f1e5db7309f"
+        },
+        {
+          "layer": "Base",
+          "index": 470,
+          "name": "Skill Controller Power Range",
+          "class": "oCDtEntityCpntSkillControllerSettings",
+          "guid": "468dac7304280a4685e48d53e4e9dc59"
+        },
+        {
+          "layer": "Base",
+          "index": 549,
+          "name": "Skill String Desc Power Range",
+          "class": "oCEntityCpntStringFormatValueSettings",
+          "guid": "67b8348f48da184bb961bef015fc8de5"
+        },
+        {
+          "layer": "Base",
+          "index": 763,
+          "name": "Skill Power Range Radius Increase Ratio Operand",
+          "class": "oCEntityCpntValueSelectorSettings",
+          "guid": "9911b6b78c84144eb344188859399e27"
+        },
+        {
+          "layer": "Base",
+          "index": 764,
+          "name": "Skill Power Range Radius Increase Ratio Selector",
+          "class": "oCEntityCpntValueSelectorSettings",
+          "guid": "dbeb781311951e45a637074e9924c915"
+        },
+        {
+          "layer": "Base",
+          "index": 918,
+          "name": "Skill Power Range Available",
+          "class": "oCEntityCpntValueSettings",
+          "guid": "f453f0fd87982a4189162797273b99f0"
+        },
+        {
+          "layer": "Base",
+          "index": 919,
+          "name": "Skill Power Range Move Speed Increase Ratio",
+          "class": "oCEntityCpntValueSettings",
+          "guid": "23d26e3806eadc44a363655ea95d38e5"
+        }
+      ],
+      "consumers": [
+        {
+          "layer": "Base",
+          "name": "Skill Controller Power Range",
+          "group": "Skills"
+        },
+        {
+          "layer": "Base",
+          "name": "Skill String Desc Power Range",
+          "group": "Skills"
+        }
+      ],
+      "confidence": "Card + partial entity graph",
+      "modEffect": "Speeds up the orb and widens its explosion.",
+      "modTrigger": "POWER travel / explosion"
+    },
+    {
+      "id": "go-for-the-throat",
+      "name": "Go for the Throat",
+      "key": "Special Critical Distance",
+      "group": "Skill Special Critical Distance",
+      "slot": "Special",
+      "tier": "Standard",
+      "trigger": "Distance before SPECIAL bite",
+      "effect": "Raises bite damage and critical chance with approach distance.",
+      "tags": [
+        "SPECIAL",
+        "criticals",
+        "mobility"
+      ],
+      "synergy": "Victimization supports follow-up damage; Sadism needs bleed already on the victim. The edited rush copies this bonus hook.",
+      "gap": "Distance is sampled from SPECIAL's travel state. Whether the copied rush uses fresh, retained, or reset distance needs a test.",
+      "status": "Conditional payoff",
+      "components": [
+        {
+          "layer": "Base",
+          "index": 122,
+          "name": "Event Skill Special Critical Distance Proc",
+          "class": "oCEntityCpntStateSettings",
+          "guid": "a152d42baca6f740ac46d8675c602d93"
+        },
+        {
+          "layer": "Base",
+          "index": 162,
+          "name": "Skill Special Critical Distance",
+          "class": "oCEntityCpntStateSettings",
+          "guid": "268d3fd416337348927291763f95ea59"
+        },
+        {
+          "layer": "Base",
+          "index": 428,
+          "name": "Skill Special Critical Distance Operations",
+          "class": "oCEntityCpntValueOperationsSettings",
+          "guid": "24b82582fee5d34ca3f63a297654ec29"
+        },
+        {
+          "layer": "Base",
+          "index": 472,
+          "name": "Skill Controller Special Critical Distance",
+          "class": "oCDtEntityCpntSkillControllerSettings",
+          "guid": "b10f28f61a5a214383006ef48c71132f"
+        },
+        {
+          "layer": "Base",
+          "index": 551,
+          "name": "Skill String Desc Special Critical Distance",
+          "class": "oCEntityCpntStringFormatValueSettings",
+          "guid": "7df939a0575e594bb64f226ca38653d4"
+        },
+        {
+          "layer": "Base",
+          "index": 597,
+          "name": "Skill Special Critical Distance Ratio Anim",
+          "class": "oCEntityCpntValueAnimSettings",
+          "guid": "758c8a45bea1644a83a2f013a7da7373"
+        },
+        {
+          "layer": "Base",
+          "index": 766,
+          "name": "Skill Special Critical Distance Multiplier Operand",
+          "class": "oCEntityCpntValueSelectorSettings",
+          "guid": "e393578aa522c44a9e2de234d94837bb"
+        },
+        {
+          "layer": "Base",
+          "index": 767,
+          "name": "Skill Special Critical Distance Multiplier Selector",
+          "class": "oCEntityCpntValueSelectorSettings",
+          "guid": "a94136e9ed18b1478ec2b11f34da251b"
+        },
+        {
+          "layer": "Base",
+          "index": 1061,
+          "name": "Skill Special Critical Distance Fx",
+          "class": "oCEntityCpntFxSettings",
+          "guid": "997544fd90888445a2a213867623a7ee"
+        }
+      ],
+      "consumers": [
+        {
+          "layer": "Base",
+          "name": "Skill Controller Special Critical Distance",
+          "group": "Skills"
+        },
+        {
+          "layer": "Base",
+          "name": "Skill String Desc Special Critical Distance",
+          "group": "Skills"
+        },
+        {
+          "layer": "Base",
+          "name": "Secondary Ability Visor Color Selector",
+          "group": "Ability Secondary"
+        }
+      ],
+      "confidence": "Card + partial entity graph",
+      "modEffect": "Raises bite damage and critical chance with approach distance.",
+      "modTrigger": "Distance before SPECIAL bite"
+    },
+    {
+      "id": "life-essence",
+      "name": "Life Essence",
+      "key": "Special Quest",
+      "group": "Skill Special Quest",
+      "slot": "Special",
+      "tier": "Starting",
+      "trigger": "SPECIAL bite kill",
+      "effect": "Quest grants maximum health; further qualifying kills restore health.",
+      "tags": [
+        "SPECIAL",
+        "sustain"
+      ],
+      "synergy": "A larger health pool supports Carmilla's health-as-fuel fallback. Burst damage can help secure bite kills.",
+      "gap": "Requires the bite to kill, not just damage. Injection kills may not qualify; team kill competition limits reliable progress.",
+      "status": "Starter / kill gate",
+      "components": [
+        {
+          "layer": "Base",
+          "index": 26,
+          "name": "Skill Special Quest Proc Counter",
+          "class": "oCEntityCpntCounterSettings",
+          "guid": "fb5c7a3342056648b0dd6bf1410f1239"
+        },
+        {
+          "layer": "Base",
+          "index": 125,
+          "name": "Event Skill Special Quest Proc",
+          "class": "oCEntityCpntStateSettings",
+          "guid": "fff9be5fd53f49439d7023c91122898e"
+        },
+        {
+          "layer": "Base",
+          "index": 126,
+          "name": "Event Skill Special Quest Proc Complete",
+          "class": "oCEntityCpntStateSettings",
+          "guid": "41555423c45d5f48b38215d2b8be7269"
+        },
+        {
+          "layer": "Base",
+          "index": 165,
+          "name": "Skill Special Quest",
+          "class": "oCEntityCpntStateSettings",
+          "guid": "21af19cc585ddb4e8a685d9364c398e2"
+        },
+        {
+          "layer": "Base",
+          "index": 214,
+          "name": "State Skill Special Quest Complete",
+          "class": "oCEntityCpntStateSettings",
+          "guid": "52276d823c59d742becbbebd4d851458"
+        },
+        {
+          "layer": "Base",
+          "index": 255,
+          "name": "Life Essence Quest Complete Activate Event Tester",
+          "class": "oCEntityCpntTesterSettings",
+          "guid": "9e39e22b77f7d347be717cfb3f364e27"
+        },
+        {
+          "layer": "Base",
+          "index": 287,
+          "name": "Skill Special Quest Proc Complete Tester",
+          "class": "oCEntityCpntTesterSettings",
+          "guid": "c7279764913a134ab2aa53b7ff8d15b7"
+        },
+        {
+          "layer": "Base",
+          "index": 288,
+          "name": "Skill Special Quest Proc Tester",
+          "class": "oCEntityCpntTesterSettings",
+          "guid": "48daaf30652ceb4aaf240ea11c96454b"
+        },
+        {
+          "layer": "Base",
+          "index": 430,
+          "name": "Skill Special Quest Healing Operation",
+          "class": "oCEntityCpntValueOperationsSettings",
+          "guid": "5138a96bf54e3b46a7f1f9b17e2bcd39"
+        },
+        {
+          "layer": "Base",
+          "index": 431,
+          "name": "Skill Special Quest Modifier Value Operation",
+          "class": "oCEntityCpntValueOperationsSettings",
+          "guid": "a120201e9aa709418ad50b83f7615936"
+        },
+        {
+          "layer": "Base",
+          "index": 475,
+          "name": "Skill Controller Special Quest",
+          "class": "oCDtEntityCpntSkillControllerSettings",
+          "guid": "1d7463c9f6ae79479bdd8bea8ccc29dd"
+        },
+        {
+          "layer": "Base",
+          "index": 486,
+          "name": "Skill Special Quest Health Gain",
+          "class": "oCDtEntityCpntResourceGainSettings",
+          "guid": "73c5d1f4d1e1ef4d896115597ca9e7ae"
+        },
+        {
+          "layer": "Base",
+          "index": 501,
+          "name": "Skill Special Quest Modifier",
+          "class": "oCEntityCpntModifierSettings",
+          "guid": "366a9d75a92c6645822f8793913bfe0a"
+        },
+        {
+          "layer": "Base",
+          "index": 554,
+          "name": "Skill String Desc Special Quest",
+          "class": "oCEntityCpntStringFormatValueSettings",
+          "guid": "aad5ec08cbf5864ba84478442a84ef21"
+        },
+        {
+          "layer": "Base",
+          "index": 770,
+          "name": "Skill Special Quest Complete Healing Factor Selector",
+          "class": "oCEntityCpntValueSelectorSettings",
+          "guid": "930de69a69b83a4d95e2e20424531732"
+        },
+        {
+          "layer": "Base",
+          "index": 771,
+          "name": "Skill Special Quest Fmod Value Selector",
+          "class": "oCEntityCpntValueSelectorSettings",
+          "guid": "6e3f6b23211d894ca910c0ce83e94588"
+        },
+        {
+          "layer": "Base",
+          "index": 820,
+          "name": "LIFE_ESSENCE_QUEST_COMPLETE Event Sender",
+          "class": "oCEntityCpntNamedEventSenderSettings",
+          "guid": "8d944c9fe49bec41bea586bae2c10a88"
+        },
+        {
+          "layer": "Base",
+          "index": 823,
+          "name": "SKILL_SPECIAL_QUEST_PROC_COUNTER_INC Event Sender",
+          "class": "oCEntityCpntNamedEventSenderSettings",
+          "guid": "3401733d7924144cb1235ced2c4f2026"
+        },
+        {
+          "layer": "Base",
+          "index": 923,
+          "name": "Skill Special Quest Count",
+          "class": "oCEntityCpntValueSettings",
+          "guid": "8b41bf8bf113444d876b8ceed2a67522"
+        },
+        {
+          "layer": "Base",
+          "index": 924,
+          "name": "Skill Special Quest Value Per Proc",
+          "class": "oCEntityCpntValueSettings",
+          "guid": "20e813d22bca6042bc30d477bd68aa10"
+        }
+      ],
+      "consumers": [
+        {
+          "layer": "Base",
+          "name": "Event Secondary Ability Attack Active",
+          "group": "Ability Secondary"
+        },
+        {
+          "layer": "Base",
+          "name": "Skill Controller Special Quest",
+          "group": "Skills"
+        },
+        {
+          "layer": "Base",
+          "name": "Skill String Desc Special Quest",
+          "group": "Skills"
+        },
+        {
+          "layer": "Base",
+          "name": "Quest Complete Feedback Skill Icon Selector",
+          "group": "UI"
+        },
+        {
+          "layer": "Base",
+          "name": "Quest Complete Feedback Skill Rarity Selector",
+          "group": "UI"
+        },
+        {
+          "layer": "Base",
+          "name": "Quest Feedback Resource Amount Value Selector",
+          "group": "UI"
+        }
+      ],
+      "confidence": "Card + partial entity graph",
+      "modEffect": "Quest grants maximum health; further qualifying kills restore health.",
+      "modTrigger": "SPECIAL bite kill"
+    },
+    {
+      "id": "victimization",
+      "name": "Victimization",
+      "key": "Special Marked",
+      "group": "Skill Special Marked",
+      "slot": "Special",
+      "tier": "Standard",
+      "trigger": "SPECIAL bite hit",
+      "effect": "Applies MARKED, increasing damage taken and passing the mark on death.",
+      "tags": [
+        "SPECIAL",
+        "damage",
+        "team"
+      ],
+      "synergy": "A broad target-side payoff: subsequent ATTACK, POWER, and allied damage can benefit. Your rush copies its application hook.",
+      "gap": "The bite marks one victim; spread relies on a death. Verify how the new multi-target rush propagates it.",
+      "status": "Broad bridge",
+      "components": [
+        {
+          "layer": "Base",
+          "index": 124,
+          "name": "Event Skill Special Marked",
+          "class": "oCEntityCpntStateSettings",
+          "guid": "49f98892cc3e9d499f63f6fb4411afdf"
+        },
+        {
+          "layer": "Base",
+          "index": 164,
+          "name": "Skill Special Marked",
+          "class": "oCEntityCpntStateSettings",
+          "guid": "346248fbcc751647bd907f05c3b15904"
+        },
+        {
+          "layer": "Base",
+          "index": 286,
+          "name": "Skill Special Marked Proc Tester",
+          "class": "oCEntityCpntTesterSettings",
+          "guid": "a6142a098fbde841b5ef0e9b656329b9"
+        },
+        {
+          "layer": "Base",
+          "index": 474,
+          "name": "Skill Controller Special Marked",
+          "class": "oCDtEntityCpntSkillControllerSettings",
+          "guid": "7ee726e4fe0c98418e7e37a42124e4b0"
+        },
+        {
+          "layer": "Base",
+          "index": 500,
+          "name": "Skill Special Marked Modifier",
+          "class": "oCEntityCpntModifierSettings",
+          "guid": "35023cf41646244f8812fb362f84289c"
+        },
+        {
+          "layer": "Base",
+          "index": 553,
+          "name": "Skill String Desc Special Marked",
+          "class": "oCEntityCpntStringFormatValueSettings",
+          "guid": "a8e9ef2cc24e8f4b8e5f3bf1b4b5359e"
+        },
+        {
+          "layer": "Base",
+          "index": 660,
+          "name": "Skill Defensive Mark FMod Event Spread",
+          "class": "oCEntityCpntFModEventSettings",
+          "guid": "11c1d78e8bbcef4b9d7146dd802ca918"
+        },
+        {
+          "layer": "Base",
+          "index": 769,
+          "name": "Skill Special Marked Time Selector",
+          "class": "oCEntityCpntValueSelectorSettings",
+          "guid": "770858d12d30f34894e44533028ae2fc"
+        },
+        {
+          "layer": "Base",
+          "index": 922,
+          "name": "Skill Special Marked Value",
+          "class": "oCEntityCpntValueSettings",
+          "guid": "23655089ea943b43944d7dcc0cf42e4c"
+        }
+      ],
+      "consumers": [
+        {
+          "layer": "Base",
+          "name": "Event On Secondary Ability Attack Character Impact",
+          "group": "Ability Secondary"
+        },
+        {
+          "layer": "Base",
+          "name": "Skill Controller Special Marked",
+          "group": "Skills"
+        },
+        {
+          "layer": "Base",
+          "name": "Skill String Desc Special Marked",
+          "group": "Skills"
+        }
+      ],
+      "confidence": "Card + partial entity graph",
+      "modEffect": "Applies MARKED, increasing damage taken and passing the mark on death.",
+      "modTrigger": "SPECIAL bite hit"
+    },
+    {
+      "id": "aggressive-flock",
+      "name": "Aggressive Flock",
+      "key": "Defense Projectile",
+      "group": "Skill Defense Projectile",
+      "slot": "Defense",
+      "tier": "Standard",
+      "trigger": "During DEFENSE",
+      "effect": "Periodically launches piercing bats at nearby enemies.",
+      "tags": [
+        "DEFENSE",
+        "projectiles"
+      ],
+      "synergy": "Bat Master supports defense play. Dispersion gives the end of that defensive sequence another purpose.",
+      "gap": "The bat projectile is a separate, missing entity. Do not assume its damage inherits every DEFENSE multiplier.",
+      "status": "External dependency",
+      "components": [
+        {
+          "layer": "Base",
+          "index": 42,
+          "name": "Skill Defense Projectile Timer",
+          "class": "oCEntityCpntTimerSettings",
+          "guid": "b422e73399ec824895f8f0761909b9db"
+        },
+        {
+          "layer": "Base",
+          "index": 114,
+          "name": "Event Skill Defense Projectile Spawn",
+          "class": "oCEntityCpntStateSettings",
+          "guid": "e022417bf867e0468a8c205071a20355"
+        },
+        {
+          "layer": "Base",
+          "index": 151,
+          "name": "Skill Defense Projectile",
+          "class": "oCEntityCpntStateSettings",
+          "guid": "1b6d63671221b942be904cc5730407c3"
+        },
+        {
+          "layer": "Base",
+          "index": 208,
+          "name": "State Skill Defense Projectile Active",
+          "class": "oCEntityCpntStateSettings",
+          "guid": "77bc8fd38c498f429347d3b86054156b"
+        },
+        {
+          "layer": "Base",
+          "index": 277,
+          "name": "Skill Defense Projectile Active Tester",
+          "class": "oCEntityCpntTesterSettings",
+          "guid": "61282f98951a0a4290de5d2a36e6ebad"
+        },
+        {
+          "layer": "Base",
+          "index": 278,
+          "name": "Skill Defense Projectile Can Spawn Tester",
+          "class": "oCEntityCpntTesterSettings",
+          "guid": "780f60a28631994391508f3cd1c524b5"
+        },
+        {
+          "layer": "Base",
+          "index": 384,
+          "name": "Skill Defense Projectile Spawner",
+          "class": "oCEntityCpntEntitySpawnerSettings",
+          "guid": "d1b8977bf7f04148881d3d4d70f3e0ed"
+        },
+        {
+          "layer": "Base",
+          "index": 422,
+          "name": "Skill Defense Projectile Supposed Damage Operation",
+          "class": "oCEntityCpntValueOperationsSettings",
+          "guid": "e90730ac5f63a34c9e1fd45f54243b72"
+        },
+        {
+          "layer": "Base",
+          "index": 461,
+          "name": "Skill Controller Defense Projectile",
+          "class": "oCDtEntityCpntSkillControllerSettings",
+          "guid": "eaae07f1d617554b89a91234280b28b0"
+        },
+        {
+          "layer": "Base",
+          "index": 540,
+          "name": "Skill String Desc Defense Projectile",
+          "class": "oCEntityCpntStringFormatValueSettings",
+          "guid": "4b2789e1cb2de74c86f48366ba336f45"
+        },
+        {
+          "layer": "Base",
+          "index": 579,
+          "name": "Skill Defense Projectile Spread Pos",
+          "class": "oCEntityCpntSpreadPosSettings",
+          "guid": "843d388c04d1f5459cdb438a908078ad"
+        },
+        {
+          "layer": "Base",
+          "index": 580,
+          "name": "Skill Defense Projectile Damage Multiplier Spawner Value",
+          "class": "oCEntityCpntSpawnerValueSettings",
+          "guid": "45e4d355be47de4b865dfb1a10fe8405"
+        },
+        {
+          "layer": "Base",
+          "index": 749,
+          "name": "Skill Defense Projectile Tick Selector",
+          "class": "oCEntityCpntValueSelectorSettings",
+          "guid": "374b3f2412cbf54d8d7265dadb4a9781"
+        },
+        {
+          "layer": "Base",
+          "index": 894,
+          "name": "Skill Defense Projectile Damage Multiplier",
+          "class": "oCEntityCpntValueSettings",
+          "guid": "55db3c25deb75443839913e89cc0996f"
+        }
+      ],
+      "consumers": [
+        {
+          "layer": "Base",
+          "name": "State Defensive Ability Active",
+          "group": "Ability Defensive"
+        },
+        {
+          "layer": "Base",
+          "name": "Skill Controller Defense Projectile",
+          "group": "Skills"
+        },
+        {
+          "layer": "Base",
+          "name": "Skill String Desc Defense Projectile",
+          "group": "Skills"
+        }
+      ],
+      "confidence": "Card + partial entity graph",
+      "modEffect": "Periodically launches piercing bats at nearby enemies.",
+      "modTrigger": "During DEFENSE"
+    },
+    {
+      "id": "bat-master",
+      "name": "Bat Master",
+      "key": "Defense Master",
+      "group": "Skill Defense Master",
+      "slot": "Defense",
+      "tier": "Starting",
+      "trigger": "Out-of-combat DEFENSE; DEFENSE damage",
+      "effect": "Adds stealth and blood-free travel outside combat, plus a defense damage bonus.",
+      "tags": [
+        "DEFENSE",
+        "BLOOD",
+        "utility"
+      ],
+      "synergy": "Supports defense-led play and movement; pairs naturally with Aggressive Flock and Dispersion as a play pattern.",
+      "gap": "Travel utility is useful regardless of build, but it is not a self-sustaining combat resource engine. Projectile inheritance is unresolved.",
+      "status": "Starter / utility",
+      "components": [
+        {
+          "layer": "Base",
+          "index": 41,
+          "name": "Skill Defense Master Lingering Visuals Timer",
+          "class": "oCEntityCpntTimerSettings",
+          "guid": "a276af8244c7f948b7bd9e85e8238847"
+        },
+        {
+          "layer": "Base",
+          "index": 150,
+          "name": "Skill Defense Master",
+          "class": "oCEntityCpntStateSettings",
+          "guid": "dbfc8409ea14c24d80b3f1bac9361c05"
+        },
+        {
+          "layer": "Base",
+          "index": 207,
+          "name": "State Skill Defense Master Active",
+          "class": "oCEntityCpntStateSettings",
+          "guid": "99583d6debbfa5419f9f98ed71040774"
+        },
+        {
+          "layer": "Base",
+          "index": 275,
+          "name": "Skill Defense Master Active Tester",
+          "class": "oCEntityCpntTesterSettings",
+          "guid": "6180712ad8c2df4fa1b3a2fa55c61dfb"
+        },
+        {
+          "layer": "Base",
+          "index": 276,
+          "name": "Skill Defense Master Stealth Visuals Tester",
+          "class": "oCEntityCpntTesterSettings",
+          "guid": "bccc6b117305024cb443cf27e65fdaf7"
+        },
+        {
+          "layer": "Base",
+          "index": 460,
+          "name": "Skill Controller Defense Master",
+          "class": "oCDtEntityCpntSkillControllerSettings",
+          "guid": "ee72f1f066ae3449964ef627987b8a44"
+        },
+        {
+          "layer": "Base",
+          "index": 494,
+          "name": "Skill Defense Master AP Modifier",
+          "class": "oCEntityCpntModifierSettings",
+          "guid": "1c4561a9aceb25479d5d50808f57a985"
+        },
+        {
+          "layer": "Base",
+          "index": 539,
+          "name": "Skill String Desc Defense Master",
+          "class": "oCEntityCpntStringFormatValueSettings",
+          "guid": "c6101d7b2725a6499d91006e89bbea82"
+        },
+        {
+          "layer": "Base",
+          "index": 659,
+          "name": "Skill Defense Master FMod Event Active",
+          "class": "oCEntityCpntFModEventSettings",
+          "guid": "a70aa5d67c27a440a38685eddafeb0bd"
+        },
+        {
+          "layer": "Base",
+          "index": 748,
+          "name": "Skill Defense Master AP Selector",
+          "class": "oCEntityCpntValueSelectorSettings",
+          "guid": "fb5bbea32270ba4a92af72e65f710fc1"
+        },
+        {
+          "layer": "Update6",
+          "index": 27,
+          "name": "Skill Defense Master AP Selector",
+          "class": "oCEntityCpntValueSelectorSettings",
+          "guid": "f8451417c76e4e4b896a6f816a5bbdc2"
+        }
+      ],
+      "consumers": [
+        {
+          "layer": "Base",
+          "name": "Defensive Ability Loop Chronometer",
+          "group": "Ability Defensive"
+        },
+        {
+          "layer": "Base",
+          "name": "State Defensive Ability ",
+          "group": "Ability Defensive"
+        },
+        {
+          "layer": "Base",
+          "name": "Skill Controller Defense Master",
+          "group": "Skills"
+        },
+        {
+          "layer": "Base",
+          "name": "Skill String Desc Defense Master",
+          "group": "Skills"
+        },
+        {
+          "layer": "Base",
+          "name": "Bats Albedo Mul Color Selector",
+          "group": "Shading"
+        },
+        {
+          "layer": "Base",
+          "name": "Bats Emissive Mul Color Selector",
+          "group": "Shading"
+        }
+      ],
+      "confidence": "Card + partial entity graph",
+      "modEffect": "Adds stealth and blood-free travel outside combat, plus a defense damage bonus.",
+      "modTrigger": "Out-of-combat DEFENSE; DEFENSE damage"
+    },
+    {
+      "id": "dispersion",
+      "name": "Dispersion",
+      "key": "Defense Aoe Bleed",
+      "group": "Skill Defense Aoe Bleed",
+      "slot": "Defense",
+      "tier": "Standard",
+      "trigger": "DEFENSE ends",
+      "effect": "Disperses bats, dealing area damage as bleed.",
+      "tags": [
+        "DEFENSE",
+        "BLEED"
+      ],
+      "synergy": "An immediate setup route into Flesh Rip and Sadism; Cruel Strike also rewards leaving DEFENSE.",
+      "gap": "Returning to DEFENSE to refresh bleed interrupts POWER channeling. Official displayed damage differs from a wiki value; no raw constant is presented as final damage.",
+      "status": "Status source",
+      "components": [
+        {
+          "layer": "Base",
+          "index": 113,
+          "name": "Event Skill Defense Aoe Bleed Active",
+          "class": "oCEntityCpntStateSettings",
+          "guid": "7b45f36e6fcd4a43b32c45aa9c35df04"
+        },
+        {
+          "layer": "Base",
+          "index": 149,
+          "name": "Skill Defense Aoe Bleed",
+          "class": "oCEntityCpntStateSettings",
+          "guid": "9efbb47b473e83489270810f64e30c80"
+        },
+        {
+          "layer": "Base",
+          "index": 274,
+          "name": "Skill Defense Aoe Bleed Tester",
+          "class": "oCEntityCpntTesterSettings",
+          "guid": "66fc4e2e84937941bb27e9f71d9e759f"
+        },
+        {
+          "layer": "Base",
+          "index": 421,
+          "name": "Skill Defense Aoe Bleed Value Operation",
+          "class": "oCEntityCpntValueOperationsSettings",
+          "guid": "7d83a761d5f1ec438dea9b0da91e68e7"
+        },
+        {
+          "layer": "Base",
+          "index": 459,
+          "name": "Skill Controller Defense Aoe Bleed",
+          "class": "oCDtEntityCpntSkillControllerSettings",
+          "guid": "b739454fefdb884fb0ea277381efc649"
+        },
+        {
+          "layer": "Base",
+          "index": 493,
+          "name": "Skill Defense Aoe Bleed Modifier",
+          "class": "oCEntityCpntModifierSettings",
+          "guid": "6d82f55fd2effa48b4bbaa1cc697d7d5"
+        },
+        {
+          "layer": "Base",
+          "index": 514,
+          "name": "Skill Defense Aoe Bleed Damage",
+          "class": "oCDtEntityCpntDamageSettings",
+          "guid": "6a254cf5dc608c4e8dc75adfb5506a75"
+        },
+        {
+          "layer": "Base",
+          "index": 538,
+          "name": "Skill String Desc Defense Aoe Bleed",
+          "class": "oCEntityCpntStringFormatValueSettings",
+          "guid": "5a20279fdab3184895ab7a30a652977f"
+        },
+        {
+          "layer": "Base",
+          "index": 658,
+          "name": "Skill Defense Aoe Bleed FMod Event",
+          "class": "oCEntityCpntFModEventSettings",
+          "guid": "43b75195a13d0240a5c4f33ac1505966"
+        },
+        {
+          "layer": "Base",
+          "index": 747,
+          "name": "Skill Defense Aoe Bleed Selector",
+          "class": "oCEntityCpntValueSelectorSettings",
+          "guid": "75d8d0f32fbdcb43a2c275845305e64f"
+        },
+        {
+          "layer": "Base",
+          "index": 803,
+          "name": "Skill Defense Aoe Bleed Zone Attack",
+          "class": "oCEntityCpntZoneAttackSettings",
+          "guid": "4830e1b951facd45a9094590b7299522"
+        },
+        {
+          "layer": "Base",
+          "index": 893,
+          "name": "Skill Defense Aoe Bleed Range Value",
+          "class": "oCEntityCpntValueSettings",
+          "guid": "68843f296ace434c89520186027ac08f"
+        },
+        {
+          "layer": "Base",
+          "index": 1001,
+          "name": "Skill Defense Aoe Bleed Traverser",
+          "class": "oCEntityCpntGpnTraverserSettings",
+          "guid": "855044dec3760d4480d2ee886da893dd"
+        },
+        {
+          "layer": "Base",
+          "index": 1053,
+          "name": "Skill Defense Aoe Bleed Fx",
+          "class": "oCEntityCpntFxSettings",
+          "guid": "bdaa1b7ec351a047b37cff37ec4112ee"
+        }
+      ],
+      "consumers": [
+        {
+          "layer": "Base",
+          "name": "State Defensive Ability Active",
+          "group": "Ability Defensive"
+        },
+        {
+          "layer": "Base",
+          "name": "Skill Controller Defense Aoe Bleed",
+          "group": "Skills"
+        },
+        {
+          "layer": "Base",
+          "name": "Skill String Desc Defense Aoe Bleed",
+          "group": "Skills"
+        }
+      ],
+      "confidence": "Card + partial entity graph",
+      "modEffect": "Disperses bats, dealing area damage as bleed.",
+      "modTrigger": "DEFENSE ends"
+    },
+    {
+      "id": "puncture",
+      "name": "Puncture",
+      "key": "Dash Blood",
+      "group": "Skill Dash Blood",
+      "slot": "Dash",
+      "tier": "Standard",
+      "trigger": "DASH passes through enemies",
+      "effect": "Gains blood for each enemy crossed.",
+      "tags": [
+        "DASH",
+        "BLOOD",
+        "mobility"
+      ],
+      "synergy": "Turns repositioning into fuel for POWER, DEFENSE, Winged Form, and Impalement.",
+      "gap": "In your package its dash animation is selected ahead of Onslaught. Having both talents may prevent the intended rush.",
+      "status": "Resource bridge",
+      "components": [
+        {
+          "layer": "Base",
+          "index": 63,
+          "name": "Skill Dash Blood Clip Selector",
+          "class": "oCEntityCpntSelectorSettings",
+          "guid": "66447d2e04d57a4f97aef9f6183f46a3"
+        },
+        {
+          "layer": "Base",
+          "index": 100,
+          "name": "Event On Skill Dash Blood Character Impact",
+          "class": "oCEntityCpntStateSettings",
+          "guid": "7e3bcf3f54bce74fadb854d10da72cb7"
+        },
+        {
+          "layer": "Base",
+          "index": 147,
+          "name": "Skill Dash Blood",
+          "class": "oCEntityCpntStateSettings",
+          "guid": "86460c28b378f44b967f4afb67801463"
+        },
+        {
+          "layer": "Base",
+          "index": 186,
+          "name": "State Dash Blood Active",
+          "class": "oCEntityCpntStateSettings",
+          "guid": "3b547a89d516c848a0db698b4a8364a7"
+        },
+        {
+          "layer": "Base",
+          "index": 272,
+          "name": "Skill Dash Blood Active Tester",
+          "class": "oCEntityCpntTesterSettings",
+          "guid": "3bd6ab16036039439394b89face6c83d"
+        },
+        {
+          "layer": "Base",
+          "index": 359,
+          "name": "Skill Dash Blood Anim",
+          "class": "oCEntityCpntAnimaticSettings",
+          "guid": "4d397bff25e77f4cb6a450cf7e972dc1"
+        },
+        {
+          "layer": "Base",
+          "index": 360,
+          "name": "Skill Dash Blood Wings Anim",
+          "class": "oCEntityCpntAnimaticSettings",
+          "guid": "95638b56f2388c4caf1ebb7a6868f4b6"
+        },
+        {
+          "layer": "Base",
+          "index": 457,
+          "name": "Skill Controller Dash Blood",
+          "class": "oCDtEntityCpntSkillControllerSettings",
+          "guid": "1d6c89cf91374e4192ec3e1bfdad2d5e"
+        },
+        {
+          "layer": "Base",
+          "index": 512,
+          "name": "Skill Dash Blood Damage",
+          "class": "oCDtEntityCpntDamageSettings",
+          "guid": "55cfc6c58bc1d24e8fb68fa700cd36ef"
+        },
+        {
+          "layer": "Base",
+          "index": 536,
+          "name": "Skill String Desc Dash Blood",
+          "class": "oCEntityCpntStringFormatValueSettings",
+          "guid": "13dbc6b6357e8a41a465147c521d6947"
+        },
+        {
+          "layer": "Base",
+          "index": 652,
+          "name": "Skill Dash Blood FMod Event Anim",
+          "class": "oCEntityCpntFModEventSettings",
+          "guid": "17f08ccaea5c3949a60bac9b0d1dc4fa"
+        },
+        {
+          "layer": "Base",
+          "index": 653,
+          "name": "Skill Dash Blood FMod Event Anim Wings",
+          "class": "oCEntityCpntFModEventSettings",
+          "guid": "7bd1986fd62374449a7fc17f9e27a487"
+        },
+        {
+          "layer": "Base",
+          "index": 654,
+          "name": "Skill Dash Blood FMod Event Character Impact",
+          "class": "oCEntityCpntFModEventSettings",
+          "guid": "e1788f6e80309d4694fb52fc007197d7"
+        },
+        {
+          "layer": "Base",
+          "index": 745,
+          "name": "Skill Dash Blood Value Selector",
+          "class": "oCEntityCpntValueSelectorSettings",
+          "guid": "571288defec0d949b8aa710325b5a1b2"
+        },
+        {
+          "layer": "Base",
+          "index": 802,
+          "name": "Skill Dash Blood Attack",
+          "class": "oCEntityCpntZoneAttackSettings",
+          "guid": "56a1834582e52d458e7d858d3448a95a"
+        },
+        {
+          "layer": "Base",
+          "index": 973,
+          "name": "Skill Dash Blood Clip",
+          "class": "oCEntityCpntAnimClipSettings",
+          "guid": "0382cdf21271f54e8ae7eb61fc8f3716"
+        },
+        {
+          "layer": "Base",
+          "index": 974,
+          "name": "Skill Dash Blood Wings Clip",
+          "class": "oCEntityCpntAnimClipSettings",
+          "guid": "729087ca7d3d8244bee1a584d44836c1"
+        },
+        {
+          "layer": "Base",
+          "index": 999,
+          "name": "Skill Dash Blood Traverser",
+          "class": "oCEntityCpntGpnTraverserSettings",
+          "guid": "c31c066d41dca94fa11bfc0aa95e394e"
+        },
+        {
+          "layer": "Base",
+          "index": 1026,
+          "name": "Dash Blood FX",
+          "class": "oCEntityCpntFxSettings",
+          "guid": "e46ec511d5ec2a4bac3e1e741a782a29"
+        },
+        {
+          "layer": "Base",
+          "index": 1048,
+          "name": "Skill Dash Blood Fx Character Impact",
+          "class": "oCEntityCpntFxSettings",
+          "guid": "2794ca2e6fb24f46a0196b11cd2db091"
+        }
+      ],
+      "consumers": [
+        {
+          "layer": "Base",
+          "name": "Blood Gain Fx Selector",
+          "group": "Ability Common"
+        },
+        {
+          "layer": "Base",
+          "name": "Dash Ability Clip Selector",
+          "group": "Ability Dash"
+        },
+        {
+          "layer": "Base",
+          "name": "Skill Controller Dash Blood",
+          "group": "Skills"
+        },
+        {
+          "layer": "Base",
+          "name": "Skill String Desc Dash Blood",
+          "group": "Skills"
+        },
+        {
+          "layer": "Base",
+          "name": "Blood Gain Selector",
+          "group": "Ability Common"
+        },
+        {
+          "layer": "Update6",
+          "name": "Dash Ability Clip Selector",
+          "group": "Ability Dash"
+        }
+      ],
+      "confidence": "Card + partial entity graph",
+      "modEffect": "Gains blood for each enemy crossed.",
+      "modTrigger": "DASH passes through enemies"
+    },
+    {
+      "id": "seductive-provocation",
+      "name": "Seductive Provocation",
+      "key": "Dash Taunt",
+      "group": "Skill Dash Taunt",
+      "slot": "Dash",
+      "tier": "Standard",
+      "trigger": "Directionless DASH input (game)",
+      "effect": "Seduces up to four non-boss targets, applying WEAKENED and VULNERABLE; six-second cooldown.",
+      "tags": [
+        "DASH",
+        "control",
+        "damage",
+        "team"
+      ],
+      "synergy": "VULNERABLE helps multiple damage routes; WEAKENED makes close setup safer.",
+      "gap": "Boss exclusion limits the payoff. Your dash-end request is not wired in the submitted package; the Update6 controller retains the directionless input action.",
+      "status": "Earlier request pending",
+      "components": [
+        {
+          "layer": "Base",
+          "index": 111,
+          "name": "Event Skill Dash Taunt Activate",
+          "class": "oCEntityCpntStateSettings",
+          "guid": "f623781d546e3d4281a0c9ea022d59d6"
+        },
+        {
+          "layer": "Base",
+          "index": 112,
+          "name": "Event Skill Dash Taunt Impact Fx",
+          "class": "oCEntityCpntStateSettings",
+          "guid": "c4f322890c20ac4e85be5a20df9198b2"
+        },
+        {
+          "layer": "Base",
+          "index": 148,
+          "name": "Skill Dash Taunt",
+          "class": "oCEntityCpntStateSettings",
+          "guid": "f566076bf63a434a8dc409d78606eb7e"
+        },
+        {
+          "layer": "Base",
+          "index": 273,
+          "name": "Skill Dash Taunt Activation Condition",
+          "class": "oCEntityCpntTesterSettings",
+          "guid": "3eb757a167e732479dd81fb3b3cd18d8"
+        },
+        {
+          "layer": "Base",
+          "index": 361,
+          "name": "Skill Dash Taunt Animatic",
+          "class": "oCEntityCpntAnimaticSettings",
+          "guid": "cc949cf53d542f4f8f88fd5dcb8320b5"
+        },
+        {
+          "layer": "Base",
+          "index": 388,
+          "name": "Skill Dash Taunt Fx Attack",
+          "class": "EntityAttackEntityCpntSettings",
+          "guid": "12778333d1f77e448f5b082917bed787"
+        },
+        {
+          "layer": "Base",
+          "index": 458,
+          "name": "Skill Controller Dash Taunt",
+          "class": "oCDtEntityCpntSkillControllerSettings",
+          "guid": "f6cccba66fce4240b70084d6e048ed0d"
+        },
+        {
+          "layer": "Base",
+          "index": 491,
+          "name": "Skill Dash Taunt Vulnerable Modifier",
+          "class": "oCEntityCpntModifierSettings",
+          "guid": "ae5d9e017a9099489fb72af986c7c540"
+        },
+        {
+          "layer": "Base",
+          "index": 492,
+          "name": "Skill Dash Taunt Weakness Modifier",
+          "class": "oCEntityCpntModifierSettings",
+          "guid": "f5dc5f941640cb48800292cfaa9b4e40"
+        },
+        {
+          "layer": "Base",
+          "index": 513,
+          "name": "Skill Dash Taunt FX Damage",
+          "class": "oCDtEntityCpntDamageSettings",
+          "guid": "1ec3f84bad01054baa3cdfb4baf031fe"
+        },
+        {
+          "layer": "Base",
+          "index": 537,
+          "name": "Skill String Desc Dash Taunt",
+          "class": "oCEntityCpntStringFormatValueSettings",
+          "guid": "3457a6e06576e8409e016febe7748b28"
+        },
+        {
+          "layer": "Base",
+          "index": 576,
+          "name": "Skill Dash Taunt Target Computer",
+          "class": "oCEntityCpntGpnTargetComputerSettings",
+          "guid": "c39a77c4a7878849a7544cd9ce7b72ac"
+        },
+        {
+          "layer": "Base",
+          "index": 595,
+          "name": "Skill Dash Taunt Fresnel Anim",
+          "class": "oCEntityCpntValueAnimSettings",
+          "guid": "f122cf7afa19cc4d9b4126251dc5557f"
+        },
+        {
+          "layer": "Base",
+          "index": 655,
+          "name": "Skill Dash Taunt FMod Event Active",
+          "class": "oCEntityCpntFModEventSettings",
+          "guid": "ec269ed428e7b2429487ae1b05a67faa"
+        },
+        {
+          "layer": "Base",
+          "index": 656,
+          "name": "Skill Dash Taunt FMod Event Anim",
+          "class": "oCEntityCpntFModEventSettings",
+          "guid": "0e4555568ec1d549af3bddb4d01fee0e"
+        },
+        {
+          "layer": "Base",
+          "index": 657,
+          "name": "Skill Dash Taunt FMod Event Character Impact",
+          "class": "oCEntityCpntFModEventSettings",
+          "guid": "5246fa4c4c4afa4aa7604455465b534c"
+        },
+        {
+          "layer": "Base",
+          "index": 746,
+          "name": "Skill Dash Taunt Value Selector",
+          "class": "oCEntityCpntValueSelectorSettings",
+          "guid": "ebf98e4ab889df449150cfc773101004"
+        },
+        {
+          "layer": "Base",
+          "index": 816,
+          "name": "Skill Dash Taunt Look At",
+          "class": "oCEntityCpntLookAtSettings",
+          "guid": "f14b0077394bb84099798e31d3d2d329"
+        },
+        {
+          "layer": "Base",
+          "index": 892,
+          "name": "Skill Dash Taunt Effect Duration Value",
+          "class": "oCEntityCpntValueSettings",
+          "guid": "30a4da8aecd5d945b00b1536c204967e"
+        },
+        {
+          "layer": "Base",
+          "index": 975,
+          "name": "Skill Dash Taunt Anim Clip",
+          "class": "oCEntityCpntAnimClipSettings",
+          "guid": "ec6a97209bddc34abcfe22311aa6b414"
+        },
+        {
+          "layer": "Base",
+          "index": 1000,
+          "name": "Skill Dash Taunt Traverser",
+          "class": "oCEntityCpntGpnTraverserSettings",
+          "guid": "7d38628717291e4cb9ac0d7f340073ee"
+        },
+        {
+          "layer": "Base",
+          "index": 1049,
+          "name": "Skill Dash Taunt Aura Warmup Fx",
+          "class": "oCEntityCpntFxSettings",
+          "guid": "2b3e19fe360a764293209d427ccafe43"
+        },
+        {
+          "layer": "Base",
+          "index": 1050,
+          "name": "Skill Dash Taunt Character Impact Fx",
+          "class": "oCEntityCpntFxSettings",
+          "guid": "0daad7dfc0737b4880cb242c9292836b"
+        },
+        {
+          "layer": "Base",
+          "index": 1051,
+          "name": "Skill Dash Taunt Fx",
+          "class": "oCEntityCpntFxSettings",
+          "guid": "2db3e69ddfb4d54cbc8108a30a8e8632"
+        },
+        {
+          "layer": "Base",
+          "index": 1052,
+          "name": "Skill Dash Taunt Kiss Fx",
+          "class": "oCEntityCpntFxSettings",
+          "guid": "66f9ca57196706448ae0932af2071659"
+        },
+        {
+          "layer": "Update6",
+          "index": 1,
+          "name": "Skill Dash Taunt Cooldown Timer",
+          "class": "oCEntityCpntTimerSettings",
+          "guid": "9e2183c6f641e846888c226c2a5bb715"
+        },
+        {
+          "layer": "Update6",
+          "index": 6,
+          "name": "Event Skill Dash Taunt Activate",
+          "class": "oCEntityCpntStateSettings",
+          "guid": "62a8e0352c59ce41b34799e38922898e"
+        },
+        {
+          "layer": "Update6",
+          "index": 8,
+          "name": "State Skill Dash Taunt",
+          "class": "oCEntityCpntStateSettings",
+          "guid": "7cd45f0603e1bf418ce4205390032742"
+        },
+        {
+          "layer": "Update6",
+          "index": 10,
+          "name": "Skill Dash Taunt Activation Condition",
+          "class": "oCEntityCpntTesterSettings",
+          "guid": "5837a2800b2fc644a9608f8fab7bdda4"
+        },
+        {
+          "layer": "Update6",
+          "index": 13,
+          "name": "Skill Dash Taunt Animatic",
+          "class": "oCEntityCpntAnimaticSettings",
+          "guid": "1924a440fd73594a9db1284c1263dce0"
+        },
+        {
+          "layer": "Update6",
+          "index": 14,
+          "name": "Skill Controller Dash Taunt",
+          "class": "oCDtEntityCpntSkillControllerSettings",
+          "guid": "4cb7265e3b509545a5f20c477c12987b"
+        },
+        {
+          "layer": "Update6",
+          "index": 16,
+          "name": "Skill Dash Taunt Vulnerable Modifier",
+          "class": "oCEntityCpntModifierSettings",
+          "guid": "563e52ae0851f54cab5c937c644dbb87"
+        },
+        {
+          "layer": "Update6",
+          "index": 17,
+          "name": "Skill Dash Taunt Weakness Modifier",
+          "class": "oCEntityCpntModifierSettings",
+          "guid": "55db3e751208d449baee448b60a87b0f"
+        },
+        {
+          "layer": "Update6",
+          "index": 18,
+          "name": "Dt Damage Dash Taunt",
+          "class": "oCDtEntityCpntDamageSettings",
+          "guid": "2bc39bbb4ab842468de5249e2e42f672"
+        },
+        {
+          "layer": "Update6",
+          "index": 22,
+          "name": "Skill String Desc Dash Taunt",
+          "class": "oCEntityCpntStringFormatValueSettings",
+          "guid": "c973b3c2f39dd44e82a4bcda40356d92"
+        },
+        {
+          "layer": "Update6",
+          "index": 23,
+          "name": "Skill Dash Taunt Gpn Target Attack",
+          "class": "oCEntityCpntGpnTargetAttackSettings",
+          "guid": "7ad8330d1ef31b4b8bde1b22537fea32"
+        },
+        {
+          "layer": "Update6",
+          "index": 24,
+          "name": "Skill Dash Taunt Target Computer",
+          "class": "oCEntityCpntGpnTargetComputerSettings",
+          "guid": "f7e1ed5c3c92c446b4af9e87fa8a0106"
+        },
+        {
+          "layer": "Update6",
+          "index": 25,
+          "name": "Effect Duration Value Selector ",
+          "class": "oCEntityCpntValueSelectorSettings",
+          "guid": "695d291c383421479c546ecc3e55e1b1"
+        },
+        {
+          "layer": "Update6",
+          "index": 26,
+          "name": "Skill Dash Taunt Value Selector",
+          "class": "oCEntityCpntValueSelectorSettings",
+          "guid": "077801db058400428302bd7c15ec4e8f"
+        },
+        {
+          "layer": "Update6",
+          "index": 30,
+          "name": "Gpn Zone Attack Dash Taunt",
+          "class": "oCEntityCpntZoneAttackSettings",
+          "guid": "32503bcd5e192847a134e4fda5e2b341"
+        },
+        {
+          "layer": "Update6",
+          "index": 33,
+          "name": "Skill Dash Taunt Cooldown Value",
+          "class": "oCEntityCpntValueSettings",
+          "guid": "dafa55451d3b504ba427e943045951b4"
+        },
+        {
+          "layer": "Update6",
+          "index": 34,
+          "name": "Skill Dash Taunt Effect Duration Value",
+          "class": "oCEntityCpntValueSettings",
+          "guid": "d96d5cdb668927438c2c9ad1eea12be8"
+        },
+        {
+          "layer": "Update6",
+          "index": 38,
+          "name": "Skill Dash Taunt Anim Clip",
+          "class": "oCEntityCpntAnimClipSettings",
+          "guid": "6a356cae6836194984332125c8b3fb80"
+        },
+        {
+          "layer": "Update6",
+          "index": 39,
+          "name": "Skill Dash Taunt Traverser",
+          "class": "oCEntityCpntGpnTraverserSettings",
+          "guid": "a866094caf7b5748bb3476b065b88422"
+        },
+        {
+          "layer": "Update6",
+          "index": 40,
+          "name": "Skill Dash Taunt Fx",
+          "class": "oCEntityCpntFxSettings",
+          "guid": "d878e5123425fb408a581917c32c764b"
+        }
+      ],
+      "consumers": [
+        {
+          "layer": "Base",
+          "name": "Dash Ability Clip Selector",
+          "group": "Ability Dash"
+        },
+        {
+          "layer": "Base",
+          "name": "Skill Controller Dash Taunt",
+          "group": "Skills"
+        },
+        {
+          "layer": "Base",
+          "name": "Skill String Desc Dash Taunt",
+          "group": "Skills"
+        },
+        {
+          "layer": "Base",
+          "name": "Fresnel Color Main Selector Custom",
+          "group": "Shading"
+        },
+        {
+          "layer": "Update6",
+          "name": "Dash Controller Selector",
+          "group": "Hero Controller"
+        },
+        {
+          "layer": "Update6",
+          "name": "Skill Controller Dash Taunt",
+          "group": "Skills"
+        },
+        {
+          "layer": "Update6",
+          "name": "Dash Taunt Ability Controller",
+          "group": "Hero Controller"
+        },
+        {
+          "layer": "Update6",
+          "name": "Skill String Desc Dash Taunt",
+          "group": "Skills"
+        }
+      ],
+      "confidence": "Card + partial entity graph",
+      "modEffect": "Seduces up to four non-boss targets, applying WEAKENED and VULNERABLE; six-second cooldown.",
+      "modTrigger": "Directionless DASH input (game)"
+    },
+    {
+      "id": "angel-and-demon",
+      "name": "Angel and Demon",
+      "key": "Trait Heal Buff",
+      "group": "Skill Trait Heal Buff",
+      "slot": "Trait",
+      "tier": "Standard",
+      "trigger": "TRAIT activation; Life Tap path in Update6",
+      "effect": "Day activation heals nearby heroes; night activation grants STRENGTH.",
+      "tags": [
+        "TRAIT",
+        "sustain",
+        "damage",
+        "team"
+      ],
+      "synergy": "A broad team payoff. Update6 Life Tap directly invokes its tester, connecting repeat activation with support.",
+      "gap": "Day/night changes the reward. One activation path can work while the Gust-specific animation path differs; test both.",
+      "status": "Broad bridge",
+      "components": [
+        {
+          "layer": "Base",
+          "index": 127,
+          "name": "Event Skill Trait Heal Buff Day Active",
+          "class": "oCEntityCpntStateSettings",
+          "guid": "5e813a7b92eafb4e85e19b3297b86e44"
+        },
+        {
+          "layer": "Base",
+          "index": 128,
+          "name": "Event Skill Trait Heal Buff Night Active",
+          "class": "oCEntityCpntStateSettings",
+          "guid": "99925e96cb77924aa4ba399297b946ae"
+        },
+        {
+          "layer": "Base",
+          "index": 166,
+          "name": "Skill Trait Heal Buff",
+          "class": "oCEntityCpntStateSettings",
+          "guid": "056aef624248a543a2d1eaf98e00adc4"
+        },
+        {
+          "layer": "Base",
+          "index": 289,
+          "name": "Skill Trait Heal Buff Buildup FX Tester",
+          "class": "oCEntityCpntTesterSettings",
+          "guid": "181dbae463e0794a92e7d8c12fcd9efe"
+        },
+        {
+          "layer": "Base",
+          "index": 290,
+          "name": "Skill Trait Heal Buff Day Night Tester",
+          "class": "oCEntityCpntTesterSettings",
+          "guid": "e00ba7007717c04491022747902ef596"
+        },
+        {
+          "layer": "Base",
+          "index": 291,
+          "name": "Skill Trait Heal Buff Tester",
+          "class": "oCEntityCpntTesterSettings",
+          "guid": "3bee46f61675354bab18bca190623c47"
+        },
+        {
+          "layer": "Base",
+          "index": 432,
+          "name": "Skill Trait Heal Buff Gain Life Operations",
+          "class": "oCEntityCpntValueOperationsSettings",
+          "guid": "8c8f302f688e39439a3eb369d4af5e2c"
+        },
+        {
+          "layer": "Base",
+          "index": 476,
+          "name": "Skill Controller Trait Heal Buff",
+          "class": "oCDtEntityCpntSkillControllerSettings",
+          "guid": "84a31ab6bc292a44a92e6566573935e5"
+        },
+        {
+          "layer": "Base",
+          "index": 487,
+          "name": "Skill Trait Heal Buff Gain Life",
+          "class": "oCDtEntityCpntResourceGainSettings",
+          "guid": "e47c5f3cbf07bd4684a2008aa15cc39d"
+        },
+        {
+          "layer": "Base",
+          "index": 502,
+          "name": "Skill Trait Heal Buff Strength Modifier",
+          "class": "oCEntityCpntModifierSettings",
+          "guid": "dc68583aafcf6340bbf87006b485b35e"
+        },
+        {
+          "layer": "Base",
+          "index": 555,
+          "name": "Skill String Desc Trait Heal Buff",
+          "class": "oCEntityCpntStringFormatValueSettings",
+          "guid": "5a85d101c0839642898322f389d43d35"
+        },
+        {
+          "layer": "Base",
+          "index": 669,
+          "name": "Skill Trait Heal Buff Heal FMod Event",
+          "class": "oCEntityCpntFModEventSettings",
+          "guid": "da40ad6c3b70ab478dffecc441237bd2"
+        },
+        {
+          "layer": "Base",
+          "index": 670,
+          "name": "Skill Trait Heal Buff Strength FMod Event",
+          "class": "oCEntityCpntFModEventSettings",
+          "guid": "b06050b43429464886b7d981f5b6c157"
+        },
+        {
+          "layer": "Base",
+          "index": 772,
+          "name": "Skill Trait Heal Buff Heal Selector",
+          "class": "oCEntityCpntValueSelectorSettings",
+          "guid": "edde8bd24be0c5428aef56efbdc98569"
+        },
+        {
+          "layer": "Base",
+          "index": 773,
+          "name": "Skill Trait Heal Buff Strength Time Selector",
+          "class": "oCEntityCpntValueSelectorSettings",
+          "guid": "a3d195a22d513b429a7c9229ecc116b5"
+        },
+        {
+          "layer": "Base",
+          "index": 925,
+          "name": "Skill Trait Heal Buff Radius",
+          "class": "oCEntityCpntValueSettings",
+          "guid": "d8d1939dee214b4fb34f2912375383b6"
+        },
+        {
+          "layer": "Base",
+          "index": 1004,
+          "name": "Skill Trait Heal Buff Heal Heroes Traverser",
+          "class": "oCEntityCpntGpnTraverserSettings",
+          "guid": "01d01b3df6ed67429759f89017b5c788"
+        },
+        {
+          "layer": "Base",
+          "index": 1063,
+          "name": "Skill Trait Heal Buff Buildup FX",
+          "class": "oCEntityCpntFxSettings",
+          "guid": "76fbeabbe839a547a6ba3fe34969899f"
+        },
+        {
+          "layer": "Base",
+          "index": 1064,
+          "name": "Skill Trait Heal Buff Heal Fx",
+          "class": "oCEntityCpntFxSettings",
+          "guid": "a0396038d1a746459d1e442d772757ae"
+        },
+        {
+          "layer": "Base",
+          "index": 1065,
+          "name": "Skill Trait Heal Buff Strength Fx",
+          "class": "oCEntityCpntFxSettings",
+          "guid": "23c07822fd3429409dccb092f295d2dc"
+        }
+      ],
+      "consumers": [
+        {
+          "layer": "Base",
+          "name": "State Trait Ability Active",
+          "group": "Ability Trait"
+        },
+        {
+          "layer": "Base",
+          "name": "Skill Controller Trait Heal Buff",
+          "group": "Skills"
+        },
+        {
+          "layer": "Base",
+          "name": "Skill String Desc Trait Heal Buff",
+          "group": "Skills"
+        },
+        {
+          "layer": "Update6",
+          "name": "Event Skill Trait Life Tap Active",
+          "group": "Skill Trait Life Tap"
+        }
+      ],
+      "confidence": "Card + partial entity graph",
+      "modEffect": "Day activation heals nearby heroes; night activation grants STRENGTH.",
+      "modTrigger": "TRAIT activation; Life Tap path in Update6"
+    },
+    {
+      "id": "gust",
+      "name": "Gust",
+      "key": "Trait Push Back",
+      "group": "Skill Trait Push Back",
+      "slot": "Trait",
+      "tier": "Standard",
+      "trigger": "TRAIT activation",
+      "effect": "Damages and pushes away nearby enemies.",
+      "tags": [
+        "TRAIT",
+        "control",
+        "area"
+      ],
+      "synergy": "Life Tap has a dedicated Gust animation branch in Update6. Can make transforming in close combat useful.",
+      "gap": "Pushback may displace targets from a follow-up bite or orb. Coexistence with Angel and Demon needs path-by-path testing.",
+      "status": "Version-sensitive",
+      "components": [
+        {
+          "layer": "Base",
+          "index": 130,
+          "name": "Event Skill Trait Push Back Active",
+          "class": "oCEntityCpntStateSettings",
+          "guid": "26d38aed367bc546b55055cb7b02e319"
+        },
+        {
+          "layer": "Base",
+          "index": 168,
+          "name": "Skill Trait Push Back",
+          "class": "oCEntityCpntStateSettings",
+          "guid": "92189464ce0f294d85f00cdd649606a3"
+        },
+        {
+          "layer": "Base",
+          "index": 292,
+          "name": "Skill Trait Push Back Tester",
+          "class": "oCEntityCpntTesterSettings",
+          "guid": "1c35bf430599404788cf9e38b88953c6"
+        },
+        {
+          "layer": "Base",
+          "index": 364,
+          "name": "Skill Trait Push Back Anim",
+          "class": "oCEntityCpntAnimaticSettings",
+          "guid": "b9a0d16dc52fe3419dff8845b59e9b06"
+        },
+        {
+          "layer": "Base",
+          "index": 365,
+          "name": "Skill Trait Push Back Life Tap Anim",
+          "class": "oCEntityCpntAnimaticSettings",
+          "guid": "ba5031d626ce2849af9544d78fbe36c9"
+        },
+        {
+          "layer": "Base",
+          "index": 434,
+          "name": "Skill Trait Push Back Supposed Damage Operation",
+          "class": "oCEntityCpntValueOperationsSettings",
+          "guid": "08624e47d917a842ac2bff0a4eaea8d1"
+        },
+        {
+          "layer": "Base",
+          "index": 518,
+          "name": "Skill Trait Push Back Damage",
+          "class": "oCDtEntityCpntDamageSettings",
+          "guid": "519553debc82454997330014b813fcad"
+        },
+        {
+          "layer": "Base",
+          "index": 557,
+          "name": "Skill String Desc Trait Push Back",
+          "class": "oCEntityCpntStringFormatValueSettings",
+          "guid": "ec659bf89ef6674a92d021865a9da77d"
+        },
+        {
+          "layer": "Base",
+          "index": 673,
+          "name": "Skill Trait Push Back FMod Event Active",
+          "class": "oCEntityCpntFModEventSettings",
+          "guid": "de5a9f4b6f288b4aa2d0fe650ed9632a"
+        },
+        {
+          "layer": "Base",
+          "index": 674,
+          "name": "Skill Trait Push Back FMod Event Anim",
+          "class": "oCEntityCpntFModEventSettings",
+          "guid": "397de631f4933045905c4f243bd4da5d"
+        },
+        {
+          "layer": "Base",
+          "index": 675,
+          "name": "Skill Trait Push Back FMod Event Life Tap Anim",
+          "class": "oCEntityCpntFModEventSettings",
+          "guid": "b2deee0bb55d964a89c254e4e6fe8e62"
+        },
+        {
+          "layer": "Base",
+          "index": 775,
+          "name": "Skill Trait Push Back Damage Selector",
+          "class": "oCEntityCpntValueSelectorSettings",
+          "guid": "16f1b880ded2814fa3de496e8b8c7d8e"
+        },
+        {
+          "layer": "Base",
+          "index": 805,
+          "name": "Skill Trait Push Back Zone Attack",
+          "class": "oCEntityCpntZoneAttackSettings",
+          "guid": "ce26fc94520b2147ac2370f1bc617d82"
+        },
+        {
+          "layer": "Base",
+          "index": 928,
+          "name": "Skill Trait Push Back Range Value",
+          "class": "oCEntityCpntValueSettings",
+          "guid": "1f81462e85d04c418f45375aad8e60a7"
+        },
+        {
+          "layer": "Base",
+          "index": 929,
+          "name": "Skill Trait Push Back Value",
+          "class": "oCEntityCpntValueSettings",
+          "guid": "6009c96e95446b42a45d59fa08cefa80"
+        },
+        {
+          "layer": "Base",
+          "index": 978,
+          "name": "Skill Trait Push Back Clip",
+          "class": "oCEntityCpntAnimClipSettings",
+          "guid": "fbdb34a2e2ae1a489458f3efaf92975f"
+        },
+        {
+          "layer": "Base",
+          "index": 979,
+          "name": "Skill Trait Push Back Life Tap Clip",
+          "class": "oCEntityCpntAnimClipSettings",
+          "guid": "0393cc1a54747e41989d9465ca7c537d"
+        },
+        {
+          "layer": "Base",
+          "index": 1005,
+          "name": "Skill Trait Push Back Traverser",
+          "class": "oCEntityCpntGpnTraverserSettings",
+          "guid": "ce76ef980484e84e9750451ccce690a7"
+        },
+        {
+          "layer": "Base",
+          "index": 1067,
+          "name": "Skill Trait Push Back Fx",
+          "class": "oCEntityCpntFxSettings",
+          "guid": "99bb1e3d68cab04fb9d402d956d4b4d1"
+        },
+        {
+          "layer": "Base",
+          "index": 1068,
+          "name": "Skill Trait Push Back Wings Trails Fx",
+          "class": "oCEntityCpntFxSettings",
+          "guid": "50adb196ba23534ba287f7d88e6a6bb0"
+        }
+      ],
+      "consumers": [
+        {
+          "layer": "Base",
+          "name": "Ability Trait Clip Selector",
+          "group": "Ability Trait"
+        },
+        {
+          "layer": "Base",
+          "name": "Skill Controller Trait Push back",
+          "group": "Skills"
+        },
+        {
+          "layer": "Base",
+          "name": "Skill String Desc Trait Push Back",
+          "group": "Skills"
+        },
+        {
+          "layer": "Update6",
+          "name": "Skill Trait Life Tap Clip Selector",
+          "group": "Skill Trait Life Tap"
+        }
+      ],
+      "confidence": "Card + partial entity graph",
+      "modEffect": "Damages and pushes away nearby enemies.",
+      "modTrigger": "TRAIT activation"
+    },
+    {
+      "id": "life-tap",
+      "name": "Life Tap",
+      "key": "Trait Life Tap",
+      "group": "Skill Trait Life Tap",
+      "slot": "Trait",
+      "tier": "Starting",
+      "trigger": "Reactivate TRAIT in Winged Form",
+      "effect": "Trades a fraction of maximum health for blood, subject to a health floor and cooldown.",
+      "tags": [
+        "TRAIT",
+        "BLOOD",
+        "sustain"
+      ],
+      "synergy": "Feeds Winged Form and other blood uses. Update6 routes to Angel and Demon and a Gust-specific animation.",
+      "gap": "It is a starter: cannot normally pair with Blood Rage, Life Essence, or Bat Master. A health trade is not automatically healing or regeneration synergy.",
+      "status": "Starter / resource bridge",
+      "components": [
+        {
+          "layer": "Base",
+          "index": 65,
+          "name": "Skill Trait Life Tap Clip Selector",
+          "class": "oCEntityCpntSelectorSettings",
+          "guid": "7d1f8582527f6c48834a4be9a333042c"
+        },
+        {
+          "layer": "Base",
+          "index": 129,
+          "name": "Event Skill Trait Life Tap Active",
+          "class": "oCEntityCpntStateSettings",
+          "guid": "d718e777f3fe0748949cb57f2b0e2737"
+        },
+        {
+          "layer": "Base",
+          "index": 167,
+          "name": "Skill Trait Life Tap",
+          "class": "oCEntityCpntStateSettings",
+          "guid": "50b22096e4e2934eac96e353d2eb8a13"
+        },
+        {
+          "layer": "Base",
+          "index": 215,
+          "name": "State Skill Trait Life Tap Ongoing",
+          "class": "oCEntityCpntStateSettings",
+          "guid": "6d22b3e3a2871a4babac5743ed48cb52"
+        },
+        {
+          "layer": "Base",
+          "index": 363,
+          "name": "Skill Trait Life Tap Anim",
+          "class": "oCEntityCpntAnimaticSettings",
+          "guid": "7e5523fcdbbcd441b1a8b30b9e4eb137"
+        },
+        {
+          "layer": "Base",
+          "index": 433,
+          "name": "Skill Trait Life Tap Health Cost Operation",
+          "class": "oCEntityCpntValueOperationsSettings",
+          "guid": "872662647e5bb743ae5d50bde6929f8f"
+        },
+        {
+          "layer": "Base",
+          "index": 477,
+          "name": "Skill Controller Trait Life Tap",
+          "class": "oCDtEntityCpntSkillControllerSettings",
+          "guid": "b167a2d2997fb544a7080693b03fb066"
+        },
+        {
+          "layer": "Base",
+          "index": 517,
+          "name": "Skill Trait Life Tap Self Damage",
+          "class": "oCDtEntityCpntDamageSettings",
+          "guid": "44aca20fa73fd34cae2e2f2cf3b8bc79"
+        },
+        {
+          "layer": "Base",
+          "index": 556,
+          "name": "Skill String Desc Trait Life Tap",
+          "class": "oCEntityCpntStringFormatValueSettings",
+          "guid": "31f60699442aa141b6e47471242c3fd4"
+        },
+        {
+          "layer": "Base",
+          "index": 671,
+          "name": "Skill Trait Life Tap FMod Event Active",
+          "class": "oCEntityCpntFModEventSettings",
+          "guid": "e5bae66cbd82d440bb6dee6998cc46fe"
+        },
+        {
+          "layer": "Base",
+          "index": 672,
+          "name": "Skill Trait Life Tap FMod Event Anim",
+          "class": "oCEntityCpntFModEventSettings",
+          "guid": "db63b27c10af1a4fb6b9a90e70ef51bd"
+        },
+        {
+          "layer": "Base",
+          "index": 774,
+          "name": "Skill Trait Life Tap Blood Gain Selector",
+          "class": "oCEntityCpntValueSelectorSettings",
+          "guid": "9e32cd9a5d1a384da279211e7981ee8a"
+        },
+        {
+          "layer": "Base",
+          "index": 926,
+          "name": "Skill Trait Life Tap Cooldown",
+          "class": "oCEntityCpntValueSettings",
+          "guid": "46922df4477472479c03c4a3d509867f"
+        },
+        {
+          "layer": "Base",
+          "index": 927,
+          "name": "Skill Trait Life Tap Health Ratio Cost",
+          "class": "oCEntityCpntValueSettings",
+          "guid": "b3121e8de0d11146866bf0e6cae60c85"
+        },
+        {
+          "layer": "Base",
+          "index": 977,
+          "name": "Skill Trait Life Tap Clip",
+          "class": "oCEntityCpntAnimClipSettings",
+          "guid": "6837d3790e01f04ab6abfe93106be167"
+        },
+        {
+          "layer": "Base",
+          "index": 1066,
+          "name": "Skill Trait Life Tap Fx Active",
+          "class": "oCEntityCpntFxSettings",
+          "guid": "ee83346e2b5de743a98505c17b4b207b"
+        },
+        {
+          "layer": "Update6",
+          "index": 2,
+          "name": "Skill Trait Life Tap Cooldown Timer",
+          "class": "oCEntityCpntTimerSettings",
+          "guid": "124a8642df8599428781f1f20d416a51"
+        },
+        {
+          "layer": "Update6",
+          "index": 5,
+          "name": "Skill Trait Life Tap Clip Selector",
+          "class": "oCEntityCpntSelectorSettings",
+          "guid": "ea9eacc4e9635346965b49b50c80fd74"
+        },
+        {
+          "layer": "Update6",
+          "index": 7,
+          "name": "Event Skill Trait Life Tap Active",
+          "class": "oCEntityCpntStateSettings",
+          "guid": "74fc0c7182ad3843a433ab4089c1234f"
+        },
+        {
+          "layer": "Update6",
+          "index": 15,
+          "name": "Skill Controller Trait Life Tap",
+          "class": "oCDtEntityCpntSkillControllerSettings",
+          "guid": "6dc2be83b4c7384cb4d4ff5cb17998eb"
+        },
+        {
+          "layer": "Update6",
+          "index": 28,
+          "name": "Skill Trait Life Tap Blood Gain Selector",
+          "class": "oCEntityCpntValueSelectorSettings",
+          "guid": "c30015c2c5ec584e92eff5097c66bf5d"
+        },
+        {
+          "layer": "Update6",
+          "index": 35,
+          "name": "Skill Trait Life Tap Cooldown",
+          "class": "oCEntityCpntValueSettings",
+          "guid": "aef7dff260f2e9478851c4165ccafceb"
+        },
+        {
+          "layer": "Update6",
+          "index": 36,
+          "name": "Skill Trait Life Tap Health Ratio Cost",
+          "class": "oCEntityCpntValueSettings",
+          "guid": "9b52ec9fdd28b44fb74da0214df21b3b"
+        }
+      ],
+      "consumers": [
+        {
+          "layer": "Base",
+          "name": "Blood Gain Fx Selector",
+          "group": "Ability Common"
+        },
+        {
+          "layer": "Base",
+          "name": "Skill Controller Trait Life Tap",
+          "group": "Skills"
+        },
+        {
+          "layer": "Base",
+          "name": "Trait Life Tap Controller",
+          "group": "Hero Controller"
+        },
+        {
+          "layer": "Base",
+          "name": "Skill String Desc Trait Life Tap",
+          "group": "Skills"
+        },
+        {
+          "layer": "Base",
+          "name": "Trait Life Tap String Desc",
+          "group": "Hero Controller"
+        },
+        {
+          "layer": "Base",
+          "name": "Blood Gain Selector",
+          "group": "Ability Common"
+        },
+        {
+          "layer": "Base",
+          "name": "Skill Trait Push Back Life Tap Clip",
+          "group": "Skill Trait Push Back"
+        },
+        {
+          "layer": "Update6",
+          "name": "Skill Controller Trait Life Tap",
+          "group": "Skills"
+        },
+        {
+          "layer": "Update6",
+          "name": "Trait Life Tap Controller",
+          "group": "Hero Controller"
+        }
+      ],
+      "confidence": "Card + partial entity graph",
+      "modEffect": "Trades a fraction of maximum health for blood, subject to a health floor and cooldown.",
+      "modTrigger": "Reactivate TRAIT in Winged Form"
+    },
+    {
+      "id": "blood-reserve",
+      "name": "Blood Reserve",
+      "key": "Passive Blood Reserve",
+      "group": "Skill Passive Blood Reserve",
+      "slot": "Passive",
+      "tier": "Standard",
+      "trigger": "Own talent (passive)",
+      "effect": "Increases maximum blood by 20/25/30/35%. Does not increase the rate of generation.",
+      "tags": [
+        "BLOOD",
+        "resource"
+      ],
+      "synergy": "Capacity supports longer fuel budgets and Impalement's blood spend. The edit instead rewards ATTACK while holding a high reserve.",
+      "gap": "Extra capacity needs enough generation to fill it. The edited threshold rewards keeping blood while POWER, DEFENSE, and Winged Form spend it.",
+      "status": "Changed in package",
+      "components": [
+        {
+          "layer": "Base",
+          "index": 152,
+          "name": "Skill Passive Blood Reserve",
+          "class": "oCEntityCpntStateSettings",
+          "guid": "9ad6fa25eb1f0a4fa8f5ac7a44017754"
+        },
+        {
+          "layer": "Base",
+          "index": 462,
+          "name": "Skill Controller Passive Blood Reserve",
+          "class": "oCDtEntityCpntSkillControllerSettings",
+          "guid": "daa7943c7cd56f41945e384279cad214"
+        },
+        {
+          "layer": "Base",
+          "index": 541,
+          "name": "Skill String Desc Passive Blood Reserve",
+          "class": "oCEntityCpntStringFormatValueSettings",
+          "guid": "e366ff7d78860f4aac7749bfaf79f98b"
+        },
+        {
+          "layer": "Base",
+          "index": 750,
+          "name": "Skill Passive Blood Reserve Extra Multiplier Operand",
+          "class": "oCEntityCpntValueSelectorSettings",
+          "guid": "e39ff29cc83b724db7979e329a7dd645"
+        },
+        {
+          "layer": "Base",
+          "index": 751,
+          "name": "Skill Passive Blood Reserve Extra Multiplier Selector",
+          "class": "oCEntityCpntValueSelectorSettings",
+          "guid": "dafb8670def0eb458e589edf5fef6269"
+        },
+        {
+          "layer": "Base",
+          "index": 895,
+          "name": "Skill Passive Blood Reserve Extra Multiplier Value",
+          "class": "oCEntityCpntValueSettings",
+          "guid": "f382ab801962b34796b4bdd40bb23c54"
+        },
+        {
+          "layer": "Base",
+          "index": 2022,
+          "name": "Skill Passive Blood Reserve Rebuilt",
+          "class": "oCEntityCpntStateSettings",
+          "guid": "6ae0cb74803454be8d7363a3909f1612"
+        },
+        {
+          "layer": "Base",
+          "index": 2023,
+          "name": "Skill Passive Blood Reserve Added 058e0a5c Selector",
+          "class": "oCEntityCpntValueSelectorSettings",
+          "guid": "7e263b28b2b154c4a5509aec785d8dbc"
+        },
+        {
+          "layer": "Base",
+          "index": 2025,
+          "name": "Skill Passive Blood Reserve Added 058e0a5c Modifier",
+          "class": "oCEntityCpntModifierSettings",
+          "guid": "b3d86cb232625ed8a45b0f25264d5ce3"
+        },
+        {
+          "layer": "Base",
+          "index": 2026,
+          "name": "State Blood Reserve Attack Speed Above Half",
+          "class": "oCEntityCpntStateSettings",
+          "guid": "5c06bc95984c5c58a2611a26eba8b173"
+        },
+        {
+          "layer": "Base",
+          "index": 2027,
+          "name": "Event Blood Reserve Attack Speed Activate",
+          "class": "oCEntityCpntStateSettings",
+          "guid": "b9370f0211a959058140da4698803b3b"
+        },
+        {
+          "layer": "Base",
+          "index": 2028,
+          "name": "Event Blood Reserve Attack Speed Deactivate",
+          "class": "oCEntityCpntStateSettings",
+          "guid": "760b921dd3af57bcba671854b39c1024"
+        },
+        {
+          "layer": "Base",
+          "index": 2029,
+          "name": "Blood Reserve Above Half Value Tester",
+          "class": "oCEntityCpntTesterSettings",
+          "guid": "8dcb6bbfe2ac5846928f8abdb3a726ac"
+        }
+      ],
+      "consumers": [
+        {
+          "layer": "Base",
+          "name": "Skill Controller Passive Blood Reserve",
+          "group": "Skills"
+        },
+        {
+          "layer": "Base",
+          "name": "Skill String Desc Passive Blood Reserve",
+          "group": "Skills"
+        },
+        {
+          "layer": "Base",
+          "name": "Blood Reserve Above Half Value Tester",
+          "group": "Base"
+        }
+      ],
+      "confidence": "Card + partial entity graph",
+      "modEffect": "Rebuilt talent selects +10/15/20/25% Basic Attack Speed when current blood / effective maximum is strictly above 0.5 and the hero is appeared. Maximum-blood operation no longer reads the reserve bonus.",
+      "modTrigger": "Own talent + BLOOD >50%",
+      "modTags": [
+        "BLOOD",
+        "ATTACK",
+        "resource"
+      ]
+    },
+    {
+      "id": "boiling-blood",
+      "name": "Boiling Blood",
+      "key": "Passive Life Use Regen",
+      "group": "Skill Passive Life Use Regen",
+      "slot": "Passive",
+      "tier": "Standard",
+      "trigger": "Sustained health use to fuel an ability",
+      "effect": "Grants regeneration after health has funded an ability for long enough.",
+      "tags": [
+        "BLOOD",
+        "health",
+        "sustain"
+      ],
+      "synergy": "Offers recovery after running out of blood, which can extend a risky channel.",
+      "gap": "Its condition is health-as-fuel over time. Life Tap's one-time self-damage is a different event; do not promise an interaction without a test.",
+      "status": "Fallback payoff",
+      "components": [
+        {
+          "layer": "Base",
+          "index": 116,
+          "name": "Event Skill Passive Life Use Regen Proc",
+          "class": "oCEntityCpntStateSettings",
+          "guid": "82f977eb5d09674a8769e3f9c354af1e"
+        },
+        {
+          "layer": "Base",
+          "index": 154,
+          "name": "Skill Passive Life Use Regen",
+          "class": "oCEntityCpntStateSettings",
+          "guid": "23378408a444394c9155ef68162873a9"
+        },
+        {
+          "layer": "Base",
+          "index": 279,
+          "name": "Skill Passive Life Use Regen Proc Tester",
+          "class": "oCEntityCpntTesterSettings",
+          "guid": "949dc1b288776846939b60d8e3282f3d"
+        },
+        {
+          "layer": "Base",
+          "index": 423,
+          "name": "Skill Passive Life Use Regen Modifier Value Operation",
+          "class": "oCEntityCpntValueOperationsSettings",
+          "guid": "69f9fc326bcf7141ba9b41f5d24860a9"
+        },
+        {
+          "layer": "Base",
+          "index": 464,
+          "name": "Skill Controller Passive Life Use Regen",
+          "class": "oCDtEntityCpntSkillControllerSettings",
+          "guid": "583541122ae719439e3b2be6695a36e5"
+        },
+        {
+          "layer": "Base",
+          "index": 495,
+          "name": "Skill Passive Life Use Regen Modifier",
+          "class": "oCEntityCpntModifierSettings",
+          "guid": "9829e28b44b7c04cbe4f8bda3a0e8286"
+        },
+        {
+          "layer": "Base",
+          "index": 543,
+          "name": "Skill String Desc Passive Life Use Regen",
+          "class": "oCEntityCpntStringFormatValueSettings",
+          "guid": "c3d077df5893cd4f9dedd1f12dc16d0a"
+        },
+        {
+          "layer": "Base",
+          "index": 663,
+          "name": "Skill Passive Life Use Regen FMod Event Active",
+          "class": "oCEntityCpntFModEventSettings",
+          "guid": "41f859ef8fce114f908209f71182ef05"
+        },
+        {
+          "layer": "Base",
+          "index": 754,
+          "name": "Skill Passive Life Use Regen Selector",
+          "class": "oCEntityCpntValueSelectorSettings",
+          "guid": "61d0e7817d7c2643a899bec6fe65c61b"
+        },
+        {
+          "layer": "Base",
+          "index": 898,
+          "name": "Skill Passive Life Use Regen Time",
+          "class": "oCEntityCpntValueSettings",
+          "guid": "37e2a19c33b42b4697c82084d8a62072"
+        },
+        {
+          "layer": "Base",
+          "index": 1056,
+          "name": "Skill Passive Life Use Regen Shine Fx",
+          "class": "oCEntityCpntFxSettings",
+          "guid": "d6bd5b2c701d3846a92d57e8efe03fb8"
+        }
+      ],
+      "consumers": [
+        {
+          "layer": "Base",
+          "name": "State Blood Use Consuming Health",
+          "group": "Ability Common"
+        },
+        {
+          "layer": "Base",
+          "name": "Skill Controller Passive Life Use Regen",
+          "group": "Skills"
+        },
+        {
+          "layer": "Base",
+          "name": "Skill String Desc Passive Life Use Regen",
+          "group": "Skills"
+        }
+      ],
+      "confidence": "Card + partial entity graph",
+      "modEffect": "Grants regeneration after health has funded an ability for long enough.",
+      "modTrigger": "Sustained health use to fuel an ability"
+    },
+    {
+      "id": "sadism",
+      "name": "Sadism",
+      "key": "Passive Critical Bleed",
+      "group": "Skill Passive Critical Bleed",
+      "slot": "Passive",
+      "tier": "Standard",
+      "trigger": "Critical hit on a bleeding target",
+      "effect": "Increases critical damage against bleeding enemies.",
+      "tags": [
+        "BLEED",
+        "criticals",
+        "damage"
+      ],
+      "synergy": "Flesh Rip and Go for the Throat offer crit routes; Razor Claws and DEFENSE provide bleed setup.",
+      "gap": "Needs both crit and current bleed. This is broad in principle but dependent on uptime in practice; copied rush includes the hook.",
+      "status": "Broad conditional payoff",
+      "components": [
+        {
+          "layer": "Base",
+          "index": 115,
+          "name": "Event Skill Passive Critical Bleed Proc",
+          "class": "oCEntityCpntStateSettings",
+          "guid": "4a831990c927be43a138f93a9ca03b0e"
+        },
+        {
+          "layer": "Base",
+          "index": 153,
+          "name": "Skill Passive Critical Bleed",
+          "class": "oCEntityCpntStateSettings",
+          "guid": "c131b554c457e549a5a10b3b9bd5894e"
+        },
+        {
+          "layer": "Base",
+          "index": 463,
+          "name": "Skill Controller Passive Critical Bleed",
+          "class": "oCDtEntityCpntSkillControllerSettings",
+          "guid": "0df79ae38ccec54594370dff155ce735"
+        },
+        {
+          "layer": "Base",
+          "index": 542,
+          "name": "Skill String Desc Passive Critical Bleed",
+          "class": "oCEntityCpntStringFormatValueSettings",
+          "guid": "03cd82198ebf97438449e1ea437d5a07"
+        },
+        {
+          "layer": "Base",
+          "index": 661,
+          "name": "Skill Passive Critical Bleed FMod Event",
+          "class": "oCEntityCpntFModEventSettings",
+          "guid": "8e48bb43427e504ca8e5be1353b73636"
+        },
+        {
+          "layer": "Base",
+          "index": 752,
+          "name": "Skill Passive Critical Bleed Damage Selector",
+          "class": "oCEntityCpntValueSelectorSettings",
+          "guid": "cac3e8e3c5a5bc4488f4a86471bb425f"
+        },
+        {
+          "layer": "Base",
+          "index": 753,
+          "name": "Skill Passive Critical Bleed Impact Pos Selector",
+          "class": "oCEntityCpntValueSelectorSettings",
+          "guid": "608aae5b750cd74aa8d510acbe4235b7"
+        },
+        {
+          "layer": "Base",
+          "index": 896,
+          "name": "Skill Passive Critical Bleed Crit Damage Value",
+          "class": "oCEntityCpntValueSettings",
+          "guid": "b6e6251e83fb55469e1f120a3f3b4c6e"
+        },
+        {
+          "layer": "Base",
+          "index": 897,
+          "name": "Skill Passive Critical Bleed Is Active Value",
+          "class": "oCEntityCpntValueSettings",
+          "guid": "d613fee97cf67f43a867169000d322bc"
+        },
+        {
+          "layer": "Base",
+          "index": 1054,
+          "name": "Skill Passive Critical Bleed Fx",
+          "class": "oCEntityCpntFxSettings",
+          "guid": "095035b40691e549aeb80a32c948f016"
+        }
+      ],
+      "consumers": [
+        {
+          "layer": "Base",
+          "name": "Skill Controller Passive Critical Bleed",
+          "group": "Skills"
+        },
+        {
+          "layer": "Base",
+          "name": "Skill String Desc Passive Critical Bleed",
+          "group": "Skills"
+        }
+      ],
+      "confidence": "Card + partial entity graph",
+      "modEffect": "Increases critical damage against bleeding enemies.",
+      "modTrigger": "Critical hit on a bleeding target"
+    },
+    {
+      "id": "heartbreak",
+      "name": "Heartbreak",
+      "key": "Ultimate 1 Combo Pike",
+      "group": "Skill Ultimate 1 Combo Pike",
+      "slot": "Ultimate",
+      "tier": "Ultimate",
+      "trigger": "Fourth ATTACK combo move",
+      "effect": "Adds an impaling attack using ULTIMATE damage.",
+      "tags": [
+        "ATTACK",
+        "ULTIMATE 1"
+      ],
+      "synergy": "A deliberate bridge between attacks and Impalement investment. Faster attacks could reach the added move sooner.",
+      "gap": "The spawned ultimate entity is absent. Cruel Strike's finisher shortcut and copied blood scaling need separate validation.",
+      "status": "Ultimate bridge",
+      "components": [
+        {
+          "layer": "Base",
+          "index": 3,
+          "name": "Skill Ultimate 1 Combo Pike Spawn Node",
+          "class": "oCEntityCpnt3dNodeSettings",
+          "guid": "a6e365d839ddd044a646246b6a9b87dc"
+        },
+        {
+          "layer": "Base",
+          "index": 66,
+          "name": "Skill Ultimate 1 Combo Pike Anim Selector",
+          "class": "oCEntityCpntSelectorSettings",
+          "guid": "bbdab29f25b0714c81f8e93806fe4217"
+        },
+        {
+          "layer": "Base",
+          "index": 131,
+          "name": "Event Skill Ultimate 1 Combo Pike Active",
+          "class": "oCEntityCpntStateSettings",
+          "guid": "4c2ba609622acb42bc9b576b38d0954c"
+        },
+        {
+          "layer": "Base",
+          "index": 132,
+          "name": "Event Skill Ultimate 1 Combo Pike Character Impact",
+          "class": "oCEntityCpntStateSettings",
+          "guid": "391edfe3f7c8ac4897c2cba8d8ebac30"
+        },
+        {
+          "layer": "Base",
+          "index": 169,
+          "name": "Skill Ultimate 1 Combo Pike",
+          "class": "oCEntityCpntStateSettings",
+          "guid": "854ea87940007b45ba091c8dff44c1df"
+        },
+        {
+          "layer": "Base",
+          "index": 216,
+          "name": "State Skill Ultimate 1 Combo Pike",
+          "class": "oCEntityCpntStateSettings",
+          "guid": "fe22ac1417f060489cf4d47334eab690"
+        },
+        {
+          "layer": "Base",
+          "index": 366,
+          "name": "Skill Ultimate 1 Combo Pike Anim Combo",
+          "class": "oCEntityCpntAnimaticSettings",
+          "guid": "77b486dcd86bad4ebca9391a3731570b"
+        },
+        {
+          "layer": "Base",
+          "index": 367,
+          "name": "Skill Ultimate 1 Combo Pike Anim Combo Wings",
+          "class": "oCEntityCpntAnimaticSettings",
+          "guid": "abd02bb59ff05f4599108e874ac2474c"
+        },
+        {
+          "layer": "Base",
+          "index": 435,
+          "name": "Skill Ultimate 1 Combo Pike Damage Multiplier Operation",
+          "class": "oCEntityCpntValueOperationsSettings",
+          "guid": "b2c4cf5e9f262841b5c26eeeca117979"
+        },
+        {
+          "layer": "Base",
+          "index": 558,
+          "name": "Skill String Desc Ultimate 1 Combo Pike",
+          "class": "oCEntityCpntStringFormatValueSettings",
+          "guid": "d16452922e2c04458544c4243e6f17e1"
+        },
+        {
+          "layer": "Base",
+          "index": 676,
+          "name": "Skill Ultimate 1 Combo Pike FMod Event Active",
+          "class": "oCEntityCpntFModEventSettings",
+          "guid": "f397e2e3b0c44c4aa269ba5a9b09177d"
+        },
+        {
+          "layer": "Base",
+          "index": 677,
+          "name": "Skill Ultimate 1 Combo Pike FMod Event Anim",
+          "class": "oCEntityCpntFModEventSettings",
+          "guid": "8ee3f8960c712d47b3c98951ca5d2d0c"
+        },
+        {
+          "layer": "Base",
+          "index": 678,
+          "name": "Skill Ultimate 1 Combo Pike FMod Event Anim Wings",
+          "class": "oCEntityCpntFModEventSettings",
+          "guid": "8dfe2edfa588884295381aae7843d8a7"
+        },
+        {
+          "layer": "Base",
+          "index": 679,
+          "name": "Skill Ultimate 1 Combo Pike FMod Event Character Impact",
+          "class": "oCEntityCpntFModEventSettings",
+          "guid": "5eb2e99327dceb419217cbfd88158642"
+        },
+        {
+          "layer": "Base",
+          "index": 776,
+          "name": "Skill Ultimate 1 Combo Pike Combo Start Selector",
+          "class": "oCEntityCpntValueSelectorSettings",
+          "guid": "b5d3def8e23b6f448a6f18468707e7ac"
+        },
+        {
+          "layer": "Base",
+          "index": 777,
+          "name": "Skill Ultimate 1 Combo Pike Damage Selector",
+          "class": "oCEntityCpntValueSelectorSettings",
+          "guid": "90f542b2ab76c841b86ffaa2994b164e"
+        },
+        {
+          "layer": "Base",
+          "index": 806,
+          "name": "Skill Ultimate 1 Combo Pike Attack",
+          "class": "oCEntityCpntZoneAttackSettings",
+          "guid": "f75e9ff358580741b0675a25db584af0"
+        },
+        {
+          "layer": "Base",
+          "index": 930,
+          "name": "Skill Ultimate 1 Combo Pike Blood Gain",
+          "class": "oCEntityCpntValueSettings",
+          "guid": "0d9770f15e8a2b4b9328ebf5a5ca35e2"
+        },
+        {
+          "layer": "Base",
+          "index": 931,
+          "name": "Skill Ultimate 1 Combo Pike Range",
+          "class": "oCEntityCpntValueSettings",
+          "guid": "e0ccb1669692f147a75701d60e965507"
+        },
+        {
+          "layer": "Base",
+          "index": 980,
+          "name": "Skill Ultimate 1 Combo Pike Clip",
+          "class": "oCEntityCpntAnimClipSettings",
+          "guid": "1e1f0927b6d38e4292ec59ab19b9f6dd"
+        },
+        {
+          "layer": "Base",
+          "index": 981,
+          "name": "Skill Ultimate 1 Combo Pike Clip Wings",
+          "class": "oCEntityCpntAnimClipSettings",
+          "guid": "f74798c266efac47b068ac5613562235"
+        },
+        {
+          "layer": "Base",
+          "index": 1006,
+          "name": "Skill Ultimate 1 Combo Pike Traverser",
+          "class": "oCEntityCpntGpnTraverserSettings",
+          "guid": "6b9de4e83b15f94ab916f5bb4d557acf"
+        },
+        {
+          "layer": "Base",
+          "index": 1013,
+          "name": "Skill Ultimate 1 Combo Pike Combo",
+          "class": "oCDtEntityCpntAttackComboSettings",
+          "guid": "5444458a7c4f5a4abe9883dab3ce1e6f"
+        },
+        {
+          "layer": "Base",
+          "index": 1069,
+          "name": "Skill Ultimate 1 Combo Pike Buildup Fx",
+          "class": "oCEntityCpntFxSettings",
+          "guid": "01e2d1c4b1ff4c46b3e99b1ee9ec9def"
+        },
+        {
+          "layer": "Base",
+          "index": 1070,
+          "name": "Skill Ultimate 1 Combo Pike Fx Active",
+          "class": "oCEntityCpntFxSettings",
+          "guid": "c0bc46c22d892f43a21730e8ab8b0c11"
+        },
+        {
+          "layer": "Base",
+          "index": 1071,
+          "name": "Skill Ultimate 1 Combo Pike Startup Fx",
+          "class": "oCEntityCpntFxSettings",
+          "guid": "b758205353130f44be3f9cccc5c34f5a"
+        }
+      ],
+      "consumers": [
+        {
+          "layer": "Base",
+          "name": "Basic Attack Character Impact Default Event Selector",
+          "group": "Ability Basic"
+        },
+        {
+          "layer": "Base",
+          "name": "Basic Attack Combo Selector",
+          "group": "Ability Basic"
+        },
+        {
+          "layer": "Base",
+          "name": "Skill Controller Ultimate 1 Upgrade 2",
+          "group": "Skills"
+        },
+        {
+          "layer": "Base",
+          "name": "Skill String Desc Ultimate 1 Combo Pike",
+          "group": "Skills"
+        },
+        {
+          "layer": "Base",
+          "name": "Ability Basic Type Selector",
+          "group": "Ability Basic"
+        },
+        {
+          "layer": "Base",
+          "name": "Basic Attack Damage Multiplier Selector",
+          "group": "Ability Basic"
+        },
+        {
+          "layer": "Base",
+          "name": "Basic Attack Stagger Selector Default",
+          "group": "Ability Basic"
+        },
+        {
+          "layer": "Base",
+          "name": "Blood Gain Selector",
+          "group": "Ability Common"
+        }
+      ],
+      "confidence": "Card + partial entity graph",
+      "modEffect": "Adds an impaling attack using ULTIMATE damage.",
+      "modTrigger": "Fourth ATTACK combo move"
+    },
+    {
+      "id": "mass-punishment",
+      "name": "Mass Punishment",
+      "key": "Ultimate 2 Add Zone Attack",
+      "group": "Skill Ultimate 2 Add Zone Attack",
+      "slot": "Ultimate",
+      "tier": "Ultimate",
+      "trigger": "Fourth Blood Lash attack",
+      "effect": "Adds an area strike to the ULTIMATE attack combo.",
+      "tags": [
+        "ATTACK",
+        "ULTIMATE 2",
+        "area"
+      ],
+      "synergy": "Blood Lash attack count and faster attacks can support more complete enhanced combos.",
+      "gap": "Requires the correct ultimate and enough charges to reach the added step. Cruel Strike interaction is not established here.",
+      "status": "Ultimate-specific",
+      "components": [
+        {
+          "layer": "Base",
+          "index": 133,
+          "name": "Event Skill Ultimate 2 Add Zone Attack Active Combo Zone",
+          "class": "oCEntityCpntStateSettings",
+          "guid": "bb26b074be55b94d91a2357b37e18245"
+        },
+        {
+          "layer": "Base",
+          "index": 171,
+          "name": "Skill Ultimate 2 Add Zone Attack Combo Zone",
+          "class": "oCEntityCpntStateSettings",
+          "guid": "1eea49c36d136f4993da343b5b422f2d"
+        },
+        {
+          "layer": "Base",
+          "index": 217,
+          "name": "State Skill Ultimate 2 Add Zone Attack Combo Zone",
+          "class": "oCEntityCpntStateSettings",
+          "guid": "315cdd550dab4d459031793a6f5a1926"
+        },
+        {
+          "layer": "Base",
+          "index": 293,
+          "name": "Skill Ultimate 2 Add Zone Attack Can Store In Buffer Condition",
+          "class": "oCEntityCpntTesterSettings",
+          "guid": "92fc9526a3526e46a362163115bb3824"
+        },
+        {
+          "layer": "Base",
+          "index": 368,
+          "name": "Skill Ultimate 2 Add Zone Attack Anim Combo Zone",
+          "class": "oCEntityCpntAnimaticSettings",
+          "guid": "c34f02e7398be0429b7becc14b5bf109"
+        },
+        {
+          "layer": "Base",
+          "index": 436,
+          "name": "Skill Ultimate 2 Add Zone Attack Damage Zone Multiplier Operation",
+          "class": "oCEntityCpntValueOperationsSettings",
+          "guid": "15b0d75b049f4248a6d2636a43815cda"
+        },
+        {
+          "layer": "Base",
+          "index": 560,
+          "name": "Skill String Desc Ultimate 2 Add Zone Attack",
+          "class": "oCEntityCpntStringFormatValueSettings",
+          "guid": "6e18a618bf6e734c8df573ad39f167e8"
+        },
+        {
+          "layer": "Base",
+          "index": 680,
+          "name": "Skill Ultimate 2 Add Zone Attack FMod Event Active Combo Zone",
+          "class": "oCEntityCpntFModEventSettings",
+          "guid": "9b42b733f9b75b45806b59e5a196a880"
+        },
+        {
+          "layer": "Base",
+          "index": 681,
+          "name": "Skill Ultimate 2 Add Zone Attack FMod Event Anim Combo Zone",
+          "class": "oCEntityCpntFModEventSettings",
+          "guid": "c9350e40d607fa429ba4128c3a015f27"
+        },
+        {
+          "layer": "Base",
+          "index": 779,
+          "name": "Skill Ultimate 2 Add Zone Attack Combo Start Selector",
+          "class": "oCEntityCpntValueSelectorSettings",
+          "guid": "ebe6653f8f5ebd45bccf02405b4b692c"
+        },
+        {
+          "layer": "Base",
+          "index": 780,
+          "name": "Skill Ultimate 2 Add Zone Attack Damage Selector",
+          "class": "oCEntityCpntValueSelectorSettings",
+          "guid": "ab0652279e52974784a2fa42cb3f15e2"
+        },
+        {
+          "layer": "Base",
+          "index": 807,
+          "name": "Skill Ultimate 2 Add Zone Attack Attack",
+          "class": "oCEntityCpntZoneAttackSettings",
+          "guid": "ce9b4df1ab1300438812eeab53d9b25c"
+        },
+        {
+          "layer": "Base",
+          "index": 934,
+          "name": "Skill Ultimate 2 Add Zone Attack Blood Gain",
+          "class": "oCEntityCpntValueSettings",
+          "guid": "b72935fc668851468eca1c31ba667f17"
+        },
+        {
+          "layer": "Base",
+          "index": 935,
+          "name": "Skill Ultimate 2 Add Zone Attack Radius",
+          "class": "oCEntityCpntValueSettings",
+          "guid": "2e252653ddc8474e9cdd4ad61c9a4ade"
+        },
+        {
+          "layer": "Base",
+          "index": 982,
+          "name": "Skill Ultimate 2 Add Zone Attack Clip Combo Zone",
+          "class": "oCEntityCpntAnimClipSettings",
+          "guid": "ced0cddf32f1c44fae4878010293995a"
+        },
+        {
+          "layer": "Base",
+          "index": 1007,
+          "name": "Skill Ultimate 2 Add Zone Attack Traverser",
+          "class": "oCEntityCpntGpnTraverserSettings",
+          "guid": "4ffdb572a6d37a47a7a99668b9523ae0"
+        },
+        {
+          "layer": "Base",
+          "index": 1014,
+          "name": "Skill Ultimate 2 Add Zone Attack Combo",
+          "class": "oCDtEntityCpntAttackComboSettings",
+          "guid": "8b291555dd964448b7b882a5d6056fae"
+        },
+        {
+          "layer": "Base",
+          "index": 1072,
+          "name": "Skill Ultimate 2 Add Zone Attack Fx Active Combo Zone",
+          "class": "oCEntityCpntFxSettings",
+          "guid": "3228bee92f2b864885ffdae2de7a4346"
+        },
+        {
+          "layer": "Update6",
+          "index": 37,
+          "name": "Skill Ultimate 2 Add Zone Attack Blood Gain",
+          "class": "oCEntityCpntValueSettings",
+          "guid": "55be880bcd0d2b498200fbd8cd542bd7"
+        }
+      ],
+      "consumers": [
+        {
+          "layer": "Base",
+          "name": "Ability Ultimate 2 Combo Selector",
+          "group": "Ability Ultimate 2"
+        },
+        {
+          "layer": "Base",
+          "name": "Skill Controller Ultimate 2 Upgrade 2",
+          "group": "Skills"
+        },
+        {
+          "layer": "Base",
+          "name": "Skill String Desc Ultimate 2 Add Zone Attack",
+          "group": "Skills"
+        },
+        {
+          "layer": "Base",
+          "name": "Ability Ultimate 2 Blood Gain Selector",
+          "group": "Ability Ultimate 2"
+        },
+        {
+          "layer": "Base",
+          "name": "Ultimate 2 Ability Damage Multiplier Selector",
+          "group": "Ability Ultimate 2"
+        },
+        {
+          "layer": "Base",
+          "name": "Ultimate 2 Ability Stagger Selector",
+          "group": "Ability Ultimate 2"
+        },
+        {
+          "layer": "Base",
+          "name": "Ultimate 2 Start Combo Store",
+          "group": "Ability Ultimate 2"
+        },
+        {
+          "layer": "Update6",
+          "name": "Ultimate 2 Ability Stagger Selector",
+          "group": "Ability Ultimate 2"
+        }
+      ],
+      "confidence": "Card + partial entity graph",
+      "modEffect": "Adds an area strike to the ULTIMATE attack combo.",
+      "modTrigger": "Fourth Blood Lash attack"
+    },
+    {
+      "id": "mistress-of-pain",
+      "name": "Mistress of Pain",
+      "key": "Ultimate 2 Increase Max Attack",
+      "group": "Skill Ultimate 2 Increase Max Attack",
+      "slot": "Ultimate",
+      "tier": "Ultimate",
+      "trigger": "Blood Lash activation",
+      "effect": "Raises the number of attacks transformed by Blood Lash.",
+      "tags": [
+        "ATTACK",
+        "ULTIMATE 2"
+      ],
+      "synergy": "More enhanced attacks can support Mass Punishment and the edited attack-speed bonus.",
+      "gap": "Charge capacity does not ensure time to spend it. Blood Lash attack states also contain an old Onslaught reset in this package.",
+      "status": "Ultimate-specific",
+      "components": [
+        {
+          "layer": "Base",
+          "index": 172,
+          "name": "Skill Ultimate 2 Increase Max Attack",
+          "class": "oCEntityCpntStateSettings",
+          "guid": "e66c42d1ab7bc34181e67bb21254afae"
+        },
+        {
+          "layer": "Base",
+          "index": 561,
+          "name": "Skill String Desc Ultimate 2 Increase Max Attack",
+          "class": "oCEntityCpntStringFormatValueSettings",
+          "guid": "a246eea6765e3942b3a5f8bacf206f6b"
+        },
+        {
+          "layer": "Base",
+          "index": 781,
+          "name": "Skill Ultimate 2 Increase Max Attack Count Selector",
+          "class": "oCEntityCpntValueSelectorSettings",
+          "guid": "86de51d560a66840acb33f0cedb35479"
+        },
+        {
+          "layer": "Base",
+          "index": 782,
+          "name": "Skill Ultimate 2 Increase Max Attack Selector",
+          "class": "oCEntityCpntValueSelectorSettings",
+          "guid": "8cf82b8ef34f4247b723bf265705b474"
+        }
+      ],
+      "consumers": [
+        {
+          "layer": "Base",
+          "name": "Ultimate 2 Max Attack Count Operation",
+          "group": "Ability Ultimate 2"
+        },
+        {
+          "layer": "Base",
+          "name": "Skill Controller Ultimate 2 Upgrade 1",
+          "group": "Skills"
+        },
+        {
+          "layer": "Base",
+          "name": "Skill String Desc Ultimate 2 Increase Max Attack",
+          "group": "Skills"
+        }
+      ],
+      "confidence": "Card + partial entity graph",
+      "modEffect": "Raises the number of attacks transformed by Blood Lash.",
+      "modTrigger": "Blood Lash activation"
+    },
+    {
+      "id": "torture-of-the-pale",
+      "name": "Torture of the Pale",
+      "key": "Ultimate 1 Return",
+      "group": "Skill Ultimate 1 Return",
+      "slot": "Ultimate",
+      "tier": "Ultimate",
+      "trigger": "Impalement spikes finish their outward course",
+      "effect": "Makes the spikes return and deal another portion of damage.",
+      "tags": [
+        "ULTIMATE 1",
+        "area"
+      ],
+      "synergy": "Extends Impalement's coverage and gives another opportunity to hit enemies.",
+      "gap": "Return behavior lives partly in a separate ultimate entity. More blood can scale the initial spend, but inherited return formulas need those bytes.",
+      "status": "External dependency",
+      "components": [
+        {
+          "layer": "Base",
+          "index": 170,
+          "name": "Skill Ultimate 1 Return",
+          "class": "oCEntityCpntStateSettings",
+          "guid": "b72087b60d4df745a35fdf5c90ced625"
+        },
+        {
+          "layer": "Base",
+          "index": 559,
+          "name": "Skill String Desc Ultimate 1 Return",
+          "class": "oCEntityCpntStringFormatValueSettings",
+          "guid": "e792d64303a38e4e912451bd2288aa88"
+        },
+        {
+          "layer": "Base",
+          "index": 778,
+          "name": "Skill Ultimate 1 Return Damage Selector",
+          "class": "oCEntityCpntValueSelectorSettings",
+          "guid": "cfb1da3a0723a248bdb38b46c14aed66"
+        },
+        {
+          "layer": "Base",
+          "index": 932,
+          "name": "Skill Ultimate 1 Return Damage Value",
+          "class": "oCEntityCpntValueSettings",
+          "guid": "49b21f855fb0df4aa0615b8becf4a5e5"
+        },
+        {
+          "layer": "Base",
+          "index": 933,
+          "name": "Skill Ultimate 1 Return Is Active Value",
+          "class": "oCEntityCpntValueSettings",
+          "guid": "67779b045f61d54181545db8c66b17b3"
+        }
+      ],
+      "consumers": [
+        {
+          "layer": "Base",
+          "name": "Skill Controller Ultimate 1 Upgrade 1",
+          "group": "Skills"
+        },
+        {
+          "layer": "Base",
+          "name": "Skill String Desc Ultimate 1 Return",
+          "group": "Skills"
+        }
+      ],
+      "confidence": "Card + partial entity graph",
+      "modEffect": "Makes the spikes return and deal another portion of damage.",
+      "modTrigger": "Impalement spikes finish their outward course"
+    }
+  ],
+  "findings": [
+    {
+      "id": "dash-priority",
+      "severity": "P2",
+      "title": "Puncture and Winged Form can win the dash selection",
+      "evidence": "Base #59 and Update6 #3: entries select Puncture, then Winged Form, then Onslaught, then normal dash. Puncture’s nested selector (#63) contains only its normal and winged clips. State references were checked by GUID and use the active-state accessor.",
+      "impact": "The README promises the rush in either form, including with Blood Dash equipped. Under the existing ordered-selector convention, those earlier branches bypass it.",
+      "action": "Validate SPECIAL → DASH in normal form, Winged Form, with Puncture, and with both. If this matches the graph, adjust both selectors and retain Puncture’s blood gain deliberately.",
+      "confidence": "Static control-flow finding; not reproduced in game."
+    },
+    {
+      "id": "lash-reset",
+      "severity": "P2",
+      "title": "Blood Lash attacks still clear Onslaught readiness",
+      "evidence": "Base #231 State Ultimate 2 Basic Attack keeps Event Skill Attack Special Rush Reset (#109) in while_active. The reset clears both the flag and timer.",
+      "impact": "SPECIAL → Blood Lash ATTACK → DASH can lose the armed rush even though the README says ATTACK keeps it ready.",
+      "action": "Test that sequence with Blood Lash active. Review the inherited reset before claiming that all attacks preserve the charge.",
+      "confidence": "Direct reference in supplied bytes; gameplay timing untested."
+    },
+    {
+      "id": "bite-hooks",
+      "severity": "Review",
+      "title": "Copying the bite also copies its talent effects",
+      "evidence": "Base #2032 Skill Attack Special Rush Damage owns five copied damage-debuff objects (object IDs 2032–2036). They reference bleed detection, Sadism, Go for the Throat, Injection, and Victimization; its impact/kill callbacks also point to SPECIAL events.",
+      "impact": "The rush can attempt bite-side effects on enemies it crosses. This is broader than “scale from bite damage” and may make Injection multi-target. Life Essence credit still depends on how its kill flag is consumed.",
+      "action": "Decide later whether these are desired bridges. First record per-target seed/mark application, distance scaling, and kill-credit behavior. Do not strip them just because they are unexpected.",
+      "confidence": "Hooks confirmed; resulting procs and damage require runtime verification."
+    },
+    {
+      "id": "language",
+      "severity": "P2",
+      "title": "The replacement descriptions are English in every language",
+      "evidence": "Both modified description rows (18 and 40) are identical English text in all 13 supplied language banks, including FR, DE, JA and ZH-S. manifest.toml also provides English replacements.",
+      "impact": "Players using those languages see English cards. README calls the package “localized card text,” which overstates what is shipped.",
+      "action": "Describe these as English fallback strings, or supply actual translations and ensure the manifest text step preserves them.",
+      "confidence": "Confirmed from all supplied text banks."
+    },
+    {
+      "id": "seductive",
+      "severity": "Scope",
+      "title": "The dash-end Seductive request remains separate",
+      "evidence": "Update6 #4 routes directionless DASH into a dedicated taunt controller. The six-second cooldown value remains. The package README limits its stated rework to Blood Reserve and Onslaught.",
+      "impact": "Installing this package does not establish the earlier request to taunt at the end of a completed directional dash.",
+      "action": "Keep this visible as earlier requested work, not as a regression introduced by 0.4.2.",
+      "confidence": "Current controller/card path confirmed; no vanilla binary diff available."
+    }
+  ],
+  "feedback": [
+    {
+      "quote": "so like for example blood rage (starting talent) doesnt synergize with injection... for some reason.. clear design flaw if you asked me",
+      "verdict": "Plausible completion-bonus gap; not zero shared value",
+      "analysis": "Blood Rage’s quest rewards general DMG, which can still help other attacks. Its completion condition checks POWER blood use and the hold chronometer. Injection uses the Power Orb spawner with an “explode now” value, so a held-cast reward is not automatically inherited. The final orb formula is missing.",
+      "test": "Compare Injection damage before/after quest completion at identical DMG, rarity, level and target; separately test a qualifying held POWER cast. Control for DMG earned during the quest."
+    },
+    {
+      "quote": "blood reserve is completely artificial, only impalement ultimate TRULY benefits from it.",
+      "verdict": "Strong concern about payoff, too absolute as a mechanics claim",
+      "analysis": "Impalement directly converts blood spent into damage. Capacity also buys potential channel/winged uptime and reduces overflow, but only when blood generation can fill it. That makes the value less visible and less immediate. The submitted replacement turns reserve into an ATTACK payoff and introduces a new spend-versus-hold tension.",
+      "test": "Compare time at full blood, wasted generation, channel duration, and Impalement damage. Separate “has a benefit” from “worth a talent slot.”"
+    },
+    {
+      "quote": "bleed ticks only for 5 seconds I believe, +-, so flesh rip and furious tempest have almost zero synergy.. by the time you stack your tempest, bleed fades out so your flesh rip is offline and you rely on your teammates applying bleed",
+      "verdict": "Timing friction supported; exact duration unverified",
+      "analysis": "The package’s Tempest ramp duration is 3 seconds. If bleed lasts 5 seconds and POWER begins immediately, a 2-second full-ramp overlap is possible before animation and travel costs. That is fragile rather than inherently zero. Bleed duration, refresh rules and channel-end sampling need the missing status/orb data or a controlled run.",
+      "test": "Apply your own bleed, start POWER after a measured delay, and release before/after expiry. Repeat using Dispersion and teammate bleed. Log crit rate and damage separately."
+    },
+    {
+      "quote": "gust + life tap + angel & demon (will be fixed in next patch)",
+      "verdict": "Version-sensitive report; not a confirmed future patch",
+      "analysis": "Official 1.06 notes (12 October 2026) already announce Life Tap triggering every TRAIT talent. The supplied Update6 layer calls Angel and Demon’s tester and selects a Gust-specific Life Tap clip. That supports intended connectivity, but a combined-path bug could still exist. No newer promised fix was established.",
+      "test": "Record game version/platform. Compare Life Tap alone, with Gust, with Angel and Demon, and with both, in day and night; check health cost, blood gain, healing/STRENGTH and knockback."
+    }
+  ],
+  "sources": [
+    {
+      "id": "package",
+      "label": "Submitted Carmilla Rework 0.4.2",
+      "url": "review.md",
+      "note": "Two entity layers, README, manifest, 13 language banks. Modified snapshot; no pristine baseline or game run."
+    },
+    {
+      "id": "official",
+      "label": "Official buildmaker",
+      "url": "https://buildmaker.ravenswatch.com/",
+      "note": "Current card/tier API fetched 26 November 2026; may display rounded values. Not proof of engine behavior."
+    },
+    {
+      "id": "patch",
+      "label": "Official 1.06 patch notes",
+      "url": "https://store.steampowered.com/news/app/2071280/view/713409051455653305",
+      "note": "12 October 2026: Life Tap, Seductive Provocation, Scarlet and Aladdin reworks."
+    },
+    {
+      "id": "repo",
+      "label": "Repo talent name map",
+      "url": "https://docs.rsmm.me/reference/talent-names/",
+      "note": "Internal group and text-key mapping; categories are not trigger or damage guarantees."
+    },
+    {
+      "id": "context",
+      "label": "Session context and veteran feedback",
+      "url": "context.md",
+      "note": "Verbatim player observations, prior requests, interpretation and open checks."
+    },
+    {
+      "id": "evidence",
+      "label": "Decoded package evidence",
+      "url": "evidence.txt",
+      "note": "Names, fields and owned subobjects, with references resolved where supplied. Mechanical field labels can be provisional."
+    }
+  ],
+  "counts": {
+    "base": 1091,
+    "update6": 40,
+    "starting": 4,
+    "standard": 18,
+    "ultimate": 4
+  }
+}

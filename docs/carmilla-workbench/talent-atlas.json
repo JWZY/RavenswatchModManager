@@ -1,0 +1,1008 @@
+{
+  "records": [
+    {
+      "hero": "Scarlet",
+      "name": "Deadly Combo",
+      "id": "scarlet-deadly-combo",
+      "tier": "Standard",
+      "behavior": "Triggered",
+      "trigger": "POWER finishes",
+      "affects": [
+        "POWER"
+      ],
+      "roles": [
+        "No added cost"
+      ],
+      "effect": "Adds a finishing area strike.",
+      "resourceNote": "POWER retains its normal combo-point spending; this talent declares no second payment.",
+      "sourceId": "d68a356d-96e7-401b-9fbd-00760e1b04ed",
+      "source": "https://buildmaker.ravenswatch.com/api/game-heroes/scarlet?lang=en"
+    },
+    {
+      "hero": "Scarlet",
+      "name": "Devourer",
+      "id": "scarlet-devourer",
+      "tier": "Starting",
+      "behavior": "Quest",
+      "trigger": "Werewolf POWER kills",
+      "affects": [
+        "POWER",
+        "Global damage"
+      ],
+      "roles": [
+        "No added cost"
+      ],
+      "effect": "Repeatable kills build DMG.",
+      "resourceNote": "The quest rewards kills, not resource spending itself. No additional point cost beyond POWER.",
+      "sourceId": "146f460f-fc6e-44ba-b30b-e7d60c82b159",
+      "source": "https://buildmaker.ravenswatch.com/api/game-heroes/scarlet?lang=en"
+    },
+    {
+      "hero": "Scarlet",
+      "name": "Focus",
+      "id": "scarlet-focus",
+      "tier": "Ultimate",
+      "behavior": "Conditional passive",
+      "trigger": "ULTIMATE 1 in each form",
+      "affects": [
+        "ULTIMATE 1"
+      ],
+      "roles": [
+        "No added cost"
+      ],
+      "effect": "Human shotgun becomes piercing; wolf gust leaves a tornado.",
+      "resourceNote": "Uses the selected ultimate's normal charges/cooldown. It does not add combo-point spending.",
+      "sourceId": "05ba3344-80e9-46cb-8f76-72b3f4921706",
+      "source": "https://buildmaker.ravenswatch.com/api/game-heroes/scarlet?lang=en"
+    },
+    {
+      "hero": "Scarlet",
+      "name": "Slash Flurry",
+      "id": "scarlet-slash-flurry",
+      "tier": "Standard",
+      "behavior": "Triggered",
+      "trigger": "POWER \u2192 ATTACK within 3 seconds",
+      "affects": [
+        "ATTACK"
+      ],
+      "roles": [
+        "No added cost"
+      ],
+      "effect": "Replaces the follow-up with a multi-slash attack.",
+      "resourceNote": "POWER is the setup action and spends points normally; the flurry adds no stated point cost.",
+      "sourceId": "8a3b43a9-b39a-4153-9b4e-e035c328c61a",
+      "source": "https://buildmaker.ravenswatch.com/api/game-heroes/scarlet?lang=en"
+    },
+    {
+      "hero": "Scarlet",
+      "name": "Cleave",
+      "id": "scarlet-cleave",
+      "tier": "Standard",
+      "behavior": "Triggered",
+      "trigger": "ATTACK proc chance",
+      "affects": [
+        "ATTACK"
+      ],
+      "roles": [
+        "No added cost"
+      ],
+      "effect": "Adds a damaging circular cleave.",
+      "resourceNote": "Chance-gated, not combo-point-gated. Proc inheritance from special attack replacements is unverified.",
+      "sourceId": "3c7a64f8-5fef-4a97-b456-53b3f7d1cbc6",
+      "source": "https://buildmaker.ravenswatch.com/api/game-heroes/scarlet?lang=en"
+    },
+    {
+      "hero": "Scarlet",
+      "name": "Wide Attacks",
+      "id": "scarlet-wide-attacks",
+      "tier": "Standard",
+      "behavior": "Passive",
+      "trigger": "Talent owned",
+      "affects": [
+        "ATTACK"
+      ],
+      "roles": [
+        "No added cost"
+      ],
+      "effect": "Improves attack reach and damage.",
+      "resourceNote": "No activation or stored-point condition is stated.",
+      "sourceId": "bc9da24c-7997-4bcb-91ff-174a94f8532a",
+      "source": "https://buildmaker.ravenswatch.com/api/game-heroes/scarlet?lang=en"
+    },
+    {
+      "hero": "Scarlet",
+      "name": "Double Strike",
+      "id": "scarlet-double-strike",
+      "tier": "Standard",
+      "behavior": "Triggered",
+      "trigger": "DASH \u2192 ATTACK",
+      "affects": [
+        "ATTACK"
+      ],
+      "roles": [
+        "Generates"
+      ],
+      "effect": "Empowers the follow-up and grants a combo point.",
+      "resourceNote": "Generates 1 combo point. DASH supplies the setup, not a point payment.",
+      "sourceId": "9e0595c1-f28b-4182-8492-d48c308046fb",
+      "source": "https://buildmaker.ravenswatch.com/api/game-heroes/scarlet?lang=en"
+    },
+    {
+      "hero": "Scarlet",
+      "name": "Fan of Spikes",
+      "id": "scarlet-fan-of-spikes",
+      "tier": "Standard",
+      "behavior": "Triggered",
+      "trigger": "DASH in combat with a point",
+      "affects": [
+        "DASH",
+        "ATTACK scaling"
+      ],
+      "roles": [
+        "Consumes"
+      ],
+      "effect": "Fires attack-scaled projectiles.",
+      "resourceNote": "The talent spends 1 combo point on the dash effect. It competes with other point spenders.",
+      "sourceId": "e79223a2-fcf3-4b58-84c5-30973abafd54",
+      "source": "https://buildmaker.ravenswatch.com/api/game-heroes/scarlet?lang=en"
+    },
+    {
+      "hero": "Scarlet",
+      "name": "Aggressive Defense",
+      "id": "scarlet-aggressive-defense",
+      "tier": "Standard",
+      "behavior": "Triggered",
+      "trigger": "DEFENSE activation",
+      "affects": [
+        "DEFENSE"
+      ],
+      "roles": [
+        "No added cost"
+      ],
+      "effect": "Adds damage around Scarlet.",
+      "resourceNote": "Uses DEFENSE's normal cooldown; no combo-point cost is stated.",
+      "sourceId": "955d5775-c2eb-41d7-b6ce-ed49542d44c7",
+      "source": "https://buildmaker.ravenswatch.com/api/game-heroes/scarlet?lang=en"
+    },
+    {
+      "hero": "Scarlet",
+      "name": "Murderous Intent",
+      "id": "scarlet-murderous-intent",
+      "tier": "Standard",
+      "behavior": "Triggered",
+      "trigger": "DEFENSE activation",
+      "affects": [
+        "DEFENSE",
+        "Resource pool"
+      ],
+      "roles": [
+        "Generates"
+      ],
+      "effect": "Supplies combo points and extends DEFENSE.",
+      "resourceNote": "Grants 3 combo points. It does not increase the storage cap.",
+      "sourceId": "ded3a3a4-47c8-4975-82e4-02c98f9d9ec4",
+      "source": "https://buildmaker.ravenswatch.com/api/game-heroes/scarlet?lang=en"
+    },
+    {
+      "hero": "Scarlet",
+      "name": "Shadow Strikes",
+      "id": "scarlet-shadow-strikes",
+      "tier": "Starting",
+      "behavior": "Quest",
+      "trigger": "Human DEFENSE \u2192 ATTACK or POWER hits",
+      "affects": [
+        "ATTACK",
+        "POWER",
+        "Critical stats"
+      ],
+      "roles": [
+        "No added cost"
+      ],
+      "effect": "Quest builds crit chance; completion adds crit damage.",
+      "resourceNote": "No quest payment. A qualifying POWER still spends its normal combo points.",
+      "sourceId": "722b2956-c079-45d4-9ad9-4c98f53102a9",
+      "source": "https://buildmaker.ravenswatch.com/api/game-heroes/scarlet?lang=en"
+    },
+    {
+      "hero": "Scarlet",
+      "name": "On the Hunt",
+      "id": "scarlet-on-the-hunt",
+      "tier": "Standard",
+      "behavior": "Triggered",
+      "trigger": "DEFENSE activation",
+      "affects": [
+        "DEFENSE",
+        "Target debuff"
+      ],
+      "roles": [
+        "No added cost"
+      ],
+      "effect": "Marks a nearby enemy for subsequent damage.",
+      "resourceNote": "Target-side payoff; no extra combo-point spend. Mark spread depends on kills.",
+      "sourceId": "0f2c1ff0-3023-47d7-be66-59bd333df2db",
+      "source": "https://buildmaker.ravenswatch.com/api/game-heroes/scarlet?lang=en"
+    },
+    {
+      "hero": "Scarlet",
+      "name": "Savagery",
+      "id": "scarlet-savagery",
+      "tier": "Standard",
+      "behavior": "Conditional passive",
+      "trigger": "Combo points gained or spent",
+      "affects": [
+        "Global damage"
+      ],
+      "roles": [
+        "Spend payoff",
+        "Gain payoff"
+      ],
+      "effect": "Resource activity builds temporary DMG stacks.",
+      "resourceNote": "Observes the transaction; does not consume extra points. Stacks expire without continued activity.",
+      "sourceId": "c911eb22-0ad1-4463-8a56-6ab190628370",
+      "source": "https://buildmaker.ravenswatch.com/api/game-heroes/scarlet?lang=en"
+    },
+    {
+      "hero": "Scarlet",
+      "name": "Adrenaline",
+      "id": "scarlet-adrenaline",
+      "tier": "Standard",
+      "behavior": "Conditional passive",
+      "trigger": "Combo points spent",
+      "affects": [
+        "Health",
+        "ATTACK speed"
+      ],
+      "roles": [
+        "Spend payoff"
+      ],
+      "effect": "Human spending heals; wolf spending speeds attacks.",
+      "resourceNote": "Rewards points spent elsewhere; does not spend a second set of points.",
+      "sourceId": "51d7a927-caf3-430c-89b1-92a8227c1b28",
+      "source": "https://buildmaker.ravenswatch.com/api/game-heroes/scarlet?lang=en"
+    },
+    {
+      "hero": "Scarlet",
+      "name": "Evisceration",
+      "id": "scarlet-evisceration",
+      "tier": "Standard",
+      "behavior": "Conditional passive",
+      "trigger": "POWER spends combo points",
+      "affects": [
+        "POWER",
+        "BLEED"
+      ],
+      "roles": [
+        "Spend payoff"
+      ],
+      "effect": "Adds bleed according to points spent.",
+      "resourceNote": "Uses POWER's existing payment. The talent does not impose an additional point cost.",
+      "sourceId": "fec4eb57-6c83-43dd-92d1-a683da242208",
+      "source": "https://buildmaker.ravenswatch.com/api/game-heroes/scarlet?lang=en"
+    },
+    {
+      "hero": "Scarlet",
+      "name": "Energy",
+      "id": "scarlet-energy",
+      "tier": "Standard",
+      "behavior": "Passive",
+      "trigger": "Talent owned; points stored",
+      "affects": [
+        "POWER",
+        "Resource pool"
+      ],
+      "roles": [
+        "Capacity",
+        "Resource condition"
+      ],
+      "effect": "Adds storage and a POWER crit payoff for stored points.",
+      "resourceNote": "Capacity +2; storage is not generation. POWER still spends points normally.",
+      "sourceId": "c5480062-eb89-4d31-b800-83a0526c9c10",
+      "source": "https://buildmaker.ravenswatch.com/api/game-heroes/scarlet?lang=en"
+    },
+    {
+      "hero": "Scarlet",
+      "name": "Explosive Rush",
+      "id": "scarlet-explosive-rush",
+      "tier": "Standard",
+      "behavior": "Triggered",
+      "trigger": "POWER with at least 3 points",
+      "affects": [
+        "POWER",
+        "SPECIAL effect"
+      ],
+      "roles": [
+        "Resource condition"
+      ],
+      "effect": "Adds a SPECIAL effect to POWER.",
+      "resourceNote": "The threshold checks stored points; POWER already consumes them. No separate extra payment is stated. Other SPECIAL talent inheritance needs testing.",
+      "sourceId": "9db6f6d0-099e-47d9-baa8-9cf4ca64aeec",
+      "source": "https://buildmaker.ravenswatch.com/api/game-heroes/scarlet?lang=en"
+    },
+    {
+      "hero": "Scarlet",
+      "name": "Distant Explosions",
+      "id": "scarlet-distant-explosions",
+      "tier": "Starting",
+      "behavior": "Conditional passive",
+      "trigger": "SPECIAL use",
+      "affects": [
+        "SPECIAL"
+      ],
+      "roles": [
+        "No added cost"
+      ],
+      "effect": "Changes targeting and damage; human bomb lands immediately without self-stun.",
+      "resourceNote": "No extra combo-point cost. The human-specific behavior is distinct from the shared SPECIAL bonus.",
+      "sourceId": "dadd41e3-dae1-4288-9312-8dfa820a9894",
+      "source": "https://buildmaker.ravenswatch.com/api/game-heroes/scarlet?lang=en"
+    },
+    {
+      "hero": "Scarlet",
+      "name": "Pyromania",
+      "id": "scarlet-pyromania",
+      "tier": "Standard",
+      "behavior": "Conditional passive",
+      "trigger": "SPECIAL hits",
+      "affects": [
+        "SPECIAL",
+        "IGNITE"
+      ],
+      "roles": [
+        "No added cost"
+      ],
+      "effect": "Adds ignite and SPECIAL crit chance.",
+      "resourceNote": "No extra point cost or stored-resource gate stated.",
+      "sourceId": "7ac3b1e2-d002-460d-9bbe-7aec640ea6d2",
+      "source": "https://buildmaker.ravenswatch.com/api/game-heroes/scarlet?lang=en"
+    },
+    {
+      "hero": "Scarlet",
+      "name": "Armor Break",
+      "id": "scarlet-armor-break",
+      "tier": "Standard",
+      "behavior": "Triggered",
+      "trigger": "SPECIAL hits",
+      "affects": [
+        "SPECIAL",
+        "VULNERABLE"
+      ],
+      "roles": [
+        "No added cost"
+      ],
+      "effect": "Applies a vulnerability debuff.",
+      "resourceNote": "No added point payment; subsequent damage can benefit from the target debuff.",
+      "sourceId": "14c324a7-1c3d-493f-b1b0-4e8d351484e0",
+      "source": "https://buildmaker.ravenswatch.com/api/game-heroes/scarlet?lang=en"
+    },
+    {
+      "hero": "Scarlet",
+      "name": "Pulverize",
+      "id": "scarlet-pulverize",
+      "tier": "Standard",
+      "behavior": "Conditional passive",
+      "trigger": "SPECIAL with a point available",
+      "affects": [
+        "SPECIAL"
+      ],
+      "roles": [
+        "Consumes"
+      ],
+      "effect": "Extends reach and empowers SPECIAL by spending a point.",
+      "resourceNote": "The added bonus can consume 1 combo point. Reach is a separate benefit.",
+      "sourceId": "8db43dee-0068-4a44-890e-c9a36d6d0e14",
+      "source": "https://buildmaker.ravenswatch.com/api/game-heroes/scarlet?lang=en"
+    },
+    {
+      "hero": "Scarlet",
+      "name": "Shapeshifter",
+      "id": "scarlet-shapeshifter",
+      "tier": "Starting",
+      "behavior": "Ability change",
+      "trigger": "Activate TRAIT",
+      "affects": [
+        "TRAIT",
+        "Forms",
+        "Health"
+      ],
+      "roles": [
+        "Stat tradeoff"
+      ],
+      "effect": "Allows manual transformation and heals on use.",
+      "resourceNote": "Reduces maximum health by 20%; this is a capacity penalty, not health spent per cast. Activation uses a cooldown.",
+      "sourceId": "37cc5c3b-ea79-47dd-9a64-8331b65fa028",
+      "source": "https://buildmaker.ravenswatch.com/api/game-heroes/scarlet?lang=en"
+    },
+    {
+      "hero": "Scarlet",
+      "name": "True Instincts",
+      "id": "scarlet-true-instincts",
+      "tier": "Standard",
+      "behavior": "Passive",
+      "trigger": "Current human / werewolf form",
+      "affects": [
+        "Movement",
+        "Health"
+      ],
+      "roles": [
+        "No added cost"
+      ],
+      "effect": "Human movement bonus; wolf maximum-health bonus.",
+      "resourceNote": "Form-gated stat benefits, not a resource transaction.",
+      "sourceId": "40599e6a-9eef-469f-bfe8-70f954c6d3e2",
+      "source": "https://buildmaker.ravenswatch.com/api/game-heroes/scarlet?lang=en"
+    },
+    {
+      "hero": "Scarlet",
+      "name": "Fiery Maw",
+      "id": "scarlet-fiery-maw",
+      "tier": "Ultimate",
+      "behavior": "Conditional passive",
+      "trigger": "ULTIMATE 1 hits",
+      "affects": [
+        "ULTIMATE 1",
+        "IGNITE"
+      ],
+      "roles": [
+        "No added cost"
+      ],
+      "effect": "Adds reach, damage, and ignite.",
+      "resourceNote": "No added combo-point cost. Ultimate availability still applies.",
+      "sourceId": "d348c049-0661-4217-86c7-3433919c150f",
+      "source": "https://buildmaker.ravenswatch.com/api/game-heroes/scarlet?lang=en"
+    },
+    {
+      "hero": "Scarlet",
+      "name": "Bone Cracker",
+      "id": "scarlet-bone-cracker",
+      "tier": "Ultimate",
+      "behavior": "Conditional passive",
+      "trigger": "ULTIMATE 2; wolf devour resolves",
+      "affects": [
+        "ULTIMATE 2"
+      ],
+      "roles": [
+        "No added cost"
+      ],
+      "effect": "Human cloud damages; wolf devour causes an explosion.",
+      "resourceNote": "Enhances the chosen ultimate. Does not add point spending.",
+      "sourceId": "9fe1b3ca-5dc1-4b1a-b60c-2deb994c7553",
+      "source": "https://buildmaker.ravenswatch.com/api/game-heroes/scarlet?lang=en"
+    },
+    {
+      "hero": "Scarlet",
+      "name": "Pack Leader",
+      "id": "scarlet-pack-leader",
+      "tier": "Ultimate",
+      "behavior": "Conditional passive",
+      "trigger": "ULTIMATE 2; allies near its effect",
+      "affects": [
+        "ULTIMATE 2",
+        "Team sustain"
+      ],
+      "roles": [
+        "No added cost"
+      ],
+      "effect": "Human cloud heals allies; wolf devour shields them.",
+      "resourceNote": "Healing and shield are outcomes, not a new combo-point payment.",
+      "sourceId": "9fcd6781-3b42-4240-bc07-135d68f4a5a3",
+      "source": "https://buildmaker.ravenswatch.com/api/game-heroes/scarlet?lang=en"
+    },
+    {
+      "hero": "Aladdin",
+      "name": "Jinn Charge",
+      "id": "aladdin-jinn-charge",
+      "tier": "Standard",
+      "behavior": "Triggered",
+      "trigger": "POWER \u2192 DASH",
+      "affects": [
+        "DASH"
+      ],
+      "roles": [
+        "No added cost"
+      ],
+      "effect": "Adds a Jinn charge to the follow-up dash.",
+      "resourceNote": "No enchantment or wish payment is declared for this proc. POWER setup still needs its normal availability.",
+      "sourceId": "32c21067-2fc1-4e74-8b6f-fbcbdbed99c6",
+      "source": "https://buildmaker.ravenswatch.com/api/game-heroes/aladdin?lang=en"
+    },
+    {
+      "hero": "Aladdin",
+      "name": "Spectral Blades",
+      "id": "aladdin-spectral-blades",
+      "tier": "Standard",
+      "behavior": "Triggered",
+      "trigger": "Actively retrieve SPECIAL blades",
+      "affects": [
+        "SPECIAL follow-up"
+      ],
+      "roles": [
+        "No added cost"
+      ],
+      "effect": "Blade retrieval adds an area flurry.",
+      "resourceNote": "Retrieval is a positional condition, not a new resource spend. Do not assume the flurry is a normal ATTACK for every interaction.",
+      "sourceId": "984b1c57-a980-4dad-b359-bd9e34f0b994",
+      "source": "https://buildmaker.ravenswatch.com/api/game-heroes/aladdin?lang=en"
+    },
+    {
+      "hero": "Aladdin",
+      "name": "Dive",
+      "id": "aladdin-dive",
+      "tier": "Standard",
+      "behavior": "Triggered",
+      "trigger": "DEFENSE jump \u2192 ATTACK",
+      "affects": [
+        "ATTACK",
+        "DEFENSE follow-up"
+      ],
+      "roles": [
+        "No added cost"
+      ],
+      "effect": "Converts the airborne attack into an area dive.",
+      "resourceNote": "No extra enchantment payment is stated. Whether a transformed attack inherits every base-attack rule requires a gameplay check.",
+      "sourceId": "9b2afd2c-0dae-4fd3-a7af-97d71052ecc9",
+      "source": "https://buildmaker.ravenswatch.com/api/game-heroes/aladdin?lang=en"
+    },
+    {
+      "hero": "Aladdin",
+      "name": "Spinning Strikes",
+      "id": "aladdin-spinning-strikes",
+      "tier": "Standard",
+      "behavior": "Triggered",
+      "trigger": "Retrieve blades \u2192 ATTACK within 2 seconds",
+      "affects": [
+        "ATTACK"
+      ],
+      "roles": [
+        "Resource condition",
+        "Base-action use"
+      ],
+      "effect": "Follow-up spins increase further with enchantment.",
+      "resourceNote": "Enchantment improves the effect; the underlying ATTACK can use enchantment. The card does not specify per-spin spending or an additional cost.",
+      "sourceId": "9b018882-bc6f-4a3d-9a6a-8416f0868f3a",
+      "source": "https://buildmaker.ravenswatch.com/api/game-heroes/aladdin?lang=en"
+    },
+    {
+      "hero": "Aladdin",
+      "name": "Slide Attack",
+      "id": "aladdin-slide-attack",
+      "tier": "Standard",
+      "behavior": "Triggered",
+      "trigger": "ATTACK while SPECIAL blades are away",
+      "affects": [
+        "ATTACK",
+        "SPECIAL follow-up"
+      ],
+      "roles": [
+        "No added cost"
+      ],
+      "effect": "Supplies an attack while the blades are flying.",
+      "resourceNote": "Blade location is the gate. No enchantment spend is stated for the replacement slide.",
+      "sourceId": "50438531-9c8c-4318-b1f8-c75d7c2aca4d",
+      "source": "https://buildmaker.ravenswatch.com/api/game-heroes/aladdin?lang=en"
+    },
+    {
+      "hero": "Aladdin",
+      "name": "Dream Scimitars",
+      "id": "aladdin-dream-scimitars",
+      "tier": "Standard",
+      "behavior": "Triggered",
+      "trigger": "Enchanted ATTACK hits",
+      "affects": [
+        "ATTACK",
+        "Economy"
+      ],
+      "roles": [
+        "Generates",
+        "Resource condition",
+        "Base-action use"
+      ],
+      "effect": "Enchanted hits can generate Dream Shards.",
+      "resourceNote": "Requires enchanted blades; attacks follow their normal enchantment use. This talent adds a shard reward, not another enchantment fee.",
+      "sourceId": "b70db144-344d-4bfe-abf4-b6fcb3043891",
+      "source": "https://buildmaker.ravenswatch.com/api/game-heroes/aladdin?lang=en"
+    },
+    {
+      "hero": "Aladdin",
+      "name": "Shard Blades",
+      "id": "aladdin-shard-blades",
+      "tier": "Standard",
+      "behavior": "Conditional passive",
+      "trigger": "ATTACK with enchanted blades",
+      "affects": [
+        "ATTACK"
+      ],
+      "roles": [
+        "Resource condition",
+        "Base-action use"
+      ],
+      "effect": "Improves enchanted attack reach and damage.",
+      "resourceNote": "Enchantment is the condition and can be spent by base ATTACK. No additional talent cost is stated.",
+      "sourceId": "09faba9e-6420-4a08-83b9-370f4d0bd8b8",
+      "source": "https://buildmaker.ravenswatch.com/api/game-heroes/aladdin?lang=en"
+    },
+    {
+      "hero": "Aladdin",
+      "name": "Leaping Strike",
+      "id": "aladdin-leaping-strike",
+      "tier": "Standard",
+      "behavior": "Triggered",
+      "trigger": "DASH \u2192 ATTACK",
+      "affects": [
+        "ATTACK"
+      ],
+      "roles": [
+        "Resource condition",
+        "Base-action use"
+      ],
+      "effect": "Empowers the follow-up; enchantment adds another strike.",
+      "resourceNote": "The first benefit does not require enchantment. Extra-strike spending granularity is not specified by the card.",
+      "sourceId": "b1735ec5-9945-416f-bbe5-8b75198e1842",
+      "source": "https://buildmaker.ravenswatch.com/api/game-heroes/aladdin?lang=en"
+    },
+    {
+      "hero": "Aladdin",
+      "name": "Air Dash",
+      "id": "aladdin-air-dash",
+      "tier": "Standard",
+      "behavior": "Ability change",
+      "trigger": "DASH during DEFENSE's jump",
+      "affects": [
+        "DASH",
+        "DEFENSE",
+        "ATTACK speed"
+      ],
+      "roles": [
+        "No added cost"
+      ],
+      "effect": "Allows an airborne dash and rewards it with attack speed.",
+      "resourceNote": "Requires the action sequence and normal ability availability; no enchantment cost is added.",
+      "sourceId": "d520022c-f19e-47c4-ba3f-e8076d2a3c16",
+      "source": "https://buildmaker.ravenswatch.com/api/game-heroes/aladdin?lang=en"
+    },
+    {
+      "hero": "Aladdin",
+      "name": "Acrobatics",
+      "id": "aladdin-acrobatics",
+      "tier": "Standard",
+      "behavior": "Triggered",
+      "trigger": "DEFENSE crosses an enemy",
+      "affects": [
+        "DEFENSE",
+        "Resource pool"
+      ],
+      "roles": [
+        "Generates"
+      ],
+      "effect": "Generates enchantment through movement.",
+      "resourceNote": "Each crossed enemy contributes enchantment. No enchantment spend is added.",
+      "sourceId": "7acf5100-8513-4077-8f6d-eda1a329269d",
+      "source": "https://buildmaker.ravenswatch.com/api/game-heroes/aladdin?lang=en"
+    },
+    {
+      "hero": "Aladdin",
+      "name": "Tornado Jump",
+      "id": "aladdin-tornado-jump",
+      "tier": "Standard",
+      "behavior": "Triggered",
+      "trigger": "DEFENSE activation",
+      "affects": [
+        "DEFENSE"
+      ],
+      "roles": [
+        "No added cost"
+      ],
+      "effect": "Creates a moving damage zone.",
+      "resourceNote": "No enchantment or wish cost is stated.",
+      "sourceId": "431ca8f7-eaf5-4e09-bc74-d5274334c05d",
+      "source": "https://buildmaker.ravenswatch.com/api/game-heroes/aladdin?lang=en"
+    },
+    {
+      "hero": "Aladdin",
+      "name": "Major Enchantment",
+      "id": "aladdin-major-enchantment",
+      "tier": "Standard",
+      "behavior": "Conditional passive",
+      "trigger": "Time passes without ATTACK",
+      "affects": [
+        "Resource pool"
+      ],
+      "roles": [
+        "Generates"
+      ],
+      "effect": "Regenerates enchantment while not attacking.",
+      "resourceNote": "Passive generation has an opportunity cost: attacking interrupts the qualifying behavior. No resource is consumed.",
+      "sourceId": "4dd48803-7628-4fb9-a0db-a94aa120794c",
+      "source": "https://buildmaker.ravenswatch.com/api/game-heroes/aladdin?lang=en"
+    },
+    {
+      "hero": "Aladdin",
+      "name": "Master Thief",
+      "id": "aladdin-master-thief",
+      "tier": "Standard",
+      "behavior": "Conditional passive",
+      "trigger": "Choose an eligible magical object",
+      "affects": [
+        "Economy"
+      ],
+      "roles": [
+        "Generates"
+      ],
+      "effect": "Can duplicate the chosen object.",
+      "resourceNote": "An economy proc; it does not consume enchantment, shards, or a wish to duplicate the reward.",
+      "sourceId": "8d2f498c-8082-4f0b-b40c-920bb786d31e",
+      "source": "https://buildmaker.ravenswatch.com/api/game-heroes/aladdin?lang=en"
+    },
+    {
+      "hero": "Aladdin",
+      "name": "Swordjinn",
+      "id": "aladdin-swordjinn",
+      "tier": "Standard",
+      "behavior": "Triggered",
+      "trigger": "POWER catches SPECIAL blades",
+      "affects": [
+        "POWER",
+        "SPECIAL retrieval"
+      ],
+      "roles": [
+        "No added cost"
+      ],
+      "effect": "Adds a blade-catching POWER interaction.",
+      "resourceNote": "No new enchantment payment is declared. Catching is a spatial requirement, not currency spending.",
+      "sourceId": "b46d1092-6f4b-4900-bca6-7b920675851a",
+      "source": "https://buildmaker.ravenswatch.com/api/game-heroes/aladdin?lang=en"
+    },
+    {
+      "hero": "Aladdin",
+      "name": "Enchanted Jinn",
+      "id": "aladdin-enchanted-jinn",
+      "tier": "Standard",
+      "behavior": "Conditional passive",
+      "trigger": "POWER with enchantment available",
+      "affects": [
+        "POWER",
+        "Resource pool"
+      ],
+      "roles": [
+        "Consumes",
+        "Capacity"
+      ],
+      "effect": "Lets POWER spend enchantment for crit chance and expands storage.",
+      "resourceNote": "Consumes up to 5 enchantment. Capacity rises by 5/10/15/20 with rarity; increased capacity is not generation.",
+      "sourceId": "835a2aa2-702e-4341-b019-b8d199b6e50c",
+      "source": "https://buildmaker.ravenswatch.com/api/game-heroes/aladdin?lang=en"
+    },
+    {
+      "hero": "Aladdin",
+      "name": "Jinn's Fury",
+      "id": "aladdin-jinn-s-fury",
+      "tier": "Standard",
+      "behavior": "Conditional passive",
+      "trigger": "POWER use",
+      "affects": [
+        "POWER"
+      ],
+      "roles": [
+        "No added cost"
+      ],
+      "effect": "Turns POWER into multiple hits.",
+      "resourceNote": "No added enchantment spend. A separate Enchanted Jinn pick changes resource use; the base kit does not require it.",
+      "sourceId": "403a0017-d1f6-4e74-95d9-fa3d0cb316d6",
+      "source": "https://buildmaker.ravenswatch.com/api/game-heroes/aladdin?lang=en"
+    },
+    {
+      "hero": "Aladdin",
+      "name": "Jinn's Might",
+      "id": "aladdin-jinn-s-might",
+      "tier": "Starting",
+      "behavior": "Quest",
+      "trigger": "Fully charged POWER hits",
+      "affects": [
+        "POWER",
+        "Global damage"
+      ],
+      "roles": [
+        "No added cost"
+      ],
+      "effect": "Quest builds DMG; completion improves charge payoff.",
+      "resourceNote": "Holding is a timing requirement, not enchantment spending. No wish cost is stated.",
+      "sourceId": "e825649e-d571-43ec-a38e-7c0eab3a6cf7",
+      "source": "https://buildmaker.ravenswatch.com/api/game-heroes/aladdin?lang=en"
+    },
+    {
+      "hero": "Aladdin",
+      "name": "Healing Blades",
+      "id": "aladdin-healing-blades",
+      "tier": "Standard",
+      "behavior": "Triggered",
+      "trigger": "Retrieve SPECIAL blades after hits",
+      "affects": [
+        "SPECIAL",
+        "Team sustain"
+      ],
+      "roles": [
+        "No added cost"
+      ],
+      "effect": "Retrieval heals nearby heroes according to hits.",
+      "resourceNote": "Healing is a reward. No added enchantment, shard, or wish cost is stated.",
+      "sourceId": "7ffeadfc-e04b-4670-9da4-ce65d4a35bec",
+      "source": "https://buildmaker.ravenswatch.com/api/game-heroes/aladdin?lang=en"
+    },
+    {
+      "hero": "Aladdin",
+      "name": "Aerial Catch",
+      "id": "aladdin-aerial-catch",
+      "tier": "Starting",
+      "behavior": "Quest",
+      "trigger": "Retrieve hit blades during DEFENSE",
+      "affects": [
+        "SPECIAL",
+        "DEFENSE",
+        "Armor",
+        "Team sustain"
+      ],
+      "roles": [
+        "No added cost"
+      ],
+      "effect": "Catches progress an armor quest, then grant allied shields.",
+      "resourceNote": "Requires a hit plus the airborne catch. No additional resource payment.",
+      "sourceId": "5e79ab83-f44c-447c-afa4-84914933f08c",
+      "source": "https://buildmaker.ravenswatch.com/api/game-heroes/aladdin?lang=en"
+    },
+    {
+      "hero": "Aladdin",
+      "name": "Sand Vortex",
+      "id": "aladdin-sand-vortex",
+      "tier": "Standard",
+      "behavior": "Conditional passive",
+      "trigger": "SPECIAL blades stationary",
+      "affects": [
+        "SPECIAL",
+        "Control"
+      ],
+      "roles": [
+        "No added cost"
+      ],
+      "effect": "Adds a pull and increases SPECIAL damage.",
+      "resourceNote": "No enchantment or wish cost added. Ordinary SPECIAL can still build enchantment.",
+      "sourceId": "af5b9d21-1f89-474d-9a13-2d9d740f0728",
+      "source": "https://buildmaker.ravenswatch.com/api/game-heroes/aladdin?lang=en"
+    },
+    {
+      "hero": "Aladdin",
+      "name": "Jinniya's Gift",
+      "id": "aladdin-jinniya-s-gift",
+      "tier": "Starting",
+      "behavior": "Passive",
+      "trigger": "Talent acquisition; future talent offers",
+      "affects": [
+        "TRAIT",
+        "Talent quality"
+      ],
+      "roles": [
+        "Generates"
+      ],
+      "effect": "Grants a wish charge and improves future talent rarity chances.",
+      "resourceNote": "+1 TRAIT charge is a grant; the card does not say maximum wish capacity increases. Spending the wish remains a later action.",
+      "sourceId": "a569f378-e2a3-42b3-b80f-89a04da1b2ef",
+      "source": "https://buildmaker.ravenswatch.com/api/game-heroes/aladdin?lang=en"
+    },
+    {
+      "hero": "Aladdin",
+      "name": "Wish of Omnipotence",
+      "id": "aladdin-wish-of-omnipotence",
+      "tier": "Starting",
+      "behavior": "Triggered",
+      "trigger": "Cast a wish",
+      "affects": [
+        "TRAIT",
+        "POWER",
+        "SPECIAL",
+        "DEFENSE",
+        "Team"
+      ],
+      "roles": [
+        "Spend payoff",
+        "Base-action use"
+      ],
+      "effect": "Adds a team cooldown window to wish casting.",
+      "resourceNote": "Uses the wish's normal TRAIT charge. The talent does not charge a second wish or drain enchantment.",
+      "sourceId": "3c0fb2b8-e0bf-4a38-9519-8a5eeb92e339",
+      "source": "https://buildmaker.ravenswatch.com/api/game-heroes/aladdin?lang=en"
+    },
+    {
+      "hero": "Aladdin",
+      "name": "Wondrous Wishes",
+      "id": "aladdin-wondrous-wishes",
+      "tier": "Ultimate",
+      "behavior": "Conditional passive",
+      "trigger": "TRAIT \u2192 chosen wish",
+      "affects": [
+        "TRAIT",
+        "POWER wish",
+        "SPECIAL wish",
+        "DEFENSE wish"
+      ],
+      "roles": [
+        "Spend payoff",
+        "Base-action use"
+      ],
+      "effect": "Improves all three wish outcomes.",
+      "resourceNote": "Normal wish-charge expenditure remains. These are wish variants, not blanket upgrades to ordinary POWER/SPECIAL/DEFENSE.",
+      "sourceId": "d348c049-0661-4217-86c7-3433919c150f",
+      "source": "https://buildmaker.ravenswatch.com/api/game-heroes/aladdin?lang=en"
+    },
+    {
+      "hero": "Aladdin",
+      "name": "Infinite Wishes",
+      "id": "aladdin-infinite-wishes",
+      "tier": "Ultimate",
+      "behavior": "Passive",
+      "trigger": "Talent acquisition; Dream Wish use",
+      "affects": [
+        "TRAIT",
+        "ULTIMATE 1",
+        "Economy"
+      ],
+      "roles": [
+        "Generates",
+        "Cost reduction"
+      ],
+      "effect": "Grants wish charges and discounts Dream Wish.",
+      "resourceNote": "+3 TRAIT charges; Dream Shard cost reduced 20/30/40/50%. It reduces an existing payment rather than removing it.",
+      "sourceId": "05ba3344-80e9-46cb-8f76-72b3f4921706",
+      "source": "https://buildmaker.ravenswatch.com/api/game-heroes/aladdin?lang=en"
+    },
+    {
+      "hero": "Aladdin",
+      "name": "Dream Stride",
+      "id": "aladdin-dream-stride",
+      "tier": "Ultimate",
+      "behavior": "Triggered",
+      "trigger": "Magic Carpet hits; or misses every target",
+      "affects": [
+        "ULTIMATE 2",
+        "Economy"
+      ],
+      "roles": [
+        "Generates"
+      ],
+      "effect": "Carpet hits yield shards; an empty ride avoids its cooldown.",
+      "resourceNote": "Generates 8/10/12/14 Dream Shards per hit. Magic Carpet has no stated shard cost; Dream Wish is the other ultimate.",
+      "sourceId": "9fe1b3ca-5dc1-4b1a-b60c-2deb994c7553",
+      "source": "https://buildmaker.ravenswatch.com/api/game-heroes/aladdin?lang=en"
+    },
+    {
+      "hero": "Aladdin",
+      "name": "Quick Ride",
+      "id": "aladdin-quick-ride",
+      "tier": "Ultimate",
+      "behavior": "Ability change",
+      "trigger": "DASH, optionally held",
+      "affects": [
+        "DASH"
+      ],
+      "roles": [
+        "No added cost"
+      ],
+      "effect": "Turns DASH into a brief damaging carpet ride.",
+      "resourceNote": "No enchantment, wish or shard cost is declared. A carpet-shaped dash is not automatically an ULTIMATE cast.",
+      "sourceId": "9fcd6781-3b42-4240-bc07-135d68f4a5a3",
+      "source": "https://buildmaker.ravenswatch.com/api/game-heroes/aladdin?lang=en"
+    }
+  ],
+  "sources": [
+    {
+      "hero": "Scarlet",
+      "url": "https://buildmaker.ravenswatch.com/api/game-heroes/scarlet?lang=en",
+      "retrieved": "2026-11-26",
+      "sha256": "042cabbe62d0797f1f70e0a68606a16c32b909eb1d9cbe958cb69333518e224d"
+    },
+    {
+      "hero": "Aladdin",
+      "url": "https://buildmaker.ravenswatch.com/api/game-heroes/aladdin?lang=en",
+      "retrieved": "2026-11-26",
+      "sha256": "e9fa5d6c04e2d31c29be3ce4d97fac764385b2cd436845f6a05b98ea505d2ee3"
+    }
+  ],
+  "scope": "Published talent intent; resource and behavior labels are editorial classifications, not engine tracing."
+}

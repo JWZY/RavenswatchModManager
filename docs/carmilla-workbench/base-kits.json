@@ -1,0 +1,521 @@
+{
+  "rows": [
+    {
+      "slot": "ATTACK",
+      "Carmilla": {
+        "normal": {
+          "name": "Tearing",
+          "trigger": "Attack combo hits",
+          "effect": "Claw attacks, ending in a stronger finisher.",
+          "roles": [
+            "Generates"
+          ],
+          "resource": "Builds BLOOD.",
+          "mode": "Active"
+        },
+        "winged": {
+          "name": "Tearing",
+          "trigger": "Attack combo hits",
+          "effect": "Claw attacks, ending in a stronger finisher.",
+          "roles": [
+            "Generates"
+          ],
+          "resource": "Builds BLOOD.",
+          "mode": "Active"
+        }
+      },
+      "Scarlet": {
+        "human": {
+          "name": "Daggers",
+          "trigger": "Every two consecutive attacks that hit an enemy",
+          "effect": "Melee combo.",
+          "roles": [
+            "Generates"
+          ],
+          "resource": "Generates 1 COMBO POINT per qualifying pair of hits; base storage is 3.",
+          "mode": "Active"
+        },
+        "werewolf": {
+          "name": "Claws",
+          "trigger": "Every two consecutive attacks that hit an enemy",
+          "effect": "Melee combo.",
+          "roles": [
+            "Generates"
+          ],
+          "resource": "Generates 1 COMBO POINT per qualifying pair of hits; base storage is 3.",
+          "mode": "Active"
+        }
+      },
+      "Aladdin": {
+        "base": {
+          "name": "Scimitars",
+          "trigger": "Attack; enchanted when available",
+          "effect": "A melee combo; enchantment enables double strikes with increased damage.",
+          "roles": [
+            "Consumes"
+          ],
+          "resource": "Can spend ENCHANTMENT. Ordinary attacks remain available without it.",
+          "mode": "Active"
+        }
+      }
+    },
+    {
+      "slot": "POWER",
+      "Carmilla": {
+        "normal": {
+          "name": "Blood Orb",
+          "trigger": "Hold, then release",
+          "effect": "Channel an orb; release an explosion.",
+          "roles": [
+            "Consumes"
+          ],
+          "resource": "Holding uses BLOOD; health can fuel it when blood is exhausted.",
+          "mode": "Active"
+        },
+        "winged": {
+          "name": "Blood Orb",
+          "trigger": "Hold, then release",
+          "effect": "Same orb and release sequence.",
+          "roles": [
+            "No extra ability cost"
+          ],
+          "resource": "Winged Form removes this ability’s BLOOD cost; TRAIT upkeep still drains blood.",
+          "mode": "Active"
+        }
+      },
+      "Scarlet": {
+        "human": {
+          "name": "Swift Strike",
+          "trigger": "Activate POWER",
+          "effect": "Intangible rush; stored points increase damage.",
+          "roles": [
+            "Consumes"
+          ],
+          "resource": "Spends all held COMBO POINTS. A moving POWER is not a DASH.",
+          "mode": "Active"
+        },
+        "werewolf": {
+          "name": "Bite",
+          "trigger": "Activate POWER",
+          "effect": "Intangible lunge and bite.",
+          "roles": [
+            "Consumes"
+          ],
+          "resource": "Spends all held COMBO POINTS.",
+          "mode": "Active"
+        }
+      },
+      "Aladdin": {
+        "base": {
+          "name": "Ring Jinn",
+          "trigger": "Activate; hold to charge",
+          "effect": "Charging changes reach and damage.",
+          "roles": [
+            "No resource cost"
+          ],
+          "resource": "No base ENCHANTMENT or wish payment. Enchanted Jinn adds spending as a talent.",
+          "mode": "Active"
+        }
+      }
+    },
+    {
+      "slot": "SPECIAL",
+      "Carmilla": {
+        "normal": {
+          "name": "Death Kiss",
+          "trigger": "Aim, release, successfully bite",
+          "effect": "Lunge and intangible bite.",
+          "roles": [
+            "Generates"
+          ],
+          "resource": "A successful bite earns BLOOD.",
+          "mode": "Active"
+        },
+        "winged": {
+          "name": "Death Kiss",
+          "trigger": "Aim, release, successfully bite",
+          "effect": "Lunge and intangible bite.",
+          "roles": [
+            "Generates"
+          ],
+          "resource": "A successful bite earns BLOOD.",
+          "mode": "Active"
+        }
+      },
+      "Scarlet": {
+        "human": {
+          "name": "Bomb",
+          "trigger": "Activate SPECIAL",
+          "effect": "Delayed area explosion; base human bomb can stun Scarlet.",
+          "roles": [
+            "No resource cost"
+          ],
+          "resource": "No base combo-point payment. Pulverize can add one.",
+          "mode": "Active"
+        },
+        "werewolf": {
+          "name": "Leap",
+          "trigger": "Activate SPECIAL",
+          "effect": "Intangible jump with an area landing.",
+          "roles": [
+            "No resource cost"
+          ],
+          "resource": "No base combo-point payment.",
+          "mode": "Active"
+        }
+      },
+      "Aladdin": {
+        "base": {
+          "name": "Enchanted Blades",
+          "trigger": "Throw; hit enemies; retrieve",
+          "effect": "Flying blades gather enchantment.",
+          "roles": [
+            "Generates"
+          ],
+          "resource": "Builds ENCHANTMENT; this is not a wish unless TRAIT selected that mode.",
+          "mode": "Active"
+        }
+      }
+    },
+    {
+      "slot": "DEFENSE",
+      "Carmilla": {
+        "normal": {
+          "name": "Bat Swarm",
+          "trigger": "Activate; hold to extend",
+          "effect": "Intangible movement applies BLEED on contact.",
+          "roles": [
+            "Consumes"
+          ],
+          "resource": "Holding uses BLOOD; health can substitute when empty.",
+          "mode": "Active"
+        },
+        "winged": {
+          "name": "Bat Swarm",
+          "trigger": "Activate; hold to extend",
+          "effect": "Intangible movement still applies BLEED.",
+          "roles": [
+            "No extra ability cost"
+          ],
+          "resource": "No separate DEFENSE blood drain; Winged Form upkeep continues.",
+          "mode": "Active"
+        }
+      },
+      "Scarlet": {
+        "human": {
+          "name": "Cloak",
+          "trigger": "Activate DEFENSE",
+          "effect": "Intangibility/stealth; ATTACK or POWER gains critical setup.",
+          "roles": [
+            "No resource cost"
+          ],
+          "resource": "No base combo-point generation or payment.",
+          "mode": "Active"
+        },
+        "werewolf": {
+          "name": "Howl",
+          "trigger": "Activate DEFENSE",
+          "effect": "Armor plus life-on-hit for ATTACK and POWER.",
+          "roles": [
+            "No resource cost"
+          ],
+          "resource": "Sustain payoff; no base point generation.",
+          "mode": "Active"
+        }
+      },
+      "Aladdin": {
+        "base": {
+          "name": "Somersault",
+          "trigger": "Jump across enemies",
+          "effect": "Intangibility; crossed enemies become VULNERABLE.",
+          "roles": [
+            "No resource cost"
+          ],
+          "resource": "No base enchantment generation. Acrobatics adds it.",
+          "mode": "Active"
+        }
+      }
+    },
+    {
+      "slot": "DASH",
+      "Carmilla": {
+        "normal": {
+          "name": "Dash",
+          "trigger": "Directional DASH",
+          "effect": "Reposition.",
+          "roles": [
+            "No resource cost"
+          ],
+          "resource": "No base blood generation; Puncture is a talent.",
+          "mode": "Active"
+        },
+        "winged": {
+          "name": "Dash",
+          "trigger": "Directional DASH",
+          "effect": "Reposition.",
+          "roles": [
+            "No resource cost"
+          ],
+          "resource": "No base blood generation; Puncture is a talent.",
+          "mode": "Active"
+        }
+      },
+      "Scarlet": {
+        "human": {
+          "name": "Dash",
+          "trigger": "Directional DASH",
+          "effect": "Reposition.",
+          "roles": [
+            "No resource cost"
+          ],
+          "resource": "No base point generation or spending. Both are talent additions.",
+          "mode": "Active"
+        },
+        "werewolf": {
+          "name": "Dash",
+          "trigger": "Directional DASH",
+          "effect": "Reposition.",
+          "roles": [
+            "No resource cost"
+          ],
+          "resource": "No base point generation or spending. Both are talent additions.",
+          "mode": "Active"
+        }
+      },
+      "Aladdin": {
+        "base": {
+          "name": "Dash",
+          "trigger": "Directional DASH",
+          "effect": "Reposition.",
+          "roles": [
+            "No resource cost"
+          ],
+          "resource": "No base enchantment use. Air Dash and Quick Ride change its behavior.",
+          "mode": "Active"
+        }
+      }
+    },
+    {
+      "slot": "TRAIT",
+      "Carmilla": {
+        "normal": {
+          "name": "Dhampir",
+          "trigger": "Activate Winged Form; day/night",
+          "effect": "Winged Form grants movement speed and blood-free POWER / DEFENSE. Day passively heals nearby heroes; night grants crit chance.",
+          "roles": [
+            "Consumes",
+            "Passive benefit"
+          ],
+          "resource": "Winged upkeep spends BLOOD. Impalement remains an explicit exception to free abilities.",
+          "mode": "Active + conditional passive"
+        },
+        "winged": {
+          "name": "Dhampir",
+          "trigger": "Activate Winged Form; day/night",
+          "effect": "Winged Form grants movement speed and blood-free POWER / DEFENSE. Day passively heals nearby heroes; night grants crit chance.",
+          "roles": [
+            "Consumes",
+            "Passive benefit"
+          ],
+          "resource": "Winged upkeep spends BLOOD. Impalement remains an explicit exception to free abilities.",
+          "mode": "Active + conditional passive"
+        }
+      },
+      "Scarlet": {
+        "human": {
+          "name": "Lycanthrope",
+          "trigger": "Dawn / nightfall",
+          "effect": "Time changes form and the ability kit.",
+          "roles": [
+            "Passive"
+          ],
+          "resource": "No combo-point payment. Manual switching requires Shapeshifter.",
+          "mode": "Passive"
+        },
+        "werewolf": {
+          "name": "Lycanthrope",
+          "trigger": "Dawn / nightfall",
+          "effect": "Time changes form and the ability kit.",
+          "roles": [
+            "Passive"
+          ],
+          "resource": "No combo-point payment. Manual switching requires Shapeshifter.",
+          "mode": "Passive"
+        }
+      },
+      "Aladdin": {
+        "base": {
+          "name": "Jinniya of the Lamp",
+          "trigger": "TRAIT → choose POWER / SPECIAL / DEFENSE",
+          "effect": "Choose damage, shards/consumables, or team healing/revival/shield.",
+          "roles": [
+            "Consumes",
+            "Generates"
+          ],
+          "resource": "Spends a WISH charge. The SPECIAL wish generates economy rewards; it is separate from ordinary blades.",
+          "mode": "Active"
+        }
+      }
+    },
+    {
+      "slot": "ULTIMATE 1",
+      "Carmilla": {
+        "normal": {
+          "name": "Impalement",
+          "trigger": "Activate ULTIMATE 1",
+          "effect": "Blood spikes; damage rewards blood spent.",
+          "roles": [
+            "Consumes"
+          ],
+          "resource": "Consumes all BLOOD, including in Winged Form (1.06).",
+          "mode": "Active"
+        },
+        "winged": {
+          "name": "Impalement",
+          "trigger": "Activate ULTIMATE 1",
+          "effect": "Blood spikes; damage rewards blood spent.",
+          "roles": [
+            "Consumes"
+          ],
+          "resource": "Consumes all BLOOD, including in Winged Form (1.06).",
+          "mode": "Active"
+        }
+      },
+      "Scarlet": {
+        "human": {
+          "name": "Hunter’s Souvenir",
+          "trigger": "Use shotgun charges",
+          "effect": "Cone damage.",
+          "roles": [
+            "Ability charges"
+          ],
+          "resource": "Uses ultimate charges/cooldown, not combo points.",
+          "mode": "Active"
+        },
+        "werewolf": {
+          "name": "Gusting Roar",
+          "trigger": "Activate ULTIMATE 1",
+          "effect": "Sustained cone damage.",
+          "roles": [
+            "No resource cost"
+          ],
+          "resource": "Ultimate cooldown; no combo-point cost stated.",
+          "mode": "Active"
+        }
+      },
+      "Aladdin": {
+        "base": {
+          "name": "Dream Wish",
+          "trigger": "Activate ULTIMATE 1",
+          "effect": "Convert currency into another wish.",
+          "roles": [
+            "Consumes",
+            "Generates"
+          ],
+          "resource": "150 DREAM SHARDS → 1 TRAIT charge before talent discounts.",
+          "mode": "Active"
+        }
+      }
+    },
+    {
+      "slot": "ULTIMATE 2",
+      "Carmilla": {
+        "normal": {
+          "name": "Blood Lash",
+          "trigger": "Activate; then ATTACK",
+          "effect": "Whip burst and a limited set of enhanced attacks.",
+          "roles": [
+            "Generates",
+            "Attack charges"
+          ],
+          "resource": "Attacks use the enhanced-attack stock and generate BLOOD. Update6 increases their blood gain.",
+          "mode": "Active"
+        },
+        "winged": {
+          "name": "Blood Lash",
+          "trigger": "Activate; then ATTACK",
+          "effect": "Whip burst and a limited set of enhanced attacks.",
+          "roles": [
+            "Generates",
+            "Attack charges"
+          ],
+          "resource": "Attacks use the enhanced-attack stock and generate BLOOD. Update6 increases their blood gain.",
+          "mode": "Active"
+        }
+      },
+      "Scarlet": {
+        "human": {
+          "name": "Grandmother’s Souvenir",
+          "trigger": "Create an ash cloud",
+          "effect": "Heroes within become intangible.",
+          "roles": [
+            "No resource cost"
+          ],
+          "resource": "Ultimate cooldown; no point cost stated.",
+          "mode": "Active"
+        },
+        "werewolf": {
+          "name": "In the Belly",
+          "trigger": "Devour a nearby non-boss",
+          "effect": "Instantly removes the target.",
+          "roles": [
+            "No resource cost"
+          ],
+          "resource": "Ultimate cooldown; no point cost stated.",
+          "mode": "Active"
+        }
+      },
+      "Aladdin": {
+        "base": {
+          "name": "Magic Carpet",
+          "trigger": "Activate; steer the ride",
+          "effect": "Intangible movement damages enemies.",
+          "roles": [
+            "No resource cost"
+          ],
+          "resource": "No base shard payment. Dream Stride adds shard generation.",
+          "mode": "Active"
+        }
+      }
+    }
+  ],
+  "summaries": [
+    {
+      "hero": "Carmilla",
+      "economy": "BLOOD",
+      "path": "ATTACK / SPECIAL → BLOOD → channels, Winged Form, Impalement",
+      "observation": "Her resource funds both sustained offense and defensive uptime. Winged Form shifts the cost to upkeep."
+    },
+    {
+      "hero": "Scarlet",
+      "economy": "COMBO POINTS",
+      "path": "ATTACK → COMBO POINTS → POWER",
+      "observation": "The base loop is narrow. Talents add new generators, spenders, and rewards around it."
+    },
+    {
+      "hero": "Aladdin",
+      "economy": "ENCHANTMENT + WISHES",
+      "path": "SPECIAL → ENCHANTMENT → ATTACK; shards → Dream Wish → wishes",
+      "observation": "Combat resource and wish economy are separate. Base POWER and DEFENSE do not spend enchantment."
+    }
+  ],
+  "asOf": "2026-11-26",
+  "sources": [
+    {
+      "label": "Carmilla supplied card text and Update6 fields",
+      "url": "evidence.txt"
+    },
+    {
+      "label": "Official 1.06 updates",
+      "url": "https://store.steampowered.com/news/app/2071280/view/713409051455653305"
+    },
+    {
+      "label": "Scarlet base ability reference (community wiki)",
+      "url": "https://ravenswatch.wiki.gg/wiki/Scarlet"
+    },
+    {
+      "label": "Aladdin base ability reference (community wiki)",
+      "url": "https://ravenswatch.wiki.gg/wiki/Aladdin"
+    }
+  ]
+}

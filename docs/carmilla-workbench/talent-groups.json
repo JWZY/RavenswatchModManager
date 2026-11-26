@@ -1,0 +1,353 @@
+{
+  "sections": [
+    {
+      "id": "DASH",
+      "label": "Dash"
+    },
+    {
+      "id": "ATTACK",
+      "label": "Attack"
+    },
+    {
+      "id": "POWER",
+      "label": "Power"
+    },
+    {
+      "id": "SPECIAL",
+      "label": "Special"
+    },
+    {
+      "id": "DEFENSE",
+      "label": "Defense"
+    },
+    {
+      "id": "TRAIT",
+      "label": "Trait"
+    },
+    {
+      "id": "ULTIMATE 1",
+      "label": "Ultimate 1"
+    },
+    {
+      "id": "ULTIMATE 2",
+      "label": "Ultimate 2"
+    },
+    {
+      "id": "GENERAL",
+      "label": "General & resources"
+    }
+  ],
+  "heroes": [
+    "Carmilla",
+    "Scarlet",
+    "Aladdin"
+  ],
+  "groups": {
+    "Carmilla": {
+      "Cruel Strike": [
+        "DASH",
+        "ATTACK",
+        "DEFENSE"
+      ],
+      "Onslaught": [
+        "ATTACK",
+        "SPECIAL"
+      ],
+      "Razor Claws": [
+        "ATTACK"
+      ],
+      "Blood Rage": [
+        "POWER"
+      ],
+      "Flesh Rip": [
+        "POWER"
+      ],
+      "Furious Tempest": [
+        "POWER"
+      ],
+      "Injection": [
+        "POWER",
+        "SPECIAL"
+      ],
+      "Wild Heart": [
+        "POWER"
+      ],
+      "Go for the Throat": [
+        "SPECIAL"
+      ],
+      "Life Essence": [
+        "SPECIAL"
+      ],
+      "Victimization": [
+        "SPECIAL"
+      ],
+      "Aggressive Flock": [
+        "DEFENSE"
+      ],
+      "Bat Master": [
+        "DEFENSE"
+      ],
+      "Dispersion": [
+        "DEFENSE"
+      ],
+      "Puncture": [
+        "DASH"
+      ],
+      "Seductive Provocation": [
+        "DASH"
+      ],
+      "Angel and Demon": [
+        "TRAIT"
+      ],
+      "Gust": [
+        "TRAIT"
+      ],
+      "Life Tap": [
+        "TRAIT"
+      ],
+      "Blood Reserve": [
+        "GENERAL"
+      ],
+      "Boiling Blood": [
+        "GENERAL"
+      ],
+      "Sadism": [
+        "GENERAL"
+      ],
+      "Heartbreak": [
+        "ATTACK",
+        "ULTIMATE 1"
+      ],
+      "Mass Punishment": [
+        "ATTACK",
+        "ULTIMATE 2"
+      ],
+      "Mistress of Pain": [
+        "ATTACK",
+        "ULTIMATE 2"
+      ],
+      "Torture of the Pale": [
+        "ULTIMATE 1"
+      ]
+    },
+    "Scarlet": {
+      "Deadly Combo": [
+        "POWER"
+      ],
+      "Devourer": [
+        "POWER"
+      ],
+      "Focus": [
+        "ULTIMATE 1"
+      ],
+      "Slash Flurry": [
+        "ATTACK",
+        "POWER"
+      ],
+      "Cleave": [
+        "ATTACK"
+      ],
+      "Wide Attacks": [
+        "ATTACK"
+      ],
+      "Double Strike": [
+        "DASH",
+        "ATTACK"
+      ],
+      "Fan of Spikes": [
+        "DASH",
+        "ATTACK"
+      ],
+      "Aggressive Defense": [
+        "DEFENSE"
+      ],
+      "Murderous Intent": [
+        "DEFENSE"
+      ],
+      "Shadow Strikes": [
+        "ATTACK",
+        "POWER",
+        "DEFENSE"
+      ],
+      "On the Hunt": [
+        "DEFENSE"
+      ],
+      "Savagery": [
+        "GENERAL"
+      ],
+      "Adrenaline": [
+        "ATTACK",
+        "GENERAL"
+      ],
+      "Evisceration": [
+        "POWER"
+      ],
+      "Energy": [
+        "POWER",
+        "GENERAL"
+      ],
+      "Explosive Rush": [
+        "POWER",
+        "SPECIAL"
+      ],
+      "Distant Explosions": [
+        "SPECIAL"
+      ],
+      "Pyromania": [
+        "SPECIAL"
+      ],
+      "Armor Break": [
+        "SPECIAL"
+      ],
+      "Pulverize": [
+        "SPECIAL"
+      ],
+      "Shapeshifter": [
+        "TRAIT"
+      ],
+      "True Instincts": [
+        "TRAIT",
+        "GENERAL"
+      ],
+      "Fiery Maw": [
+        "ULTIMATE 1"
+      ],
+      "Bone Cracker": [
+        "ULTIMATE 2"
+      ],
+      "Pack Leader": [
+        "ULTIMATE 2"
+      ]
+    },
+    "Aladdin": {
+      "Jinn Charge": [
+        "DASH",
+        "POWER"
+      ],
+      "Spectral Blades": [
+        "SPECIAL"
+      ],
+      "Dive": [
+        "ATTACK",
+        "DEFENSE"
+      ],
+      "Spinning Strikes": [
+        "ATTACK",
+        "SPECIAL"
+      ],
+      "Slide Attack": [
+        "ATTACK",
+        "SPECIAL"
+      ],
+      "Dream Scimitars": [
+        "ATTACK"
+      ],
+      "Shard Blades": [
+        "ATTACK"
+      ],
+      "Leaping Strike": [
+        "DASH",
+        "ATTACK"
+      ],
+      "Air Dash": [
+        "DASH",
+        "ATTACK",
+        "DEFENSE"
+      ],
+      "Acrobatics": [
+        "DEFENSE"
+      ],
+      "Tornado Jump": [
+        "DEFENSE"
+      ],
+      "Major Enchantment": [
+        "ATTACK",
+        "GENERAL"
+      ],
+      "Master Thief": [
+        "GENERAL"
+      ],
+      "Swordjinn": [
+        "POWER",
+        "SPECIAL"
+      ],
+      "Enchanted Jinn": [
+        "POWER",
+        "GENERAL"
+      ],
+      "Jinn's Fury": [
+        "POWER"
+      ],
+      "Jinn's Might": [
+        "POWER"
+      ],
+      "Healing Blades": [
+        "SPECIAL"
+      ],
+      "Aerial Catch": [
+        "SPECIAL",
+        "DEFENSE"
+      ],
+      "Sand Vortex": [
+        "SPECIAL"
+      ],
+      "Jinniya's Gift": [
+        "TRAIT",
+        "GENERAL"
+      ],
+      "Wish of Omnipotence": [
+        "POWER",
+        "SPECIAL",
+        "DEFENSE",
+        "TRAIT"
+      ],
+      "Wondrous Wishes": [
+        "POWER",
+        "SPECIAL",
+        "DEFENSE",
+        "TRAIT"
+      ],
+      "Infinite Wishes": [
+        "TRAIT",
+        "ULTIMATE 1"
+      ],
+      "Dream Stride": [
+        "ULTIMATE 2"
+      ],
+      "Quick Ride": [
+        "DASH"
+      ]
+    }
+  },
+  "annotations": {
+    "Fan of Spikes": {
+      "ATTACK": "Attack damage scaling"
+    },
+    "Air Dash": {
+      "ATTACK": "Attack speed"
+    },
+    "Adrenaline": {
+      "ATTACK": "Werewolf attack speed"
+    },
+    "Major Enchantment": {
+      "ATTACK": "While not attacking"
+    },
+    "True Instincts": {
+      "TRAIT": "Form bonuses"
+    },
+    "Heartbreak": {
+      "ULTIMATE 1": "Uses ultimate damage"
+    },
+    "Wish of Omnipotence": {
+      "POWER": "Team cooldowns after a wish",
+      "SPECIAL": "Team cooldowns after a wish",
+      "DEFENSE": "Team cooldowns after a wish"
+    },
+    "Wondrous Wishes": {
+      "POWER": "Wish variant only",
+      "SPECIAL": "Wish variant only",
+      "DEFENSE": "Wish variant only"
+    }
+  },
+  "scope": "Published game reference. Grouped by direct triggers, affected abilities, and explicit scaling. General resource/stat effects are not expanded to every indirect beneficiary. Unlock tier does not determine ability grouping."
+}

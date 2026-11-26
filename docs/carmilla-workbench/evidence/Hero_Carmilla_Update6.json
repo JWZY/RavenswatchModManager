@@ -1,0 +1,6594 @@
+{
+  "scope": "Hero_Carmilla_Update6",
+  "parents": [
+    "Heroes\\Hero_Carmilla\\Hero_Carmilla.entity.ot"
+  ],
+  "components": [
+    {
+      "index": 1,
+      "name": "Skill Dash Taunt Cooldown Timer",
+      "group": "Skill Dash Taunt",
+      "class": "oCEntityCpntTimerSettings",
+      "guid": "9e2183c6f641e846888c226c2a5bb715",
+      "flags": 1,
+      "override": null,
+      "references": [],
+      "literals": [
+        "\""
+      ],
+      "fields": [
+        {
+          "name": "flag_81",
+          "kind": "bool",
+          "offset": 0,
+          "size": 1,
+          "text": "False",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "_legacy",
+          "kind": "bool",
+          "offset": 1,
+          "size": 1,
+          "text": "False",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "mode",
+          "kind": "u32",
+          "offset": 2,
+          "size": 4,
+          "text": "1",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "flag_32",
+          "kind": "bool",
+          "offset": 6,
+          "size": 1,
+          "text": "False",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "bias?",
+          "kind": "value",
+          "offset": 7,
+          "size": 37,
+          "text": "f32 0",
+          "cls": "oCEntityCpntValuePicker",
+          "items": []
+        },
+        {
+          "name": "count",
+          "kind": "value",
+          "offset": 44,
+          "size": 37,
+          "text": "int 1",
+          "cls": "oCEntityCpntValuePicker",
+          "items": []
+        },
+        {
+          "name": "on_tick",
+          "kind": "ref",
+          "offset": 81,
+          "size": 32,
+          "text": "(none)",
+          "cls": "oCEntityCpntPicker",
+          "items": []
+        },
+        {
+          "name": "on_end",
+          "kind": "ref",
+          "offset": 113,
+          "size": 32,
+          "text": "(none)",
+          "cls": "oCEntityCpntPicker",
+          "items": []
+        },
+        {
+          "name": "state",
+          "kind": "ref",
+          "offset": 145,
+          "size": 32,
+          "text": "(none)",
+          "cls": "oCEntityCpntPicker",
+          "items": []
+        },
+        {
+          "name": "paused?",
+          "kind": "value",
+          "offset": 177,
+          "size": 34,
+          "text": "bool False",
+          "cls": "oCEntityCpntValuePicker",
+          "items": []
+        },
+        {
+          "name": "duration",
+          "kind": "value",
+          "offset": 211,
+          "size": 37,
+          "text": "f32 6",
+          "cls": "oCEntityCpntValuePicker",
+          "items": []
+        },
+        {
+          "name": "flag",
+          "kind": "bool",
+          "offset": 248,
+          "size": 1,
+          "text": "False",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "ref_tail?",
+          "kind": "ref",
+          "offset": 249,
+          "size": 32,
+          "text": "(none)",
+          "cls": "oCEntityCpntPicker",
+          "items": []
+        }
+      ]
+    },
+    {
+      "index": 2,
+      "name": "Skill Trait Life Tap Cooldown Timer",
+      "group": "Skill Trait Life Tap",
+      "class": "oCEntityCpntTimerSettings",
+      "guid": "124a8642df8599428781f1f20d416a51",
+      "flags": 1,
+      "override": null,
+      "references": [
+        {
+          "guid": "46922df4477472479c03c4a3d509867f",
+          "path": "[Value] Hero_Carmilla_Update6\\Skill Trait Life Tap\\Skill Trait Life Tap Cooldown",
+          "scope": "Hero_Carmilla_Update6"
+        }
+      ],
+      "literals": [
+        "\""
+      ],
+      "fields": [
+        {
+          "name": "flag_81",
+          "kind": "bool",
+          "offset": 0,
+          "size": 1,
+          "text": "False",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "_legacy",
+          "kind": "bool",
+          "offset": 1,
+          "size": 1,
+          "text": "False",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "mode",
+          "kind": "u32",
+          "offset": 2,
+          "size": 4,
+          "text": "1",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "flag_32",
+          "kind": "bool",
+          "offset": 6,
+          "size": 1,
+          "text": "False",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "bias?",
+          "kind": "value",
+          "offset": 7,
+          "size": 37,
+          "text": "f32 0",
+          "cls": "oCEntityCpntValuePicker",
+          "items": []
+        },
+        {
+          "name": "count",
+          "kind": "value",
+          "offset": 44,
+          "size": 37,
+          "text": "int 1",
+          "cls": "oCEntityCpntValuePicker",
+          "items": []
+        },
+        {
+          "name": "on_tick",
+          "kind": "ref",
+          "offset": 81,
+          "size": 32,
+          "text": "(none)",
+          "cls": "oCEntityCpntPicker",
+          "items": []
+        },
+        {
+          "name": "on_end",
+          "kind": "ref",
+          "offset": 113,
+          "size": 32,
+          "text": "(none)",
+          "cls": "oCEntityCpntPicker",
+          "items": []
+        },
+        {
+          "name": "state",
+          "kind": "ref",
+          "offset": 145,
+          "size": 32,
+          "text": "(none)",
+          "cls": "oCEntityCpntPicker",
+          "items": []
+        },
+        {
+          "name": "paused?",
+          "kind": "value",
+          "offset": 177,
+          "size": 34,
+          "text": "bool False",
+          "cls": "oCEntityCpntValuePicker",
+          "items": []
+        },
+        {
+          "name": "duration",
+          "kind": "value",
+          "offset": 211,
+          "size": 154,
+          "text": "f32 3  <- [Value] Hero_Carmilla_Update6\\Skill Trait Life Tap\\Skill Trait Life Tap Cooldown",
+          "cls": "oCEntityCpntValuePicker",
+          "items": []
+        },
+        {
+          "name": "flag",
+          "kind": "bool",
+          "offset": 365,
+          "size": 1,
+          "text": "False",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "ref_tail?",
+          "kind": "ref",
+          "offset": 366,
+          "size": 32,
+          "text": "(none)",
+          "cls": "oCEntityCpntPicker",
+          "items": []
+        }
+      ]
+    },
+    {
+      "index": 3,
+      "name": "Dash Ability Clip Selector",
+      "group": "Ability Dash",
+      "class": "oCEntityCpntSelectorSettings",
+      "guid": "61ac8736d59b96409dafcb8a2afa62e7",
+      "flags": 1,
+      "override": {
+        "guid": "0af2265334805e4eb9272d814c881b0a",
+        "path": "[Component Selector] Hero_Carmilla\\Ability Dash\\Dash Ability Clip Selector"
+      },
+      "references": [
+        {
+          "guid": "66447d2e04d57a4f97aef9f6183f46a3",
+          "path": "[Component Selector] Hero_Carmilla\\Skill Dash Blood\\Skill Dash Blood Clip Selector",
+          "scope": "Hero_Carmilla"
+        },
+        {
+          "guid": "86460c28b378f44b967f4afb67801463",
+          "path": "[State] Hero_Carmilla\\Skill Dash Blood\\Skill Dash Blood",
+          "scope": "Hero_Carmilla"
+        },
+        {
+          "guid": "551d7e50c75a474db82231b3b0c1fc15",
+          "path": "[Anim Clip] Hero_Carmilla\\Ability Dash\\Dash Wings Ability Clip",
+          "scope": "Hero_Carmilla"
+        },
+        {
+          "guid": "811b57dfb17529469d1d957ac23a7bfe",
+          "path": "[State] Hero_Carmilla\\Ability Trait\\State Trait Ability Active",
+          "scope": "Hero_Carmilla"
+        },
+        {
+          "guid": "4fad607649d1fc49ad252da5e8d995ea",
+          "path": "[Anim Clip] Hero_Carmilla\\Skill Attack Special Rush\\Skill Attack Special Rush Clip",
+          "scope": "Hero_Carmilla"
+        },
+        {
+          "guid": "c9f4f6aeb293f746ae202800d5d927d3",
+          "path": "[State] Hero_Carmilla\\Skill Attack Special Rush\\State Skill Attack Special Rush Flag",
+          "scope": "Hero_Carmilla"
+        },
+        {
+          "guid": "6abc162d32a6b94aad00a6ea6ad7a04d",
+          "path": "[Anim Clip] Hero_Common\\Ability Dash\\Dash Ability Clip",
+          "scope": "Hero_Common"
+        }
+      ],
+      "literals": [],
+      "fields": [
+        {
+          "name": "flag_81",
+          "kind": "bool",
+          "offset": 0,
+          "size": 1,
+          "text": "False",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "_legacy",
+          "kind": "bool",
+          "offset": 1,
+          "size": 1,
+          "text": "False",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "mode",
+          "kind": "u32",
+          "offset": 2,
+          "size": 4,
+          "text": "1",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "flag_32",
+          "kind": "bool",
+          "offset": 6,
+          "size": 1,
+          "text": "False",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "bytes_1",
+          "kind": "bytes",
+          "offset": 7,
+          "size": 4,
+          "text": "04 00 00 00",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "obj_2",
+          "kind": "obj",
+          "offset": 11,
+          "size": 253,
+          "text": "bool False  <- [Component Selector] Hero_Carmilla\\Skill Dash Blood\\Skill Dash Blood Clip Selector  <- [State] Hero_Carmilla\\Skill Dash Blood\\Skill Dash Blood",
+          "cls": "oCEntityCpntSelectorEntrySettings",
+          "items": []
+        },
+        {
+          "name": "obj_3",
+          "kind": "obj",
+          "offset": 264,
+          "size": 240,
+          "text": "bool False  <- [Anim Clip] Hero_Carmilla\\Ability Dash\\Dash Wings Ability Clip  <- [State] Hero_Carmilla\\Ability Trait\\State Trait Ability Active",
+          "cls": "oCEntityCpntSelectorEntrySettings",
+          "items": []
+        },
+        {
+          "name": "obj_4",
+          "kind": "obj",
+          "offset": 504,
+          "size": 282,
+          "text": "bool False  <- [Anim Clip] Hero_Carmilla\\Skill Attack Special Rush\\Skill Attack Special Rush Clip  <- [State] Hero_Carmilla\\Skill Attack Special Rush\\State Skill Attack Special Rush Flag",
+          "cls": "oCEntityCpntSelectorEntrySettings",
+          "items": []
+        },
+        {
+          "name": "obj_5",
+          "kind": "obj",
+          "offset": 786,
+          "size": 133,
+          "text": "bool True  <- [Anim Clip] Hero_Common\\Ability Dash\\Dash Ability Clip",
+          "cls": "oCEntityCpntSelectorEntrySettings",
+          "items": []
+        },
+        {
+          "name": "bytes_6",
+          "kind": "bytes",
+          "offset": 919,
+          "size": 2,
+          "text": "01 00",
+          "cls": "",
+          "items": []
+        }
+      ]
+    },
+    {
+      "index": 4,
+      "name": "Dash Controller Selector",
+      "group": "Hero Controller",
+      "class": "oCEntityCpntSelectorSettings",
+      "guid": "2e6088557196e64690c7fefc11b79d70",
+      "flags": 1,
+      "override": {
+        "guid": "f1c49cdf1f794a4eb0b3d73a80621184",
+        "path": "[Component Selector] Hero_Common\\Hero Controller\\Dash Controller Selector"
+      },
+      "references": [
+        {
+          "guid": "f5fd48c062fe3b48a8554b38e011109f",
+          "path": "[Dt Ability Controller] Hero_Carmilla_Update6\\Hero Controller\\Dash Taunt Ability Controller",
+          "scope": "Hero_Carmilla_Update6"
+        },
+        {
+          "guid": "3eb757a167e732479dd81fb3b3cd18d8",
+          "path": "[Cpnt Value Tester] Hero_Carmilla_Update6\\Skill Dash Taunt\\Skill Dash Taunt Activation Condition",
+          "scope": "Hero_Carmilla_Update6"
+        },
+        {
+          "guid": "445241f4d605af4db3f637be8ade9292",
+          "path": "[Dt Ability Controller] Hero_Carmilla_Update6\\Hero Controller\\Dash Ability Controller",
+          "scope": "Hero_Carmilla_Update6"
+        }
+      ],
+      "literals": [],
+      "fields": [
+        {
+          "name": "flag_81",
+          "kind": "bool",
+          "offset": 0,
+          "size": 1,
+          "text": "False",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "_legacy",
+          "kind": "bool",
+          "offset": 1,
+          "size": 1,
+          "text": "False",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "mode",
+          "kind": "u32",
+          "offset": 2,
+          "size": 4,
+          "text": "1",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "flag_32",
+          "kind": "bool",
+          "offset": 6,
+          "size": 1,
+          "text": "False",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "bytes_1",
+          "kind": "bytes",
+          "offset": 7,
+          "size": 4,
+          "text": "02 00 00 00",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "obj_2",
+          "kind": "obj",
+          "offset": 11,
+          "size": 303,
+          "text": "bool False  <- [Dt Ability Controller] Hero_Carmilla_Update6\\Hero Controller\\Dash Taunt Ability Controller  <- [Cpnt Value Tester] Hero_Carmilla_Update6\\Skill Dash Taunt\\Skill Dash Taunt Activation Condition",
+          "cls": "oCEntityCpntSelectorEntrySettings",
+          "items": []
+        },
+        {
+          "name": "obj_3",
+          "kind": "obj",
+          "offset": 314,
+          "size": 164,
+          "text": "bool True  <- [Dt Ability Controller] Hero_Carmilla_Update6\\Hero Controller\\Dash Ability Controller",
+          "cls": "oCEntityCpntSelectorEntrySettings",
+          "items": []
+        },
+        {
+          "name": "bytes_4",
+          "kind": "bytes",
+          "offset": 478,
+          "size": 2,
+          "text": "01 00",
+          "cls": "",
+          "items": []
+        }
+      ]
+    },
+    {
+      "index": 5,
+      "name": "Skill Trait Life Tap Clip Selector",
+      "group": "Skill Trait Life Tap",
+      "class": "oCEntityCpntSelectorSettings",
+      "guid": "ea9eacc4e9635346965b49b50c80fd74",
+      "flags": 1,
+      "override": {
+        "guid": "7d1f8582527f6c48834a4be9a333042c",
+        "path": "[Component Selector] Hero_Carmilla\\Skill Trait Life Tap\\Skill Trait Life Tap Clip Selector"
+      },
+      "references": [
+        {
+          "guid": "0393cc1a54747e41989d9465ca7c537d",
+          "path": "[Anim Clip] Hero_Carmilla\\Skill Trait Push Back\\Skill Trait Push Back Life Tap Clip",
+          "scope": "Hero_Carmilla"
+        },
+        {
+          "guid": "92189464ce0f294d85f00cdd649606a3",
+          "path": "[State] Hero_Carmilla\\Skill Trait Push Back\\Skill Trait Push Back",
+          "scope": "Hero_Carmilla"
+        },
+        {
+          "guid": "6837d3790e01f04ab6abfe93106be167",
+          "path": "[Anim Clip] Hero_Carmilla\\Skill Trait Life Tap\\Skill Trait Life Tap Clip",
+          "scope": "Hero_Carmilla"
+        }
+      ],
+      "literals": [],
+      "fields": [
+        {
+          "name": "flag_81",
+          "kind": "bool",
+          "offset": 0,
+          "size": 1,
+          "text": "False",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "_legacy",
+          "kind": "bool",
+          "offset": 1,
+          "size": 1,
+          "text": "False",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "mode",
+          "kind": "u32",
+          "offset": 2,
+          "size": 4,
+          "text": "1",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "flag_32",
+          "kind": "bool",
+          "offset": 6,
+          "size": 1,
+          "text": "False",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "bytes_1",
+          "kind": "bytes",
+          "offset": 7,
+          "size": 4,
+          "text": "02 00 00 00",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "obj_2",
+          "kind": "obj",
+          "offset": 11,
+          "size": 264,
+          "text": "bool False  <- [Anim Clip] Hero_Carmilla\\Skill Trait Push Back\\Skill Trait Push Back Life Tap Clip  <- [State] Hero_Carmilla\\Skill Trait Push Back\\Skill Trait Push Back",
+          "cls": "oCEntityCpntSelectorEntrySettings",
+          "items": []
+        },
+        {
+          "name": "obj_3",
+          "kind": "obj",
+          "offset": 275,
+          "size": 151,
+          "text": "bool True  <- [Anim Clip] Hero_Carmilla\\Skill Trait Life Tap\\Skill Trait Life Tap Clip",
+          "cls": "oCEntityCpntSelectorEntrySettings",
+          "items": []
+        },
+        {
+          "name": "bytes_4",
+          "kind": "bytes",
+          "offset": 426,
+          "size": 2,
+          "text": "01 00",
+          "cls": "",
+          "items": []
+        }
+      ]
+    },
+    {
+      "index": 6,
+      "name": "Event Skill Dash Taunt Activate",
+      "group": "Skill Dash Taunt",
+      "class": "oCEntityCpntStateSettings",
+      "guid": "62a8e0352c59ce41b34799e38922898e",
+      "flags": 65537,
+      "override": {
+        "guid": "f623781d546e3d4281a0c9ea022d59d6",
+        "path": "[State] Hero_Carmilla\\Skill Dash Taunt\\Event Skill Dash Taunt Activate"
+      },
+      "references": [
+        {
+          "guid": "c39a77c4a7878849a7544cd9ce7b72ac",
+          "path": "[Gpn Target Computer] Hero_Carmilla_Update6\\Skill Dash Taunt\\Skill Dash Taunt Target Computer",
+          "scope": "Hero_Carmilla_Update6"
+        },
+        {
+          "guid": "7ad8330d1ef31b4b8bde1b22537fea32",
+          "path": "[Gpn Target Attack] Hero_Carmilla_Update6\\Skill Dash Taunt\\Skill Dash Taunt Gpn Target Attack",
+          "scope": "Hero_Carmilla_Update6"
+        },
+        {
+          "guid": "12778333d1f77e448f5b082917bed787",
+          "path": "[Entity Attack] Hero_Carmilla\\Skill Dash Taunt\\Skill Dash Taunt Fx Attack",
+          "scope": "Hero_Carmilla"
+        },
+        {
+          "guid": "2db3e69ddfb4d54cbc8108a30a8e8632",
+          "path": "[Fx] Hero_Carmilla\\Skill Dash Taunt\\Skill Dash Taunt Fx",
+          "scope": "Hero_Carmilla"
+        },
+        {
+          "guid": "ec269ed428e7b2429487ae1b05a67faa",
+          "path": "[FMod Event] Hero_Carmilla\\Skill Dash Taunt\\Skill Dash Taunt FMod Event Active",
+          "scope": "Hero_Carmilla"
+        },
+        {
+          "guid": "9e2183c6f641e846888c226c2a5bb715",
+          "path": "[Timer] Hero_Carmilla_Update6\\Skill Dash Taunt\\Skill Dash Taunt Cooldown Timer",
+          "scope": "Hero_Carmilla_Update6"
+        },
+        {
+          "guid": "c39a77c4a7878849a7544cd9ce7b72ac",
+          "path": "[Gpn Target Computer] Hero_Carmilla_Update6\\Skill Dash Taunt\\Skill Dash Taunt Target Computer",
+          "scope": "Hero_Carmilla_Update6"
+        }
+      ],
+      "literals": [],
+      "fields": [
+        {
+          "name": "flag_81",
+          "kind": "bool",
+          "offset": 0,
+          "size": 1,
+          "text": "False",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "_legacy",
+          "kind": "bool",
+          "offset": 1,
+          "size": 1,
+          "text": "False",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "mode",
+          "kind": "u32",
+          "offset": 2,
+          "size": 4,
+          "text": "1",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "flag_32",
+          "kind": "bool",
+          "offset": 6,
+          "size": 1,
+          "text": "False",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "activates",
+          "kind": "ref[]",
+          "offset": 7,
+          "size": 698,
+          "text": "<- [Gpn Target Computer] Hero_Carmilla_Update6\\Skill Dash Taunt\\Skill Dash Taunt Target Computer  |  <- [Gpn Target Attack] Hero_Carmilla_Update6\\Skill Dash Taunt\\Skill Dash Taunt Gpn Target Attack  |  <- [Entity Attack] Hero_Carmilla\\Skill Dash Taunt\\Skill Dash Taunt Fx Attack  |  <- [Fx] Hero_Carmilla\\Skill Dash Taunt\\Skill Dash Taunt Fx  |  <- [FMod Event] Hero_Carmilla\\Skill Dash Taunt\\Skill Dash Taunt FMod Event Active  |  <- [Timer] Hero_Carmilla_Update6\\Skill Dash Taunt\\Skill Dash Taunt Cooldown Timer  |  (none)",
+          "cls": "",
+          "items": [
+            {
+              "name": "activates[0]",
+              "kind": "ref",
+              "offset": 11,
+              "size": 125,
+              "text": "<- [Gpn Target Computer] Hero_Carmilla_Update6\\Skill Dash Taunt\\Skill Dash Taunt Target Computer",
+              "cls": "oCEntityCpntPicker",
+              "items": []
+            },
+            {
+              "name": "activates[1]",
+              "kind": "ref",
+              "offset": 136,
+              "size": 125,
+              "text": "<- [Gpn Target Attack] Hero_Carmilla_Update6\\Skill Dash Taunt\\Skill Dash Taunt Gpn Target Attack",
+              "cls": "oCEntityCpntPicker",
+              "items": []
+            },
+            {
+              "name": "activates[2]",
+              "kind": "ref",
+              "offset": 261,
+              "size": 105,
+              "text": "<- [Entity Attack] Hero_Carmilla\\Skill Dash Taunt\\Skill Dash Taunt Fx Attack",
+              "cls": "oCEntityCpntPicker",
+              "items": []
+            },
+            {
+              "name": "activates[3]",
+              "kind": "ref",
+              "offset": 366,
+              "size": 87,
+              "text": "<- [Fx] Hero_Carmilla\\Skill Dash Taunt\\Skill Dash Taunt Fx",
+              "cls": "oCEntityCpntPicker",
+              "items": []
+            },
+            {
+              "name": "activates[4]",
+              "kind": "ref",
+              "offset": 453,
+              "size": 110,
+              "text": "<- [FMod Event] Hero_Carmilla\\Skill Dash Taunt\\Skill Dash Taunt FMod Event Active",
+              "cls": "oCEntityCpntPicker",
+              "items": []
+            },
+            {
+              "name": "activates[5]",
+              "kind": "ref",
+              "offset": 563,
+              "size": 110,
+              "text": "<- [Timer] Hero_Carmilla_Update6\\Skill Dash Taunt\\Skill Dash Taunt Cooldown Timer",
+              "cls": "oCEntityCpntPicker",
+              "items": []
+            },
+            {
+              "name": "activates[6]",
+              "kind": "ref",
+              "offset": 673,
+              "size": 32,
+              "text": "(none)",
+              "cls": "oCEntityCpntPicker",
+              "items": []
+            }
+          ]
+        },
+        {
+          "name": "deactivates?",
+          "kind": "ref[]",
+          "offset": 705,
+          "size": 4,
+          "text": "(empty)",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "list_2",
+          "kind": "ref[]",
+          "offset": 709,
+          "size": 4,
+          "text": "(empty)",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "on_exit?",
+          "kind": "ref[]",
+          "offset": 713,
+          "size": 4,
+          "text": "(empty)",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "disables_while_active?",
+          "kind": "ref[]",
+          "offset": 717,
+          "size": 4,
+          "text": "(empty)",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "on_enter?",
+          "kind": "ref[]",
+          "offset": 721,
+          "size": 129,
+          "text": "<- [Gpn Target Computer] Hero_Carmilla_Update6\\Skill Dash Taunt\\Skill Dash Taunt Target Computer",
+          "cls": "",
+          "items": [
+            {
+              "name": "on_enter?[0]",
+              "kind": "ref",
+              "offset": 725,
+              "size": 125,
+              "text": "<- [Gpn Target Computer] Hero_Carmilla_Update6\\Skill Dash Taunt\\Skill Dash Taunt Target Computer",
+              "cls": "oCEntityCpntPicker",
+              "items": []
+            }
+          ]
+        },
+        {
+          "name": "while_active",
+          "kind": "ref[]",
+          "offset": 850,
+          "size": 4,
+          "text": "(empty)",
+          "cls": "",
+          "items": []
+        }
+      ]
+    },
+    {
+      "index": 7,
+      "name": "Event Skill Trait Life Tap Active",
+      "group": "Skill Trait Life Tap",
+      "class": "oCEntityCpntStateSettings",
+      "guid": "74fc0c7182ad3843a433ab4089c1234f",
+      "flags": 65537,
+      "override": {
+        "guid": "d718e777f3fe0748949cb57f2b0e2737",
+        "path": "[State] Hero_Carmilla\\Skill Trait Life Tap\\Event Skill Trait Life Tap Active"
+      },
+      "references": [
+        {
+          "guid": "44aca20fa73fd34cae2e2f2cf3b8bc79",
+          "path": "[Dt Damage] Hero_Carmilla\\Skill Trait Life Tap\\Skill Trait Life Tap Self Damage",
+          "scope": "Hero_Carmilla"
+        },
+        {
+          "guid": "ee83346e2b5de743a98505c17b4b207b",
+          "path": "[Fx] Hero_Carmilla\\Skill Trait Life Tap\\Skill Trait Life Tap Fx Active",
+          "scope": "Hero_Carmilla"
+        },
+        {
+          "guid": "e5bae66cbd82d440bb6dee6998cc46fe",
+          "path": "[FMod Event] Hero_Carmilla\\Skill Trait Life Tap\\Skill Trait Life Tap FMod Event Active",
+          "scope": "Hero_Carmilla"
+        },
+        {
+          "guid": "272efb3d9fa2034f8978bcedf48b357d",
+          "path": "[State] Hero_Carmilla\\Ability Common\\Event Blood Gain",
+          "scope": "Hero_Carmilla"
+        },
+        {
+          "guid": "3bee46f61675354bab18bca190623c47",
+          "path": "[Cpnt Value Tester] Hero_Carmilla\\Skill Trait Heal Buff\\Skill Trait Heal Buff Tester",
+          "scope": "Hero_Carmilla"
+        },
+        {
+          "guid": "124a8642df8599428781f1f20d416a51",
+          "path": "[Timer] Hero_Carmilla_Update6\\Skill Trait Life Tap\\Skill Trait Life Tap Cooldown Timer",
+          "scope": "Hero_Carmilla_Update6"
+        }
+      ],
+      "literals": [],
+      "fields": [
+        {
+          "name": "flag_81",
+          "kind": "bool",
+          "offset": 0,
+          "size": 1,
+          "text": "False",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "_legacy",
+          "kind": "bool",
+          "offset": 1,
+          "size": 1,
+          "text": "False",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "mode",
+          "kind": "u32",
+          "offset": 2,
+          "size": 4,
+          "text": "1",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "flag_32",
+          "kind": "bool",
+          "offset": 6,
+          "size": 1,
+          "text": "False",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "activates",
+          "kind": "ref[]",
+          "offset": 7,
+          "size": 654,
+          "text": "<- [Dt Damage] Hero_Carmilla\\Skill Trait Life Tap\\Skill Trait Life Tap Self Damage  |  <- [Fx] Hero_Carmilla\\Skill Trait Life Tap\\Skill Trait Life Tap Fx Active  |  <- [FMod Event] Hero_Carmilla\\Skill Trait Life Tap\\Skill Trait Life Tap FMod Event Active  |  <- [State] Hero_Carmilla\\Ability Common\\Event Blood Gain  |  <- [Cpnt Value Tester] Hero_Carmilla\\Skill Trait Heal Buff\\Skill Trait Heal Buff Tester  |  <- [Timer] Hero_Carmilla_Update6\\Skill Trait Life Tap\\Skill Trait Life Tap Cooldown Timer",
+          "cls": "",
+          "items": [
+            {
+              "name": "activates[0]",
+              "kind": "ref",
+              "offset": 11,
+              "size": 111,
+              "text": "<- [Dt Damage] Hero_Carmilla\\Skill Trait Life Tap\\Skill Trait Life Tap Self Damage",
+              "cls": "oCEntityCpntPicker",
+              "items": []
+            },
+            {
+              "name": "activates[1]",
+              "kind": "ref",
+              "offset": 122,
+              "size": 102,
+              "text": "<- [Fx] Hero_Carmilla\\Skill Trait Life Tap\\Skill Trait Life Tap Fx Active",
+              "cls": "oCEntityCpntPicker",
+              "items": []
+            },
+            {
+              "name": "activates[2]",
+              "kind": "ref",
+              "offset": 224,
+              "size": 118,
+              "text": "<- [FMod Event] Hero_Carmilla\\Skill Trait Life Tap\\Skill Trait Life Tap FMod Event Active",
+              "cls": "oCEntityCpntPicker",
+              "items": []
+            },
+            {
+              "name": "activates[3]",
+              "kind": "ref",
+              "offset": 342,
+              "size": 85,
+              "text": "<- [State] Hero_Carmilla\\Ability Common\\Event Blood Gain",
+              "cls": "oCEntityCpntPicker",
+              "items": []
+            },
+            {
+              "name": "activates[4]",
+              "kind": "ref",
+              "offset": 427,
+              "size": 116,
+              "text": "<- [Cpnt Value Tester] Hero_Carmilla\\Skill Trait Heal Buff\\Skill Trait Heal Buff Tester",
+              "cls": "oCEntityCpntPicker",
+              "items": []
+            },
+            {
+              "name": "activates[5]",
+              "kind": "ref",
+              "offset": 543,
+              "size": 118,
+              "text": "<- [Timer] Hero_Carmilla_Update6\\Skill Trait Life Tap\\Skill Trait Life Tap Cooldown Timer",
+              "cls": "oCEntityCpntPicker",
+              "items": []
+            }
+          ]
+        },
+        {
+          "name": "deactivates?",
+          "kind": "ref[]",
+          "offset": 661,
+          "size": 4,
+          "text": "(empty)",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "list_2",
+          "kind": "ref[]",
+          "offset": 665,
+          "size": 4,
+          "text": "(empty)",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "on_exit?",
+          "kind": "ref[]",
+          "offset": 669,
+          "size": 4,
+          "text": "(empty)",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "disables_while_active?",
+          "kind": "ref[]",
+          "offset": 673,
+          "size": 4,
+          "text": "(empty)",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "on_enter?",
+          "kind": "ref[]",
+          "offset": 677,
+          "size": 4,
+          "text": "(empty)",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "while_active",
+          "kind": "ref[]",
+          "offset": 681,
+          "size": 4,
+          "text": "(empty)",
+          "cls": "",
+          "items": []
+        }
+      ]
+    },
+    {
+      "index": 8,
+      "name": "State Skill Dash Taunt",
+      "group": "Skill Dash Taunt",
+      "class": "oCEntityCpntStateSettings",
+      "guid": "7cd45f0603e1bf418ce4205390032742",
+      "flags": 1,
+      "override": null,
+      "references": [
+        {
+          "guid": "ec6a97209bddc34abcfe22311aa6b414",
+          "path": "[Anim Clip] Hero_Carmilla_Update6\\Skill Dash Taunt\\Skill Dash Taunt Anim Clip",
+          "scope": "Hero_Carmilla_Update6"
+        },
+        {
+          "guid": "f122cf7afa19cc4d9b4126251dc5557f",
+          "path": "[Value Anim] Hero_Carmilla\\Skill Dash Taunt\\Skill Dash Taunt Fresnel Anim",
+          "scope": "Hero_Carmilla"
+        }
+      ],
+      "literals": [],
+      "fields": [
+        {
+          "name": "flag_81",
+          "kind": "bool",
+          "offset": 0,
+          "size": 1,
+          "text": "False",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "_legacy",
+          "kind": "bool",
+          "offset": 1,
+          "size": 1,
+          "text": "False",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "mode",
+          "kind": "u32",
+          "offset": 2,
+          "size": 4,
+          "text": "1",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "flag_32",
+          "kind": "bool",
+          "offset": 6,
+          "size": 1,
+          "text": "False",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "activates",
+          "kind": "ref[]",
+          "offset": 7,
+          "size": 4,
+          "text": "(empty)",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "deactivates?",
+          "kind": "ref[]",
+          "offset": 11,
+          "size": 4,
+          "text": "(empty)",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "list_2",
+          "kind": "ref[]",
+          "offset": 15,
+          "size": 4,
+          "text": "(empty)",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "on_exit?",
+          "kind": "ref[]",
+          "offset": 19,
+          "size": 4,
+          "text": "(empty)",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "disables_while_active?",
+          "kind": "ref[]",
+          "offset": 23,
+          "size": 4,
+          "text": "(empty)",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "on_enter?",
+          "kind": "ref[]",
+          "offset": 27,
+          "size": 4,
+          "text": "(empty)",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "while_active",
+          "kind": "ref[]",
+          "offset": 31,
+          "size": 218,
+          "text": "<- [Anim Clip] Hero_Carmilla_Update6\\Skill Dash Taunt\\Skill Dash Taunt Anim Clip  |  <- [Value Anim] Hero_Carmilla\\Skill Dash Taunt\\Skill Dash Taunt Fresnel Anim",
+          "cls": "",
+          "items": [
+            {
+              "name": "while_active[0]",
+              "kind": "ref",
+              "offset": 35,
+              "size": 109,
+              "text": "<- [Anim Clip] Hero_Carmilla_Update6\\Skill Dash Taunt\\Skill Dash Taunt Anim Clip",
+              "cls": "oCEntityCpntPicker",
+              "items": []
+            },
+            {
+              "name": "while_active[1]",
+              "kind": "ref",
+              "offset": 144,
+              "size": 105,
+              "text": "<- [Value Anim] Hero_Carmilla\\Skill Dash Taunt\\Skill Dash Taunt Fresnel Anim",
+              "cls": "oCEntityCpntPicker",
+              "items": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "index": 9,
+      "name": "Dash Ability Consume Charge Condition",
+      "group": "Hero Controller",
+      "class": "oCEntityCpntTesterSettings",
+      "guid": "1ad61548ff108f4a9a33350e4c0e6624",
+      "flags": 257,
+      "override": {
+        "guid": "8d5c535a48c7f9448c7d512d30b16e26",
+        "path": "[Cpnt Value Tester] Hero_Common\\Hero Controller\\Dash Ability Consume Charge Condition"
+      },
+      "references": [],
+      "literals": [
+        "J"
+      ],
+      "fields": [
+        {
+          "name": "flag_81",
+          "kind": "bool",
+          "offset": 0,
+          "size": 1,
+          "text": "False",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "_legacy",
+          "kind": "bool",
+          "offset": 1,
+          "size": 1,
+          "text": "False",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "mode",
+          "kind": "u32",
+          "offset": 2,
+          "size": 4,
+          "text": "1",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "flag_32",
+          "kind": "bool",
+          "offset": 6,
+          "size": 1,
+          "text": "False",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "on_true",
+          "kind": "ref",
+          "offset": 7,
+          "size": 32,
+          "text": "(none)",
+          "cls": "oCEntityCpntPicker",
+          "items": []
+        },
+        {
+          "name": "ref_2",
+          "kind": "ref",
+          "offset": 39,
+          "size": 32,
+          "text": "(none)",
+          "cls": "oCEntityCpntPicker",
+          "items": []
+        },
+        {
+          "name": "on_false",
+          "kind": "ref",
+          "offset": 71,
+          "size": 32,
+          "text": "(none)",
+          "cls": "oCEntityCpntPicker",
+          "items": []
+        },
+        {
+          "name": "ref_4",
+          "kind": "ref",
+          "offset": 103,
+          "size": 32,
+          "text": "(none)",
+          "cls": "oCEntityCpntPicker",
+          "items": []
+        },
+        {
+          "name": "test",
+          "kind": "obj",
+          "offset": 135,
+          "size": 22,
+          "text": "(none)",
+          "cls": "oCCombinerCpntTestSettings",
+          "items": []
+        },
+        {
+          "name": "ref_6",
+          "kind": "ref",
+          "offset": 157,
+          "size": 32,
+          "text": "(none)",
+          "cls": "oCEntityCpntPicker",
+          "items": []
+        },
+        {
+          "name": "ref_7",
+          "kind": "ref",
+          "offset": 189,
+          "size": 32,
+          "text": "(none)",
+          "cls": "oCEntityCpntPicker",
+          "items": []
+        }
+      ]
+    },
+    {
+      "index": 10,
+      "name": "Skill Dash Taunt Activation Condition",
+      "group": "Skill Dash Taunt",
+      "class": "oCEntityCpntTesterSettings",
+      "guid": "5837a2800b2fc644a9608f8fab7bdda4",
+      "flags": 257,
+      "override": {
+        "guid": "3eb757a167e732479dd81fb3b3cd18d8",
+        "path": "[Cpnt Value Tester] Hero_Carmilla\\Skill Dash Taunt\\Skill Dash Taunt Activation Condition"
+      },
+      "references": [],
+      "literals": [],
+      "fields": [
+        {
+          "name": "flag_81",
+          "kind": "bool",
+          "offset": 0,
+          "size": 1,
+          "text": "False",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "_legacy",
+          "kind": "bool",
+          "offset": 1,
+          "size": 1,
+          "text": "False",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "mode",
+          "kind": "u32",
+          "offset": 2,
+          "size": 4,
+          "text": "1",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "flag_32",
+          "kind": "bool",
+          "offset": 6,
+          "size": 1,
+          "text": "False",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "on_true",
+          "kind": "ref",
+          "offset": 7,
+          "size": 32,
+          "text": "(none)",
+          "cls": "oCEntityCpntPicker",
+          "items": []
+        },
+        {
+          "name": "ref_2",
+          "kind": "ref",
+          "offset": 39,
+          "size": 32,
+          "text": "(none)",
+          "cls": "oCEntityCpntPicker",
+          "items": []
+        },
+        {
+          "name": "on_false",
+          "kind": "ref",
+          "offset": 71,
+          "size": 32,
+          "text": "(none)",
+          "cls": "oCEntityCpntPicker",
+          "items": []
+        },
+        {
+          "name": "ref_4",
+          "kind": "ref",
+          "offset": 103,
+          "size": 32,
+          "text": "(none)",
+          "cls": "oCEntityCpntPicker",
+          "items": []
+        },
+        {
+          "name": "test",
+          "kind": "obj",
+          "offset": 135,
+          "size": 26,
+          "text": "(none)",
+          "cls": "oCCombinerCpntTestSettings",
+          "items": []
+        },
+        {
+          "name": "ref_6",
+          "kind": "ref",
+          "offset": 161,
+          "size": 32,
+          "text": "(none)",
+          "cls": "oCEntityCpntPicker",
+          "items": []
+        },
+        {
+          "name": "ref_7",
+          "kind": "ref",
+          "offset": 193,
+          "size": 32,
+          "text": "(none)",
+          "cls": "oCEntityCpntPicker",
+          "items": []
+        }
+      ]
+    },
+    {
+      "index": 11,
+      "name": "Trait Life Tap Is Enabled Condition",
+      "group": "Hero Controller",
+      "class": "oCEntityCpntTesterSettings",
+      "guid": "6fead179943e714fa1417b4e53d878be",
+      "flags": 257,
+      "override": {
+        "guid": "2837e25d09164047874ce7507c1f662d",
+        "path": "[Cpnt Value Tester] Hero_Carmilla\\Hero Controller\\Trait Life Tap Is Enabled Condition"
+      },
+      "references": [],
+      "literals": [],
+      "fields": [
+        {
+          "name": "flag_81",
+          "kind": "bool",
+          "offset": 0,
+          "size": 1,
+          "text": "False",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "_legacy",
+          "kind": "bool",
+          "offset": 1,
+          "size": 1,
+          "text": "False",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "mode",
+          "kind": "u32",
+          "offset": 2,
+          "size": 4,
+          "text": "1",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "flag_32",
+          "kind": "bool",
+          "offset": 6,
+          "size": 1,
+          "text": "False",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "on_true",
+          "kind": "ref",
+          "offset": 7,
+          "size": 32,
+          "text": "(none)",
+          "cls": "oCEntityCpntPicker",
+          "items": []
+        },
+        {
+          "name": "ref_2",
+          "kind": "ref",
+          "offset": 39,
+          "size": 32,
+          "text": "(none)",
+          "cls": "oCEntityCpntPicker",
+          "items": []
+        },
+        {
+          "name": "on_false",
+          "kind": "ref",
+          "offset": 71,
+          "size": 32,
+          "text": "(none)",
+          "cls": "oCEntityCpntPicker",
+          "items": []
+        },
+        {
+          "name": "ref_4",
+          "kind": "ref",
+          "offset": 103,
+          "size": 32,
+          "text": "(none)",
+          "cls": "oCEntityCpntPicker",
+          "items": []
+        },
+        {
+          "name": "test",
+          "kind": "obj",
+          "offset": 135,
+          "size": 30,
+          "text": "(none)",
+          "cls": "oCCombinerCpntTestSettings",
+          "items": []
+        },
+        {
+          "name": "ref_6",
+          "kind": "ref",
+          "offset": 165,
+          "size": 32,
+          "text": "(none)",
+          "cls": "oCEntityCpntPicker",
+          "items": []
+        },
+        {
+          "name": "ref_7",
+          "kind": "ref",
+          "offset": 197,
+          "size": 32,
+          "text": "(none)",
+          "cls": "oCEntityCpntPicker",
+          "items": []
+        }
+      ]
+    },
+    {
+      "index": 12,
+      "name": "Ultimate 1 Ability Consume All Blood Tester",
+      "group": "Ability Ultimate 1",
+      "class": "oCEntityCpntTesterSettings",
+      "guid": "e9f94c7aacc814409bc8af5f073c59b3",
+      "flags": 65537,
+      "override": {
+        "guid": "6233727ca4bc8845abd6355b627c74f1",
+        "path": "[Cpnt Value Tester] Hero_Carmilla\\Ability Ultimate 1\\Ultimate 1 Ability Consume All Blood Tester"
+      },
+      "references": [
+        {
+          "guid": "b888a112ff8e6e4cb5be3a74e63ad827",
+          "path": "[State] Hero_Carmilla\\Ability Common\\Event Blood Consume All",
+          "scope": "Hero_Carmilla"
+        },
+        {
+          "guid": "b888a112ff8e6e4cb5be3a74e63ad827",
+          "path": "[State] Hero_Carmilla\\Ability Common\\Event Blood Consume All",
+          "scope": "Hero_Carmilla"
+        }
+      ],
+      "literals": [
+        "?"
+      ],
+      "fields": [
+        {
+          "name": "flag_81",
+          "kind": "bool",
+          "offset": 0,
+          "size": 1,
+          "text": "False",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "_legacy",
+          "kind": "bool",
+          "offset": 1,
+          "size": 1,
+          "text": "False",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "mode",
+          "kind": "u32",
+          "offset": 2,
+          "size": 4,
+          "text": "0",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "flag_32",
+          "kind": "bool",
+          "offset": 6,
+          "size": 1,
+          "text": "False",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "on_true",
+          "kind": "ref",
+          "offset": 7,
+          "size": 92,
+          "text": "<- [State] Hero_Carmilla\\Ability Common\\Event Blood Consume All",
+          "cls": "oCEntityCpntPicker",
+          "items": []
+        },
+        {
+          "name": "ref_2",
+          "kind": "ref",
+          "offset": 99,
+          "size": 32,
+          "text": "(none)",
+          "cls": "oCEntityCpntPicker",
+          "items": []
+        },
+        {
+          "name": "on_false",
+          "kind": "ref",
+          "offset": 131,
+          "size": 92,
+          "text": "<- [State] Hero_Carmilla\\Ability Common\\Event Blood Consume All",
+          "cls": "oCEntityCpntPicker",
+          "items": []
+        },
+        {
+          "name": "ref_4",
+          "kind": "ref",
+          "offset": 223,
+          "size": 32,
+          "text": "(none)",
+          "cls": "oCEntityCpntPicker",
+          "items": []
+        },
+        {
+          "name": "test",
+          "kind": "obj",
+          "offset": 255,
+          "size": 22,
+          "text": "(none)",
+          "cls": "oCCombinerCpntTestSettings",
+          "items": []
+        },
+        {
+          "name": "ref_6",
+          "kind": "ref",
+          "offset": 277,
+          "size": 32,
+          "text": "(none)",
+          "cls": "oCEntityCpntPicker",
+          "items": []
+        },
+        {
+          "name": "ref_7",
+          "kind": "ref",
+          "offset": 309,
+          "size": 32,
+          "text": "(none)",
+          "cls": "oCEntityCpntPicker",
+          "items": []
+        }
+      ]
+    },
+    {
+      "index": 13,
+      "name": "Skill Dash Taunt Animatic",
+      "group": "Skill Dash Taunt",
+      "class": "oCEntityCpntAnimaticSettings",
+      "guid": "1924a440fd73594a9db1284c1263dce0",
+      "flags": 65537,
+      "override": {
+        "guid": "cc949cf53d542f4f8f88fd5dcb8320b5",
+        "path": "[Animatic] Hero_Carmilla\\Skill Dash Taunt\\Skill Dash Taunt Animatic"
+      },
+      "references": [
+        {
+          "guid": "31e4140a5edf6e4ab910eebc0e746be9",
+          "path": "[Animatic player] Character_Common\\Base\\Main Anim Player",
+          "scope": "Character_Common"
+        }
+      ],
+      "literals": [
+        "3D",
+        "Characters\\Heroes\\Carmilla\\Animation\\Carmilla_SKILL_SeductiveProvocation_Default.fbx",
+        ">"
+      ],
+      "fields": [
+        {
+          "name": "flag_81",
+          "kind": "bool",
+          "offset": 0,
+          "size": 1,
+          "text": "False",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "_legacy",
+          "kind": "bool",
+          "offset": 1,
+          "size": 1,
+          "text": "False",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "mode",
+          "kind": "u32",
+          "offset": 2,
+          "size": 4,
+          "text": "1",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "flag_32",
+          "kind": "bool",
+          "offset": 6,
+          "size": 1,
+          "text": "False",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "ref_2",
+          "kind": "ref",
+          "offset": 7,
+          "size": 88,
+          "text": "<- [Animatic player] Character_Common\\Base\\Main Anim Player",
+          "cls": "oCEntityCpntPicker",
+          "items": []
+        },
+        {
+          "name": "ref_3",
+          "kind": "ref",
+          "offset": 95,
+          "size": 32,
+          "text": "(none)",
+          "cls": "oCEntityCpntPicker",
+          "items": []
+        },
+        {
+          "name": "bytes_4",
+          "kind": "bytes",
+          "offset": 127,
+          "size": 85,
+          "text": "00 cd cc 4c 3d 02 00 00 00 02 00 00 00 00 00 00 00 00 00 00 00 cd cc cc bd 00 00 00 00 cd cc cc 3d 00 00 00 00 01 01 00 00 00 00 00 80 3f 00 00 80 3f 66 66 66 3f 00 00 80 3f cd cc 8c 3f 00 00 80 3f 01 01 00 00 00 01 00 00 00 00 00 00 00 80 3f cd cc cc 3d",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "obj_5",
+          "kind": "obj",
+          "offset": 212,
+          "size": 45,
+          "text": "(none)",
+          "cls": "oCCinematic",
+          "items": []
+        },
+        {
+          "name": "bytes_6",
+          "kind": "bytes",
+          "offset": 257,
+          "size": 5,
+          "text": "00 00 00 00 00",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "value_7",
+          "kind": "value",
+          "offset": 262,
+          "size": 37,
+          "text": "f32 1",
+          "cls": "oCEntityCpntValuePicker",
+          "items": []
+        },
+        {
+          "name": "bytes_8",
+          "kind": "bytes",
+          "offset": 299,
+          "size": 98,
+          "text": "00 00 80 3f 02 00 00 00 33 44 54 00 00 00 43 68 61 72 61 63 74 65 72 73 5c 48 65 72 6f 65 73 5c 43 61 72 6d 69 6c 6c 61 5c 41 6e 69 6d 61 74 69 6f 6e 5c 43 61 72 6d 69 6c 6c 61 5f 53 4b 49 4c 4c 5f 53 65 64 75 63 74 69 76 65 50 72 6f 76 6f 63 61 74 69 6f 6e 5f 44 65 66 61 75 6c 74 2e 66 62 78",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "value_9",
+          "kind": "value",
+          "offset": 397,
+          "size": 37,
+          "text": "f32 1.25",
+          "cls": "oCEntityCpntValuePicker",
+          "items": []
+        },
+        {
+          "name": "bytes_10",
+          "kind": "bytes",
+          "offset": 434,
+          "size": 1,
+          "text": "00",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "value_11",
+          "kind": "value",
+          "offset": 435,
+          "size": 37,
+          "text": "f32 0",
+          "cls": "oCEntityCpntValuePicker",
+          "items": []
+        },
+        {
+          "name": "bytes_12",
+          "kind": "bytes",
+          "offset": 472,
+          "size": 8,
+          "text": "01 00 00 00 3e 00 00 00",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "value_13",
+          "kind": "value",
+          "offset": 480,
+          "size": 34,
+          "text": "bool False",
+          "cls": "oCEntityCpntValuePicker",
+          "items": []
+        },
+        {
+          "name": "bytes_14",
+          "kind": "bytes",
+          "offset": 514,
+          "size": 4,
+          "text": "00 00 00 00",
+          "cls": "",
+          "items": []
+        }
+      ]
+    },
+    {
+      "index": 14,
+      "name": "Skill Controller Dash Taunt",
+      "group": "Skills",
+      "class": "oCDtEntityCpntSkillControllerSettings",
+      "guid": "4cb7265e3b509545a5f20c477c12987b",
+      "flags": 16777473,
+      "override": {
+        "guid": "f6cccba66fce4240b70084d6e048ed0d",
+        "path": "[Dt Skill Controller] Hero_Carmilla\\Skills\\Skill Controller Dash Taunt"
+      },
+      "references": [
+        {
+          "guid": "bfe7f6604385cb4887f6b4b79f6812a5",
+          "path": "[Dt Hero Controller] Hero_Common_Update5\\Hero Controller\\Hero Controller",
+          "scope": "Hero_Common_Update5"
+        },
+        {
+          "guid": "f566076bf63a434a8dc409d78606eb7e",
+          "path": "[State] Hero_Carmilla\\Skill Dash Taunt\\Skill Dash Taunt",
+          "scope": "Hero_Carmilla"
+        },
+        {
+          "guid": "3457a6e06576e8409e016febe7748b28",
+          "path": "[String Format] Hero_Carmilla_Update6\\Skills\\Skill String Desc Dash Taunt",
+          "scope": "Hero_Carmilla_Update6"
+        },
+        {
+          "guid": "dafa55451d3b504ba427e943045951b4",
+          "path": "[Value] Hero_Carmilla_Update6\\Skill Dash Taunt\\Skill Dash Taunt Cooldown Value",
+          "scope": "Hero_Carmilla_Update6"
+        },
+        {
+          "guid": "9e2183c6f641e846888c226c2a5bb715",
+          "path": "[Timer] Hero_Carmilla_Update6\\Skill Dash Taunt\\Skill Dash Taunt Cooldown Timer",
+          "scope": "Hero_Carmilla_Update6"
+        }
+      ],
+      "literals": [
+        "Text",
+        "Hero_Carmilla_Common~GAM.xls",
+        "Skill_Dash_Taunt_Name",
+        "Ui",
+        "Heroes\\Carmilla\\Skill Passive Taunt.png"
+      ],
+      "fields": [
+        {
+          "name": "flag_81",
+          "kind": "bool",
+          "offset": 0,
+          "size": 1,
+          "text": "False",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "_legacy",
+          "kind": "bool",
+          "offset": 1,
+          "size": 1,
+          "text": "False",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "mode",
+          "kind": "u32",
+          "offset": 2,
+          "size": 4,
+          "text": "1",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "flag_32",
+          "kind": "bool",
+          "offset": 6,
+          "size": 1,
+          "text": "False",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "ref_2",
+          "kind": "ref",
+          "offset": 7,
+          "size": 104,
+          "text": "<- [Dt Hero Controller] Hero_Common_Update5\\Hero Controller\\Hero Controller",
+          "cls": "oCEntityCpntPicker",
+          "items": []
+        },
+        {
+          "name": "ref_3",
+          "kind": "ref",
+          "offset": 111,
+          "size": 87,
+          "text": "<- [State] Hero_Carmilla\\Skill Dash Taunt\\Skill Dash Taunt",
+          "cls": "oCEntityCpntPicker",
+          "items": []
+        },
+        {
+          "name": "bytes_4",
+          "kind": "bytes",
+          "offset": 198,
+          "size": 4,
+          "text": "01 00 00 00",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "value_5",
+          "kind": "value",
+          "offset": 202,
+          "size": 110,
+          "text": "text 'Text' 'Hero_Carmilla_Common~GAM.xls' 'Skill_Dash_Taunt_Name'",
+          "cls": "oCEntityCpntValuePicker",
+          "items": []
+        },
+        {
+          "name": "bytes_6",
+          "kind": "bytes",
+          "offset": 312,
+          "size": 50,
+          "text": "02 00 00 00 55 69 27 00 00 00 48 65 72 6f 65 73 5c 43 61 72 6d 69 6c 6c 61 5c 53 6b 69 6c 6c 20 50 61 73 73 69 76 65 20 54 61 75 6e 74 2e 70 6e 67 00",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "value_7",
+          "kind": "value",
+          "offset": 362,
+          "size": 37,
+          "text": "int 0",
+          "cls": "oCEntityCpntValuePicker",
+          "items": []
+        },
+        {
+          "name": "value_8",
+          "kind": "value",
+          "offset": 399,
+          "size": 37,
+          "text": "int 0",
+          "cls": "oCEntityCpntValuePicker",
+          "items": []
+        },
+        {
+          "name": "value_9",
+          "kind": "value",
+          "offset": 436,
+          "size": 34,
+          "text": "bool False",
+          "cls": "oCEntityCpntValuePicker",
+          "items": []
+        },
+        {
+          "name": "ref_10",
+          "kind": "ref",
+          "offset": 470,
+          "size": 105,
+          "text": "<- [String Format] Hero_Carmilla_Update6\\Skills\\Skill String Desc Dash Taunt",
+          "cls": "oCEntityCpntPicker",
+          "items": []
+        },
+        {
+          "name": "obj_11",
+          "kind": "obj",
+          "offset": 575,
+          "size": 20,
+          "text": "(none)",
+          "cls": "TipsContainerSettings",
+          "items": []
+        },
+        {
+          "name": "value_12",
+          "kind": "value",
+          "offset": 595,
+          "size": 152,
+          "text": "f32 0  <- [Value] Hero_Carmilla_Update6\\Skill Dash Taunt\\Skill Dash Taunt Cooldown Value",
+          "cls": "oCEntityCpntValuePicker",
+          "items": []
+        },
+        {
+          "name": "value_13",
+          "kind": "value",
+          "offset": 747,
+          "size": 152,
+          "text": "f32 0  <- [Timer] Hero_Carmilla_Update6\\Skill Dash Taunt\\Skill Dash Taunt Cooldown Timer",
+          "cls": "oCEntityCpntValuePicker",
+          "items": []
+        },
+        {
+          "name": "obj_14",
+          "kind": "obj",
+          "offset": 899,
+          "size": 48,
+          "text": "(none)",
+          "cls": "EntityCpntMethodPicker",
+          "items": []
+        },
+        {
+          "name": "obj_15",
+          "kind": "obj",
+          "offset": 947,
+          "size": 48,
+          "text": "(none)",
+          "cls": "EntityCpntMethodPicker",
+          "items": []
+        },
+        {
+          "name": "obj_16",
+          "kind": "obj",
+          "offset": 995,
+          "size": 48,
+          "text": "(none)",
+          "cls": "EntityCpntMethodPicker",
+          "items": []
+        },
+        {
+          "name": "obj_17",
+          "kind": "obj",
+          "offset": 1043,
+          "size": 48,
+          "text": "(none)",
+          "cls": "EntityCpntMethodPicker",
+          "items": []
+        },
+        {
+          "name": "value_18",
+          "kind": "value",
+          "offset": 1091,
+          "size": 34,
+          "text": "bool False",
+          "cls": "oCEntityCpntValuePicker",
+          "items": []
+        },
+        {
+          "name": "value_19",
+          "kind": "value",
+          "offset": 1125,
+          "size": 57,
+          "text": "text 00 00 00 00 03 00 00 00 00 00 00 00 00 00 00 00 ff ff ff ff 00 00 00 00",
+          "cls": "oCEntityCpntValuePicker",
+          "items": []
+        }
+      ]
+    },
+    {
+      "index": 15,
+      "name": "Skill Controller Trait Life Tap",
+      "group": "Skills",
+      "class": "oCDtEntityCpntSkillControllerSettings",
+      "guid": "6dc2be83b4c7384cb4d4ff5cb17998eb",
+      "flags": 16777473,
+      "override": {
+        "guid": "b167a2d2997fb544a7080693b03fb066",
+        "path": "[Dt Skill Controller] Hero_Carmilla\\Skills\\Skill Controller Trait Life Tap"
+      },
+      "references": [
+        {
+          "guid": "bfe7f6604385cb4887f6b4b79f6812a5",
+          "path": "[Dt Hero Controller] Hero_Common_Update5\\Hero Controller\\Hero Controller",
+          "scope": "Hero_Common_Update5"
+        },
+        {
+          "guid": "50b22096e4e2934eac96e353d2eb8a13",
+          "path": "[State] Hero_Carmilla\\Skill Trait Life Tap\\Skill Trait Life Tap",
+          "scope": "Hero_Carmilla"
+        },
+        {
+          "guid": "31f60699442aa141b6e47471242c3fd4",
+          "path": "[String Format] Hero_Carmilla\\Skills\\Skill String Desc Trait Life Tap",
+          "scope": "Hero_Carmilla"
+        },
+        {
+          "guid": "46922df4477472479c03c4a3d509867f",
+          "path": "[Value] Hero_Carmilla_Update6\\Skill Trait Life Tap\\Skill Trait Life Tap Cooldown",
+          "scope": "Hero_Carmilla_Update6"
+        },
+        {
+          "guid": "124a8642df8599428781f1f20d416a51",
+          "path": "[Timer] Hero_Carmilla_Update6\\Skill Trait Life Tap\\Skill Trait Life Tap Cooldown Timer",
+          "scope": "Hero_Carmilla_Update6"
+        }
+      ],
+      "literals": [
+        "Text",
+        "Hero_Carmilla_Common~GAM.xls",
+        "Skill_Trait_Life_Tap_Name",
+        "Ui",
+        "Heroes\\Carmilla\\Skill Trait Life Tap.png"
+      ],
+      "fields": [
+        {
+          "name": "flag_81",
+          "kind": "bool",
+          "offset": 0,
+          "size": 1,
+          "text": "False",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "_legacy",
+          "kind": "bool",
+          "offset": 1,
+          "size": 1,
+          "text": "False",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "mode",
+          "kind": "u32",
+          "offset": 2,
+          "size": 4,
+          "text": "1",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "flag_32",
+          "kind": "bool",
+          "offset": 6,
+          "size": 1,
+          "text": "False",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "ref_2",
+          "kind": "ref",
+          "offset": 7,
+          "size": 104,
+          "text": "<- [Dt Hero Controller] Hero_Common_Update5\\Hero Controller\\Hero Controller",
+          "cls": "oCEntityCpntPicker",
+          "items": []
+        },
+        {
+          "name": "ref_3",
+          "kind": "ref",
+          "offset": 111,
+          "size": 95,
+          "text": "<- [State] Hero_Carmilla\\Skill Trait Life Tap\\Skill Trait Life Tap",
+          "cls": "oCEntityCpntPicker",
+          "items": []
+        },
+        {
+          "name": "bytes_4",
+          "kind": "bytes",
+          "offset": 206,
+          "size": 4,
+          "text": "00 00 00 00",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "value_5",
+          "kind": "value",
+          "offset": 210,
+          "size": 114,
+          "text": "text 'Text' 'Hero_Carmilla_Common~GAM.xls' 'Skill_Trait_Life_Tap_Name'",
+          "cls": "oCEntityCpntValuePicker",
+          "items": []
+        },
+        {
+          "name": "bytes_6",
+          "kind": "bytes",
+          "offset": 324,
+          "size": 51,
+          "text": "02 00 00 00 55 69 28 00 00 00 48 65 72 6f 65 73 5c 43 61 72 6d 69 6c 6c 61 5c 53 6b 69 6c 6c 20 54 72 61 69 74 20 4c 69 66 65 20 54 61 70 2e 70 6e 67 00",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "value_7",
+          "kind": "value",
+          "offset": 375,
+          "size": 37,
+          "text": "int 0",
+          "cls": "oCEntityCpntValuePicker",
+          "items": []
+        },
+        {
+          "name": "value_8",
+          "kind": "value",
+          "offset": 412,
+          "size": 37,
+          "text": "int 0",
+          "cls": "oCEntityCpntValuePicker",
+          "items": []
+        },
+        {
+          "name": "value_9",
+          "kind": "value",
+          "offset": 449,
+          "size": 34,
+          "text": "bool False",
+          "cls": "oCEntityCpntValuePicker",
+          "items": []
+        },
+        {
+          "name": "ref_10",
+          "kind": "ref",
+          "offset": 483,
+          "size": 101,
+          "text": "<- [String Format] Hero_Carmilla\\Skills\\Skill String Desc Trait Life Tap",
+          "cls": "oCEntityCpntPicker",
+          "items": []
+        },
+        {
+          "name": "obj_11",
+          "kind": "obj",
+          "offset": 584,
+          "size": 20,
+          "text": "(none)",
+          "cls": "TipsContainerSettings",
+          "items": []
+        },
+        {
+          "name": "value_12",
+          "kind": "value",
+          "offset": 604,
+          "size": 154,
+          "text": "f32 0  <- [Value] Hero_Carmilla_Update6\\Skill Trait Life Tap\\Skill Trait Life Tap Cooldown",
+          "cls": "oCEntityCpntValuePicker",
+          "items": []
+        },
+        {
+          "name": "value_13",
+          "kind": "value",
+          "offset": 758,
+          "size": 160,
+          "text": "f32 0  <- [Timer] Hero_Carmilla_Update6\\Skill Trait Life Tap\\Skill Trait Life Tap Cooldown Timer",
+          "cls": "oCEntityCpntValuePicker",
+          "items": []
+        },
+        {
+          "name": "obj_14",
+          "kind": "obj",
+          "offset": 918,
+          "size": 48,
+          "text": "(none)",
+          "cls": "EntityCpntMethodPicker",
+          "items": []
+        },
+        {
+          "name": "obj_15",
+          "kind": "obj",
+          "offset": 966,
+          "size": 48,
+          "text": "(none)",
+          "cls": "EntityCpntMethodPicker",
+          "items": []
+        },
+        {
+          "name": "obj_16",
+          "kind": "obj",
+          "offset": 1014,
+          "size": 48,
+          "text": "(none)",
+          "cls": "EntityCpntMethodPicker",
+          "items": []
+        },
+        {
+          "name": "obj_17",
+          "kind": "obj",
+          "offset": 1062,
+          "size": 48,
+          "text": "(none)",
+          "cls": "EntityCpntMethodPicker",
+          "items": []
+        },
+        {
+          "name": "value_18",
+          "kind": "value",
+          "offset": 1110,
+          "size": 34,
+          "text": "bool False",
+          "cls": "oCEntityCpntValuePicker",
+          "items": []
+        },
+        {
+          "name": "value_19",
+          "kind": "value",
+          "offset": 1144,
+          "size": 57,
+          "text": "text 00 00 00 00 03 00 00 00 00 00 00 00 00 00 00 00 ff ff ff ff 00 00 00 00",
+          "cls": "oCEntityCpntValuePicker",
+          "items": []
+        }
+      ]
+    },
+    {
+      "index": 16,
+      "name": "Skill Dash Taunt Vulnerable Modifier",
+      "group": "Skill Dash Taunt",
+      "class": "oCEntityCpntModifierSettings",
+      "guid": "563e52ae0851f54cab5c937c644dbb87",
+      "flags": 65537,
+      "override": {
+        "guid": "ae5d9e017a9099489fb72af986c7c540",
+        "path": "[Modifier] Hero_Carmilla\\Skill Dash Taunt\\Skill Dash Taunt Vulnerable Modifier"
+      },
+      "references": [
+        {
+          "guid": "695d291c383421479c546ecc3e55e1b1",
+          "path": "[Value Selector] Hero_Carmilla_Update6\\Skill Dash Taunt\\Effect Duration Value Selector ",
+          "scope": "Hero_Carmilla_Update6"
+        }
+      ],
+      "literals": [
+        "7"
+      ],
+      "fields": [
+        {
+          "name": "flag_81",
+          "kind": "bool",
+          "offset": 0,
+          "size": 1,
+          "text": "False",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "_legacy",
+          "kind": "bool",
+          "offset": 1,
+          "size": 1,
+          "text": "False",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "mode",
+          "kind": "u32",
+          "offset": 2,
+          "size": 4,
+          "text": "0",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "flag_32",
+          "kind": "bool",
+          "offset": 6,
+          "size": 1,
+          "text": "False",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "modifier_id",
+          "kind": "u32",
+          "offset": 7,
+          "size": 4,
+          "text": "384688226",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "duration",
+          "kind": "value",
+          "offset": 11,
+          "size": 161,
+          "text": "f32 0  <- [Value Selector] Hero_Carmilla_Update6\\Skill Dash Taunt\\Effect Duration Value Selector ",
+          "cls": "oCEntityCpntValuePicker",
+          "items": []
+        },
+        {
+          "name": "amount",
+          "kind": "value",
+          "offset": 172,
+          "size": 42,
+          "text": "f32 0",
+          "cls": "oCEntityCpntValuePicker",
+          "items": []
+        },
+        {
+          "name": "targets",
+          "kind": "obj",
+          "offset": 214,
+          "size": 16,
+          "text": "(none)",
+          "cls": "oCEntityCollectorSelectorSettings",
+          "items": []
+        },
+        {
+          "name": "value_4",
+          "kind": "value",
+          "offset": 230,
+          "size": 37,
+          "text": "f32 1",
+          "cls": "oCEntityCpntValuePicker",
+          "items": []
+        },
+        {
+          "name": "sources?",
+          "kind": "obj",
+          "offset": 267,
+          "size": 20,
+          "text": "(none)",
+          "cls": "oCEntityCollectorSelectorSettings",
+          "items": []
+        },
+        {
+          "name": "id",
+          "kind": "value",
+          "offset": 287,
+          "size": 37,
+          "text": "int 0",
+          "cls": "oCEntityCpntValuePicker",
+          "items": []
+        },
+        {
+          "name": "flag",
+          "kind": "bool",
+          "offset": 324,
+          "size": 1,
+          "text": "True",
+          "cls": "",
+          "items": []
+        }
+      ]
+    },
+    {
+      "index": 17,
+      "name": "Skill Dash Taunt Weakness Modifier",
+      "group": "Skill Dash Taunt",
+      "class": "oCEntityCpntModifierSettings",
+      "guid": "55db3e751208d449baee448b60a87b0f",
+      "flags": 65537,
+      "override": {
+        "guid": "f5dc5f941640cb48800292cfaa9b4e40",
+        "path": "[Modifier] Hero_Carmilla\\Skill Dash Taunt\\Skill Dash Taunt Weakness Modifier"
+      },
+      "references": [
+        {
+          "guid": "695d291c383421479c546ecc3e55e1b1",
+          "path": "[Value Selector] Hero_Carmilla_Update6\\Skill Dash Taunt\\Effect Duration Value Selector ",
+          "scope": "Hero_Carmilla_Update6"
+        }
+      ],
+      "literals": [
+        "6"
+      ],
+      "fields": [
+        {
+          "name": "flag_81",
+          "kind": "bool",
+          "offset": 0,
+          "size": 1,
+          "text": "False",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "_legacy",
+          "kind": "bool",
+          "offset": 1,
+          "size": 1,
+          "text": "False",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "mode",
+          "kind": "u32",
+          "offset": 2,
+          "size": 4,
+          "text": "0",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "flag_32",
+          "kind": "bool",
+          "offset": 6,
+          "size": 1,
+          "text": "False",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "modifier_id",
+          "kind": "u32",
+          "offset": 7,
+          "size": 4,
+          "text": "384688232",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "duration",
+          "kind": "value",
+          "offset": 11,
+          "size": 161,
+          "text": "f32 0  <- [Value Selector] Hero_Carmilla_Update6\\Skill Dash Taunt\\Effect Duration Value Selector ",
+          "cls": "oCEntityCpntValuePicker",
+          "items": []
+        },
+        {
+          "name": "amount",
+          "kind": "value",
+          "offset": 172,
+          "size": 42,
+          "text": "f32 0",
+          "cls": "oCEntityCpntValuePicker",
+          "items": []
+        },
+        {
+          "name": "targets",
+          "kind": "obj",
+          "offset": 214,
+          "size": 16,
+          "text": "(none)",
+          "cls": "oCEntityCollectorSelectorSettings",
+          "items": []
+        },
+        {
+          "name": "value_4",
+          "kind": "value",
+          "offset": 230,
+          "size": 37,
+          "text": "f32 1",
+          "cls": "oCEntityCpntValuePicker",
+          "items": []
+        },
+        {
+          "name": "sources?",
+          "kind": "obj",
+          "offset": 267,
+          "size": 20,
+          "text": "(none)",
+          "cls": "oCEntityCollectorSelectorSettings",
+          "items": []
+        },
+        {
+          "name": "id",
+          "kind": "value",
+          "offset": 287,
+          "size": 37,
+          "text": "int 0",
+          "cls": "oCEntityCpntValuePicker",
+          "items": []
+        },
+        {
+          "name": "flag",
+          "kind": "bool",
+          "offset": 324,
+          "size": 1,
+          "text": "True",
+          "cls": "",
+          "items": []
+        }
+      ]
+    },
+    {
+      "index": 18,
+      "name": "Dt Damage Dash Taunt",
+      "group": "Skill Dash Taunt",
+      "class": "oCDtEntityCpntDamageSettings",
+      "guid": "2bc39bbb4ab842468de5249e2e42f672",
+      "flags": 65537,
+      "override": null,
+      "references": [],
+      "literals": [],
+      "fields": [
+        {
+          "name": "flag_81",
+          "kind": "bool",
+          "offset": 0,
+          "size": 1,
+          "text": "False",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "_legacy",
+          "kind": "bool",
+          "offset": 1,
+          "size": 1,
+          "text": "False",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "mode",
+          "kind": "u32",
+          "offset": 2,
+          "size": 4,
+          "text": "1",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "flag_32",
+          "kind": "bool",
+          "offset": 6,
+          "size": 1,
+          "text": "False",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "value_2",
+          "kind": "value",
+          "offset": 7,
+          "size": 37,
+          "text": "f32 0",
+          "cls": "oCEntityCpntValuePicker",
+          "items": []
+        },
+        {
+          "name": "bytes_3",
+          "kind": "bytes",
+          "offset": 44,
+          "size": 4,
+          "text": "00 00 c8 42",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "value_4",
+          "kind": "value",
+          "offset": 48,
+          "size": 37,
+          "text": "f32 0",
+          "cls": "oCEntityCpntValuePicker",
+          "items": []
+        },
+        {
+          "name": "value_5",
+          "kind": "value",
+          "offset": 85,
+          "size": 37,
+          "text": "f32 0",
+          "cls": "oCEntityCpntValuePicker",
+          "items": []
+        },
+        {
+          "name": "value_6",
+          "kind": "value",
+          "offset": 122,
+          "size": 37,
+          "text": "f32 0",
+          "cls": "oCEntityCpntValuePicker",
+          "items": []
+        },
+        {
+          "name": "value_7",
+          "kind": "value",
+          "offset": 159,
+          "size": 37,
+          "text": "f32 0",
+          "cls": "oCEntityCpntValuePicker",
+          "items": []
+        },
+        {
+          "name": "value_8",
+          "kind": "value",
+          "offset": 196,
+          "size": 37,
+          "text": "f32 0",
+          "cls": "oCEntityCpntValuePicker",
+          "items": []
+        },
+        {
+          "name": "value_9",
+          "kind": "value",
+          "offset": 233,
+          "size": 37,
+          "text": "f32 3",
+          "cls": "oCEntityCpntValuePicker",
+          "items": []
+        },
+        {
+          "name": "value_10",
+          "kind": "value",
+          "offset": 270,
+          "size": 37,
+          "text": "f32 1",
+          "cls": "oCEntityCpntValuePicker",
+          "items": []
+        },
+        {
+          "name": "value_11",
+          "kind": "value",
+          "offset": 307,
+          "size": 37,
+          "text": "f32 1",
+          "cls": "oCEntityCpntValuePicker",
+          "items": []
+        },
+        {
+          "name": "bytes_12",
+          "kind": "bytes",
+          "offset": 344,
+          "size": 12,
+          "text": "00 00 00 00 00 00 00 00 00 00 00 00",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "ref_13",
+          "kind": "ref",
+          "offset": 356,
+          "size": 32,
+          "text": "(none)",
+          "cls": "oCEntityCpntPicker",
+          "items": []
+        },
+        {
+          "name": "ref_14",
+          "kind": "ref",
+          "offset": 388,
+          "size": 32,
+          "text": "(none)",
+          "cls": "oCEntityCpntPicker",
+          "items": []
+        },
+        {
+          "name": "value_15",
+          "kind": "value",
+          "offset": 420,
+          "size": 34,
+          "text": "bool False",
+          "cls": "oCEntityCpntValuePicker",
+          "items": []
+        },
+        {
+          "name": "value_16",
+          "kind": "value",
+          "offset": 454,
+          "size": 34,
+          "text": "bool True",
+          "cls": "oCEntityCpntValuePicker",
+          "items": []
+        },
+        {
+          "name": "value_17",
+          "kind": "value",
+          "offset": 488,
+          "size": 37,
+          "text": "f32 0",
+          "cls": "oCEntityCpntValuePicker",
+          "items": []
+        },
+        {
+          "name": "value_18",
+          "kind": "value",
+          "offset": 525,
+          "size": 45,
+          "text": "vec3 0 0 0",
+          "cls": "oCEntityCpntValuePicker",
+          "items": []
+        },
+        {
+          "name": "bytes_19",
+          "kind": "bytes",
+          "offset": 570,
+          "size": 4,
+          "text": "00 00 00 00",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "value_20",
+          "kind": "value",
+          "offset": 574,
+          "size": 37,
+          "text": "f32 0",
+          "cls": "oCEntityCpntValuePicker",
+          "items": []
+        },
+        {
+          "name": "value_21",
+          "kind": "value",
+          "offset": 611,
+          "size": 37,
+          "text": "f32 0",
+          "cls": "oCEntityCpntValuePicker",
+          "items": []
+        },
+        {
+          "name": "value_22",
+          "kind": "value",
+          "offset": 648,
+          "size": 37,
+          "text": "f32 0",
+          "cls": "oCEntityCpntValuePicker",
+          "items": []
+        },
+        {
+          "name": "value_23",
+          "kind": "value",
+          "offset": 685,
+          "size": 37,
+          "text": "f32 0",
+          "cls": "oCEntityCpntValuePicker",
+          "items": []
+        },
+        {
+          "name": "value_24",
+          "kind": "value",
+          "offset": 722,
+          "size": 34,
+          "text": "bool False",
+          "cls": "oCEntityCpntValuePicker",
+          "items": []
+        },
+        {
+          "name": "value_25",
+          "kind": "value",
+          "offset": 756,
+          "size": 37,
+          "text": "f32 0",
+          "cls": "oCEntityCpntValuePicker",
+          "items": []
+        },
+        {
+          "name": "value_26",
+          "kind": "value",
+          "offset": 793,
+          "size": 34,
+          "text": "bool True",
+          "cls": "oCEntityCpntValuePicker",
+          "items": []
+        },
+        {
+          "name": "value_27",
+          "kind": "value",
+          "offset": 827,
+          "size": 37,
+          "text": "f32 1.5",
+          "cls": "oCEntityCpntValuePicker",
+          "items": []
+        },
+        {
+          "name": "value_28",
+          "kind": "value",
+          "offset": 864,
+          "size": 37,
+          "text": "f32 1",
+          "cls": "oCEntityCpntValuePicker",
+          "items": []
+        },
+        {
+          "name": "ref_29",
+          "kind": "ref",
+          "offset": 901,
+          "size": 32,
+          "text": "(none)",
+          "cls": "oCEntityCpntPicker",
+          "items": []
+        },
+        {
+          "name": "bytes_30",
+          "kind": "bytes",
+          "offset": 933,
+          "size": 1,
+          "text": "00",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "value_31",
+          "kind": "value",
+          "offset": 934,
+          "size": 37,
+          "text": "f32 30",
+          "cls": "oCEntityCpntValuePicker",
+          "items": []
+        },
+        {
+          "name": "ref_32",
+          "kind": "ref",
+          "offset": 971,
+          "size": 32,
+          "text": "(none)",
+          "cls": "oCEntityCpntPicker",
+          "items": []
+        },
+        {
+          "name": "ref_33",
+          "kind": "ref",
+          "offset": 1003,
+          "size": 32,
+          "text": "(none)",
+          "cls": "oCEntityCpntPicker",
+          "items": []
+        },
+        {
+          "name": "ref_34",
+          "kind": "ref",
+          "offset": 1035,
+          "size": 32,
+          "text": "(none)",
+          "cls": "oCEntityCpntPicker",
+          "items": []
+        },
+        {
+          "name": "value_35",
+          "kind": "value",
+          "offset": 1067,
+          "size": 37,
+          "text": "int 0",
+          "cls": "oCEntityCpntValuePicker",
+          "items": []
+        },
+        {
+          "name": "bytes_36",
+          "kind": "bytes",
+          "offset": 1104,
+          "size": 4,
+          "text": "00 00 00 00",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "value_37",
+          "kind": "value",
+          "offset": 1108,
+          "size": 34,
+          "text": "bool True",
+          "cls": "oCEntityCpntValuePicker",
+          "items": []
+        },
+        {
+          "name": "value_38",
+          "kind": "value",
+          "offset": 1142,
+          "size": 34,
+          "text": "bool True",
+          "cls": "oCEntityCpntValuePicker",
+          "items": []
+        },
+        {
+          "name": "value_39",
+          "kind": "value",
+          "offset": 1176,
+          "size": 34,
+          "text": "bool True",
+          "cls": "oCEntityCpntValuePicker",
+          "items": []
+        },
+        {
+          "name": "value_40",
+          "kind": "value",
+          "offset": 1210,
+          "size": 34,
+          "text": "bool True",
+          "cls": "oCEntityCpntValuePicker",
+          "items": []
+        },
+        {
+          "name": "ref_41",
+          "kind": "ref",
+          "offset": 1244,
+          "size": 32,
+          "text": "(none)",
+          "cls": "oCEntityCpntPicker",
+          "items": []
+        },
+        {
+          "name": "value_42",
+          "kind": "value",
+          "offset": 1276,
+          "size": 34,
+          "text": "bool False",
+          "cls": "oCEntityCpntValuePicker",
+          "items": []
+        },
+        {
+          "name": "ref_43",
+          "kind": "ref",
+          "offset": 1310,
+          "size": 32,
+          "text": "(none)",
+          "cls": "oCEntityCpntPicker",
+          "items": []
+        },
+        {
+          "name": "value_44",
+          "kind": "value",
+          "offset": 1342,
+          "size": 34,
+          "text": "bool False",
+          "cls": "oCEntityCpntValuePicker",
+          "items": []
+        },
+        {
+          "name": "value_45",
+          "kind": "value",
+          "offset": 1376,
+          "size": 34,
+          "text": "bool False",
+          "cls": "oCEntityCpntValuePicker",
+          "items": []
+        },
+        {
+          "name": "value_46",
+          "kind": "value",
+          "offset": 1410,
+          "size": 34,
+          "text": "bool False",
+          "cls": "oCEntityCpntValuePicker",
+          "items": []
+        },
+        {
+          "name": "obj_47",
+          "kind": "obj",
+          "offset": 1444,
+          "size": 48,
+          "text": "(none)",
+          "cls": "EntityCpntMethodPicker",
+          "items": []
+        },
+        {
+          "name": "value_48",
+          "kind": "value",
+          "offset": 1492,
+          "size": 34,
+          "text": "bool False",
+          "cls": "oCEntityCpntValuePicker",
+          "items": []
+        },
+        {
+          "name": "obj_49",
+          "kind": "obj",
+          "offset": 1526,
+          "size": 16,
+          "text": "(none)",
+          "cls": "oCEntityCollectorSelectorSettings",
+          "items": []
+        },
+        {
+          "name": "value_50",
+          "kind": "value",
+          "offset": 1542,
+          "size": 37,
+          "text": "f32 0",
+          "cls": "oCEntityCpntValuePicker",
+          "items": []
+        },
+        {
+          "name": "bytes_51",
+          "kind": "bytes",
+          "offset": 1579,
+          "size": 4,
+          "text": "00 00 00 00",
+          "cls": "",
+          "items": []
+        }
+      ]
+    },
+    {
+      "index": 19,
+      "name": "Dash Ability Controller",
+      "group": "Hero Controller",
+      "class": "oCDtEntityCpntAbilityControllerSettings",
+      "guid": "2f0f43953793a04599fa915951e3a81b",
+      "flags": 1,
+      "override": {
+        "guid": "445241f4d605af4db3f637be8ade9292",
+        "path": "[Dt Ability Controller] Hero_Common\\Hero Controller\\Dash Ability Controller"
+      },
+      "references": [
+        {
+          "guid": "5b7fbd0ff2e76b4daf777796327e0e05",
+          "path": "[State] Hero_Common\\Ability Dash\\State Dash Ability",
+          "scope": "Hero_Common"
+        },
+        {
+          "guid": "1343edf511f4da4b9804f190ab12fc96",
+          "path": "[Value] Hero_Common\\Hero Controller\\Dash Cooldown Default",
+          "scope": "Hero_Common"
+        },
+        {
+          "guid": "5860d03c9f5ad14e8f356d09573a96fb",
+          "path": "[Counter] Hero_Common\\Hero Controller\\Dash Ability Max Charges Counter",
+          "scope": "Hero_Common"
+        },
+        {
+          "guid": "ed3410e43a916348b23dc26cdb7edca8",
+          "path": "[Cpnt Value Tester] Hero_Common\\Hero Controller\\Dash Ability Interruptible Condition",
+          "scope": "Hero_Common"
+        },
+        {
+          "guid": "8d5c535a48c7f9448c7d512d30b16e26",
+          "path": "[Cpnt Value Tester] Hero_Carmilla_Update6\\Hero Controller\\Dash Ability Consume Charge Condition",
+          "scope": "Hero_Carmilla_Update6"
+        },
+        {
+          "guid": "ced78e8d005bee4c964a133d40d34c3f",
+          "path": "[Cpnt Value Tester] Hero_Common\\Hero Controller\\Dash Ability Enabled Condition",
+          "scope": "Hero_Common"
+        },
+        {
+          "guid": "045f1a33d4b46d4eb191e5448b0b763a",
+          "path": "[Value Selector] Hero_Common\\Ability Dash\\Dash Look At Dir Selector",
+          "scope": "Hero_Common"
+        }
+      ],
+      "literals": [
+        "\"",
+        "5",
+        "Text",
+        "Common~GAM.xls",
+        "Ability_Dash_Desc",
+        "Text",
+        "Common~GAM.xls",
+        "Ability_Dash_Name"
+      ],
+      "fields": [
+        {
+          "name": "flag_81",
+          "kind": "bool",
+          "offset": 0,
+          "size": 1,
+          "text": "False",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "_legacy",
+          "kind": "bool",
+          "offset": 1,
+          "size": 1,
+          "text": "False",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "mode",
+          "kind": "u32",
+          "offset": 2,
+          "size": 4,
+          "text": "0",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "flag_32",
+          "kind": "bool",
+          "offset": 6,
+          "size": 1,
+          "text": "False",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "bytes_1",
+          "kind": "bytes",
+          "offset": 7,
+          "size": 4,
+          "text": "06 00 00 00",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "ref_2",
+          "kind": "ref",
+          "offset": 11,
+          "size": 83,
+          "text": "<- [State] Hero_Common\\Ability Dash\\State Dash Ability",
+          "cls": "oCEntityCpntPicker",
+          "items": []
+        },
+        {
+          "name": "value_3",
+          "kind": "value",
+          "offset": 94,
+          "size": 34,
+          "text": "bool True",
+          "cls": "oCEntityCpntValuePicker",
+          "items": []
+        },
+        {
+          "name": "value_4",
+          "kind": "value",
+          "offset": 128,
+          "size": 131,
+          "text": "f32 3  <- [Value] Hero_Common\\Hero Controller\\Dash Cooldown Default",
+          "cls": "oCEntityCpntValuePicker",
+          "items": []
+        },
+        {
+          "name": "value_5",
+          "kind": "value",
+          "offset": 259,
+          "size": 34,
+          "text": "bool False",
+          "cls": "oCEntityCpntValuePicker",
+          "items": []
+        },
+        {
+          "name": "value_6",
+          "kind": "value",
+          "offset": 293,
+          "size": 37,
+          "text": "f32 -1",
+          "cls": "oCEntityCpntValuePicker",
+          "items": []
+        },
+        {
+          "name": "value_7",
+          "kind": "value",
+          "offset": 330,
+          "size": 144,
+          "text": "int 1  <- [Counter] Hero_Common\\Hero Controller\\Dash Ability Max Charges Counter",
+          "cls": "oCEntityCpntValuePicker",
+          "items": []
+        },
+        {
+          "name": "value_8",
+          "kind": "value",
+          "offset": 474,
+          "size": 155,
+          "text": "bool False  <- [Cpnt Value Tester] Hero_Common\\Hero Controller\\Dash Ability Interruptible Condition",
+          "cls": "oCEntityCpntValuePicker",
+          "items": []
+        },
+        {
+          "name": "value_9",
+          "kind": "value",
+          "offset": 629,
+          "size": 34,
+          "text": "bool True",
+          "cls": "oCEntityCpntValuePicker",
+          "items": []
+        },
+        {
+          "name": "value_10",
+          "kind": "value",
+          "offset": 663,
+          "size": 34,
+          "text": "bool True",
+          "cls": "oCEntityCpntValuePicker",
+          "items": []
+        },
+        {
+          "name": "value_11",
+          "kind": "value",
+          "offset": 697,
+          "size": 166,
+          "text": "bool True  <- [Cpnt Value Tester] Hero_Carmilla_Update6\\Hero Controller\\Dash Ability Consume Charge Condition",
+          "cls": "oCEntityCpntValuePicker",
+          "items": []
+        },
+        {
+          "name": "value_12",
+          "kind": "value",
+          "offset": 863,
+          "size": 34,
+          "text": "bool False",
+          "cls": "oCEntityCpntValuePicker",
+          "items": []
+        },
+        {
+          "name": "bytes_13",
+          "kind": "bytes",
+          "offset": 897,
+          "size": 12,
+          "text": "00 00 00 00 01 00 00 00 35 00 00 00",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "value_14",
+          "kind": "value",
+          "offset": 909,
+          "size": 34,
+          "text": "bool False",
+          "cls": "oCEntityCpntValuePicker",
+          "items": []
+        },
+        {
+          "name": "value_15",
+          "kind": "value",
+          "offset": 943,
+          "size": 149,
+          "text": "bool True  <- [Cpnt Value Tester] Hero_Common\\Hero Controller\\Dash Ability Enabled Condition",
+          "cls": "oCEntityCpntValuePicker",
+          "items": []
+        },
+        {
+          "name": "value_16",
+          "kind": "value",
+          "offset": 1092,
+          "size": 34,
+          "text": "bool True",
+          "cls": "oCEntityCpntValuePicker",
+          "items": []
+        },
+        {
+          "name": "value_17",
+          "kind": "value",
+          "offset": 1126,
+          "size": 34,
+          "text": "bool False",
+          "cls": "oCEntityCpntValuePicker",
+          "items": []
+        },
+        {
+          "name": "value_18",
+          "kind": "value",
+          "offset": 1160,
+          "size": 92,
+          "text": "text 'Text' 'Common~GAM.xls' 'Ability_Dash_Desc'",
+          "cls": "oCEntityCpntValuePicker",
+          "items": []
+        },
+        {
+          "name": "value_19",
+          "kind": "value",
+          "offset": 1252,
+          "size": 92,
+          "text": "text 'Text' 'Common~GAM.xls' 'Ability_Dash_Name'",
+          "cls": "oCEntityCpntValuePicker",
+          "items": []
+        },
+        {
+          "name": "obj_20",
+          "kind": "obj",
+          "offset": 1344,
+          "size": 16,
+          "text": "(none)",
+          "cls": "oCCustomFlagList",
+          "items": []
+        },
+        {
+          "name": "value_21",
+          "kind": "value",
+          "offset": 1360,
+          "size": 34,
+          "text": "bool False",
+          "cls": "oCEntityCpntValuePicker",
+          "items": []
+        },
+        {
+          "name": "value_22",
+          "kind": "value",
+          "offset": 1394,
+          "size": 34,
+          "text": "bool True",
+          "cls": "oCEntityCpntValuePicker",
+          "items": []
+        },
+        {
+          "name": "ref_23",
+          "kind": "ref",
+          "offset": 1428,
+          "size": 32,
+          "text": "(none)",
+          "cls": "oCEntityCpntPicker",
+          "items": []
+        },
+        {
+          "name": "bytes_24",
+          "kind": "bytes",
+          "offset": 1460,
+          "size": 1,
+          "text": "00",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "value_25",
+          "kind": "value",
+          "offset": 1461,
+          "size": 37,
+          "text": "f32 0",
+          "cls": "oCEntityCpntValuePicker",
+          "items": []
+        },
+        {
+          "name": "bytes_26",
+          "kind": "bytes",
+          "offset": 1498,
+          "size": 1,
+          "text": "00",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "value_27",
+          "kind": "value",
+          "offset": 1499,
+          "size": 37,
+          "text": "int 0",
+          "cls": "oCEntityCpntValuePicker",
+          "items": []
+        },
+        {
+          "name": "value_28",
+          "kind": "value",
+          "offset": 1536,
+          "size": 34,
+          "text": "bool True",
+          "cls": "oCEntityCpntValuePicker",
+          "items": []
+        },
+        {
+          "name": "value_29",
+          "kind": "value",
+          "offset": 1570,
+          "size": 34,
+          "text": "bool True",
+          "cls": "oCEntityCpntValuePicker",
+          "items": []
+        },
+        {
+          "name": "bytes_30",
+          "kind": "bytes",
+          "offset": 1604,
+          "size": 4,
+          "text": "02 00 00 00",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "value_31",
+          "kind": "value",
+          "offset": 1608,
+          "size": 149,
+          "text": "vec3 0 0 0  <- [Value Selector] Hero_Common\\Ability Dash\\Dash Look At Dir Selector",
+          "cls": "oCEntityCpntValuePicker",
+          "items": []
+        },
+        {
+          "name": "value_32",
+          "kind": "value",
+          "offset": 1757,
+          "size": 34,
+          "text": "bool False",
+          "cls": "oCEntityCpntValuePicker",
+          "items": []
+        },
+        {
+          "name": "bytes_33",
+          "kind": "bytes",
+          "offset": 1791,
+          "size": 1,
+          "text": "00",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "value_34",
+          "kind": "value",
+          "offset": 1792,
+          "size": 34,
+          "text": "bool False",
+          "cls": "oCEntityCpntValuePicker",
+          "items": []
+        },
+        {
+          "name": "value_35",
+          "kind": "value",
+          "offset": 1826,
+          "size": 57,
+          "text": "text 00 00 00 00 03 00 00 00 00 00 00 00 00 00 00 00 ff ff ff ff 00 00 00 00",
+          "cls": "oCEntityCpntValuePicker",
+          "items": []
+        },
+        {
+          "name": "obj_36",
+          "kind": "obj",
+          "offset": 1883,
+          "size": 48,
+          "text": "(none)",
+          "cls": "EntityCpntMethodPicker",
+          "items": []
+        }
+      ]
+    },
+    {
+      "index": 20,
+      "name": "Dash Taunt Ability Controller",
+      "group": "Hero Controller",
+      "class": "oCDtEntityCpntAbilityControllerSettings",
+      "guid": "f5fd48c062fe3b48a8554b38e011109f",
+      "flags": 1,
+      "override": null,
+      "references": [
+        {
+          "guid": "7cd45f0603e1bf418ce4205390032742",
+          "path": "[State] Hero_Carmilla_Update6\\Skill Dash Taunt\\State Skill Dash Taunt",
+          "scope": "Hero_Carmilla_Update6"
+        },
+        {
+          "guid": "dafa55451d3b504ba427e943045951b4",
+          "path": "[Value] Hero_Carmilla_Update6\\Skill Dash Taunt\\Skill Dash Taunt Cooldown Value",
+          "scope": "Hero_Carmilla_Update6"
+        },
+        {
+          "guid": "045f1a33d4b46d4eb191e5448b0b763a",
+          "path": "[Value Selector] Hero_Common\\Ability Dash\\Dash Look At Dir Selector",
+          "scope": "Hero_Common"
+        }
+      ],
+      "literals": [
+        "\"",
+        "4",
+        "Text",
+        "Common~GAM.xls",
+        "Ability_Dash_Desc",
+        "Text",
+        "Common~GAM.xls",
+        "Ability_Dash_Name"
+      ],
+      "fields": [
+        {
+          "name": "flag_81",
+          "kind": "bool",
+          "offset": 0,
+          "size": 1,
+          "text": "False",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "_legacy",
+          "kind": "bool",
+          "offset": 1,
+          "size": 1,
+          "text": "False",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "mode",
+          "kind": "u32",
+          "offset": 2,
+          "size": 4,
+          "text": "0",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "flag_32",
+          "kind": "bool",
+          "offset": 6,
+          "size": 1,
+          "text": "False",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "bytes_1",
+          "kind": "bytes",
+          "offset": 7,
+          "size": 4,
+          "text": "06 00 00 00",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "ref_2",
+          "kind": "ref",
+          "offset": 11,
+          "size": 101,
+          "text": "<- [State] Hero_Carmilla_Update6\\Skill Dash Taunt\\State Skill Dash Taunt",
+          "cls": "oCEntityCpntPicker",
+          "items": []
+        },
+        {
+          "name": "value_3",
+          "kind": "value",
+          "offset": 112,
+          "size": 34,
+          "text": "bool True",
+          "cls": "oCEntityCpntValuePicker",
+          "items": []
+        },
+        {
+          "name": "value_4",
+          "kind": "value",
+          "offset": 146,
+          "size": 152,
+          "text": "f32 3  <- [Value] Hero_Carmilla_Update6\\Skill Dash Taunt\\Skill Dash Taunt Cooldown Value",
+          "cls": "oCEntityCpntValuePicker",
+          "items": []
+        },
+        {
+          "name": "value_5",
+          "kind": "value",
+          "offset": 298,
+          "size": 34,
+          "text": "bool False",
+          "cls": "oCEntityCpntValuePicker",
+          "items": []
+        },
+        {
+          "name": "value_6",
+          "kind": "value",
+          "offset": 332,
+          "size": 37,
+          "text": "f32 -1",
+          "cls": "oCEntityCpntValuePicker",
+          "items": []
+        },
+        {
+          "name": "value_7",
+          "kind": "value",
+          "offset": 369,
+          "size": 37,
+          "text": "int 1",
+          "cls": "oCEntityCpntValuePicker",
+          "items": []
+        },
+        {
+          "name": "value_8",
+          "kind": "value",
+          "offset": 406,
+          "size": 34,
+          "text": "bool False",
+          "cls": "oCEntityCpntValuePicker",
+          "items": []
+        },
+        {
+          "name": "value_9",
+          "kind": "value",
+          "offset": 440,
+          "size": 34,
+          "text": "bool True",
+          "cls": "oCEntityCpntValuePicker",
+          "items": []
+        },
+        {
+          "name": "value_10",
+          "kind": "value",
+          "offset": 474,
+          "size": 34,
+          "text": "bool True",
+          "cls": "oCEntityCpntValuePicker",
+          "items": []
+        },
+        {
+          "name": "value_11",
+          "kind": "value",
+          "offset": 508,
+          "size": 34,
+          "text": "bool False",
+          "cls": "oCEntityCpntValuePicker",
+          "items": []
+        },
+        {
+          "name": "value_12",
+          "kind": "value",
+          "offset": 542,
+          "size": 34,
+          "text": "bool False",
+          "cls": "oCEntityCpntValuePicker",
+          "items": []
+        },
+        {
+          "name": "bytes_13",
+          "kind": "bytes",
+          "offset": 576,
+          "size": 12,
+          "text": "00 00 00 00 01 00 00 00 34 00 00 00",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "value_14",
+          "kind": "value",
+          "offset": 588,
+          "size": 34,
+          "text": "bool False",
+          "cls": "oCEntityCpntValuePicker",
+          "items": []
+        },
+        {
+          "name": "value_15",
+          "kind": "value",
+          "offset": 622,
+          "size": 34,
+          "text": "bool True",
+          "cls": "oCEntityCpntValuePicker",
+          "items": []
+        },
+        {
+          "name": "value_16",
+          "kind": "value",
+          "offset": 656,
+          "size": 34,
+          "text": "bool True",
+          "cls": "oCEntityCpntValuePicker",
+          "items": []
+        },
+        {
+          "name": "value_17",
+          "kind": "value",
+          "offset": 690,
+          "size": 34,
+          "text": "bool False",
+          "cls": "oCEntityCpntValuePicker",
+          "items": []
+        },
+        {
+          "name": "value_18",
+          "kind": "value",
+          "offset": 724,
+          "size": 92,
+          "text": "text 'Text' 'Common~GAM.xls' 'Ability_Dash_Desc'",
+          "cls": "oCEntityCpntValuePicker",
+          "items": []
+        },
+        {
+          "name": "value_19",
+          "kind": "value",
+          "offset": 816,
+          "size": 92,
+          "text": "text 'Text' 'Common~GAM.xls' 'Ability_Dash_Name'",
+          "cls": "oCEntityCpntValuePicker",
+          "items": []
+        },
+        {
+          "name": "obj_20",
+          "kind": "obj",
+          "offset": 908,
+          "size": 16,
+          "text": "(none)",
+          "cls": "oCCustomFlagList",
+          "items": []
+        },
+        {
+          "name": "value_21",
+          "kind": "value",
+          "offset": 924,
+          "size": 34,
+          "text": "bool False",
+          "cls": "oCEntityCpntValuePicker",
+          "items": []
+        },
+        {
+          "name": "value_22",
+          "kind": "value",
+          "offset": 958,
+          "size": 34,
+          "text": "bool True",
+          "cls": "oCEntityCpntValuePicker",
+          "items": []
+        },
+        {
+          "name": "ref_23",
+          "kind": "ref",
+          "offset": 992,
+          "size": 32,
+          "text": "(none)",
+          "cls": "oCEntityCpntPicker",
+          "items": []
+        },
+        {
+          "name": "bytes_24",
+          "kind": "bytes",
+          "offset": 1024,
+          "size": 1,
+          "text": "00",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "value_25",
+          "kind": "value",
+          "offset": 1025,
+          "size": 37,
+          "text": "f32 0",
+          "cls": "oCEntityCpntValuePicker",
+          "items": []
+        },
+        {
+          "name": "bytes_26",
+          "kind": "bytes",
+          "offset": 1062,
+          "size": 1,
+          "text": "00",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "value_27",
+          "kind": "value",
+          "offset": 1063,
+          "size": 37,
+          "text": "int 0",
+          "cls": "oCEntityCpntValuePicker",
+          "items": []
+        },
+        {
+          "name": "value_28",
+          "kind": "value",
+          "offset": 1100,
+          "size": 34,
+          "text": "bool True",
+          "cls": "oCEntityCpntValuePicker",
+          "items": []
+        },
+        {
+          "name": "value_29",
+          "kind": "value",
+          "offset": 1134,
+          "size": 34,
+          "text": "bool False",
+          "cls": "oCEntityCpntValuePicker",
+          "items": []
+        },
+        {
+          "name": "bytes_30",
+          "kind": "bytes",
+          "offset": 1168,
+          "size": 4,
+          "text": "02 00 00 00",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "value_31",
+          "kind": "value",
+          "offset": 1172,
+          "size": 149,
+          "text": "vec3 0 0 0  <- [Value Selector] Hero_Common\\Ability Dash\\Dash Look At Dir Selector",
+          "cls": "oCEntityCpntValuePicker",
+          "items": []
+        },
+        {
+          "name": "value_32",
+          "kind": "value",
+          "offset": 1321,
+          "size": 34,
+          "text": "bool False",
+          "cls": "oCEntityCpntValuePicker",
+          "items": []
+        },
+        {
+          "name": "bytes_33",
+          "kind": "bytes",
+          "offset": 1355,
+          "size": 1,
+          "text": "00",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "value_34",
+          "kind": "value",
+          "offset": 1356,
+          "size": 34,
+          "text": "bool False",
+          "cls": "oCEntityCpntValuePicker",
+          "items": []
+        },
+        {
+          "name": "value_35",
+          "kind": "value",
+          "offset": 1390,
+          "size": 57,
+          "text": "text 00 00 00 00 03 00 00 00 00 00 00 00 00 00 00 00 ff ff ff ff 00 00 00 00",
+          "cls": "oCEntityCpntValuePicker",
+          "items": []
+        },
+        {
+          "name": "obj_36",
+          "kind": "obj",
+          "offset": 1447,
+          "size": 48,
+          "text": "(none)",
+          "cls": "EntityCpntMethodPicker",
+          "items": []
+        }
+      ]
+    },
+    {
+      "index": 21,
+      "name": "Trait Life Tap Controller",
+      "group": "Hero Controller",
+      "class": "oCDtEntityCpntAbilityControllerSettings",
+      "guid": "59f806abb67f2b4bae029999d1c06dc4",
+      "flags": 1,
+      "override": {
+        "guid": "3b781962cc9ae6428fe801d50199d051",
+        "path": "[Dt Ability Controller] Hero_Carmilla\\Hero Controller\\Trait Life Tap Controller"
+      },
+      "references": [
+        {
+          "guid": "6d22b3e3a2871a4babac5743ed48cb52",
+          "path": "[State] Hero_Carmilla\\Skill Trait Life Tap\\State Skill Trait Life Tap Ongoing",
+          "scope": "Hero_Carmilla"
+        },
+        {
+          "guid": "2837e25d09164047874ce7507c1f662d",
+          "path": "[Cpnt Value Tester] Hero_Carmilla_Update6\\Hero Controller\\Trait Life Tap Is Enabled Condition",
+          "scope": "Hero_Carmilla_Update6"
+        },
+        {
+          "guid": "34564ec595e532468dee7b4abcbbd226",
+          "path": "[String Format] Hero_Carmilla\\Hero Controller\\Trait Ability String Desc",
+          "scope": "Hero_Carmilla"
+        }
+      ],
+      "literals": [
+        "\"",
+        "3",
+        "Text",
+        "Hero_Carmilla_Common~GAM.xls",
+        "Ability_Trait_Name"
+      ],
+      "fields": [
+        {
+          "name": "flag_81",
+          "kind": "bool",
+          "offset": 0,
+          "size": 1,
+          "text": "False",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "_legacy",
+          "kind": "bool",
+          "offset": 1,
+          "size": 1,
+          "text": "False",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "mode",
+          "kind": "u32",
+          "offset": 2,
+          "size": 4,
+          "text": "0",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "flag_32",
+          "kind": "bool",
+          "offset": 6,
+          "size": 1,
+          "text": "False",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "bytes_1",
+          "kind": "bytes",
+          "offset": 7,
+          "size": 4,
+          "text": "04 00 00 00",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "ref_2",
+          "kind": "ref",
+          "offset": 11,
+          "size": 109,
+          "text": "<- [State] Hero_Carmilla\\Skill Trait Life Tap\\State Skill Trait Life Tap Ongoing",
+          "cls": "oCEntityCpntPicker",
+          "items": []
+        },
+        {
+          "name": "value_3",
+          "kind": "value",
+          "offset": 120,
+          "size": 34,
+          "text": "bool True",
+          "cls": "oCEntityCpntValuePicker",
+          "items": []
+        },
+        {
+          "name": "value_4",
+          "kind": "value",
+          "offset": 154,
+          "size": 37,
+          "text": "f32 0",
+          "cls": "oCEntityCpntValuePicker",
+          "items": []
+        },
+        {
+          "name": "value_5",
+          "kind": "value",
+          "offset": 191,
+          "size": 34,
+          "text": "bool False",
+          "cls": "oCEntityCpntValuePicker",
+          "items": []
+        },
+        {
+          "name": "value_6",
+          "kind": "value",
+          "offset": 225,
+          "size": 37,
+          "text": "f32 -1",
+          "cls": "oCEntityCpntValuePicker",
+          "items": []
+        },
+        {
+          "name": "value_7",
+          "kind": "value",
+          "offset": 262,
+          "size": 37,
+          "text": "int 1",
+          "cls": "oCEntityCpntValuePicker",
+          "items": []
+        },
+        {
+          "name": "value_8",
+          "kind": "value",
+          "offset": 299,
+          "size": 34,
+          "text": "bool False",
+          "cls": "oCEntityCpntValuePicker",
+          "items": []
+        },
+        {
+          "name": "value_9",
+          "kind": "value",
+          "offset": 333,
+          "size": 34,
+          "text": "bool True",
+          "cls": "oCEntityCpntValuePicker",
+          "items": []
+        },
+        {
+          "name": "value_10",
+          "kind": "value",
+          "offset": 367,
+          "size": 34,
+          "text": "bool True",
+          "cls": "oCEntityCpntValuePicker",
+          "items": []
+        },
+        {
+          "name": "value_11",
+          "kind": "value",
+          "offset": 401,
+          "size": 34,
+          "text": "bool False",
+          "cls": "oCEntityCpntValuePicker",
+          "items": []
+        },
+        {
+          "name": "value_12",
+          "kind": "value",
+          "offset": 435,
+          "size": 34,
+          "text": "bool False",
+          "cls": "oCEntityCpntValuePicker",
+          "items": []
+        },
+        {
+          "name": "bytes_13",
+          "kind": "bytes",
+          "offset": 469,
+          "size": 12,
+          "text": "01 00 00 00 01 00 00 00 33 00 00 00",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "value_14",
+          "kind": "value",
+          "offset": 481,
+          "size": 34,
+          "text": "bool False",
+          "cls": "oCEntityCpntValuePicker",
+          "items": []
+        },
+        {
+          "name": "value_15",
+          "kind": "value",
+          "offset": 515,
+          "size": 164,
+          "text": "bool True  <- [Cpnt Value Tester] Hero_Carmilla_Update6\\Hero Controller\\Trait Life Tap Is Enabled Condition",
+          "cls": "oCEntityCpntValuePicker",
+          "items": []
+        },
+        {
+          "name": "value_16",
+          "kind": "value",
+          "offset": 679,
+          "size": 34,
+          "text": "bool False",
+          "cls": "oCEntityCpntValuePicker",
+          "items": []
+        },
+        {
+          "name": "value_17",
+          "kind": "value",
+          "offset": 713,
+          "size": 34,
+          "text": "bool False",
+          "cls": "oCEntityCpntValuePicker",
+          "items": []
+        },
+        {
+          "name": "value_18",
+          "kind": "value",
+          "offset": 747,
+          "size": 165,
+          "text": "text 00 00 00 00 03 00 00 00 00 00 00 00 00 00 00 00 ff ff ff ff 00 00 00 00  <- [String Format] Hero_Carmilla\\Hero Controller\\Trait Ability String Desc",
+          "cls": "oCEntityCpntValuePicker",
+          "items": []
+        },
+        {
+          "name": "value_19",
+          "kind": "value",
+          "offset": 912,
+          "size": 107,
+          "text": "text 'Text' 'Hero_Carmilla_Common~GAM.xls' 'Ability_Trait_Name'",
+          "cls": "oCEntityCpntValuePicker",
+          "items": []
+        },
+        {
+          "name": "obj_20",
+          "kind": "obj",
+          "offset": 1019,
+          "size": 16,
+          "text": "(none)",
+          "cls": "oCCustomFlagList",
+          "items": []
+        },
+        {
+          "name": "value_21",
+          "kind": "value",
+          "offset": 1035,
+          "size": 34,
+          "text": "bool False",
+          "cls": "oCEntityCpntValuePicker",
+          "items": []
+        },
+        {
+          "name": "value_22",
+          "kind": "value",
+          "offset": 1069,
+          "size": 34,
+          "text": "bool True",
+          "cls": "oCEntityCpntValuePicker",
+          "items": []
+        },
+        {
+          "name": "ref_23",
+          "kind": "ref",
+          "offset": 1103,
+          "size": 32,
+          "text": "(none)",
+          "cls": "oCEntityCpntPicker",
+          "items": []
+        },
+        {
+          "name": "bytes_24",
+          "kind": "bytes",
+          "offset": 1135,
+          "size": 1,
+          "text": "00",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "value_25",
+          "kind": "value",
+          "offset": 1136,
+          "size": 37,
+          "text": "f32 0",
+          "cls": "oCEntityCpntValuePicker",
+          "items": []
+        },
+        {
+          "name": "bytes_26",
+          "kind": "bytes",
+          "offset": 1173,
+          "size": 1,
+          "text": "00",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "value_27",
+          "kind": "value",
+          "offset": 1174,
+          "size": 37,
+          "text": "int 0",
+          "cls": "oCEntityCpntValuePicker",
+          "items": []
+        },
+        {
+          "name": "value_28",
+          "kind": "value",
+          "offset": 1211,
+          "size": 34,
+          "text": "bool True",
+          "cls": "oCEntityCpntValuePicker",
+          "items": []
+        },
+        {
+          "name": "value_29",
+          "kind": "value",
+          "offset": 1245,
+          "size": 34,
+          "text": "bool True",
+          "cls": "oCEntityCpntValuePicker",
+          "items": []
+        },
+        {
+          "name": "bytes_30",
+          "kind": "bytes",
+          "offset": 1279,
+          "size": 4,
+          "text": "00 00 00 00",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "value_31",
+          "kind": "value",
+          "offset": 1283,
+          "size": 45,
+          "text": "vec3 0 0 0",
+          "cls": "oCEntityCpntValuePicker",
+          "items": []
+        },
+        {
+          "name": "value_32",
+          "kind": "value",
+          "offset": 1328,
+          "size": 34,
+          "text": "bool False",
+          "cls": "oCEntityCpntValuePicker",
+          "items": []
+        },
+        {
+          "name": "bytes_33",
+          "kind": "bytes",
+          "offset": 1362,
+          "size": 1,
+          "text": "00",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "value_34",
+          "kind": "value",
+          "offset": 1363,
+          "size": 34,
+          "text": "bool False",
+          "cls": "oCEntityCpntValuePicker",
+          "items": []
+        },
+        {
+          "name": "value_35",
+          "kind": "value",
+          "offset": 1397,
+          "size": 57,
+          "text": "text 00 00 00 00 03 00 00 00 00 00 00 00 00 00 00 00 ff ff ff ff 00 00 00 00",
+          "cls": "oCEntityCpntValuePicker",
+          "items": []
+        },
+        {
+          "name": "obj_36",
+          "kind": "obj",
+          "offset": 1454,
+          "size": 48,
+          "text": "(none)",
+          "cls": "EntityCpntMethodPicker",
+          "items": []
+        }
+      ]
+    },
+    {
+      "index": 22,
+      "name": "Skill String Desc Dash Taunt",
+      "group": "Skills",
+      "class": "oCEntityCpntStringFormatValueSettings",
+      "guid": "c973b3c2f39dd44e82a4bcda40356d92",
+      "flags": 257,
+      "override": {
+        "guid": "3457a6e06576e8409e016febe7748b28",
+        "path": "[String Format] Hero_Carmilla\\Skills\\Skill String Desc Dash Taunt"
+      },
+      "references": [
+        {
+          "guid": "ebf98e4ab889df449150cfc773101004",
+          "path": "[Value Selector] Hero_Carmilla_Update6\\Skill Dash Taunt\\Skill Dash Taunt Value Selector",
+          "scope": "Hero_Carmilla_Update6"
+        },
+        {
+          "guid": "695d291c383421479c546ecc3e55e1b1",
+          "path": "[Value Selector] Hero_Carmilla_Update6\\Skill Dash Taunt\\Effect Duration Value Selector ",
+          "scope": "Hero_Carmilla_Update6"
+        },
+        {
+          "guid": "dafa55451d3b504ba427e943045951b4",
+          "path": "[Value] Hero_Carmilla_Update6\\Skill Dash Taunt\\Skill Dash Taunt Cooldown Value",
+          "scope": "Hero_Carmilla_Update6"
+        }
+      ],
+      "literals": [
+        "Text",
+        "Hero_Carmilla_Common~GAM.xls",
+        "Skill_Dash_Taunt_Desc",
+        "Text",
+        "Hero_Carmilla_Common~GAM.xls",
+        "Hero_Name",
+        "\"",
+        "\"\""
+      ],
+      "fields": [
+        {
+          "name": "flag_81",
+          "kind": "bool",
+          "offset": 0,
+          "size": 1,
+          "text": "False",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "_legacy",
+          "kind": "bool",
+          "offset": 1,
+          "size": 1,
+          "text": "False",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "mode",
+          "kind": "u32",
+          "offset": 2,
+          "size": 4,
+          "text": "1",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "flag_32",
+          "kind": "bool",
+          "offset": 6,
+          "size": 1,
+          "text": "False",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "value_2",
+          "kind": "value",
+          "offset": 7,
+          "size": 110,
+          "text": "text 'Text' 'Hero_Carmilla_Common~GAM.xls' 'Skill_Dash_Taunt_Desc'",
+          "cls": "oCEntityCpntValuePicker",
+          "items": []
+        },
+        {
+          "name": "bytes_3",
+          "kind": "bytes",
+          "offset": 117,
+          "size": 4,
+          "text": "04 00 00 00",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "obj_4",
+          "kind": "obj",
+          "offset": 121,
+          "size": 118,
+          "text": "text 'Text' 'Hero_Carmilla_Common~GAM.xls' 'Hero_Name'",
+          "cls": "oCDynamicTypePicker",
+          "items": []
+        },
+        {
+          "name": "obj_5",
+          "kind": "obj",
+          "offset": 239,
+          "size": 181,
+          "text": "int 0  <- [Value Selector] Hero_Carmilla_Update6\\Skill Dash Taunt\\Skill Dash Taunt Value Selector",
+          "cls": "oCDynamicTypePicker",
+          "items": []
+        },
+        {
+          "name": "obj_6",
+          "kind": "obj",
+          "offset": 420,
+          "size": 181,
+          "text": "f32 0  <- [Value Selector] Hero_Carmilla_Update6\\Skill Dash Taunt\\Effect Duration Value Selector   '\"\"'",
+          "cls": "oCDynamicTypePicker",
+          "items": []
+        },
+        {
+          "name": "obj_7",
+          "kind": "obj",
+          "offset": 601,
+          "size": 172,
+          "text": "f32 0  <- [Value] Hero_Carmilla_Update6\\Skill Dash Taunt\\Skill Dash Taunt Cooldown Value",
+          "cls": "oCDynamicTypePicker",
+          "items": []
+        }
+      ]
+    },
+    {
+      "index": 23,
+      "name": "Skill Dash Taunt Gpn Target Attack",
+      "group": "Skill Dash Taunt",
+      "class": "oCEntityCpntGpnTargetAttackSettings",
+      "guid": "7ad8330d1ef31b4b8bde1b22537fea32",
+      "flags": 65537,
+      "override": null,
+      "references": [
+        {
+          "guid": "c39a77c4a7878849a7544cd9ce7b72ac",
+          "path": "[Gpn Target Computer] Hero_Carmilla_Update6\\Skill Dash Taunt\\Skill Dash Taunt Target Computer",
+          "scope": "Hero_Carmilla_Update6"
+        },
+        {
+          "guid": "2bc39bbb4ab842468de5249e2e42f672",
+          "path": "[Dt Damage] Hero_Carmilla_Update6\\Skill Dash Taunt\\Dt Damage Dash Taunt",
+          "scope": "Hero_Carmilla_Update6"
+        }
+      ],
+      "literals": [],
+      "fields": [
+        {
+          "name": "flag_81",
+          "kind": "bool",
+          "offset": 0,
+          "size": 1,
+          "text": "False",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "_legacy",
+          "kind": "bool",
+          "offset": 1,
+          "size": 1,
+          "text": "False",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "mode",
+          "kind": "u32",
+          "offset": 2,
+          "size": 4,
+          "text": "0",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "flag_32",
+          "kind": "bool",
+          "offset": 6,
+          "size": 1,
+          "text": "False",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "ref_2",
+          "kind": "ref",
+          "offset": 7,
+          "size": 125,
+          "text": "<- [Gpn Target Computer] Hero_Carmilla_Update6\\Skill Dash Taunt\\Skill Dash Taunt Target Computer",
+          "cls": "oCEntityCpntPicker",
+          "items": []
+        },
+        {
+          "name": "value_3",
+          "kind": "value",
+          "offset": 132,
+          "size": 37,
+          "text": "int -1",
+          "cls": "oCEntityCpntValuePicker",
+          "items": []
+        },
+        {
+          "name": "ref_4",
+          "kind": "ref",
+          "offset": 169,
+          "size": 103,
+          "text": "<- [Dt Damage] Hero_Carmilla_Update6\\Skill Dash Taunt\\Dt Damage Dash Taunt",
+          "cls": "oCEntityCpntPicker",
+          "items": []
+        },
+        {
+          "name": "ref_5",
+          "kind": "ref",
+          "offset": 272,
+          "size": 32,
+          "text": "(none)",
+          "cls": "oCEntityCpntPicker",
+          "items": []
+        }
+      ]
+    },
+    {
+      "index": 24,
+      "name": "Skill Dash Taunt Target Computer",
+      "group": "Skill Dash Taunt",
+      "class": "oCEntityCpntGpnTargetComputerSettings",
+      "guid": "f7e1ed5c3c92c446b4af9e87fa8a0106",
+      "flags": 1,
+      "override": {
+        "guid": "c39a77c4a7878849a7544cd9ce7b72ac",
+        "path": "[Gpn Target Computer] Hero_Carmilla\\Skill Dash Taunt\\Skill Dash Taunt Target Computer"
+      },
+      "references": [
+        {
+          "guid": "7d38628717291e4cb9ac0d7f340073ee",
+          "path": "[Gpn Traverser] Hero_Carmilla_Update6\\Skill Dash Taunt\\Skill Dash Taunt Traverser",
+          "scope": "Hero_Carmilla_Update6"
+        },
+        {
+          "guid": "ebf98e4ab889df449150cfc773101004",
+          "path": "[Value Selector] Hero_Carmilla_Update6\\Skill Dash Taunt\\Skill Dash Taunt Value Selector",
+          "scope": "Hero_Carmilla_Update6"
+        }
+      ],
+      "literals": [],
+      "fields": [
+        {
+          "name": "flag_81",
+          "kind": "bool",
+          "offset": 0,
+          "size": 1,
+          "text": "False",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "_legacy",
+          "kind": "bool",
+          "offset": 1,
+          "size": 1,
+          "text": "False",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "mode",
+          "kind": "u32",
+          "offset": 2,
+          "size": 4,
+          "text": "0",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "flag_32",
+          "kind": "bool",
+          "offset": 6,
+          "size": 1,
+          "text": "False",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "obj_2",
+          "kind": "obj",
+          "offset": 7,
+          "size": 822,
+          "text": "vec3 0 0 0  vec3 0 0 1  f32 1  f32 0  f32 0  f32 0  vec3 0 0 0  f32 0  f32 0  f32 0  vec3 0 0 0  f32 1  f32 1  f32 1",
+          "cls": "oCEntity3dLocatorSettings",
+          "items": []
+        },
+        {
+          "name": "ref_3",
+          "kind": "ref",
+          "offset": 829,
+          "size": 113,
+          "text": "<- [Gpn Traverser] Hero_Carmilla_Update6\\Skill Dash Taunt\\Skill Dash Taunt Traverser",
+          "cls": "oCEntityCpntPicker",
+          "items": []
+        },
+        {
+          "name": "ref_4",
+          "kind": "ref",
+          "offset": 942,
+          "size": 32,
+          "text": "(none)",
+          "cls": "oCEntityCpntPicker",
+          "items": []
+        },
+        {
+          "name": "value_5",
+          "kind": "value",
+          "offset": 974,
+          "size": 161,
+          "text": "int 0  <- [Value Selector] Hero_Carmilla_Update6\\Skill Dash Taunt\\Skill Dash Taunt Value Selector",
+          "cls": "oCEntityCpntValuePicker",
+          "items": []
+        },
+        {
+          "name": "value_6",
+          "kind": "value",
+          "offset": 1135,
+          "size": 34,
+          "text": "bool False",
+          "cls": "oCEntityCpntValuePicker",
+          "items": []
+        },
+        {
+          "name": "value_7",
+          "kind": "value",
+          "offset": 1169,
+          "size": 37,
+          "text": "int 0",
+          "cls": "oCEntityCpntValuePicker",
+          "items": []
+        },
+        {
+          "name": "value_8",
+          "kind": "value",
+          "offset": 1206,
+          "size": 37,
+          "text": "f32 0",
+          "cls": "oCEntityCpntValuePicker",
+          "items": []
+        },
+        {
+          "name": "bytes_9",
+          "kind": "bytes",
+          "offset": 1243,
+          "size": 20,
+          "text": "00 00 00 00 02 00 00 00 31 00 00 00 32 00 00 00 00 00 00 00",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "value_10",
+          "kind": "value",
+          "offset": 1263,
+          "size": 34,
+          "text": "bool False",
+          "cls": "oCEntityCpntValuePicker",
+          "items": []
+        },
+        {
+          "name": "value_11",
+          "kind": "value",
+          "offset": 1297,
+          "size": 34,
+          "text": "bool True",
+          "cls": "oCEntityCpntValuePicker",
+          "items": []
+        },
+        {
+          "name": "ref_12",
+          "kind": "ref",
+          "offset": 1331,
+          "size": 32,
+          "text": "(none)",
+          "cls": "oCEntityCpntPicker",
+          "items": []
+        },
+        {
+          "name": "value_13",
+          "kind": "value",
+          "offset": 1363,
+          "size": 37,
+          "text": "int 0",
+          "cls": "oCEntityCpntValuePicker",
+          "items": []
+        }
+      ]
+    },
+    {
+      "index": 25,
+      "name": "Effect Duration Value Selector ",
+      "group": "Skill Dash Taunt",
+      "class": "oCEntityCpntValueSelectorSettings",
+      "guid": "695d291c383421479c546ecc3e55e1b1",
+      "flags": 257,
+      "override": null,
+      "references": [
+        {
+          "guid": "f6cccba66fce4240b70084d6e048ed0d",
+          "path": "[Dt Skill Controller] Hero_Carmilla_Update6\\Skills\\Skill Controller Dash Taunt",
+          "scope": "Hero_Carmilla_Update6"
+        },
+        {
+          "guid": "f6cccba66fce4240b70084d6e048ed0d",
+          "path": "[Dt Skill Controller] Hero_Carmilla_Update6\\Skills\\Skill Controller Dash Taunt",
+          "scope": "Hero_Carmilla_Update6"
+        },
+        {
+          "guid": "f6cccba66fce4240b70084d6e048ed0d",
+          "path": "[Dt Skill Controller] Hero_Carmilla_Update6\\Skills\\Skill Controller Dash Taunt",
+          "scope": "Hero_Carmilla_Update6"
+        },
+        {
+          "guid": "f6cccba66fce4240b70084d6e048ed0d",
+          "path": "[Dt Skill Controller] Hero_Carmilla_Update6\\Skills\\Skill Controller Dash Taunt",
+          "scope": "Hero_Carmilla_Update6"
+        }
+      ],
+      "literals": [],
+      "fields": [
+        {
+          "name": "flag_81",
+          "kind": "bool",
+          "offset": 0,
+          "size": 1,
+          "text": "False",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "_legacy",
+          "kind": "bool",
+          "offset": 1,
+          "size": 1,
+          "text": "False",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "mode",
+          "kind": "u32",
+          "offset": 2,
+          "size": 4,
+          "text": "1",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "flag_32",
+          "kind": "bool",
+          "offset": 6,
+          "size": 1,
+          "text": "False",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "mode",
+          "kind": "u32",
+          "offset": 7,
+          "size": 4,
+          "text": "0",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "entries",
+          "kind": "obj[]",
+          "offset": 11,
+          "size": 796,
+          "text": "bool False  f32 10.5  <- [Dt Skill Controller] Hero_Carmilla_Update6\\Skills\\Skill Controller Dash Taunt  |  bool False  f32 9  <- [Dt Skill Controller] Hero_Carmilla_Update6\\Skills\\Skill Controller Dash Taunt  |  bool False  f32 7.5  <- [Dt Skill Controller] Hero_Carmilla_Update6\\Skills\\Skill Controller Dash Taunt  |  bool False  f32 6  <- [Dt Skill Controller] Hero_Carmilla_Update6\\Skills\\Skill Controller Dash Taunt",
+          "cls": "",
+          "items": [
+            {
+              "name": "entries[0]",
+              "kind": "obj",
+              "offset": 15,
+              "size": 198,
+              "text": "bool False  f32 10.5  <- [Dt Skill Controller] Hero_Carmilla_Update6\\Skills\\Skill Controller Dash Taunt",
+              "cls": "oCEntityCpntValueSelectorEntrySettings",
+              "items": []
+            },
+            {
+              "name": "entries[1]",
+              "kind": "obj",
+              "offset": 213,
+              "size": 198,
+              "text": "bool False  f32 9  <- [Dt Skill Controller] Hero_Carmilla_Update6\\Skills\\Skill Controller Dash Taunt",
+              "cls": "oCEntityCpntValueSelectorEntrySettings",
+              "items": []
+            },
+            {
+              "name": "entries[2]",
+              "kind": "obj",
+              "offset": 411,
+              "size": 198,
+              "text": "bool False  f32 7.5  <- [Dt Skill Controller] Hero_Carmilla_Update6\\Skills\\Skill Controller Dash Taunt",
+              "cls": "oCEntityCpntValueSelectorEntrySettings",
+              "items": []
+            },
+            {
+              "name": "entries[3]",
+              "kind": "obj",
+              "offset": 609,
+              "size": 198,
+              "text": "bool False  f32 6  <- [Dt Skill Controller] Hero_Carmilla_Update6\\Skills\\Skill Controller Dash Taunt",
+              "cls": "oCEntityCpntValueSelectorEntrySettings",
+              "items": []
+            }
+          ]
+        },
+        {
+          "name": "flag_f8",
+          "kind": "bool",
+          "offset": 807,
+          "size": 1,
+          "text": "False",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "flag_f9",
+          "kind": "bool",
+          "offset": 808,
+          "size": 1,
+          "text": "False",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "default",
+          "kind": "value",
+          "offset": 809,
+          "size": 34,
+          "text": "bool False",
+          "cls": "oCEntityCpntValuePicker",
+          "items": []
+        }
+      ],
+      "numeric_unions": [
+        {
+          "index": 0,
+          "offset": 25933,
+          "value": 0.0,
+          "type": 2
+        },
+        {
+          "index": 1,
+          "offset": 25967,
+          "value": 10.5,
+          "type": 0
+        },
+        {
+          "index": 2,
+          "offset": 26131,
+          "value": 0.0,
+          "type": 2
+        },
+        {
+          "index": 3,
+          "offset": 26165,
+          "value": 9.0,
+          "type": 0
+        },
+        {
+          "index": 4,
+          "offset": 26329,
+          "value": 0.0,
+          "type": 2
+        },
+        {
+          "index": 5,
+          "offset": 26363,
+          "value": 7.5,
+          "type": 0
+        },
+        {
+          "index": 6,
+          "offset": 26527,
+          "value": 0.0,
+          "type": 2
+        },
+        {
+          "index": 7,
+          "offset": 26561,
+          "value": 6.0,
+          "type": 0
+        },
+        {
+          "index": 8,
+          "offset": 26604,
+          "value": 0.0,
+          "type": 2
+        }
+      ]
+    },
+    {
+      "index": 26,
+      "name": "Skill Dash Taunt Value Selector",
+      "group": "Skill Dash Taunt",
+      "class": "oCEntityCpntValueSelectorSettings",
+      "guid": "077801db058400428302bd7c15ec4e8f",
+      "flags": 257,
+      "override": {
+        "guid": "ebf98e4ab889df449150cfc773101004",
+        "path": "[Value Selector] Hero_Carmilla\\Skill Dash Taunt\\Skill Dash Taunt Value Selector"
+      },
+      "references": [],
+      "literals": [],
+      "fields": [
+        {
+          "name": "flag_81",
+          "kind": "bool",
+          "offset": 0,
+          "size": 1,
+          "text": "False",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "_legacy",
+          "kind": "bool",
+          "offset": 1,
+          "size": 1,
+          "text": "False",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "mode",
+          "kind": "u32",
+          "offset": 2,
+          "size": 4,
+          "text": "1",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "flag_32",
+          "kind": "bool",
+          "offset": 6,
+          "size": 1,
+          "text": "False",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "mode",
+          "kind": "u32",
+          "offset": 7,
+          "size": 4,
+          "text": "1",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "entries",
+          "kind": "obj[]",
+          "offset": 11,
+          "size": 87,
+          "text": "bool True  int 4",
+          "cls": "",
+          "items": [
+            {
+              "name": "entries[0]",
+              "kind": "obj",
+              "offset": 15,
+              "size": 83,
+              "text": "bool True  int 4",
+              "cls": "oCEntityCpntValueSelectorEntrySettings",
+              "items": []
+            }
+          ]
+        },
+        {
+          "name": "flag_f8",
+          "kind": "bool",
+          "offset": 98,
+          "size": 1,
+          "text": "False",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "flag_f9",
+          "kind": "bool",
+          "offset": 99,
+          "size": 1,
+          "text": "False",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "default",
+          "kind": "value",
+          "offset": 100,
+          "size": 34,
+          "text": "bool False",
+          "cls": "oCEntityCpntValuePicker",
+          "items": []
+        }
+      ],
+      "numeric_unions": [
+        {
+          "index": 0,
+          "offset": 26859,
+          "value": 1.0,
+          "type": 2
+        },
+        {
+          "index": 1,
+          "offset": 26893,
+          "value": 4.0,
+          "type": 1
+        },
+        {
+          "index": 2,
+          "offset": 26936,
+          "value": 0.0,
+          "type": 2
+        }
+      ]
+    },
+    {
+      "index": 27,
+      "name": "Skill Defense Master AP Selector",
+      "group": "Skill Defense Master",
+      "class": "oCEntityCpntValueSelectorSettings",
+      "guid": "f8451417c76e4e4b896a6f816a5bbdc2",
+      "flags": 257,
+      "override": {
+        "guid": "fb5bbea32270ba4a92af72e65f710fc1",
+        "path": "[Value Selector] Hero_Carmilla\\Skill Defense Master\\Skill Defense Master AP Selector"
+      },
+      "references": [
+        {
+          "guid": "ee72f1f066ae3449964ef627987b8a44",
+          "path": "[Dt Skill Controller] Hero_Carmilla\\Skills\\Skill Controller Defense Master",
+          "scope": "Hero_Carmilla"
+        },
+        {
+          "guid": "ee72f1f066ae3449964ef627987b8a44",
+          "path": "[Dt Skill Controller] Hero_Carmilla\\Skills\\Skill Controller Defense Master",
+          "scope": "Hero_Carmilla"
+        },
+        {
+          "guid": "ee72f1f066ae3449964ef627987b8a44",
+          "path": "[Dt Skill Controller] Hero_Carmilla\\Skills\\Skill Controller Defense Master",
+          "scope": "Hero_Carmilla"
+        }
+      ],
+      "literals": [],
+      "fields": [
+        {
+          "name": "flag_81",
+          "kind": "bool",
+          "offset": 0,
+          "size": 1,
+          "text": "False",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "_legacy",
+          "kind": "bool",
+          "offset": 1,
+          "size": 1,
+          "text": "False",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "mode",
+          "kind": "u32",
+          "offset": 2,
+          "size": 4,
+          "text": "1",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "flag_32",
+          "kind": "bool",
+          "offset": 6,
+          "size": 1,
+          "text": "False",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "mode",
+          "kind": "u32",
+          "offset": 7,
+          "size": 4,
+          "text": "0",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "entries",
+          "kind": "obj[]",
+          "offset": 11,
+          "size": 669,
+          "text": "bool False  f32 0.35  <- [Dt Skill Controller] Hero_Carmilla\\Skills\\Skill Controller Defense Master  |  bool False  f32 0.3  <- [Dt Skill Controller] Hero_Carmilla\\Skills\\Skill Controller Defense Master  |  bool False  f32 0.25  <- [Dt Skill Controller] Hero_Carmilla\\Skills\\Skill Controller Defense Master  |  bool True  f32 0.2",
+          "cls": "",
+          "items": [
+            {
+              "name": "entries[0]",
+              "kind": "obj",
+              "offset": 15,
+              "size": 194,
+              "text": "bool False  f32 0.35  <- [Dt Skill Controller] Hero_Carmilla\\Skills\\Skill Controller Defense Master",
+              "cls": "oCEntityCpntValueSelectorEntrySettings",
+              "items": []
+            },
+            {
+              "name": "entries[1]",
+              "kind": "obj",
+              "offset": 209,
+              "size": 194,
+              "text": "bool False  f32 0.3  <- [Dt Skill Controller] Hero_Carmilla\\Skills\\Skill Controller Defense Master",
+              "cls": "oCEntityCpntValueSelectorEntrySettings",
+              "items": []
+            },
+            {
+              "name": "entries[2]",
+              "kind": "obj",
+              "offset": 403,
+              "size": 194,
+              "text": "bool False  f32 0.25  <- [Dt Skill Controller] Hero_Carmilla\\Skills\\Skill Controller Defense Master",
+              "cls": "oCEntityCpntValueSelectorEntrySettings",
+              "items": []
+            },
+            {
+              "name": "entries[3]",
+              "kind": "obj",
+              "offset": 597,
+              "size": 83,
+              "text": "bool True  f32 0.2",
+              "cls": "oCEntityCpntValueSelectorEntrySettings",
+              "items": []
+            }
+          ]
+        },
+        {
+          "name": "flag_f8",
+          "kind": "bool",
+          "offset": 680,
+          "size": 1,
+          "text": "False",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "flag_f9",
+          "kind": "bool",
+          "offset": 681,
+          "size": 1,
+          "text": "False",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "default",
+          "kind": "value",
+          "offset": 682,
+          "size": 34,
+          "text": "bool False",
+          "cls": "oCEntityCpntValuePicker",
+          "items": []
+        }
+      ],
+      "numeric_unions": [
+        {
+          "index": 0,
+          "offset": 27312,
+          "value": 0.0,
+          "type": 2
+        },
+        {
+          "index": 1,
+          "offset": 27346,
+          "value": 0.3499999940395355,
+          "type": 0
+        },
+        {
+          "index": 2,
+          "offset": 27506,
+          "value": 0.0,
+          "type": 2
+        },
+        {
+          "index": 3,
+          "offset": 27540,
+          "value": 0.30000001192092896,
+          "type": 0
+        },
+        {
+          "index": 4,
+          "offset": 27700,
+          "value": 0.0,
+          "type": 2
+        },
+        {
+          "index": 5,
+          "offset": 27734,
+          "value": 0.25,
+          "type": 0
+        },
+        {
+          "index": 6,
+          "offset": 27783,
+          "value": 1.0,
+          "type": 2
+        },
+        {
+          "index": 7,
+          "offset": 27817,
+          "value": 0.20000000298023224,
+          "type": 0
+        },
+        {
+          "index": 8,
+          "offset": 27860,
+          "value": 0.0,
+          "type": 2
+        }
+      ]
+    },
+    {
+      "index": 28,
+      "name": "Skill Trait Life Tap Blood Gain Selector",
+      "group": "Skill Trait Life Tap",
+      "class": "oCEntityCpntValueSelectorSettings",
+      "guid": "c30015c2c5ec584e92eff5097c66bf5d",
+      "flags": 257,
+      "override": {
+        "guid": "9e32cd9a5d1a384da279211e7981ee8a",
+        "path": "[Value Selector] Hero_Carmilla\\Skill Trait Life Tap\\Skill Trait Life Tap Blood Gain Selector"
+      },
+      "references": [
+        {
+          "guid": "b167a2d2997fb544a7080693b03fb066",
+          "path": "[Dt Skill Controller] Hero_Carmilla_Update6\\Skills\\Skill Controller Trait Life Tap",
+          "scope": "Hero_Carmilla_Update6"
+        },
+        {
+          "guid": "b167a2d2997fb544a7080693b03fb066",
+          "path": "[Dt Skill Controller] Hero_Carmilla_Update6\\Skills\\Skill Controller Trait Life Tap",
+          "scope": "Hero_Carmilla_Update6"
+        },
+        {
+          "guid": "b167a2d2997fb544a7080693b03fb066",
+          "path": "[Dt Skill Controller] Hero_Carmilla_Update6\\Skills\\Skill Controller Trait Life Tap",
+          "scope": "Hero_Carmilla_Update6"
+        }
+      ],
+      "literals": [],
+      "fields": [
+        {
+          "name": "flag_81",
+          "kind": "bool",
+          "offset": 0,
+          "size": 1,
+          "text": "False",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "_legacy",
+          "kind": "bool",
+          "offset": 1,
+          "size": 1,
+          "text": "False",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "mode",
+          "kind": "u32",
+          "offset": 2,
+          "size": 4,
+          "text": "1",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "flag_32",
+          "kind": "bool",
+          "offset": 6,
+          "size": 1,
+          "text": "False",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "mode",
+          "kind": "u32",
+          "offset": 7,
+          "size": 4,
+          "text": "1",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "entries",
+          "kind": "obj[]",
+          "offset": 11,
+          "size": 693,
+          "text": "bool False  int 70  <- [Dt Skill Controller] Hero_Carmilla_Update6\\Skills\\Skill Controller Trait Life Tap  |  bool False  int 60  <- [Dt Skill Controller] Hero_Carmilla_Update6\\Skills\\Skill Controller Trait Life Tap  |  bool False  int 50  <- [Dt Skill Controller] Hero_Carmilla_Update6\\Skills\\Skill Controller Trait Life Tap  |  bool True  int 40",
+          "cls": "",
+          "items": [
+            {
+              "name": "entries[0]",
+              "kind": "obj",
+              "offset": 15,
+              "size": 202,
+              "text": "bool False  int 70  <- [Dt Skill Controller] Hero_Carmilla_Update6\\Skills\\Skill Controller Trait Life Tap",
+              "cls": "oCEntityCpntValueSelectorEntrySettings",
+              "items": []
+            },
+            {
+              "name": "entries[1]",
+              "kind": "obj",
+              "offset": 217,
+              "size": 202,
+              "text": "bool False  int 60  <- [Dt Skill Controller] Hero_Carmilla_Update6\\Skills\\Skill Controller Trait Life Tap",
+              "cls": "oCEntityCpntValueSelectorEntrySettings",
+              "items": []
+            },
+            {
+              "name": "entries[2]",
+              "kind": "obj",
+              "offset": 419,
+              "size": 202,
+              "text": "bool False  int 50  <- [Dt Skill Controller] Hero_Carmilla_Update6\\Skills\\Skill Controller Trait Life Tap",
+              "cls": "oCEntityCpntValueSelectorEntrySettings",
+              "items": []
+            },
+            {
+              "name": "entries[3]",
+              "kind": "obj",
+              "offset": 621,
+              "size": 83,
+              "text": "bool True  int 40",
+              "cls": "oCEntityCpntValueSelectorEntrySettings",
+              "items": []
+            }
+          ]
+        },
+        {
+          "name": "flag_f8",
+          "kind": "bool",
+          "offset": 704,
+          "size": 1,
+          "text": "False",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "flag_f9",
+          "kind": "bool",
+          "offset": 705,
+          "size": 1,
+          "text": "False",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "default",
+          "kind": "value",
+          "offset": 706,
+          "size": 34,
+          "text": "bool False",
+          "cls": "oCEntityCpntValuePicker",
+          "items": []
+        }
+      ],
+      "numeric_unions": [
+        {
+          "index": 0,
+          "offset": 28260,
+          "value": 0.0,
+          "type": 2
+        },
+        {
+          "index": 1,
+          "offset": 28294,
+          "value": 70.0,
+          "type": 1
+        },
+        {
+          "index": 2,
+          "offset": 28462,
+          "value": 0.0,
+          "type": 2
+        },
+        {
+          "index": 3,
+          "offset": 28496,
+          "value": 60.0,
+          "type": 1
+        },
+        {
+          "index": 4,
+          "offset": 28664,
+          "value": 0.0,
+          "type": 2
+        },
+        {
+          "index": 5,
+          "offset": 28698,
+          "value": 50.0,
+          "type": 1
+        },
+        {
+          "index": 6,
+          "offset": 28747,
+          "value": 1.0,
+          "type": 2
+        },
+        {
+          "index": 7,
+          "offset": 28781,
+          "value": 40.0,
+          "type": 1
+        },
+        {
+          "index": 8,
+          "offset": 28824,
+          "value": 0.0,
+          "type": 2
+        }
+      ]
+    },
+    {
+      "index": 29,
+      "name": "Ultimate 2 Ability Stagger Selector",
+      "group": "Ability Ultimate 2",
+      "class": "oCEntityCpntValueSelectorSettings",
+      "guid": "e0e3ee61342d1448b7588e0179f3de83",
+      "flags": 257,
+      "override": {
+        "guid": "25f93abf9e3e79449cc881bb6f990f75",
+        "path": "[Value Selector] Hero_Carmilla\\Ability Ultimate 2\\Ultimate 2 Ability Stagger Selector"
+      },
+      "references": [
+        {
+          "guid": "4d5a1cf16bae4c42b07cf8809858affb",
+          "path": "[State] Hero_Carmilla\\Ability Ultimate 2\\Event Ultimate 2 Ability Active Combo Finisher",
+          "scope": "Hero_Carmilla"
+        },
+        {
+          "guid": "bb26b074be55b94d91a2357b37e18245",
+          "path": "[State] Hero_Carmilla\\Skill Ultimate 2 Add Zone Attack\\Event Skill Ultimate 2 Add Zone Attack Active Combo Zone",
+          "scope": "Hero_Carmilla"
+        }
+      ],
+      "literals": [],
+      "fields": [
+        {
+          "name": "flag_81",
+          "kind": "bool",
+          "offset": 0,
+          "size": 1,
+          "text": "False",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "_legacy",
+          "kind": "bool",
+          "offset": 1,
+          "size": 1,
+          "text": "False",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "mode",
+          "kind": "u32",
+          "offset": 2,
+          "size": 4,
+          "text": "1",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "flag_32",
+          "kind": "bool",
+          "offset": 6,
+          "size": 1,
+          "text": "False",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "mode",
+          "kind": "u32",
+          "offset": 7,
+          "size": 4,
+          "text": "0",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "entries",
+          "kind": "obj[]",
+          "offset": 11,
+          "size": 525,
+          "text": "bool False  f32 24  <- [State] Hero_Carmilla\\Ability Ultimate 2\\Event Ultimate 2 Ability Active Combo Finisher  |  bool False  f32 24  <- [State] Hero_Carmilla\\Skill Ultimate 2 Add Zone Attack\\Event Skill Ultimate 2 Add Zone Attack Active Combo Zone  |  bool True  f32 12",
+          "cls": "",
+          "items": [
+            {
+              "name": "entries[0]",
+              "kind": "obj",
+              "offset": 15,
+              "size": 207,
+              "text": "bool False  f32 24  <- [State] Hero_Carmilla\\Ability Ultimate 2\\Event Ultimate 2 Ability Active Combo Finisher",
+              "cls": "oCEntityCpntValueSelectorEntrySettings",
+              "items": []
+            },
+            {
+              "name": "entries[1]",
+              "kind": "obj",
+              "offset": 222,
+              "size": 231,
+              "text": "bool False  f32 24  <- [State] Hero_Carmilla\\Skill Ultimate 2 Add Zone Attack\\Event Skill Ultimate 2 Add Zone Attack Active Combo Zone",
+              "cls": "oCEntityCpntValueSelectorEntrySettings",
+              "items": []
+            },
+            {
+              "name": "entries[2]",
+              "kind": "obj",
+              "offset": 453,
+              "size": 83,
+              "text": "bool True  f32 12",
+              "cls": "oCEntityCpntValueSelectorEntrySettings",
+              "items": []
+            }
+          ]
+        },
+        {
+          "name": "flag_f8",
+          "kind": "bool",
+          "offset": 536,
+          "size": 1,
+          "text": "False",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "flag_f9",
+          "kind": "bool",
+          "offset": 537,
+          "size": 1,
+          "text": "False",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "default",
+          "kind": "value",
+          "offset": 538,
+          "size": 34,
+          "text": "bool False",
+          "cls": "oCEntityCpntValuePicker",
+          "items": []
+        }
+      ],
+      "numeric_unions": [
+        {
+          "index": 0,
+          "offset": 29215,
+          "value": 0.0,
+          "type": 2
+        },
+        {
+          "index": 1,
+          "offset": 29249,
+          "value": 24.0,
+          "type": 0
+        },
+        {
+          "index": 2,
+          "offset": 29446,
+          "value": 0.0,
+          "type": 2
+        },
+        {
+          "index": 3,
+          "offset": 29480,
+          "value": 24.0,
+          "type": 0
+        },
+        {
+          "index": 4,
+          "offset": 29529,
+          "value": 1.0,
+          "type": 2
+        },
+        {
+          "index": 5,
+          "offset": 29563,
+          "value": 12.0,
+          "type": 0
+        },
+        {
+          "index": 6,
+          "offset": 29606,
+          "value": 0.0,
+          "type": 2
+        }
+      ]
+    },
+    {
+      "index": 30,
+      "name": "Gpn Zone Attack Dash Taunt",
+      "group": "Skill Dash Taunt",
+      "class": "oCEntityCpntZoneAttackSettings",
+      "guid": "32503bcd5e192847a134e4fda5e2b341",
+      "flags": 65536,
+      "override": null,
+      "references": [],
+      "literals": [
+        "0"
+      ],
+      "fields": [
+        {
+          "name": "flag_81",
+          "kind": "bool",
+          "offset": 0,
+          "size": 1,
+          "text": "False",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "_legacy",
+          "kind": "bool",
+          "offset": 1,
+          "size": 1,
+          "text": "False",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "mode",
+          "kind": "u32",
+          "offset": 2,
+          "size": 4,
+          "text": "0",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "flag_32",
+          "kind": "bool",
+          "offset": 6,
+          "size": 1,
+          "text": "False",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "ref_1c0",
+          "kind": "ref",
+          "offset": 7,
+          "size": 32,
+          "text": "(none)",
+          "cls": "oCEntityCpntPicker",
+          "items": []
+        },
+        {
+          "name": "ref_200",
+          "kind": "ref",
+          "offset": 39,
+          "size": 32,
+          "text": "(none)",
+          "cls": "oCEntityCpntPicker",
+          "items": []
+        },
+        {
+          "name": "ref_180",
+          "kind": "ref",
+          "offset": 71,
+          "size": 32,
+          "text": "(none)",
+          "cls": "oCEntityCpntPicker",
+          "items": []
+        },
+        {
+          "name": "flag_f8",
+          "kind": "bool",
+          "offset": 103,
+          "size": 1,
+          "text": "True",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "value_100",
+          "kind": "value",
+          "offset": 104,
+          "size": 37,
+          "text": "f32 0",
+          "cls": "oCEntityCpntValuePicker",
+          "items": []
+        },
+        {
+          "name": "attacks",
+          "kind": "ids",
+          "offset": 141,
+          "size": 8,
+          "text": "#48",
+          "cls": "",
+          "items": []
+        }
+      ]
+    },
+    {
+      "index": 31,
+      "name": "Ability Ultimate 2 Blood Gain Default",
+      "group": "Ability Ultimate 2",
+      "class": "oCEntityCpntValueSettings",
+      "guid": "bfa27fa68df0754bb2fcd48e2b8d801a",
+      "flags": 257,
+      "override": {
+        "guid": "1f357f866f819b439832d896d10ea823",
+        "path": "[Value] Hero_Carmilla\\Ability Ultimate 2\\Ability Ultimate 2 Blood Gain Default"
+      },
+      "references": [],
+      "literals": [],
+      "fields": [
+        {
+          "name": "flag_81",
+          "kind": "bool",
+          "offset": 0,
+          "size": 1,
+          "text": "False",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "_legacy",
+          "kind": "bool",
+          "offset": 1,
+          "size": 1,
+          "text": "False",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "mode",
+          "kind": "u32",
+          "offset": 2,
+          "size": 4,
+          "text": "1",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "flag_32",
+          "kind": "bool",
+          "offset": 6,
+          "size": 1,
+          "text": "False",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "value",
+          "kind": "value",
+          "offset": 7,
+          "size": 37,
+          "text": "int 6",
+          "cls": "oCEntityCpntValuePicker",
+          "items": []
+        },
+        {
+          "name": "flag",
+          "kind": "bool",
+          "offset": 44,
+          "size": 1,
+          "text": "False",
+          "cls": "",
+          "items": []
+        }
+      ]
+    },
+    {
+      "index": 32,
+      "name": "Ability Ultimate 2 Blood Gain Finisher",
+      "group": "Ability Ultimate 2",
+      "class": "oCEntityCpntValueSettings",
+      "guid": "f56b65e44c46fa4b920adb2e810ffd1b",
+      "flags": 257,
+      "override": {
+        "guid": "fa1fb434beb183489ed2cf1273093c44",
+        "path": "[Value] Hero_Carmilla\\Ability Ultimate 2\\Ability Ultimate 2 Blood Gain Finisher"
+      },
+      "references": [],
+      "literals": [],
+      "fields": [
+        {
+          "name": "flag_81",
+          "kind": "bool",
+          "offset": 0,
+          "size": 1,
+          "text": "False",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "_legacy",
+          "kind": "bool",
+          "offset": 1,
+          "size": 1,
+          "text": "False",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "mode",
+          "kind": "u32",
+          "offset": 2,
+          "size": 4,
+          "text": "1",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "flag_32",
+          "kind": "bool",
+          "offset": 6,
+          "size": 1,
+          "text": "False",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "value",
+          "kind": "value",
+          "offset": 7,
+          "size": 37,
+          "text": "int 12",
+          "cls": "oCEntityCpntValuePicker",
+          "items": []
+        },
+        {
+          "name": "flag",
+          "kind": "bool",
+          "offset": 44,
+          "size": 1,
+          "text": "False",
+          "cls": "",
+          "items": []
+        }
+      ]
+    },
+    {
+      "index": 33,
+      "name": "Skill Dash Taunt Cooldown Value",
+      "group": "Skill Dash Taunt",
+      "class": "oCEntityCpntValueSettings",
+      "guid": "dafa55451d3b504ba427e943045951b4",
+      "flags": 257,
+      "override": null,
+      "references": [],
+      "literals": [],
+      "fields": [
+        {
+          "name": "flag_81",
+          "kind": "bool",
+          "offset": 0,
+          "size": 1,
+          "text": "False",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "_legacy",
+          "kind": "bool",
+          "offset": 1,
+          "size": 1,
+          "text": "False",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "mode",
+          "kind": "u32",
+          "offset": 2,
+          "size": 4,
+          "text": "1",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "flag_32",
+          "kind": "bool",
+          "offset": 6,
+          "size": 1,
+          "text": "False",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "value",
+          "kind": "value",
+          "offset": 7,
+          "size": 37,
+          "text": "f32 6",
+          "cls": "oCEntityCpntValuePicker",
+          "items": []
+        },
+        {
+          "name": "flag",
+          "kind": "bool",
+          "offset": 44,
+          "size": 1,
+          "text": "False",
+          "cls": "",
+          "items": []
+        }
+      ]
+    },
+    {
+      "index": 34,
+      "name": "Skill Dash Taunt Effect Duration Value",
+      "group": "Skill Dash Taunt",
+      "class": "oCEntityCpntValueSettings",
+      "guid": "d96d5cdb668927438c2c9ad1eea12be8",
+      "flags": 257,
+      "override": {
+        "guid": "30a4da8aecd5d945b00b1536c204967e",
+        "path": "[Value] Hero_Carmilla\\Skill Dash Taunt\\Skill Dash Taunt Effect Duration Value"
+      },
+      "references": [],
+      "literals": [],
+      "fields": [
+        {
+          "name": "flag_81",
+          "kind": "bool",
+          "offset": 0,
+          "size": 1,
+          "text": "False",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "_legacy",
+          "kind": "bool",
+          "offset": 1,
+          "size": 1,
+          "text": "False",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "mode",
+          "kind": "u32",
+          "offset": 2,
+          "size": 4,
+          "text": "1",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "flag_32",
+          "kind": "bool",
+          "offset": 6,
+          "size": 1,
+          "text": "False",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "value",
+          "kind": "value",
+          "offset": 7,
+          "size": 37,
+          "text": "f32 6",
+          "cls": "oCEntityCpntValuePicker",
+          "items": []
+        },
+        {
+          "name": "flag",
+          "kind": "bool",
+          "offset": 44,
+          "size": 1,
+          "text": "False",
+          "cls": "",
+          "items": []
+        }
+      ]
+    },
+    {
+      "index": 35,
+      "name": "Skill Trait Life Tap Cooldown",
+      "group": "Skill Trait Life Tap",
+      "class": "oCEntityCpntValueSettings",
+      "guid": "aef7dff260f2e9478851c4165ccafceb",
+      "flags": 257,
+      "override": {
+        "guid": "46922df4477472479c03c4a3d509867f",
+        "path": "[Value] Hero_Carmilla\\Skill Trait Life Tap\\Skill Trait Life Tap Cooldown"
+      },
+      "references": [],
+      "literals": [],
+      "fields": [
+        {
+          "name": "flag_81",
+          "kind": "bool",
+          "offset": 0,
+          "size": 1,
+          "text": "False",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "_legacy",
+          "kind": "bool",
+          "offset": 1,
+          "size": 1,
+          "text": "False",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "mode",
+          "kind": "u32",
+          "offset": 2,
+          "size": 4,
+          "text": "1",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "flag_32",
+          "kind": "bool",
+          "offset": 6,
+          "size": 1,
+          "text": "False",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "value",
+          "kind": "value",
+          "offset": 7,
+          "size": 37,
+          "text": "f32 10",
+          "cls": "oCEntityCpntValuePicker",
+          "items": []
+        },
+        {
+          "name": "flag",
+          "kind": "bool",
+          "offset": 44,
+          "size": 1,
+          "text": "False",
+          "cls": "",
+          "items": []
+        }
+      ]
+    },
+    {
+      "index": 36,
+      "name": "Skill Trait Life Tap Health Ratio Cost",
+      "group": "Skill Trait Life Tap",
+      "class": "oCEntityCpntValueSettings",
+      "guid": "9b52ec9fdd28b44fb74da0214df21b3b",
+      "flags": 257,
+      "override": {
+        "guid": "b3121e8de0d11146866bf0e6cae60c85",
+        "path": "[Value] Hero_Carmilla\\Skill Trait Life Tap\\Skill Trait Life Tap Health Ratio Cost"
+      },
+      "references": [],
+      "literals": [],
+      "fields": [
+        {
+          "name": "flag_81",
+          "kind": "bool",
+          "offset": 0,
+          "size": 1,
+          "text": "False",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "_legacy",
+          "kind": "bool",
+          "offset": 1,
+          "size": 1,
+          "text": "False",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "mode",
+          "kind": "u32",
+          "offset": 2,
+          "size": 4,
+          "text": "1",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "flag_32",
+          "kind": "bool",
+          "offset": 6,
+          "size": 1,
+          "text": "False",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "value",
+          "kind": "value",
+          "offset": 7,
+          "size": 37,
+          "text": "f32 0.15",
+          "cls": "oCEntityCpntValuePicker",
+          "items": []
+        },
+        {
+          "name": "flag",
+          "kind": "bool",
+          "offset": 44,
+          "size": 1,
+          "text": "False",
+          "cls": "",
+          "items": []
+        }
+      ]
+    },
+    {
+      "index": 37,
+      "name": "Skill Ultimate 2 Add Zone Attack Blood Gain",
+      "group": "Skill Ultimate 2 Add Zone Attack",
+      "class": "oCEntityCpntValueSettings",
+      "guid": "55be880bcd0d2b498200fbd8cd542bd7",
+      "flags": 257,
+      "override": {
+        "guid": "b72935fc668851468eca1c31ba667f17",
+        "path": "[Value] Hero_Carmilla\\Skill Ultimate 2 Add Zone Attack\\Skill Ultimate 2 Add Zone Attack Blood Gain"
+      },
+      "references": [],
+      "literals": [],
+      "fields": [
+        {
+          "name": "flag_81",
+          "kind": "bool",
+          "offset": 0,
+          "size": 1,
+          "text": "False",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "_legacy",
+          "kind": "bool",
+          "offset": 1,
+          "size": 1,
+          "text": "False",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "mode",
+          "kind": "u32",
+          "offset": 2,
+          "size": 4,
+          "text": "1",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "flag_32",
+          "kind": "bool",
+          "offset": 6,
+          "size": 1,
+          "text": "False",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "value",
+          "kind": "value",
+          "offset": 7,
+          "size": 37,
+          "text": "int 8",
+          "cls": "oCEntityCpntValuePicker",
+          "items": []
+        },
+        {
+          "name": "flag",
+          "kind": "bool",
+          "offset": 44,
+          "size": 1,
+          "text": "False",
+          "cls": "",
+          "items": []
+        }
+      ]
+    },
+    {
+      "index": 38,
+      "name": "Skill Dash Taunt Anim Clip",
+      "group": "Skill Dash Taunt",
+      "class": "oCEntityCpntAnimClipSettings",
+      "guid": "6a356cae6836194984332125c8b3fb80",
+      "flags": 1,
+      "override": {
+        "guid": "ec6a97209bddc34abcfe22311aa6b414",
+        "path": "[Anim Clip] Hero_Carmilla\\Skill Dash Taunt\\Skill Dash Taunt Anim Clip"
+      },
+      "references": [
+        {
+          "guid": "00000000000000000000000000000000",
+          "path": "[State] Hero_Carmilla\\Skill Passive Taunt\\Event Skill Passive Taunt Reset idle",
+          "scope": "Hero_Carmilla"
+        },
+        {
+          "guid": "cc949cf53d542f4f8f88fd5dcb8320b5",
+          "path": "[Animatic] Hero_Carmilla_Update6\\Skill Dash Taunt\\Skill Dash Taunt Animatic",
+          "scope": "Hero_Carmilla_Update6"
+        },
+        {
+          "guid": "7cd45f0603e1bf418ce4205390032742",
+          "path": "[State] Hero_Carmilla_Update6\\Skill Dash Taunt\\State Skill Dash Taunt",
+          "scope": "Hero_Carmilla_Update6"
+        }
+      ],
+      "literals": [],
+      "fields": [
+        {
+          "name": "flag_81",
+          "kind": "bool",
+          "offset": 0,
+          "size": 1,
+          "text": "True",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "_legacy",
+          "kind": "bool",
+          "offset": 1,
+          "size": 1,
+          "text": "False",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "mode",
+          "kind": "u32",
+          "offset": 2,
+          "size": 4,
+          "text": "2",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "flag_32",
+          "kind": "bool",
+          "offset": 6,
+          "size": 1,
+          "text": "False",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "ref_2",
+          "kind": "ref",
+          "offset": 7,
+          "size": 110,
+          "text": "<- [State] Hero_Carmilla\\Skill Passive Taunt\\Event Skill Passive Taunt Reset idle",
+          "cls": "oCEntityCpntPicker",
+          "items": []
+        },
+        {
+          "name": "ref_3",
+          "kind": "ref",
+          "offset": 117,
+          "size": 107,
+          "text": "<- [Animatic] Hero_Carmilla_Update6\\Skill Dash Taunt\\Skill Dash Taunt Animatic",
+          "cls": "oCEntityCpntPicker",
+          "items": []
+        },
+        {
+          "name": "ref_4",
+          "kind": "ref",
+          "offset": 224,
+          "size": 32,
+          "text": "(none)",
+          "cls": "oCEntityCpntPicker",
+          "items": []
+        },
+        {
+          "name": "ref_5",
+          "kind": "ref",
+          "offset": 256,
+          "size": 32,
+          "text": "(none)",
+          "cls": "oCEntityCpntPicker",
+          "items": []
+        },
+        {
+          "name": "value_6",
+          "kind": "value",
+          "offset": 288,
+          "size": 37,
+          "text": "f32 0",
+          "cls": "oCEntityCpntValuePicker",
+          "items": []
+        },
+        {
+          "name": "value_7",
+          "kind": "value",
+          "offset": 325,
+          "size": 34,
+          "text": "bool False",
+          "cls": "oCEntityCpntValuePicker",
+          "items": []
+        },
+        {
+          "name": "value_8",
+          "kind": "value",
+          "offset": 359,
+          "size": 34,
+          "text": "bool False",
+          "cls": "oCEntityCpntValuePicker",
+          "items": []
+        },
+        {
+          "name": "value_9",
+          "kind": "value",
+          "offset": 393,
+          "size": 37,
+          "text": "f32 1",
+          "cls": "oCEntityCpntValuePicker",
+          "items": []
+        },
+        {
+          "name": "ref_10",
+          "kind": "ref",
+          "offset": 430,
+          "size": 32,
+          "text": "(none)",
+          "cls": "oCEntityCpntPicker",
+          "items": []
+        },
+        {
+          "name": "ref_11",
+          "kind": "ref",
+          "offset": 462,
+          "size": 101,
+          "text": "<- [State] Hero_Carmilla_Update6\\Skill Dash Taunt\\State Skill Dash Taunt",
+          "cls": "oCEntityCpntPicker",
+          "items": []
+        }
+      ]
+    },
+    {
+      "index": 39,
+      "name": "Skill Dash Taunt Traverser",
+      "group": "Skill Dash Taunt",
+      "class": "oCEntityCpntGpnTraverserSettings",
+      "guid": "a866094caf7b5748bb3476b065b88422",
+      "flags": 257,
+      "override": {
+        "guid": "7d38628717291e4cb9ac0d7f340073ee",
+        "path": "[Gpn Traverser] Hero_Carmilla\\Skill Dash Taunt\\Skill Dash Taunt Traverser"
+      },
+      "references": [],
+      "literals": [
+        ")"
+      ],
+      "fields": [
+        {
+          "name": "flag_81",
+          "kind": "bool",
+          "offset": 0,
+          "size": 1,
+          "text": "False",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "_legacy",
+          "kind": "bool",
+          "offset": 1,
+          "size": 1,
+          "text": "False",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "mode",
+          "kind": "u32",
+          "offset": 2,
+          "size": 4,
+          "text": "1",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "flag_32",
+          "kind": "bool",
+          "offset": 6,
+          "size": 1,
+          "text": "False",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "obj_2",
+          "kind": "obj",
+          "offset": 7,
+          "size": 405,
+          "text": "f32 0  bool False  bool False  f32 1.5  f32 -0.5  f32 0",
+          "cls": "oCEntityGpnTraverserCommonSettings",
+          "items": []
+        },
+        {
+          "name": "bytes_3",
+          "kind": "bytes",
+          "offset": 412,
+          "size": 12,
+          "text": "00 20 9e 0f 01 00 00 00 29 00 00 00",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "obj_4",
+          "kind": "obj",
+          "offset": 424,
+          "size": 109,
+          "text": "bool True  bool False",
+          "cls": "oCEntityGpnTesterCombinerSettings",
+          "items": []
+        }
+      ]
+    },
+    {
+      "index": 40,
+      "name": "Skill Dash Taunt Fx",
+      "group": "Skill Dash Taunt",
+      "class": "oCEntityCpntFxSettings",
+      "guid": "d878e5123425fb408a581917c32c764b",
+      "flags": 65537,
+      "override": null,
+      "references": [],
+      "literals": [
+        "("
+      ],
+      "fields": [
+        {
+          "name": "flag_81",
+          "kind": "bool",
+          "offset": 0,
+          "size": 1,
+          "text": "False",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "_legacy",
+          "kind": "bool",
+          "offset": 1,
+          "size": 1,
+          "text": "False",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "mode",
+          "kind": "u32",
+          "offset": 2,
+          "size": 4,
+          "text": "1",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "flag_32",
+          "kind": "bool",
+          "offset": 6,
+          "size": 1,
+          "text": "False",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "bytes_1",
+          "kind": "bytes",
+          "offset": 7,
+          "size": 8,
+          "text": "01 00 00 00 28 00 00 00",
+          "cls": "",
+          "items": []
+        },
+        {
+          "name": "value_2",
+          "kind": "value",
+          "offset": 15,
+          "size": 34,
+          "text": "bool True",
+          "cls": "oCEntityCpntValuePicker",
+          "items": []
+        },
+        {
+          "name": "value_3",
+          "kind": "value",
+          "offset": 49,
+          "size": 34,
+          "text": "bool False",
+          "cls": "oCEntityCpntValuePicker",
+          "items": []
+        },
+        {
+          "name": "value_4",
+          "kind": "value",
+          "offset": 83,
+          "size": 34,
+          "text": "bool True",
+          "cls": "oCEntityCpntValuePicker",
+          "items": []
+        }
+      ]
+    }
+  ],
+  "authored_values": [
+    {
+      "label": "Skill Dash Taunt Cooldown Value",
+      "value": 6.0,
+      "offset": 30531,
+      "is_spawner": false,
+      "is_int": false,
+      "is_overridden": false,
+      "type_code": 0
+    },
+    {
+      "label": "Skill Dash Taunt Effect Duration Value",
+      "value": 6.0,
+      "offset": 30779,
+      "is_spawner": false,
+      "is_int": false,
+      "is_overridden": false,
+      "type_code": 0
+    },
+    {
+      "label": "Skill Trait Life Tap Cooldown",
+      "value": 10.0,
+      "offset": 31017,
+      "is_spawner": false,
+      "is_int": false,
+      "is_overridden": false,
+      "type_code": 0
+    }
+  ]
+}
